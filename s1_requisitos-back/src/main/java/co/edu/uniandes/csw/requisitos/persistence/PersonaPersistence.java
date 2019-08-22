@@ -5,24 +5,23 @@
  */
 package co.edu.uniandes.csw.requisitos.persistence;
 
-import co.edu.uniandes.csw.requisitos.entities.AtributoCalidadEntity;
+import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Nicole Bahamon
+ * @author Estudiante
  */
 @Stateless
-public class AtributoCalidadPersistence {
-        @PersistenceContext(unitName="requisitosPU")
-    protected EntityManager em;
-    public AtributoCalidadEntity create(AtributoCalidadEntity requisito)
-    {
-      em.persist(requisito);
-      return requisito;
-    }
-    
-}
+public class PersonaPersistence {
 
+    @PersistenceContext(unitName="requisitosPU")
+    protected EntityManager em;
+    public PersonaEntity create(PersonaEntity persona)
+    {
+      em.persist(persona);
+      return persona;
+    }
+}
