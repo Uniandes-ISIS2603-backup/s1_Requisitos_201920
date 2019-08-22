@@ -9,23 +9,35 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 
 /**
- *
+ * Entidad que representa un requisito funcional
  * @author Nicolas Tobo
  */
 @Entity
 public class RequisitosEntity extends BaseEntity implements Serializable 
 {
-    
+    /**
+     * Fuente de donde se escribe el requisito
+     */
     private String fuente;
-    
+    /**
+     * Autor del requisito
+     */
     private String autor;
-    
+    /**
+     * Informacion que tiene el requisito
+     */
     private String descripcion;
-    
+    /**
+     * Numero que representa la importancia del requisito
+     */
     private Integer importancia;
-    
+    /**
+     * Boolena que representa si el requisito es estable(fijo)
+     */
     private Boolean estabilidad;
-    
+    /**
+     * Comentarios adicionales sobre el requisito
+     */
     private String comentariosAdicionales;
 
     /**
