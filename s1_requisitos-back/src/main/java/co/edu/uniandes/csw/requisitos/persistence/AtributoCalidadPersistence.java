@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.requisitos.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.AtributoCalidadEntity;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -14,8 +16,13 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class AtributoCalidadPersistence {
-     public AtributoCalidadEntity create(AtributoCalidadEntity atributoCalidad){
-            throw new java.lang.UnsupportedOperationException("Not supported yet.");
-                    }
+        @PersistenceContext(unitName="requisitosPU")
+    protected EntityManager em;
+    public AtributoCalidadEntity create(AtributoCalidadEntity requisito)
+    {
+      em.persist(requisito);
+      return requisito;
+    }
     
 }
+
