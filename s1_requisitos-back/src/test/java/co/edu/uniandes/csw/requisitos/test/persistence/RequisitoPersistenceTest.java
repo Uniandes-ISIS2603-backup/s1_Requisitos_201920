@@ -57,5 +57,10 @@ public class RequisitoPersistenceTest
       RequisitosEntity entity=em.find(RequisitosEntity.class, req.getId());
       
       Assert.assertEquals(newEntity.getAutor(),entity.getAutor());
+      Assert.assertEquals(newEntity.getFuente(),entity.getFuente());
+      Assert.assertEquals(newEntity.getEstabilidad(),entity.getEstabilidad());
+      Assert.assertEquals(newEntity.getComentariosAdicionales(),entity.getComentariosAdicionales());
+      Assert.assertEquals(newEntity.getDescripcion(),entity.getDescripcion());
+      Assert.assertEquals(newEntity.getImportancia(),entity.getImportancia());
     }  
 }   
