@@ -31,8 +31,8 @@ public class CasoDeUsoPersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addClass(CasoDeUsoEntity.class)
                 .addClass(CasoDeUsoPersistence.class)
-                .addAsManifestResource("METAINF/persistence.xml","persistence.xml")
-                .addAsManifestResource("METAINF/beans.xml","beans.xml");
+                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
     @Inject 
     CasoDeUsoPersistence a;
@@ -46,8 +46,11 @@ public class CasoDeUsoPersistenceTest {
         CasoDeUsoEntity result= a.create(casoDeUso);
         Assert.assertNotNull(result);
         
-        CasoDeUsoEntity entity=em.find(CasoDeUsoEntity.class, casoDeUso.getId());
+       CasoDeUsoEntity entity=em.find(CasoDeUsoEntity.class, casoDeUso.getId());
       
       Assert.assertEquals(casoDeUso.getDocumentacion(),entity.getDocumentacion());
+      Assert.assertEquals(casoDeUso.getResponsable(),entity.getResponsable());
+      Assert.assertEquals(casoDeUso.getPruebas(),entity.getPruebas());
+      Assert.assertEquals(casoDeUso.getServicios(),entity.getServicios());
     }
 }
