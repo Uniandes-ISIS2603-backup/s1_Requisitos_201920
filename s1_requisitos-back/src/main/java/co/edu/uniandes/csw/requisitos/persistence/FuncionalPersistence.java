@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.requisitos.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -14,9 +16,13 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class FuncionalPersistence {
-    
-    public FuncionalEntity create(FuncionalEntity funcional){
-            throw new java.lang.UnsupportedOperationException("Not supported yet.");
-                    }
+
+    @PersistenceContext(unitName="requisitosPU")
+    protected EntityManager em;
+    public FuncionalEntity create(FuncionalEntity requisito)
+    {
+      em.persist(requisito);
+      return requisito;
+    }
     
 }
