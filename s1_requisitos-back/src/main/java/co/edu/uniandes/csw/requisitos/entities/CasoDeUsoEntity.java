@@ -14,7 +14,9 @@ import javax.persistence.Entity;
  */
 @Entity
 public class CasoDeUsoEntity extends BaseEntity implements Serializable {
+  
     private String servicios;
+    private PersonaEntity responsable;
     private String documentacion;
     private Boolean pruebas;
 
@@ -30,6 +32,20 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
      */
     public void setServicios(String servicios) {
         this.servicios = servicios;
+    }
+
+    /**
+     * @return the responsable
+     */
+    public PersonaEntity getResponsable() {
+        return responsable;
+    }
+
+    /**
+     * @param responsable the responsable to set
+     */
+    public void setResponsable(PersonaEntity responsable) {
+        this.responsable = responsable;
     }
 
     /**
@@ -49,14 +65,17 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     /**
      * @return the pruebas
      */
-    public boolean isPruebas() {
+    public Boolean getPruebas() {
         return pruebas;
     }
 
     /**
      * @param pruebas the pruebas to set
      */
-    public void setPruebas(boolean pruebas) {
+    public void setPruebas(Boolean pruebas) {
         this.pruebas = pruebas;
     }
+   
+
+
 }

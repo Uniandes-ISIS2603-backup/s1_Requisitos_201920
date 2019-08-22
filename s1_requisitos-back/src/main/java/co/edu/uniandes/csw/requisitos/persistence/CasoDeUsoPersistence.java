@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class CasoDeUsoPersistence {
-    @PersistenceContext
+    @PersistenceContext(unitName="requisitosPU")
     protected EntityManager em; 
     public CasoDeUsoEntity create (CasoDeUsoEntity casoDeUso){
         em.persist(casoDeUso);
