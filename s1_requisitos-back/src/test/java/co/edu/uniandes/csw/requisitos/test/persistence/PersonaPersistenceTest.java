@@ -8,6 +8,8 @@ package co.edu.uniandes.csw.requisitos.test.persistence;
 import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
 import co.edu.uniandes.csw.requisitos.persistence.PersonaPersistence;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -24,16 +26,21 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class PersonaPersistenceTest {
+    
     @Inject
-    PersonaPersistence pp;
+    private PersonaPersistence pp;
+    
      @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
                 .addClass(PersonaEntity.class)
                 .addClass(PersonaPersistence.class)
-                .addAsManifestResource("METAINF/persistence.xml","persistence.xml")
-                .addAsManifestResource("METAINF/beans.xml","beans.xml");
+                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
+     @PersistenceContext
+    private EntityManager em;
+     
     @Test
     public void createTest()
     {
@@ -41,6 +48,9 @@ public class PersonaPersistenceTest {
         PersonaEntity persona = factory.manufacturePojo(PersonaEntity.class);
         PersonaEntity result = pp.create(persona);
         Assert.assertNotNull(result);
+        
+      PersonaEntity entity=em.find(PersonaEntity.class, result.getId());
+      Assert.assertEquals(persona.getNombre(), entity.getNombre());
     }
     
 }
