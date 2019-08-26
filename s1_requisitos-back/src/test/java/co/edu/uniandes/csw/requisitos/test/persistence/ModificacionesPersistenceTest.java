@@ -52,7 +52,7 @@ public class ModificacionesPersistenceTest {
          ModificacionesEntity entity=em.find(ModificacionesEntity.class, modificacion.getId());
       
       Assert.assertEquals(modificacion.getDescripcion(),entity.getDescripcion());
-      //Assert.assertEquals(modificacion.getFechaModificacion(),entity.getFechaModificacion());
+      Assert.assertEquals(modificacion.getFechaModificacion(),entity.getFechaModificacion());
      
     }
 }
