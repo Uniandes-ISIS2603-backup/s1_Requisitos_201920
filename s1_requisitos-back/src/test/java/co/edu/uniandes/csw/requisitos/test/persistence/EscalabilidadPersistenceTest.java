@@ -5,8 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
-import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
-import co.edu.uniandes.csw.requisitos.persistence.PersonaPersistence;
+import co.edu.uniandes.csw.requisitos.entities.EscalabilidadEntity;
+import co.edu.uniandes.csw.requisitos.persistence.EscalabilidadPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -26,15 +26,14 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
- * @author Juan Rubio
+ * @author Juan RUbio
  */
 @RunWith(Arquillian.class)
-public class PersonaPersistenceTest {
+public class EscalabilidadPersistenceTest {
     
     @Inject
-    private PersonaPersistence pp;
-    
-    /**
+    private EscalabilidadPersistence ep;
+      /**
      * Manejador de transacciones
      */
     @Inject
@@ -42,32 +41,32 @@ public class PersonaPersistenceTest {
     /**
      * Lista de objetos de prueba creados por el Podam
      */
-    private List<PersonaEntity> data = new ArrayList<>();
+    private List<EscalabilidadEntity> data = new ArrayList<>();
     
      @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(PersonaEntity.class)
-                .addClass(PersonaPersistence.class)
+                .addClass(EscalabilidadEntity.class)
+                .addClass(EscalabilidadPersistence.class)
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
      @PersistenceContext
     private EntityManager em;
      
-    @Test
-    public void createTest()
-    {
-        PodamFactory factory = new PodamFactoryImpl();
-        PersonaEntity persona = factory.manufacturePojo(PersonaEntity.class);
-        PersonaEntity result = pp.create(persona);
-        Assert.assertNotNull(result);
-        
-      PersonaEntity entity=em.find(PersonaEntity.class, result.getId());
-      Assert.assertEquals(persona.getNombre(), entity.getNombre());
-    }
-    
-    /**
+     @Test
+     public void createTest()
+     {
+         PodamFactory factory = new PodamFactoryImpl();
+         EscalabilidadEntity escalabilidad = factory.manufacturePojo(EscalabilidadEntity.class);
+         EscalabilidadEntity result = ep.create(escalabilidad);
+         Assert.assertNotNull(result);
+         
+         EscalabilidadEntity entity = em.find(EscalabilidadEntity.class, result.getId());
+         Assert.assertEquals(escalabilidad.getTipo(), entity.getTipo());
+       
+     }
+     /**
      * Configuración inicial de todas las pruebas.
      */
     @Before
@@ -92,7 +91,7 @@ public class PersonaPersistenceTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from PersonaEntity").executeUpdate();
+        em.createQuery("delete from EscalabilidadEntity").executeUpdate();
     }
 
     /**
@@ -103,7 +102,7 @@ public class PersonaPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) 
         {
-            PersonaEntity entidad = factory.manufacturePojo(PersonaEntity.class);
+            EscalabilidadEntity entidad = factory.manufacturePojo(EscalabilidadEntity.class);
             em.persist(entidad);
             data.add(entidad);
         }
@@ -114,10 +113,10 @@ public class PersonaPersistenceTest {
      */
     @Test
     public void findTest() {
-        PersonaEntity Entity1 = data.get(0);
-        PersonaEntity encontrado = pp.find(Entity1.getId());
+        EscalabilidadEntity Entity1 = data.get(0);
+        EscalabilidadEntity encontrado = ep.find(Entity1.getId());
 
-        Assert.assertEquals(Entity1.getNombre(), encontrado.getNombre());
+        Assert.assertEquals(Entity1.getTipo(), encontrado.getTipo());
        
     }
 
@@ -126,12 +125,12 @@ public class PersonaPersistenceTest {
      */
     @Test
     public void findAllTest() {
-        List<PersonaEntity> lista = pp.findAll();
+        List<EscalabilidadEntity> lista = ep.findAll();
         Assert.assertEquals(data.size(), lista.size());
 
-        for (PersonaEntity ent1 : lista) {
+        for (EscalabilidadEntity ent1 : lista) {
             boolean encontrado = false;
-            for (PersonaEntity ent2 : data) {
+            for (EscalabilidadEntity ent2 : data) {
                 if (ent1.getId().equals(ent2.getId())) {
                     encontrado = true;
                 }
@@ -145,16 +144,16 @@ public class PersonaPersistenceTest {
      */
     @Test
     public void updateTest() {
-        PersonaEntity entidad = data.get(0);
+        EscalabilidadEntity entidad = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        PersonaEntity nuevaEnt = factory.manufacturePojo(PersonaEntity.class);
+        EscalabilidadEntity nuevaEnt = factory.manufacturePojo(EscalabilidadEntity.class);
 
         nuevaEnt.setId(entidad.getId());
 
-        pp.update(nuevaEnt);
+        ep.update(nuevaEnt);
 
-        PersonaEntity resp = em.find(PersonaEntity.class, entidad.getId());
-        Assert.assertEquals(resp.getNombre(), nuevaEnt.getNombre());
+        EscalabilidadEntity resp = em.find(EscalabilidadEntity.class, entidad.getId());
+        Assert.assertEquals(resp.getTipo(), nuevaEnt.getTipo());
        
     }
 
@@ -163,21 +162,20 @@ public class PersonaPersistenceTest {
      */
     @Test
     public void deleteTest() {
-        PersonaEntity entidad = data.get(0);
-        pp.delete(entidad.getId());
-        PersonaEntity eliminada = em.find(PersonaEntity.class, entidad.getId());
+        EscalabilidadEntity entidad = data.get(0);
+        ep.delete(entidad.getId());
+        EscalabilidadEntity eliminada = em.find(EscalabilidadEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
     }
 
     @Test
-    public void findByNombreTest() 
+    public void findByTipoTest() 
     {
-        PersonaEntity entidad = data.get(0);
-        PersonaEntity nuevaEnt= pp.findByNombre(entidad.getNombre());
+        EscalabilidadEntity entidad = data.get(0);
+        EscalabilidadEntity nuevaEnt= ep.findByTipo(entidad.getTipo());
         Assert.assertNotNull(nuevaEnt);
         
-        Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
+        Assert.assertEquals(nuevaEnt.getTipo(), entidad.getTipo());
       
     }
-    
 }
