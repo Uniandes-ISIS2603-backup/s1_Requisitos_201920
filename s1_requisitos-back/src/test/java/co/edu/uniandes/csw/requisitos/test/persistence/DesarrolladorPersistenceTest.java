@@ -5,8 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
-import co.edu.uniandes.csw.requisitos.persistence.RequisitoPersistence;
+import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -15,7 +15,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
@@ -26,19 +25,18 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
- * Clase que prueba la persistencia de los requisitos funcionales
  *
  * @author Nicolas Tobo Referencias/modificado
  * de:https://github.com/Uniandes-isis2603/backstepbystep/blob/master/backstepbystep-back/src/test/java/co/edu/uniandes/csw/bookstore/test/persistence/RequisitosPersistenceTest.java
  */
 @RunWith(Arquillian.class)
-public class RequisitoPersistenceTest {
+public class DesarrolladorPersistenceTest {
 
     /**
-     * Objeto requisitoPersistence a probar
+     * Objeto DesarrolladorPersistence a probar
      */
     @Inject
-    private RequisitoPersistence rp;
+    private DesarrolladorPersistence dp;
     /**
      * Manejador de entidades usado para buscar el resultado creado por el Podam
      */
@@ -52,7 +50,7 @@ public class RequisitoPersistenceTest {
     /**
      * Lista de objetos de prueba creados por el Podam
      */
-    private List<RequisitosEntity> data = new ArrayList<>();
+    private List<DesarrolladorEntity> data = new ArrayList<>();
 
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -60,8 +58,8 @@ public class RequisitoPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(RequisitosEntity.class)
-                .addClass(RequisitoPersistence.class)
+                .addClass(DesarrolladorEntity.class)
+                .addClass(DesarrolladorPersistence.class)
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -91,7 +89,7 @@ public class RequisitoPersistenceTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from RequisitosEntity").executeUpdate();
+        em.createQuery("delete from DesarrolladorEntity").executeUpdate();
     }
 
     /**
@@ -101,7 +99,7 @@ public class RequisitoPersistenceTest {
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            RequisitosEntity entidad = factory.manufacturePojo(RequisitosEntity.class);
+            DesarrolladorEntity entidad = factory.manufacturePojo(DesarrolladorEntity.class);
             em.persist(entidad);
             data.add(entidad);
         }
@@ -114,19 +112,14 @@ public class RequisitoPersistenceTest {
     public void createTest() {
         PodamFactory factory = new PodamFactoryImpl();
 
-        RequisitosEntity nuevaEnt = factory.manufacturePojo(RequisitosEntity.class);
+        DesarrolladorEntity nuevaEnt = factory.manufacturePojo(DesarrolladorEntity.class);
+        Assert.assertNotNull(nuevaEnt);
 
-        RequisitosEntity req = rp.create(nuevaEnt);
-        Assert.assertNotNull(req);
+        DesarrolladorEntity desarrollador = dp.create(nuevaEnt);
+        Assert.assertNotNull(desarrollador);
 
-        RequisitosEntity entidad = em.find(RequisitosEntity.class, req.getId());
-
-        Assert.assertEquals(nuevaEnt.getAutor(), entidad.getAutor());
-        Assert.assertEquals(nuevaEnt.getFuente(), entidad.getFuente());
-        Assert.assertEquals(nuevaEnt.getEstabilidad(), entidad.getEstabilidad());
-        Assert.assertEquals(nuevaEnt.getComentariosAdicionales(), entidad.getComentariosAdicionales());
-        Assert.assertEquals(nuevaEnt.getDescripcion(), entidad.getDescripcion());
-        Assert.assertEquals(nuevaEnt.getImportancia(), entidad.getImportancia());
+        DesarrolladorEntity entidad = em.find(DesarrolladorEntity.class, desarrollador.getId());
+        Assert.assertEquals(entidad.getTipo(), nuevaEnt.getTipo());
     }
 
     /**
@@ -134,15 +127,10 @@ public class RequisitoPersistenceTest {
      */
     @Test
     public void findTest() {
-        RequisitosEntity Entity1 = data.get(0);
-        RequisitosEntity encontrado = rp.find(Entity1.getId());
+        DesarrolladorEntity Entity1 = data.get(0);
+        DesarrolladorEntity encontrado = dp.find(Entity1.getId());
 
-        Assert.assertEquals(Entity1.getAutor(), encontrado.getAutor());
-        Assert.assertEquals(Entity1.getFuente(), encontrado.getFuente());
-        Assert.assertEquals(Entity1.getEstabilidad(), encontrado.getEstabilidad());
-        Assert.assertEquals(Entity1.getComentariosAdicionales(), encontrado.getComentariosAdicionales());
-        Assert.assertEquals(Entity1.getDescripcion(), encontrado.getDescripcion());
-        Assert.assertEquals(Entity1.getImportancia(), encontrado.getImportancia());
+        Assert.assertEquals(Entity1.getTipo(), encontrado.getTipo());
     }
 
     /**
@@ -150,12 +138,12 @@ public class RequisitoPersistenceTest {
      */
     @Test
     public void findAllTest() {
-        List<RequisitosEntity> lista = rp.findAll();
+        List<DesarrolladorEntity> lista = dp.findAll();
         Assert.assertEquals(data.size(), lista.size());
 
-        for (RequisitosEntity ent1 : lista) {
+        for (DesarrolladorEntity ent1 : lista) {
             boolean encontrado = false;
-            for (RequisitosEntity ent2 : data) {
+            for (DesarrolladorEntity ent2 : data) {
                 if (ent1.getId().equals(ent2.getId())) {
                     encontrado = true;
                 }
@@ -169,21 +157,16 @@ public class RequisitoPersistenceTest {
      */
     @Test
     public void updateTest() {
-        RequisitosEntity entidad = data.get(0);
+        DesarrolladorEntity entidad = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        RequisitosEntity nuevaEnt = factory.manufacturePojo(RequisitosEntity.class);
+        DesarrolladorEntity nuevaEnt = factory.manufacturePojo(DesarrolladorEntity.class);
 
         nuevaEnt.setId(entidad.getId());
 
-        rp.update(nuevaEnt);
+        dp.update(nuevaEnt);
 
-        RequisitosEntity resp = em.find(RequisitosEntity.class, entidad.getId());
-        Assert.assertEquals(resp.getAutor(), nuevaEnt.getAutor());
-        Assert.assertEquals(resp.getFuente(), nuevaEnt.getFuente());
-        Assert.assertEquals(resp.getEstabilidad(), nuevaEnt.getEstabilidad());
-        Assert.assertEquals(resp.getComentariosAdicionales(), nuevaEnt.getComentariosAdicionales());
-        Assert.assertEquals(resp.getDescripcion(), nuevaEnt.getDescripcion());
-        Assert.assertEquals(resp.getImportancia(), nuevaEnt.getImportancia());
+        DesarrolladorEntity resp = em.find(DesarrolladorEntity.class, entidad.getId());
+        Assert.assertEquals(resp.getTipo(), nuevaEnt.getTipo());
     }
 
     /**
@@ -191,24 +174,9 @@ public class RequisitoPersistenceTest {
      */
     @Test
     public void deleteTest() {
-        RequisitosEntity entidad = data.get(0);
-        rp.delete(entidad.getId());
-        RequisitosEntity eliminada = em.find(RequisitosEntity.class, entidad.getId());
+        DesarrolladorEntity entidad = data.get(0);
+        dp.delete(entidad.getId());
+        DesarrolladorEntity eliminada = em.find(DesarrolladorEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
-    }
-
-    @Test
-    public void findByAuthorTest() 
-    {
-        RequisitosEntity entidad = data.get(0);
-        RequisitosEntity nuevaEnt= rp.findByAuthor(entidad.getAutor());
-        Assert.assertNotNull(nuevaEnt);
-        
-        Assert.assertEquals(nuevaEnt.getAutor(), entidad.getAutor());
-        Assert.assertEquals(nuevaEnt.getFuente(), entidad.getFuente());
-        Assert.assertEquals(nuevaEnt.getEstabilidad(), entidad.getEstabilidad());
-        Assert.assertEquals(nuevaEnt.getComentariosAdicionales(), entidad.getComentariosAdicionales());
-        Assert.assertEquals(nuevaEnt.getDescripcion(), entidad.getDescripcion());
-        Assert.assertEquals(nuevaEnt.getImportancia(), entidad.getImportancia());
     }
 }
