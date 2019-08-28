@@ -5,11 +5,13 @@
  */
 package co.edu.uniandes.csw.requisitos.entities;
 
+import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -21,9 +23,11 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
     private String nombre;
     
     @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fechaInicial;
     
     @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fechaFinal;
 
     /**
