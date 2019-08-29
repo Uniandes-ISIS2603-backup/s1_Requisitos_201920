@@ -5,8 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
-import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
-import co.edu.uniandes.csw.requisitos.persistence.FuncionalPersistence;
+import co.edu.uniandes.csw.requisitos.entities.DesempenoEntity;
+import co.edu.uniandes.csw.requisitos.persistence.DesempenoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,10 +29,10 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Nicole Bahamon
  */
 @RunWith(Arquillian.class)
-public class FuncionalPersistenceTest {
-    
-  @Inject
-    private FuncionalPersistence fp;
+public class DesempenoPersistenceTest {
+ 
+    @Inject
+    private DesempenoPersistence dp;
     
       /**
      * Manejador de transacciones
@@ -42,13 +42,13 @@ public class FuncionalPersistenceTest {
     /**
      * Lista de objetos de prueba creados por el Podam
      */
-    private List<FuncionalEntity> data = new ArrayList<>();
+    private List<DesempenoEntity> data = new ArrayList<>();
     
     @Deployment
     public static JavaArchive createDeployment(){
          return ShrinkWrap.create(JavaArchive.class)
-                .addClass(FuncionalEntity.class)
-                .addClass(FuncionalPersistence.class)
+                .addClass(DesempenoEntity.class)
+                .addClass(DesempenoPersistence.class)
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
@@ -60,12 +60,12 @@ public class FuncionalPersistenceTest {
     public void createTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
-        FuncionalEntity funcional = factory.manufacturePojo(FuncionalEntity.class);
-        FuncionalEntity result = fp.create(funcional);
+        DesempenoEntity desempeno = factory.manufacturePojo(DesempenoEntity.class);
+        DesempenoEntity result = dp.create(desempeno);
         Assert.assertNotNull(result);
         
-     FuncionalEntity entity=em.find(FuncionalEntity.class, result.getId());
-      Assert.assertEquals(funcional.getNombre(), entity.getNombre());
+     DesempenoEntity entity=em.find(DesempenoEntity.class, result.getId());
+      Assert.assertEquals(desempeno.getDesempeno(), entity.getDesempeno());
     }
        /**
      * Configuración inicial de todas las pruebas.
@@ -92,7 +92,7 @@ public class FuncionalPersistenceTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from FuncionalEntity").executeUpdate();
+        em.createQuery("delete from DesempenoEntity").executeUpdate();
     }
 
     /**
@@ -103,7 +103,7 @@ public class FuncionalPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) 
         {
-            FuncionalEntity entidad = factory.manufacturePojo(FuncionalEntity.class);
+            DesempenoEntity entidad = factory.manufacturePojo(DesempenoEntity.class);
             em.persist(entidad);
             data.add(entidad);
         }
@@ -114,10 +114,10 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void findTest() {
-        FuncionalEntity Entity1 = data.get(0);
-        FuncionalEntity encontrado = fp.find(Entity1.getId());
+        DesempenoEntity Entity1 = data.get(0);
+        DesempenoEntity encontrado = dp.find(Entity1.getId());
 
-        Assert.assertEquals(Entity1.getNombre(), encontrado.getNombre());
+        Assert.assertEquals(Entity1.getDesempeno(), encontrado.getDesempeno());
        
     }
 
@@ -126,12 +126,12 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void findAllTest() {
-        List<FuncionalEntity> lista = fp.findAll();
+        List<DesempenoEntity> lista = dp.findAll();
         Assert.assertEquals(data.size(), lista.size());
 
-        for (FuncionalEntity ent1 : lista) {
+        for (DesempenoEntity ent1 : lista) {
             boolean encontrado = false;
-            for (FuncionalEntity ent2 : data) {
+            for (DesempenoEntity ent2 : data) {
                 if (ent1.getId().equals(ent2.getId())) {
                     encontrado = true;
                 }
@@ -145,16 +145,16 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void updateTest() {
-        FuncionalEntity entidad = data.get(0);
+        DesempenoEntity entidad = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        FuncionalEntity nuevaEnt = factory.manufacturePojo(FuncionalEntity.class);
+        DesempenoEntity nuevaEnt = factory.manufacturePojo(DesempenoEntity.class);
 
         nuevaEnt.setId(entidad.getId());
 
-        fp.update(nuevaEnt);
+        dp.update(nuevaEnt);
 
-        FuncionalEntity resp = em.find(FuncionalEntity.class, entidad.getId());
-        Assert.assertEquals(resp.getNombre(), nuevaEnt.getNombre());
+        DesempenoEntity resp = em.find(DesempenoEntity.class, entidad.getId());
+        Assert.assertEquals(resp.getDesempeno(), nuevaEnt.getDesempeno());
        
     }
 
@@ -163,21 +163,23 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void deleteTest() {
-        FuncionalEntity entidad = data.get(0);
-        fp.delete(entidad.getId());
-        FuncionalEntity eliminada = em.find(FuncionalEntity.class, entidad.getId());
+        DesempenoEntity entidad = data.get(0);
+        dp.delete(entidad.getId());
+        DesempenoEntity eliminada = em.find(DesempenoEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
     }
 
     @Test
     public void findByTipoTest() 
     {
-        FuncionalEntity entidad = data.get(0);
-        FuncionalEntity nuevaEnt= fp.findByTipo(entidad.getNombre());
+        DesempenoEntity entidad = data.get(0);
+        DesempenoEntity nuevaEnt= dp.findByTipo(entidad.getDesempeno());
         Assert.assertNotNull(nuevaEnt);
         
-        Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
+        Assert.assertEquals(nuevaEnt.getDesempeno(), entidad.getDesempeno());
       
     }
 }
+
+
 

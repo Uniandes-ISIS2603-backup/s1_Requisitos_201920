@@ -5,8 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
-import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
-import co.edu.uniandes.csw.requisitos.persistence.FuncionalPersistence;
+import co.edu.uniandes.csw.requisitos.entities.PlataformaEntity;
+import co.edu.uniandes.csw.requisitos.persistence.PlataformaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,10 +29,9 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Nicole Bahamon
  */
 @RunWith(Arquillian.class)
-public class FuncionalPersistenceTest {
-    
-  @Inject
-    private FuncionalPersistence fp;
+public class PlataformaPersistenceTest {
+@Inject
+    private PlataformaPersistence pp;
     
       /**
      * Manejador de transacciones
@@ -42,13 +41,13 @@ public class FuncionalPersistenceTest {
     /**
      * Lista de objetos de prueba creados por el Podam
      */
-    private List<FuncionalEntity> data = new ArrayList<>();
+    private List<PlataformaEntity> data = new ArrayList<>();
     
     @Deployment
     public static JavaArchive createDeployment(){
          return ShrinkWrap.create(JavaArchive.class)
-                .addClass(FuncionalEntity.class)
-                .addClass(FuncionalPersistence.class)
+                .addClass(PlataformaEntity.class)
+                .addClass(PlataformaPersistence.class)
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
@@ -60,12 +59,12 @@ public class FuncionalPersistenceTest {
     public void createTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
-        FuncionalEntity funcional = factory.manufacturePojo(FuncionalEntity.class);
-        FuncionalEntity result = fp.create(funcional);
+        PlataformaEntity plataforma = factory.manufacturePojo(PlataformaEntity.class);
+        PlataformaEntity result = pp.create(plataforma);
         Assert.assertNotNull(result);
         
-     FuncionalEntity entity=em.find(FuncionalEntity.class, result.getId());
-      Assert.assertEquals(funcional.getNombre(), entity.getNombre());
+     PlataformaEntity entity=em.find(PlataformaEntity.class, result.getId());
+      Assert.assertEquals(plataforma.getPlataforma(), entity.getPlataforma());
     }
        /**
      * Configuración inicial de todas las pruebas.
@@ -92,7 +91,7 @@ public class FuncionalPersistenceTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from FuncionalEntity").executeUpdate();
+        em.createQuery("delete from PlataformaEntity").executeUpdate();
     }
 
     /**
@@ -103,7 +102,7 @@ public class FuncionalPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) 
         {
-            FuncionalEntity entidad = factory.manufacturePojo(FuncionalEntity.class);
+            PlataformaEntity entidad = factory.manufacturePojo(PlataformaEntity.class);
             em.persist(entidad);
             data.add(entidad);
         }
@@ -114,10 +113,10 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void findTest() {
-        FuncionalEntity Entity1 = data.get(0);
-        FuncionalEntity encontrado = fp.find(Entity1.getId());
+        PlataformaEntity Entity1 = data.get(0);
+        PlataformaEntity encontrado = pp.find(Entity1.getId());
 
-        Assert.assertEquals(Entity1.getNombre(), encontrado.getNombre());
+        Assert.assertEquals(Entity1.getPlataforma(), encontrado.getPlataforma());
        
     }
 
@@ -126,12 +125,12 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void findAllTest() {
-        List<FuncionalEntity> lista = fp.findAll();
+        List<PlataformaEntity> lista = pp.findAll();
         Assert.assertEquals(data.size(), lista.size());
 
-        for (FuncionalEntity ent1 : lista) {
+        for (PlataformaEntity ent1 : lista) {
             boolean encontrado = false;
-            for (FuncionalEntity ent2 : data) {
+            for (PlataformaEntity ent2 : data) {
                 if (ent1.getId().equals(ent2.getId())) {
                     encontrado = true;
                 }
@@ -145,16 +144,16 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void updateTest() {
-        FuncionalEntity entidad = data.get(0);
+        PlataformaEntity entidad = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        FuncionalEntity nuevaEnt = factory.manufacturePojo(FuncionalEntity.class);
+        PlataformaEntity nuevaEnt = factory.manufacturePojo(PlataformaEntity.class);
 
         nuevaEnt.setId(entidad.getId());
 
-        fp.update(nuevaEnt);
+        pp.update(nuevaEnt);
 
-        FuncionalEntity resp = em.find(FuncionalEntity.class, entidad.getId());
-        Assert.assertEquals(resp.getNombre(), nuevaEnt.getNombre());
+        PlataformaEntity resp = em.find(PlataformaEntity.class, entidad.getId());
+        Assert.assertEquals(resp.getPlataforma(), nuevaEnt.getPlataforma());
        
     }
 
@@ -163,20 +162,20 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void deleteTest() {
-        FuncionalEntity entidad = data.get(0);
-        fp.delete(entidad.getId());
-        FuncionalEntity eliminada = em.find(FuncionalEntity.class, entidad.getId());
+        PlataformaEntity entidad = data.get(0);
+        pp.delete(entidad.getId());
+        PlataformaEntity eliminada = em.find(PlataformaEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
     }
 
     @Test
     public void findByTipoTest() 
     {
-        FuncionalEntity entidad = data.get(0);
-        FuncionalEntity nuevaEnt= fp.findByTipo(entidad.getNombre());
+        PlataformaEntity entidad = data.get(0);
+        PlataformaEntity nuevaEnt= pp.findByTipo(entidad.getPlataforma());
         Assert.assertNotNull(nuevaEnt);
         
-        Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
+        Assert.assertEquals(nuevaEnt.getPlataforma(), entidad.getPlataforma());
       
     }
 }

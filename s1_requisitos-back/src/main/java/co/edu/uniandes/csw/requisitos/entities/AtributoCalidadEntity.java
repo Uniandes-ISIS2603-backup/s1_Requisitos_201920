@@ -10,9 +10,24 @@ import javax.persistence.Entity;
 
 /**
  *
- * @author Nicole Bahamon Martinez
+ * @author Nicole Bahamon
  */
 @Entity
 public class AtributoCalidadEntity extends BaseEntity implements Serializable {
+    private String tipo;
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
     
 }
