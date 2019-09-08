@@ -6,9 +6,13 @@
 package co.edu.uniandes.csw.requisitos.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
+import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
+import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -21,5 +25,51 @@ public class CasoDeUsoPersistence {
     public CasoDeUsoEntity create (CasoDeUsoEntity casoDeUso){
         em.persist(casoDeUso);
         return casoDeUso;
+    }
+      public CasoDeUsoEntity find(Long requisitoId) {
+        return em.find(CasoDeUsoEntity.class, requisitoId);
+    }
+    /**
+     * Encuentra en la base de datos el elemento con el autor dado por parametro
+     * @param Author 
+     * @return null si no lo encuentra, de lo contrario el elemento
+     */
+    public CasoDeUsoEntity findByResponsable(PersonaEntity Author)
+    {
+        CasoDeUsoEntity buscado=null;
+        List<CasoDeUsoEntity> lista=findAll();
+        for (CasoDeUsoEntity requisito : lista) 
+        {
+            if(requisito.getResponsable().equals(Author))
+                buscado=requisito;
+        }
+        return buscado;
+    }
+    /**
+     * Retorna una lista con todos los elementos
+     * @return 
+     */
+    public List<CasoDeUsoEntity> findAll()
+    {
+        TypedQuery query=em.createQuery("select u from CasoDeUsoEntity u",CasoDeUsoEntity.class);
+        return query.getResultList();
+    }
+    /**
+     * Actualiza la informacion de un requisito 
+     * @param requisito
+     * @return 
+     */
+    public CasoDeUsoEntity update(CasoDeUsoEntity requisito)
+    {
+       return em.merge(requisito);
+    }
+    /**
+     * Elimina un requisito
+     * @param reqId 
+     */
+    public void delete(Long reqId)
+    {
+      CasoDeUsoEntity requisito=em.find(CasoDeUsoEntity.class,reqId);
+       em.remove(requisito);
     }
 }

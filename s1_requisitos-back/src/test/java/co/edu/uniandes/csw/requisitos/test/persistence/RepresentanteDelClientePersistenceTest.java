@@ -5,8 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
-import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
-import co.edu.uniandes.csw.requisitos.persistence.FuncionalPersistence;
+import co.edu.uniandes.csw.requisitos.entities.RepresentanteDelClienteEntity;
+import co.edu.uniandes.csw.requisitos.persistence.RepresentanteDelClientePersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -26,15 +26,19 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
- * @author Nicole Bahamon
+ * @author rj.gonzalez10
  */
 @RunWith(Arquillian.class)
-public class FuncionalPersistenceTest {
-    
-  @Inject
-    private FuncionalPersistence fp;
-    
-      /**
+public class RepresentanteDelClientePersistenceTest {
+
+    @Inject
+    RepresentanteDelClientePersistence rcp;
+    /*
+     Manejador de entidades.
+     */
+    @PersistenceContext
+    private EntityManager em;
+     /**
      * Manejador de transacciones
      */
     @Inject
@@ -42,32 +46,19 @@ public class FuncionalPersistenceTest {
     /**
      * Lista de objetos de prueba creados por el Podam
      */
-    private List<FuncionalEntity> data = new ArrayList<>();
-    
-    @Deployment
-    public static JavaArchive createDeployment(){
-         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(FuncionalEntity.class)
-                .addClass(FuncionalPersistence.class)
-                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
-                .addAsManifestResource("META-INF/beans.xml","beans.xml");
+    private List<RepresentanteDelClienteEntity> data = new ArrayList<>();
+     /**
+     * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
+     */
+     @Deployment
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addClass(RepresentanteDelClienteEntity.class)
+                .addClass(RepresentanteDelClientePersistence.class)
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
-     @PersistenceContext
-    private EntityManager em;
-     
-    @Test
-    public void createTest()
-    {
-        PodamFactory factory = new PodamFactoryImpl();
-        FuncionalEntity funcional = factory.manufacturePojo(FuncionalEntity.class);
-        FuncionalEntity result = fp.create(funcional);
-        Assert.assertNotNull(result);
-        
-     FuncionalEntity entity=em.find(FuncionalEntity.class, result.getId());
-      Assert.assertEquals(funcional.getNombre(), entity.getNombre());
-    }
-       /**
+    /**
      * Configuración inicial de todas las pruebas.
      */
     @Before
@@ -92,7 +83,7 @@ public class FuncionalPersistenceTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from FuncionalEntity").executeUpdate();
+        em.createQuery("delete from RepresentanteDelClienteEntity").executeUpdate();
     }
 
     /**
@@ -101,24 +92,34 @@ public class FuncionalPersistenceTest {
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) 
-        {
-            FuncionalEntity entidad = factory.manufacturePojo(FuncionalEntity.class);
+        for (int i = 0; i < 3; i++) {
+            RepresentanteDelClienteEntity entidad = factory.manufacturePojo(RepresentanteDelClienteEntity.class);
             em.persist(entidad);
             data.add(entidad);
         }
     }
-
-    /**
+    
+      @Test
+    public void createTest() {
+          PodamFactory factory = new PodamFactoryImpl();
+        RepresentanteDelClienteEntity representante = factory.manufacturePojo(RepresentanteDelClienteEntity.class);
+        
+        RepresentanteDelClienteEntity result = rcp.create(representante);
+          Assert.assertNotNull(result);
+        
+        RepresentanteDelClienteEntity esperado = em.find(RepresentanteDelClienteEntity.class, result.getId());
+        Assert.assertEquals(esperado.getNombre(), representante.getNombre());
+        
+    }
+     /**
      * Prueba el metodo find
      */
     @Test
     public void findTest() {
-        FuncionalEntity Entity1 = data.get(0);
-        FuncionalEntity encontrado = fp.find(Entity1.getId());
+        RepresentanteDelClienteEntity Entity1 = data.get(0);
+        RepresentanteDelClienteEntity encontrado = rcp.find(Entity1.getId());
 
         Assert.assertEquals(Entity1.getNombre(), encontrado.getNombre());
-       
     }
 
     /**
@@ -126,12 +127,12 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void findAllTest() {
-        List<FuncionalEntity> lista = fp.findAll();
+        List<RepresentanteDelClienteEntity> lista = rcp.findAll();
         Assert.assertEquals(data.size(), lista.size());
 
-        for (FuncionalEntity ent1 : lista) {
+        for (RepresentanteDelClienteEntity ent1 : lista) {
             boolean encontrado = false;
-            for (FuncionalEntity ent2 : data) {
+            for (RepresentanteDelClienteEntity ent2 : data) {
                 if (ent1.getId().equals(ent2.getId())) {
                     encontrado = true;
                 }
@@ -145,17 +146,16 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void updateTest() {
-        FuncionalEntity entidad = data.get(0);
+        RepresentanteDelClienteEntity entidad = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        FuncionalEntity nuevaEnt = factory.manufacturePojo(FuncionalEntity.class);
+        RepresentanteDelClienteEntity nuevaEnt = factory.manufacturePojo(RepresentanteDelClienteEntity.class);
 
         nuevaEnt.setId(entidad.getId());
 
-        fp.update(nuevaEnt);
+        rcp.update(nuevaEnt);
 
-        FuncionalEntity resp = em.find(FuncionalEntity.class, entidad.getId());
+        RepresentanteDelClienteEntity resp = em.find(RepresentanteDelClienteEntity.class, entidad.getId());
         Assert.assertEquals(resp.getNombre(), nuevaEnt.getNombre());
-       
     }
 
     /**
@@ -163,21 +163,12 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void deleteTest() {
-        FuncionalEntity entidad = data.get(0);
-        fp.delete(entidad.getId());
-        FuncionalEntity eliminada = em.find(FuncionalEntity.class, entidad.getId());
+        RepresentanteDelClienteEntity entidad = data.get(0);
+        rcp.delete(entidad.getId());
+        RepresentanteDelClienteEntity eliminada = em.find(RepresentanteDelClienteEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
     }
-
-    @Test
-    public void findByTipoTest() 
-    {
-        FuncionalEntity entidad = data.get(0);
-        FuncionalEntity nuevaEnt= fp.findByTipo(entidad.getNombre());
-        Assert.assertNotNull(nuevaEnt);
-        
-        Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
-      
-    }
 }
+
+    
 

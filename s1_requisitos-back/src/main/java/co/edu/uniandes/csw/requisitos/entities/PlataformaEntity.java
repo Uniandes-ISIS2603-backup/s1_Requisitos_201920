@@ -13,22 +13,21 @@ import javax.persistence.Entity;
  * @author Nicole Bahamon
  */
 @Entity
-public class FuncionalEntity extends BaseEntity implements Serializable {
-    private String nombre;
+public class PlataformaEntity extends BaseEntity implements Serializable {
+    private String plataforma;
 
     /**
-     * @return the nombre
+     * @return the plataforma
      */
-    public String getNombre() {
-        return nombre;
+    public String getPlataforma() {
+        return plataforma;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param plataforma the plataforma to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPlataforma(String plataforma) {
+        this.plataforma = plataforma;
     }
-    
     
 }

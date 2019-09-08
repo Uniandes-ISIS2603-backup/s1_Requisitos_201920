@@ -15,18 +15,20 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
- * @author rj.gonzalez10
+ * @author Juan Martinez
  */
 @Entity
-public class IteracionEntity extends BaseEntity implements Serializable {
+public class ProyectoEntity extends BaseEntity implements Serializable{
+    
     private String nombre;
-    private String descripcion;
+    
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
-    private Date fechaInicio;
+    private Date fechaInicial;
+    
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
-    private Date fechaFin;
+    private Date fechaFinal;
 
     /**
      * @return the nombre
@@ -43,45 +45,31 @@ public class IteracionEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * @return the descripcion
+     * @return the fechaInicial
      */
-    public String getDescripcion() {
-        return descripcion;
+    public Date getFechaInicial() {
+        return fechaInicial;
     }
 
     /**
-     * @param descripcion the descripcion to set
+     * @param fechaInicial the fechaInicial to set
      */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setFechaInicial(Date fechaInicial) {
+        this.fechaInicial = fechaInicial;
     }
 
     /**
-     * @return the fechaInicio
+     * @return the fechaFinal
      */
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public Date getFechaFinal() {
+        return fechaFinal;
     }
 
     /**
-     * @param fechaInicio the fechaInicio to set
+     * @param fechaFinal the fechaFinal to set
      */
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    /**
-     * @return the fechaFin
-     */
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    /**
-     * @param fechaFin the fechaFin to set
-     */
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
     }
     
 }

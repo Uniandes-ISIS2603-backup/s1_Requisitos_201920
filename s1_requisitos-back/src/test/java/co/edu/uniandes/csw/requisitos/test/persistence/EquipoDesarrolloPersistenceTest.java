@@ -5,8 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
-import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
-import co.edu.uniandes.csw.requisitos.persistence.FuncionalPersistence;
+import co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity;
+import co.edu.uniandes.csw.requisitos.persistence.EquipoDesarrolloPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -26,48 +26,41 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
- * @author Nicole Bahamon
+ * @author Juan Martinez
  */
 @RunWith(Arquillian.class)
-public class FuncionalPersistenceTest {
+public class EquipoDesarrolloPersistenceTest {
     
-  @Inject
-    private FuncionalPersistence fp;
+    @Inject
+    EquipoDesarrolloPersistence edp;
     
-      /**
+    /**
+     * Manejador de entidades
+     */
+    @PersistenceContext
+    private EntityManager em;
+    
+    /**
      * Manejador de transacciones
      */
     @Inject
     UserTransaction utx;
+    
     /**
-     * Lista de objetos de prueba creados por el Podam
+     * Lista de obj de prueba
      */
-    private List<FuncionalEntity> data = new ArrayList<>();
+    private final List<EquipoDesarrolloEntity> list = new ArrayList<>();
     
     @Deployment
     public static JavaArchive createDeployment(){
-         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(FuncionalEntity.class)
-                .addClass(FuncionalPersistence.class)
-                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
-                .addAsManifestResource("META-INF/beans.xml","beans.xml");
+        return ShrinkWrap.create(JavaArchive.class)
+                .addClass(EquipoDesarrolloEntity.class)
+                .addClass(EquipoDesarrolloPersistence.class)
+                .addAsManifestResource("Meta-INF/persistence.xml","persistence.xml")
+                .addAsManifestResource("Meta-INF/beans.xml","beans.xml");
     }
     
-     @PersistenceContext
-    private EntityManager em;
-     
-    @Test
-    public void createTest()
-    {
-        PodamFactory factory = new PodamFactoryImpl();
-        FuncionalEntity funcional = factory.manufacturePojo(FuncionalEntity.class);
-        FuncionalEntity result = fp.create(funcional);
-        Assert.assertNotNull(result);
-        
-     FuncionalEntity entity=em.find(FuncionalEntity.class, result.getId());
-      Assert.assertEquals(funcional.getNombre(), entity.getNombre());
-    }
-       /**
+     /**
      * Configuración inicial de todas las pruebas.
      */
     @Before
@@ -87,38 +80,49 @@ public class FuncionalPersistenceTest {
             }
         }
     }
-
+    
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from FuncionalEntity").executeUpdate();
+        em.createQuery("delete from EquipoDesarrolloEntity").executeUpdate();
     }
-
+    
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) 
-        {
-            FuncionalEntity entidad = factory.manufacturePojo(FuncionalEntity.class);
+        for (int i = 0; i < 3; i++) {
+            EquipoDesarrolloEntity entidad = factory.manufacturePojo(EquipoDesarrolloEntity.class);
             em.persist(entidad);
-            data.add(entidad);
+            list.add(entidad);
         }
     }
-
+    
     /**
+     * Prueba el metodo create
+     */
+    @Test
+    public void createTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        EquipoDesarrolloEntity proyecto = factory.manufacturePojo(EquipoDesarrolloEntity.class);
+        EquipoDesarrolloEntity result = edp.create(proyecto);
+        Assert.assertNotNull(result);
+        
+        EquipoDesarrolloEntity entity = em.find(EquipoDesarrolloEntity.class, proyecto.getId());
+        Assert.assertEquals(proyecto.getEquipoDesarrollo(), entity.getEquipoDesarrollo());
+    }
+     /**
      * Prueba el metodo find
      */
     @Test
     public void findTest() {
-        FuncionalEntity Entity1 = data.get(0);
-        FuncionalEntity encontrado = fp.find(Entity1.getId());
+        EquipoDesarrolloEntity Entity1 = list.get(0);
+        EquipoDesarrolloEntity encontrado = edp.find(Entity1.getId());
 
-        Assert.assertEquals(Entity1.getNombre(), encontrado.getNombre());
-       
+        Assert.assertEquals(Entity1.getEquipoDesarrollo(), encontrado.getEquipoDesarrollo());
     }
 
     /**
@@ -126,12 +130,12 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void findAllTest() {
-        List<FuncionalEntity> lista = fp.findAll();
-        Assert.assertEquals(data.size(), lista.size());
+        List<EquipoDesarrolloEntity> lista = edp.findAll();
+        Assert.assertEquals(list.size(), lista.size());
 
-        for (FuncionalEntity ent1 : lista) {
+        for (EquipoDesarrolloEntity ent1 : lista) {
             boolean encontrado = false;
-            for (FuncionalEntity ent2 : data) {
+            for (EquipoDesarrolloEntity ent2 : list) {
                 if (ent1.getId().equals(ent2.getId())) {
                     encontrado = true;
                 }
@@ -145,17 +149,16 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void updateTest() {
-        FuncionalEntity entidad = data.get(0);
+        EquipoDesarrolloEntity entidad = list.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        FuncionalEntity nuevaEnt = factory.manufacturePojo(FuncionalEntity.class);
+        EquipoDesarrolloEntity nuevaEnt = factory.manufacturePojo(EquipoDesarrolloEntity.class);
 
         nuevaEnt.setId(entidad.getId());
 
-        fp.update(nuevaEnt);
+        edp.update(nuevaEnt);
 
-        FuncionalEntity resp = em.find(FuncionalEntity.class, entidad.getId());
-        Assert.assertEquals(resp.getNombre(), nuevaEnt.getNombre());
-       
+        EquipoDesarrolloEntity resp = em.find(EquipoDesarrolloEntity.class, entidad.getId());
+        Assert.assertEquals(resp.getEquipoDesarrollo(), nuevaEnt.getEquipoDesarrollo());
     }
 
     /**
@@ -163,21 +166,11 @@ public class FuncionalPersistenceTest {
      */
     @Test
     public void deleteTest() {
-        FuncionalEntity entidad = data.get(0);
-        fp.delete(entidad.getId());
-        FuncionalEntity eliminada = em.find(FuncionalEntity.class, entidad.getId());
+        EquipoDesarrolloEntity entidad = list.get(0);
+        edp.delete(entidad.getId());
+        EquipoDesarrolloEntity eliminada = em.find(EquipoDesarrolloEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
     }
-
-    @Test
-    public void findByTipoTest() 
-    {
-        FuncionalEntity entidad = data.get(0);
-        FuncionalEntity nuevaEnt= fp.findByTipo(entidad.getNombre());
-        Assert.assertNotNull(nuevaEnt);
-        
-        Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
-      
-    }
+    
+    
 }
-

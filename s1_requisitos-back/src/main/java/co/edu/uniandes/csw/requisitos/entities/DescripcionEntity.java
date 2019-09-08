@@ -10,25 +10,24 @@ import javax.persistence.Entity;
 
 /**
  *
- * @author Nicole Bahamon
+ * @author Juan Rubio
  */
 @Entity
-public class FuncionalEntity extends BaseEntity implements Serializable {
-    private String nombre;
+public class DescripcionEntity extends BaseEntity implements Serializable {
 
     /**
-     * @return the nombre
+     * @return the descripcion
      */
-    public String getNombre() {
-        return nombre;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param descripcion the descripcion to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
-    
+    private String descripcion;
 }

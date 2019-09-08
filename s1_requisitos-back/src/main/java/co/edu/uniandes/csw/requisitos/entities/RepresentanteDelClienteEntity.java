@@ -10,10 +10,10 @@ import javax.persistence.Entity;
 
 /**
  *
- * @author Nicole Bahamon
+ * @author Estudiante
  */
 @Entity
-public class FuncionalEntity extends BaseEntity implements Serializable {
+public class RepresentanteDelClienteEntity extends BaseEntity implements Serializable {
     private String nombre;
 
     /**
@@ -29,6 +29,5 @@ public class FuncionalEntity extends BaseEntity implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
     
 }

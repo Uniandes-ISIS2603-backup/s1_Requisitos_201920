@@ -7,28 +7,27 @@ package co.edu.uniandes.csw.requisitos.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-
 /**
  *
- * @author Nicole Bahamon
+ * @author Juan Rubio
  */
 @Entity
-public class FuncionalEntity extends BaseEntity implements Serializable {
-    private String nombre;
+public class EscalabilidadEntity extends BaseEntity implements Serializable
+{
+    private String tipo;
 
     /**
-     * @return the nombre
+     * @return the tipo
      */
-    public String getNombre() {
-        return nombre;
+    public String getTipo() {
+        return tipo;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param tipo the tipo to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-    
     
 }
