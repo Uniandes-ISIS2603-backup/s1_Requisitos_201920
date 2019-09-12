@@ -28,8 +28,9 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
- *Test de Requsito Logic
+ *Test de la clase RequisitoLogic
  * @author Nicolás Tobo
+ * Adaptado de: https://github.com/Uniandes-isis2603/backstepbystep/blob/master/backstepbystep-back/src/test/java/co/edu/uniandes/csw/bookstore/test/logic/BookLogicTest.java
  */
 @RunWith(Arquillian.class)
 public class RequisitoLogicTest 
@@ -130,7 +131,7 @@ public class RequisitoLogicTest
         Assert.assertEquals(nuevaEnt.getImportancia(), entidad.getImportancia());
     }
     /**
-     * Prueba para asegurarse que un autor no puede ser null.
+     * Prueba para asegurarse que un autor de un requisito no puede ser null.
      * @throws BusinessLogicException 
      */
     @Test(expected=BusinessLogicException.class)
@@ -140,7 +141,83 @@ public class RequisitoLogicTest
         nuevaEnt.setAutor(null);
         RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
     }
-    
+    /**
+     * Prueba para asegurarse que un autor de un requisito no puede ser un string vacio.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestAutorVacio()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setAutor("");
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
+     /**
+     * Prueba para asegurarse que una descripcion de un requisito no puede ser null.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestDescripcionNull()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setDescripcion(null);
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
+    /**
+     * Prueba para asegurarse que una descripcion de un requisito no puede ser vacia.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestDescripcionVacia()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setDescripcion("");
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
+     /**
+     * Prueba para asegurarse que la importancia de un requisito no puede ser null.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestImportanciaNull()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setImportancia(null);
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
+     /**
+     * Prueba para asegurarse que la estabilidad de un requisito no puede ser null.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestEstabilidadNull()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setEstabilidad(null);
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
+    /**
+     * Prueba para asegurarse que la fuente de un requisito no puede ser null.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestFuenteNull()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setFuente(null);
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
+     /**
+     * Prueba para asegurarse que la fuente de un requisito no puede ser vacia.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestFuenteVacia()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setFuente("");
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
     /**
      * Prueba para consultar la lista de requisitos.
      */
@@ -196,16 +273,114 @@ public class RequisitoLogicTest
         Assert.assertEquals(pojoEntity.getImportancia(), resp.getImportancia());  
     }
      /**
-     * Prueba para actualizar un Requisito con un autor inválido.
+     * Prueba para actualizar un Requisito con un autor null.
      *
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @Test(expected = BusinessLogicException.class)
-    public void updateRequisitoConAutorInvalidoTest() throws BusinessLogicException 
+    public void updateRequisitoConAutorNullTest() throws BusinessLogicException 
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
+        pojoEntity.setAutor(null);
+        pojoEntity.setId(entidad.getId());
+        rl.updateRequisito(pojoEntity);
+    }
+     /**
+     * Prueba para actualizar un Requisito con un autor vacio.
+     *
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateRequisitoConAutorVacioTest() throws BusinessLogicException 
     {
         RequisitosEntity entidad = data.get(0);
         RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
         pojoEntity.setAutor("");
+        pojoEntity.setId(entidad.getId());
+        rl.updateRequisito(pojoEntity);
+    }
+     /**
+     * Prueba para actualizar un Requisito con una descripcion nula.
+     *
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateRequisitoConDescripcionNullTest() throws BusinessLogicException 
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
+        pojoEntity.setDescripcion(null);
+        pojoEntity.setId(entidad.getId());
+        rl.updateRequisito(pojoEntity);
+    }
+     /**
+     * Prueba para actualizar un Requisito con una descripcion vacia.
+     *
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateRequisitoConDescripcionVaciaTest() throws BusinessLogicException 
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
+        pojoEntity.setDescripcion("");
+        pojoEntity.setId(entidad.getId());
+        rl.updateRequisito(pojoEntity);
+    }
+    /**
+     * Prueba para actualizar un Requisito con una importancia nula.
+     *
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateRequisitoConImportanciaNullTest() throws BusinessLogicException 
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
+        pojoEntity.setImportancia(null);
+        pojoEntity.setId(entidad.getId());
+        rl.updateRequisito(pojoEntity);
+    }
+    /**
+     * Prueba para actualizar un Requisito con una estabilidad nula.
+     *
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateRequisitoConEstabilidadNullTest() throws BusinessLogicException 
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
+        pojoEntity.setEstabilidad(null);
+        pojoEntity.setId(entidad.getId());
+        rl.updateRequisito(pojoEntity);
+    }
+    /**
+     * Prueba para actualizar un Requisito con una fuente nula.
+     *
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateRequisitoConFuenteNullTest() throws BusinessLogicException 
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
+        pojoEntity.setFuente(null);
+        pojoEntity.setId(entidad.getId());
+        rl.updateRequisito(pojoEntity);
+    }
+     /**
+     * Prueba para actualizar un Requisito con una fuente vacia.
+     *
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateRequisitoConFuenteVaciaTest() throws BusinessLogicException 
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
+        pojoEntity.setFuente("");
         pojoEntity.setId(entidad.getId());
         rl.updateRequisito(pojoEntity);
     }

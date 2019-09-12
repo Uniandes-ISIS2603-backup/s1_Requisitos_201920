@@ -18,6 +18,7 @@ import javax.persistence.PersistenceContext;
 /**
  * Parte logica de entidad requisito
  * @author Nicolás Tobo
+ * Adaptado de: https://github.com/Uniandes-isis2603/backstepbystep/blob/master/backstepbystep-back/src/main/java/co/edu/uniandes/csw/bookstore/ejb/BookLogic.java
  */
 @Stateless
 public class RequisitoLogic 
@@ -68,8 +69,8 @@ public class RequisitoLogic
      */
     public List<RequisitosEntity> getRequisitos() 
     {
-        List<RequisitosEntity> editorials = rp.findAll();
-        return editorials;
+        List<RequisitosEntity> requisitos = rp.findAll();
+        return requisitos;
     }
     /**
      * Obtener un requisito por medio de su id.
@@ -91,7 +92,7 @@ public class RequisitoLogic
      */
     public RequisitosEntity updateRequisito(RequisitosEntity requisito) throws BusinessLogicException 
     {
-        if(requisito.getAutor()==null||requisito.getAutor().equals(""))
+       if(requisito.getAutor()==null||requisito.getAutor().equals(""))
       {
          throw new BusinessLogicException("Falta autor del requisito.");      
       }
