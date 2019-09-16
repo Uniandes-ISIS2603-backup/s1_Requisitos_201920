@@ -43,10 +43,45 @@ public class IteracionLogic {
      * Obtener todos los interaciones existentes en la base de datos.
      * @return una lista de requisitos.
      */
-    public List<IteracionEntity> getDesarrolladores() 
+    public List<IteracionEntity> getIteraciones() 
     {
         List<IteracionEntity> iteraciones = ip.findAll();
         return iteraciones;
+    }
+    /**
+     * Obtener una iteracion por medio de su id.
+     * @param iteracionId: id del desarrollador para ser buscada.
+     * @return la iteracion solicitada por medio de su id.
+     */
+    
+    public IteracionEntity getIteracion(Long iteracionId) 
+    { 
+        IteracionEntity iteracionEntity = ip.find(iteracionId);
+        return iteracionEntity;
+    }
+       /**
+     *
+     * Actualiza una iteracion
+     * @param iteracion
+     * @return iteracion con los cambios actualizados en la base de datos.
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    public IteracionEntity  updateIteracion(IteracionEntity  iteracion) throws BusinessLogicException 
+    {
+       if(iteracion.getFechaFin()==null||iteracion.getFechaInicio()==null)
+      {
+         throw new BusinessLogicException("Las fechas no estan bien definidas");      
+      }
+        IteracionEntity newEntity =ip.update(iteracion);
+        return newEntity;
+    }  
+     /**
+     * Borra una iteracion.
+     * @param iteracionId: id de la iteracion a borrar
+     */
+    public void deleteRequisito(Long iteracionId) 
+    {
+         ip.delete(iteracionId);
     }
     
 }
