@@ -26,6 +26,8 @@ public class PersonaLogic {
     {
         if(persona.getNombre()== null)
             throw new BusinessLogicException("El nombre de estudiante está vacío");
+        if(persona.getCorreo() == null)
+            throw new BusinessLogicException("El correo de estudiante está vacío");
         persona = pPersona.create(persona);
         return persona;
     }
@@ -60,9 +62,12 @@ public class PersonaLogic {
     {
         if(persona.getNombre()==null||persona.getNombre().equals(""))
         {
-            throw new BusinessLogicException("Falta el nomvre de la persona.");
-        } else {
-        }
+            throw new BusinessLogicException("Falta el nombre de la persona.");
+        } 
+         if(persona.getCorreo()==null||persona.getCorreo().equals(""))
+        {
+            throw new BusinessLogicException("Falta el correo de la persona.");
+        } 
       
         PersonaEntity newEntity =pPersona.update(persona);
         return newEntity;

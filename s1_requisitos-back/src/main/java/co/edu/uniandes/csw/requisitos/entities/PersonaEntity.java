@@ -14,8 +14,38 @@ import javax.persistence.Entity;
  */
 @Entity
 public class PersonaEntity extends BaseEntity implements Serializable {
+
+    /**
+     * @return the correo
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * @param correo the correo to set
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * @return the cedula
+     */
+    public int getCedula() {
+        return cedula;
+    }
+
+    /**
+     * @param cedula the cedula to set
+     */
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
     
     private String nombre;
+    private String correo;
+    private int cedula;
 
     /**
      * @return the nombre

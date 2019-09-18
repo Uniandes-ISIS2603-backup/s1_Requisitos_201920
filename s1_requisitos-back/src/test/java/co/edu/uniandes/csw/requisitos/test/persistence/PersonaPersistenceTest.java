@@ -180,4 +180,25 @@ public class PersonaPersistenceTest {
       
     }
     
+       @Test
+    public void findByCorreoTest() 
+    {
+        PersonaEntity entidad = data.get(0);
+        PersonaEntity nuevaEnt= pp.findByCorreo(entidad.getCorreo());
+        Assert.assertNotNull(nuevaEnt);
+        
+        Assert.assertEquals(nuevaEnt.getCorreo(), entidad.getCorreo());
+      
+    }
+       @Test
+    public void findByCedulaTest() 
+    {
+        PersonaEntity entidad = data.get(0);
+        PersonaEntity nuevaEnt= pp.findByCedula(entidad.getCedula());
+        Assert.assertNotNull(nuevaEnt);
+        
+        Assert.assertEquals(nuevaEnt.getCedula(), entidad.getCedula());
+      
+    }
+    
 }
