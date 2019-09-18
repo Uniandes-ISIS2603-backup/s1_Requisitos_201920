@@ -42,6 +42,28 @@ public class PersonaPersistence {
         }
         return buscado;
     }
+       public PersonaEntity findByCorreo(String pCorreo)
+    {
+        PersonaEntity buscado = null;
+        List<PersonaEntity> lista = findAll();
+        for(PersonaEntity persona: lista)
+        {
+            if(persona.getCorreo().equals(pCorreo))
+                buscado = persona;
+        }
+        return buscado;
+    }
+          public PersonaEntity findByCedula(int pCedula)
+    {
+        PersonaEntity buscado = null;
+        List<PersonaEntity> lista = findAll();
+        for(PersonaEntity persona: lista)
+        {
+            if(persona.getCedula()==pCedula)
+                buscado = persona;
+        }
+        return buscado;
+    }
     public List<PersonaEntity> findAll()
     {
         TypedQuery query = em.createQuery("SELECT u FROM PersonaEntity u", PersonaEntity.class);

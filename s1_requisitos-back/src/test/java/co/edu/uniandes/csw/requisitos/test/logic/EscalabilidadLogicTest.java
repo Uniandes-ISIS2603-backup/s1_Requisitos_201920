@@ -5,10 +5,10 @@
  */
 package co.edu.uniandes.csw.requisitos.test.logic;
 
-import co.edu.uniandes.csw.requisitos.ejb.PersonaLogic;
-import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
+import co.edu.uniandes.csw.requisitos.ejb.EscalabilidadLogic;
+import co.edu.uniandes.csw.requisitos.entities.EscalabilidadEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.requisitos.persistence.PersonaPersistence;
+import co.edu.uniandes.csw.requisitos.persistence.EscalabilidadPersistence;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,48 +27,43 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Juan Rubio
  */
 @RunWith(Arquillian.class)
-public class PersonaLogicTest {
+public class EscalabilidadLogicTest {
     
     private PodamFactory factory = new PodamFactoryImpl();
     
     @Inject
-    private PersonaLogic personaLogic;
+    private EscalabilidadLogic escalabilidadLogic;
     
     @PersistenceContext
     private EntityManager em;
     
     @Test
-    public void createPersona() throws BusinessLogicException{
+    public void createEscalabilidad() throws BusinessLogicException{
 
-	PersonaEntity newPersona = factory.manufacturePojo(PersonaEntity.class);
-	PersonaEntity result = personaLogic.createPersona(newPersona);
+	EscalabilidadEntity newEscalabilidad = factory.manufacturePojo(EscalabilidadEntity.class);
+	EscalabilidadEntity result = escalabilidadLogic.createEscalabilidad(newEscalabilidad);
 	Assert.assertNotNull(result);
         
-        PersonaEntity entidad = em.find(PersonaEntity.class, result.getId());
-        Assert.assertEquals(entidad.getNombre(), result.getNombre());
+        EscalabilidadEntity entidad = em.find(EscalabilidadEntity.class, result.getId());
+        Assert.assertEquals(entidad.getTipo(), result.getTipo());
     }
     
     @Test (expected = BusinessLogicException.class)
-public void createPersonaNombreNull() throws BusinessLogicException{
+    public void createEscalabilidadTipoNull() throws BusinessLogicException{
 
-	PersonaEntity newPersona = factory.manufacturePojo(PersonaEntity.class);
-	newPersona.setNombre(null);
-	PersonaEntity result = personaLogic.createPersona(newPersona);
-}
-public void createPersonaCorreoNull() throws BusinessLogicException{
+            EscalabilidadEntity newEscalabilidad = factory.manufacturePojo(EscalabilidadEntity.class);
+            newEscalabilidad.setTipo(null);
+            EscalabilidadEntity result = escalabilidadLogic.createEscalabilidad(newEscalabilidad);
+    }
 
-	PersonaEntity newPersona = factory.manufacturePojo(PersonaEntity.class);
-	newPersona.setCorreo(null);
-	PersonaEntity result = personaLogic.createPersona(newPersona);
-}
 
     @Deployment
     public static JavaArchive createDeployment() {
         
          return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(PersonaEntity.class.getPackage())
-                .addPackage(PersonaLogic.class.getPackage())
-                .addPackage(PersonaPersistence.class.getPackage())
+                .addPackage(EscalabilidadEntity.class.getPackage())
+                .addPackage(EscalabilidadLogic.class.getPackage())
+                .addPackage(EscalabilidadPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
