@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.requisitos.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamIntValue;
 
 /**
  * Entidad que representa un requisito funcional
@@ -14,7 +16,12 @@ import javax.persistence.Entity;
  */
 @Entity
 public class RequisitosEntity extends BaseEntity implements Serializable 
-{
+{   
+    /**
+     * Desarrollador del requisito
+     */
+    @ManyToOne
+    DesarrolladorEntity desarrollador;
     /**
      * Fuente de donde se escribe el requisito
      */
@@ -30,6 +37,7 @@ public class RequisitosEntity extends BaseEntity implements Serializable
     /**
      * Numero que representa la importancia del requisito
      */
+    @PodamIntValue(minValue=0,maxValue=Integer.MAX_VALUE)
     private Integer importancia;
     /**
      * Boolena que representa si el requisito es estable(fijo)

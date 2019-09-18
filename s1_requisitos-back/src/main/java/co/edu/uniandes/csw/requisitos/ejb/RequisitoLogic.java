@@ -48,10 +48,10 @@ public class RequisitoLogic
       {
          throw new BusinessLogicException("Falta la importancia del requisito.");      
       }
-      //  else if(requisito.getImportancia()<0)
-      //{
-        // throw new BusinessLogicException("La importancia del requisito no puede ser negativa.");      
-      //}
+        else if(requisito.getImportancia()<0)
+      {
+         throw new BusinessLogicException("La importancia del requisito no puede ser negativa.");      
+      }
        else if(requisito.getEstabilidad()==null)
       {
          throw new BusinessLogicException("Falta definir la estabilidad del requisito.");      
@@ -104,10 +104,10 @@ public class RequisitoLogic
       {
          throw new BusinessLogicException("Falta la importancia del requisito.");      
       }
-      //  else if(requisito.getImportancia()<0)
-      //{
-        // throw new BusinessLogicException("La importancia del requisito no puede ser negativa.");      
-      //}
+       else if(requisito.getImportancia()<0)
+      {
+         throw new BusinessLogicException("La importancia del requisito no puede ser negativa.");      
+      }
        else if(requisito.getEstabilidad()==null)
       {
          throw new BusinessLogicException("Falta definir la estabilidad del requisito.");      
