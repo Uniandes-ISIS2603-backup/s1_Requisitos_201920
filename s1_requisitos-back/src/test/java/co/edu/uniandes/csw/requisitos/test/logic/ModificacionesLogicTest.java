@@ -20,7 +20,10 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-
+import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 
 /**
  *
@@ -29,10 +32,13 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class ModificacionesLogicTest {
     private PodamFactory factory= new PodamFactoryImpl();
+    @PersistenceContext
+    private EntityManager em;
     @Inject
     private ModificacionesLogic modificacionesLogic;
     
-    
+    @Inject
+    UserTransaction utx;
     
     @Deployment
     public static JavaArchive createDeployment(){
@@ -49,6 +55,24 @@ public class ModificacionesLogicTest {
         ModificacionesEntity mod=factory.manufacturePojo(ModificacionesEntity.class);
         ModificacionesEntity result= modificacionesLogic.createModificaciones(mod);
         Assert.assertNotNull(result);
+        ModificacionesEntity entity= em.find(ModificacionesEntity.class, result.getId());
+        Assert.assertEquals(entity.getDescripcion(), result.getDescripcion());
+        Assert.assertEquals(entity.getFechaModificacion(), result.getFechaModificacion());
+        
+    }
+    
+    @Test(expected=BusinessLogicException.class)
+    public void crearModificacionesDescripcionNull()throws BusinessLogicException{
+        ModificacionesEntity mod= factory.manufacturePojo(ModificacionesEntity.class);
+        mod.setDescripcion(null);
+        ModificacionesEntity result= modificacionesLogic.createModificaciones(mod);
+    }
+    
+    @Test(expected=BusinessLogicException.class)
+    public void crearModificacionesFechaNull()throws BusinessLogicException{
+        ModificacionesEntity mod= factory.manufacturePojo(ModificacionesEntity.class);
+        mod.setFechaModificacion(null);
+        ModificacionesEntity result= modificacionesLogic.createModificaciones(mod);
     }
     
 }
