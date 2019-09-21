@@ -6,8 +6,12 @@
 package co.edu.uniandes.csw.requisitos.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamIntValue;
 
 /**
@@ -22,6 +26,13 @@ public class RequisitosEntity extends BaseEntity implements Serializable
      */
     @ManyToOne
     DesarrolladorEntity desarrollador;
+    
+    @PodamExclude
+    @OneToMany(
+        mappedBy = "modificacionesrequisito", 
+        fetch = javax.persistence.FetchType.LAZY
+    )
+    private List<ModificacionesEntity> modificaciones=new ArrayList<>();
     /**
      * Fuente de donde se escribe el requisito
      */
