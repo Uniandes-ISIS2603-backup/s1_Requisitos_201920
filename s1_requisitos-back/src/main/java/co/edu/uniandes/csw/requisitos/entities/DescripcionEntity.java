@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -15,6 +16,20 @@ import javax.persistence.Entity;
 @Entity
 public class DescripcionEntity extends BaseEntity implements Serializable {
 
+    @ManyToOne
+    private CasoDeUsoEntity casoEntidades;
+    
+    @ManyToOne
+    private CasoDeUsoEntity casoCaminos;
+    
+    @ManyToOne
+    private CasoDeUsoEntity casoPosCondiciones;
+    
+    @ManyToOne
+    private CasoDeUsoEntity casoPreCondiciones;
+    
+    @ManyToOne
+    private CasoDeUsoEntity casoAlterno;
     /**
      * @return the descripcion
      */
