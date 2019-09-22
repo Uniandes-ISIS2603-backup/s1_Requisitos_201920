@@ -50,13 +50,16 @@ public class ModificacionesPersistence {
     {
        return em.merge(requisito);
     }
+   
     /**
      * Elimina un requisito
      * @param reqId 
      */
+     /*
     public void delete(Long reqId)
     {
        ModificacionesEntity requisito=em.find(ModificacionesEntity.class,reqId);
        em.remove(requisito);
     }
+    */
 }

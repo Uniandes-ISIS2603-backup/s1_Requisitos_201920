@@ -29,10 +29,11 @@ public class RequisitosEntity extends BaseEntity implements Serializable
     
     @PodamExclude
     @OneToMany(
-        mappedBy = "modificacionesrequisito", 
+        mappedBy = "modificacionesRequisito", 
         fetch = javax.persistence.FetchType.LAZY
     )
-    private List<ModificacionesEntity> modificaciones=new ArrayList<>();
+   private List<ModificacionesEntity> modificaciones=new ArrayList<>();
+    
     /**
      * Fuente de donde se escribe el requisito
      */

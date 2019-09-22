@@ -29,7 +29,7 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaModificacion;
-     
+    
      private String descripcion;
 
  
@@ -40,7 +40,7 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     private CasoDeUsoEntity casoModificaciones;
     
     @ManyToOne
-    private RequisitosEntity modificacionesrequisito;
+    private RequisitosEntity modificacionesRequisito;
 
     /**
      * @return the fechaModificacion
@@ -97,20 +97,22 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
         this.casoModificaciones = casoModificaciones;
     }
-
     /**
      * @return the modificacionesrequisito
      */
-    public RequisitosEntity getModificacionesrequisito() {
-        return modificacionesrequisito;
+    
+    public RequisitosEntity getModificacionesRequisito() {
+        return modificacionesRequisito;
     }
 
     /**
-     * @param modificacionesrequisito the modificacionesrequisito to set
+     * @param modificacionesRequisito the modificacionesrequisito to set
      */
-    public void setModificacionesrequisito(RequisitosEntity modificacionesrequisito) {
-        this.modificacionesrequisito = modificacionesrequisito;
+    
+    public void setModificacionesRequisito(RequisitosEntity modificacionesRequisito) {
+        this.modificacionesRequisito = modificacionesRequisito;
     }
+    
 
    
     

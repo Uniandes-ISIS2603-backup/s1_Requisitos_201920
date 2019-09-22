@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.persistence.RequisitoPersistence;
 import java.util.ArrayList;
@@ -61,9 +62,8 @@ public class RequisitoPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(RequisitosEntity.class)
-                .addClass(RequisitoPersistence.class)
-                .addClass(DesarrolladorEntity.class)
+                .addPackage(RequisitosEntity.class.getPackage())
+                .addPackage(RequisitoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -191,6 +191,7 @@ public class RequisitoPersistenceTest {
     /**
      * Prueba el método delete.
      */
+    
     @Test
     public void deleteTest() {
         RequisitosEntity entidad = data.get(0);

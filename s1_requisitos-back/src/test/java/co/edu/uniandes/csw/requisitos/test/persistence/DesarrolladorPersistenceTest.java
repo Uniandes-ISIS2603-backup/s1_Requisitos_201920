@@ -59,9 +59,9 @@ public class DesarrolladorPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(DesarrolladorEntity.class)
-                .addClass(RequisitosEntity.class)
-                .addClass(DesarrolladorPersistence.class)
+                
+                .addPackage(DesarrolladorEntity.class.getPackage())
+                .addPackage(DesarrolladorPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
