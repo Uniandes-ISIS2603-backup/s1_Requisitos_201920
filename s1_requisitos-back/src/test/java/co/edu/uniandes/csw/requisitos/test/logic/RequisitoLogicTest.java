@@ -131,14 +131,25 @@ public class RequisitoLogicTest
         Assert.assertEquals(nuevaEnt.getImportancia(), entidad.getImportancia());
     }
     /**
-     * Prueba para asegurarse que un autor de un requisito no puede ser null.
+     * Prueba para asegurarse que no cree un requisito con un nombre repetido.
      * @throws BusinessLogicException 
      */
     @Test(expected=BusinessLogicException.class)
-    public void createRequisitoTestAutorNull()throws BusinessLogicException
+    public void createRequisitoNombreRepetido()throws BusinessLogicException
     {
         RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
-        nuevaEnt.setAutor(null);
+        nuevaEnt.setNombre(data.get(0).getNombre());
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
+    /**
+     * Prueba para asegurarse que un requisito con id repetido.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoIdRepetido()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setId(data.get(0).getId());
         RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
     }
     /**
@@ -150,6 +161,17 @@ public class RequisitoLogicTest
     {
         RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
         nuevaEnt.setAutor("");
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
+    /**
+     * Prueba para asegurarse que un nombre de un requisito no puede ser un string vacio.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestNombreVacio()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setNombre("");
         RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
     }
      /**

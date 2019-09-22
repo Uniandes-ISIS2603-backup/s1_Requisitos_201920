@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import java.io.Serializable;
 
 /**
@@ -38,11 +39,53 @@ public class RequisitosDTO implements Serializable
      */
     private String comentariosAdicionales;
     /**
+     * Id del DTO
+     */
+     private Long id;
+     /**
+      * Nombre del requisito
+      */
+     private String nombre;
+    /**
      * Constructor vacio
      */
     public RequisitosDTO(){
         
     }
+    
+    /**
+     * Constructor del DTO a partir de una entidad
+     * @param entidad
+     */
+    public RequisitosDTO(RequisitosEntity entidad)
+    {
+         setId(entidad.getId());
+         setAutor(entidad.getAutor());
+         setFuente(entidad.getFuente());
+         setDescripcion(entidad.getDescripcion());
+         setEstabilidad(entidad.getEstabilidad());
+         setComentariosAdicionales(entidad.getComentariosAdicionales());
+         setImportancia(entidad.getImportancia()); 
+    }
+    
+    /**
+     * Metodo que devuelve un entity a partir de un DTO
+     */
+    public RequisitosEntity toEntity(){
+    
+         RequisitosEntity entidad=new RequisitosEntity();
+         entidad.setId(this.getId());
+         entidad.setAutor(this.getAutor());
+         entidad.setFuente(this.getFuente());
+         entidad.setDescripcion(this.getDescripcion());
+         entidad.setEstabilidad(this.getEstabilidad());
+         entidad.setComentariosAdicionales(this.getComentariosAdicionales());
+         entidad.setImportancia(this.getImportancia());
+         return entidad;
+    }
+    
+    
+    
     /**
      * BLOQUE GETTERS AND SETTERS
      */
@@ -93,4 +136,21 @@ public class RequisitosDTO implements Serializable
     public void setComentariosAdicionales(String comentariosAdicionales) {
         this.comentariosAdicionales = comentariosAdicionales;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
 }
