@@ -24,6 +24,7 @@ public class RequisitosEntity extends BaseEntity implements Serializable
     /**
      * Desarrollador del requisito
      */
+    @PodamExclude
     @ManyToOne
     DesarrolladorEntity desarrollador;
     
@@ -59,6 +60,10 @@ public class RequisitosEntity extends BaseEntity implements Serializable
      * Comentarios adicionales sobre el requisito
      */
     private String comentariosAdicionales;
+    /**
+     * nombre del requisito
+     */
+    private String nombre;
 
     /**
      * @return the fuente
@@ -143,4 +148,28 @@ public class RequisitosEntity extends BaseEntity implements Serializable
     public void setComentariosAdicionales(String comentariosAdicionales) {
         this.comentariosAdicionales = comentariosAdicionales;
     }  
+
+    public DesarrolladorEntity getDesarrollador() {
+        return desarrollador;
+    }
+
+    public void setDesarrollador(DesarrolladorEntity desarrollador) {
+        this.desarrollador = desarrollador;
+    }
+
+    public List<ModificacionesEntity> getModificaciones() {
+        return modificaciones;
+    }
+
+    public void setModificaciones(List<ModificacionesEntity> modificaciones) {
+        this.modificaciones = modificaciones;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

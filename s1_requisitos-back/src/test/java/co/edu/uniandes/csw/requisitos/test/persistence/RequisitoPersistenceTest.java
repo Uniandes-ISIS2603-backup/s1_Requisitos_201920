@@ -64,6 +64,8 @@ public class RequisitoPersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(RequisitosEntity.class.getPackage())
                 .addPackage(RequisitoPersistence.class.getPackage())
+                .addPackage(ModificacionesEntity.class.getPackage())
+                .addPackage(DesarrolladorEntity.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -117,7 +119,7 @@ public class RequisitoPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
 
         RequisitosEntity nuevaEnt = factory.manufacturePojo(RequisitosEntity.class);
-
+        Assert.assertNotNull(nuevaEnt);
         RequisitosEntity req = rp.create(nuevaEnt);
         Assert.assertNotNull(req);
 
@@ -205,6 +207,20 @@ public class RequisitoPersistenceTest {
     {
         RequisitosEntity entidad = data.get(0);
         RequisitosEntity nuevaEnt= rp.findByAuthor(entidad.getAutor());
+        Assert.assertNotNull(nuevaEnt);
+        
+        Assert.assertEquals(nuevaEnt.getAutor(), entidad.getAutor());
+        Assert.assertEquals(nuevaEnt.getFuente(), entidad.getFuente());
+        Assert.assertEquals(nuevaEnt.getEstabilidad(), entidad.getEstabilidad());
+        Assert.assertEquals(nuevaEnt.getComentariosAdicionales(), entidad.getComentariosAdicionales());
+        Assert.assertEquals(nuevaEnt.getDescripcion(), entidad.getDescripcion());
+        Assert.assertEquals(nuevaEnt.getImportancia(), entidad.getImportancia());
+    }
+     @Test
+    public void findByNameTest() 
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity nuevaEnt= rp.findByName(entidad.getNombre());
         Assert.assertNotNull(nuevaEnt);
         
         Assert.assertEquals(nuevaEnt.getAutor(), entidad.getAutor());

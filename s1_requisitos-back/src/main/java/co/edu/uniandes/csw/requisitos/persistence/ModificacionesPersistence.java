@@ -5,10 +5,9 @@
  */
 package co.edu.uniandes.csw.requisitos.persistence;
 
-import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
+
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,12 +22,15 @@ import javax.persistence.TypedQuery;
 public class ModificacionesPersistence {
     @PersistenceContext(unitName="requisitosPU")
     protected EntityManager em; 
+    
     public ModificacionesEntity create (ModificacionesEntity modificacion){
         em.persist(modificacion);
         return modificacion;
     }
     
      public ModificacionesEntity find(Long requisitoId) {
+         System.out.println("me suicido");
+         System.out.println ("me quito un ovario"+em.find(ModificacionesEntity.class, requisitoId).getDescripcion());
         return em.find(ModificacionesEntity.class, requisitoId);
     }
   
@@ -55,11 +57,11 @@ public class ModificacionesPersistence {
      * Elimina un requisito
      * @param reqId 
      */
-     /*
+     
     public void delete(Long reqId)
     {
        ModificacionesEntity requisito=em.find(ModificacionesEntity.class,reqId);
        em.remove(requisito);
     }
-    */
+   
 }

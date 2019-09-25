@@ -36,7 +36,23 @@ public class RequisitoLogic
    */
   public RequisitosEntity createRequisito(RequisitosEntity requisito) throws BusinessLogicException
   {
-      if(requisito.getAutor()==null||requisito.getAutor().equals(""))
+      if(requisito.getId()==null)
+      {
+         throw new BusinessLogicException("Falta el id del requisito.");      
+      }
+      else if(rp.find(requisito.getId())!=null)
+      {
+         throw new BusinessLogicException("Ya existe un requisito con ese id.");      
+      }
+      else if(rp.findByName(requisito.getNombre())!=null)
+      {
+         throw new BusinessLogicException("Ya existe un requisito con ese nombre.");      
+      }
+      else if(requisito.getNombre()==null||requisito.getNombre().equals(""))
+      {
+         throw new BusinessLogicException("Falta nombre del requisito.");      
+      }
+      else if(requisito.getAutor()==null||requisito.getAutor().equals(""))
       {
          throw new BusinessLogicException("Falta autor del requisito.");      
       }

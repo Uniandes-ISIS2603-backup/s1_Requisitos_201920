@@ -134,7 +134,7 @@ public class CasoDeUsoPersistenceTest {
        CasoDeUsoEntity entity = data.get(0);
         CasoDeUsoEntity encontrado = a.find(entity.getId());
 
-         Assert.assertEquals(encontrado.getDocumentacion(),entity.getDocumentacion());
+    Assert.assertEquals(encontrado.getDocumentacion(),entity.getDocumentacion());
     Assert.assertEquals(encontrado.getPruebas(),entity.getPruebas());
     Assert.assertEquals(encontrado.getResponsable(),entity.getResponsable());
     Assert.assertEquals(encontrado.getServicios(),entity.getServicios());
