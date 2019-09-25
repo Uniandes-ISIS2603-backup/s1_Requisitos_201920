@@ -46,8 +46,8 @@ public class PlataformaPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment(){
          return ShrinkWrap.create(JavaArchive.class)
-                .addClass(PlataformaEntity.class)
-                .addClass(PlataformaPersistence.class)
+                .addPackage(PlataformaEntity.class.getPackage())
+                .addPackage(PlataformaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }

@@ -6,16 +6,8 @@
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
 
-import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
-import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
-import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
-import co.edu.uniandes.csw.requisitos.persistence.CasoDeUsoPersistence;
-
 import co.edu.uniandes.csw.requisitos.persistence.ModificacionesPersistence;
-import co.edu.uniandes.csw.requisitos.persistence.PersonaPersistence;
-import co.edu.uniandes.csw.requisitos.persistence.RequisitoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -24,6 +16,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
@@ -81,7 +74,7 @@ public class ModificacionesPersistenceTest {
     
     
     
-     @Before
+   @Before
     public void configTest() {
         try {
             utx.begin();
@@ -104,7 +97,7 @@ public class ModificacionesPersistenceTest {
     private void clearData() {
         em.createQuery("delete from ModificacionesEntity").executeUpdate();
     }
-       private void insertData() {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             ModificacionesEntity entidad = factory.manufacturePojo(ModificacionesEntity.class);
@@ -132,8 +125,9 @@ public class ModificacionesPersistenceTest {
      @Test
     public void findTest() {
        ModificacionesEntity Entity1 = data.get(0);
+        System.out.println("hola"+Entity1.getId());
         ModificacionesEntity encontrado = a.find(Entity1.getId());
-
+        System.out.println("hola2"+encontrado.getId());
         Assert.assertEquals(Entity1.getDescripcion(), encontrado.getDescripcion());
         Assert.assertEquals(Entity1.getFechaModificacion(), encontrado.getFechaModificacion());
         
@@ -171,7 +165,7 @@ public class ModificacionesPersistenceTest {
         Assert.assertEquals(resp.getFechaModificacion(), nuevaEnt.getFechaModificacion());
         
     }
-    /*
+    
     @Test
     public void deleteTest() {
         ModificacionesEntity entidad = data.get(0);
@@ -179,5 +173,4 @@ public class ModificacionesPersistenceTest {
         ModificacionesEntity eliminada = em.find(ModificacionesEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
     }
-*/
 }

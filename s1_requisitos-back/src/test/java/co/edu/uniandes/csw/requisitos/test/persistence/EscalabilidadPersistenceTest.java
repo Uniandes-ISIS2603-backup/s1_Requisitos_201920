@@ -46,8 +46,8 @@ public class EscalabilidadPersistenceTest {
      @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(EscalabilidadEntity.class)
-                .addClass(EscalabilidadPersistence.class)
+                .addPackage(EscalabilidadEntity.class.getPackage())
+                .addPackage(EscalabilidadPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
