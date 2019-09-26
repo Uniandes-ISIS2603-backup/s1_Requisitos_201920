@@ -5,15 +5,14 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.adapters.DateAdapter;
 import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
-import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import uk.co.jemos.podam.common.PodamStrategyValue;
+
 
 /**
  *
@@ -21,16 +20,28 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  */
 public class ProyectoDTO implements Serializable{
     
+    /**
+     * Nombre del proyecto
+     */
     private String nombre;
     
-    @Temporal(TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class)
+    /**
+     * Fecha inicial del proyecto
+     */
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date fechaInicial;
     
-    @Temporal(TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class)
+    /**
+     * Fecha final del proyecto
+     */
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date fechaFinal;
 
+    /**
+     * Identificador del proyecto
+     */
+    private Long id;
+    
     public ProyectoDTO(){
     
     }
@@ -40,6 +51,7 @@ public class ProyectoDTO implements Serializable{
             this.nombre = proy.getNombre();
             this.fechaFinal = proy.getFechaFinal();
             this.fechaInicial = proy.getFechaInicial();
+            this.id = proy.getId();
         }
     }
     
@@ -85,11 +97,26 @@ public class ProyectoDTO implements Serializable{
         this.fechaFinal = fechaFinal;
     }
     
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public ProyectoEntity toEntity() {
         ProyectoEntity proyectoEntity = new ProyectoEntity();
         proyectoEntity.setNombre(this.nombre);
         proyectoEntity.setFechaFinal(this.fechaFinal);
         proyectoEntity.setFechaInicial(this.fechaInicial);
+        proyectoEntity.setId(this.id);
         return proyectoEntity;
     }
 
@@ -97,6 +124,8 @@ public class ProyectoDTO implements Serializable{
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
+
+    
     
     
     
