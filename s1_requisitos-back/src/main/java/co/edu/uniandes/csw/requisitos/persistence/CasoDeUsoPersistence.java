@@ -29,22 +29,7 @@ public class CasoDeUsoPersistence {
       public CasoDeUsoEntity find(Long requisitoId) {
         return em.find(CasoDeUsoEntity.class, requisitoId);
     }
-    /**
-     * Encuentra en la base de datos el elemento con el autor dado por parametro
-     * @param Author 
-     * @return null si no lo encuentra, de lo contrario el elemento
-     */
-    public CasoDeUsoEntity findByResponsable(PersonaEntity Author)
-    {
-        CasoDeUsoEntity buscado=null;
-        List<CasoDeUsoEntity> lista=findAll();
-        for (CasoDeUsoEntity requisito : lista) 
-        {
-            if(requisito.getResponsable().equals(Author))
-                buscado=requisito;
-        }
-        return buscado;
-    }
+   
     /**
      * Retorna una lista con todos los elementos
      * @return 

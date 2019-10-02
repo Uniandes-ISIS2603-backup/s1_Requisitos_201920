@@ -60,18 +60,13 @@ public class CasoDeUsoLogicTest {
         Assert.assertEquals(entity.getDocumentacion(), result.getDocumentacion());
         Assert.assertEquals(entity.getPruebas(), result.getPruebas());
         Assert.assertEquals(entity.getServicios(), result.getServicios());
-        Assert.assertEquals(entity.getResponsable(), result.getResponsable());
+     
         
         
     }
     
     
-    @Test (expected=BusinessLogicException.class)
-    public void crearCasoResponsableNull()throws BusinessLogicException{
-        CasoDeUsoEntity caso= factory.manufacturePojo(CasoDeUsoEntity.class);
-        caso.setResponsable(null);
-        CasoDeUsoEntity result= casoLogic.crearCasoDeUso(caso);
-                }
+   
     @Test (expected=BusinessLogicException.class)
     public void crearCasoPruebasNull()throws BusinessLogicException{
         CasoDeUsoEntity caso= factory.manufacturePojo(CasoDeUsoEntity.class);

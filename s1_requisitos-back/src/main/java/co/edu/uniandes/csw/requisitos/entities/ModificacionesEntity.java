@@ -33,14 +33,16 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
      private String descripcion;
 
  
-    @ManyToOne
-    private PersonaEntity persona;
+    //@ManyToOne
+    //private PersonaEntity persona;
+   
     
-    @ManyToOne
-    private CasoDeUsoEntity casoModificaciones;
+    //@ManyToOne
+    //private CasoDeUsoEntity casoModificaciones;
     
-    @ManyToOne
-    private RequisitosEntity modificacionesRequisito;
+    
+    //@ManyToOne
+    //private RequisitosEntity modificacionesRequisito;
 
     /**
      * @return the fechaModificacion
@@ -73,6 +75,7 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     /**
      * @return the persona
      */
+    /*
     public PersonaEntity getPersona() {
         return persona;
     }
@@ -80,6 +83,8 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     /**
      * @param persona the persona to set
      */
+    
+   /*
     public void setPersona(PersonaEntity persona) {
         this.persona = persona;
     }
@@ -87,33 +92,34 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     /**
      * @return the casoModificaciones
      */
-    public CasoDeUsoEntity getCasoModificaciones() {
-        return casoModificaciones;
-    }
+    //public CasoDeUsoEntity getCasoModificaciones() {
+     //   return casoModificaciones;
+    //}
 
     /**
      * @param casoModificaciones the casoModificaciones to set
      */
-    public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
-        this.casoModificaciones = casoModificaciones;
-    }
+    //public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
+      //  this.casoModificaciones = casoModificaciones;
+    //}
     /**
      * @return the modificacionesrequisito
      */
     
+    
+    /*
     public RequisitosEntity getModificacionesRequisito() {
         return modificacionesRequisito;
     }
 
     /**
      * @param modificacionesRequisito the modificacionesrequisito to set
-     */
-    
+     **/
+     /*
     public void setModificacionesRequisito(RequisitosEntity modificacionesRequisito) {
         this.modificacionesRequisito = modificacionesRequisito;
     }
-    
-
+    */
    
     
  

@@ -27,14 +27,14 @@ public class RequisitosEntity extends BaseEntity implements Serializable
     @PodamExclude
     @ManyToOne
     DesarrolladorEntity desarrollador;
-    
+    /*
     @PodamExclude
     @OneToMany(
         mappedBy = "modificacionesRequisito", 
         fetch = javax.persistence.FetchType.LAZY
     )
    private List<ModificacionesEntity> modificaciones=new ArrayList<>();
-    
+    */
     /**
      * Fuente de donde se escribe el requisito
      */
@@ -156,7 +156,7 @@ public class RequisitosEntity extends BaseEntity implements Serializable
     public void setDesarrollador(DesarrolladorEntity desarrollador) {
         this.desarrollador = desarrollador;
     }
-
+/*
     public List<ModificacionesEntity> getModificaciones() {
         return modificaciones;
     }
@@ -164,7 +164,7 @@ public class RequisitosEntity extends BaseEntity implements Serializable
     public void setModificaciones(List<ModificacionesEntity> modificaciones) {
         this.modificaciones = modificaciones;
     }
-
+*/
     public String getNombre() {
         return nombre;
     }

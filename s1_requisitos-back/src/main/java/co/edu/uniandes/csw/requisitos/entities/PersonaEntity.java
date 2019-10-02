@@ -18,13 +18,14 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class PersonaEntity extends BaseEntity implements Serializable {
-
+/*
      @PodamExclude
     @OneToMany(
         mappedBy = "persona", 
         fetch = javax.persistence.FetchType.LAZY
     )
     private List<ModificacionesEntity> modificaciones=new ArrayList<>();
+    */
     /**
      * @return the correo
      */

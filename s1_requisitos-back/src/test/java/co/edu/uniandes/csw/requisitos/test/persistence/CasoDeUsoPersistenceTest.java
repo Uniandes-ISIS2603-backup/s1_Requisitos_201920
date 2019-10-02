@@ -124,7 +124,7 @@ public class CasoDeUsoPersistenceTest {
       
       Assert.assertEquals(modificacion.getDocumentacion(),entity.getDocumentacion());
     Assert.assertEquals(modificacion.getPruebas(),entity.getPruebas());
-    Assert.assertEquals(modificacion.getResponsable(),entity.getResponsable());
+    
     Assert.assertEquals(modificacion.getServicios(),entity.getServicios());
      
     }
@@ -136,7 +136,7 @@ public class CasoDeUsoPersistenceTest {
 
     Assert.assertEquals(encontrado.getDocumentacion(),entity.getDocumentacion());
     Assert.assertEquals(encontrado.getPruebas(),entity.getPruebas());
-    Assert.assertEquals(encontrado.getResponsable(),entity.getResponsable());
+   
     Assert.assertEquals(encontrado.getServicios(),entity.getServicios());
        
         
@@ -158,7 +158,7 @@ public class CasoDeUsoPersistenceTest {
             Assert.assertTrue(encontrado);
         }
     }
-    /*
+  
      @Test
     public void updateTest() {
         CasoDeUsoEntity entity = data.get(0);
@@ -170,16 +170,14 @@ public class CasoDeUsoPersistenceTest {
         a.update(encontrado);
 
        CasoDeUsoEntity resp = em.find(CasoDeUsoEntity.class, entity.getId());
-       Assert.assertEquals(encontrado.getDocumentacion(),entity.getDocumentacion());
-    Assert.assertEquals(encontrado.getPruebas(),entity.getPruebas());
-    Assert.assertEquals(encontrado.getResponsable(),entity.getResponsable());
-    Assert.assertEquals(encontrado.getServicios(),entity.getServicios());
+       Assert.assertEquals(resp.getDocumentacion(),encontrado.getDocumentacion());
+    Assert.assertEquals(resp.getPruebas(),encontrado.getPruebas());
+ 
+    Assert.assertEquals(resp.getServicios(),encontrado.getServicios());
      
         
     }
-*/
 
-    /*
     @Test
     public void deleteTest() {
         CasoDeUsoEntity entidad = data.get(0);
@@ -187,5 +185,5 @@ public class CasoDeUsoPersistenceTest {
         CasoDeUsoEntity eliminada = em.find(CasoDeUsoEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
     }
-*/
+
 }

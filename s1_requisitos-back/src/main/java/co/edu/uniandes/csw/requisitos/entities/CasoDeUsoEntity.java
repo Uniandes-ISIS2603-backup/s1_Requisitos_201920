@@ -24,11 +24,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class CasoDeUsoEntity extends BaseEntity implements Serializable {
   
     private String servicios;
-    private PersonaEntity responsable;
+
     private String documentacion;
     private Boolean pruebas;
     
-    
+    /*
     //Relacion con Modificacion
     @PodamExclude
     @OneToMany(
@@ -36,7 +36,7 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
         fetch = javax.persistence.FetchType.LAZY
     )
     private List<ModificacionesEntity> modificaciones=new ArrayList<>();
-     
+     */
      
     //Relaciones con Descripcion
       @PodamExclude
@@ -88,7 +88,7 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
       @PodamExclude
    @OneToMany(
         mappedBy = "casoFuncional", 
-        cascade =CascadeType.ALL ,
+        //cascade =CascadeType.ALL ,
         fetch = javax.persistence.FetchType.LAZY
         
     )
@@ -108,19 +108,7 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
         this.servicios = servicios;
     }
 
-    /**
-     * @return the responsable
-     */
-    public PersonaEntity getResponsable() {
-        return responsable;
-    }
-
-    /**
-     * @param responsable the responsable to set
-     */
-    public void setResponsable(PersonaEntity responsable) {
-        this.responsable = responsable;
-    }
+ 
 
     /**
      * @return the documentacion
@@ -153,17 +141,17 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     /**
      * @return the modificaciones
      */
-    public List<ModificacionesEntity> getModificaciones() {
+   /* public List<ModificacionesEntity> getModificaciones() {
         return modificaciones;
     }
-
+*/
     /**
      * @param modificaciones the modificaciones to set
-     */
+     *//*
     public void setModificaciones(List<ModificacionesEntity> modificaciones) {
         this.modificaciones = modificaciones;
     }
-
+*/
     /**
      * @return the entidades
      */

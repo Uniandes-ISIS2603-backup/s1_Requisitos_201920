@@ -21,10 +21,7 @@ public class CasoDeUsoLogic {
     private CasoDeUsoPersistence persistance;
     
     public CasoDeUsoEntity crearCasoDeUso(CasoDeUsoEntity caso) throws BusinessLogicException{
-        if (caso.getResponsable()==null){
-            throw new BusinessLogicException("El responsable no debe ser nulo");
-            
-        }
+       
         if (caso.getPruebas()==null){
             throw new BusinessLogicException("Las pruebas no deben ser nulas");
             
