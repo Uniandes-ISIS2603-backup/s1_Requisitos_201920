@@ -71,7 +71,7 @@ public class IteracionResource {
     public List<IteracionDetailDTO> getIteraciones() {
         LOGGER.info("IteracionResource getIteraciones: input: void");
         List<IteracionDetailDTO> listaIteraciones = listEntity2DetailDTO(iteracionLogic.getIteraciones());
-        LOGGER.log(Level.INFO, "BookResource getBooks: output: {0}", listaIteraciones);
+        LOGGER.log(Level.INFO, "IteracionResource getIteraciones: output: {0}", listaIteraciones);
         return listaIteraciones;
     }
 
@@ -120,7 +120,7 @@ public class IteracionResource {
             throw new WebApplicationException("El recurso /iteracion/" + iteracionId + " no existe.", 404);
         }
         IteracionDetailDTO detailDTO = new IteracionDetailDTO(iteracionLogic.updateIteracion( iteracion.toEntity()));
-        LOGGER.log(Level.INFO, "ItetacionResource updateIteracion: output: {0}", detailDTO);
+        LOGGER.log(Level.INFO, "IteracionResource updateIteracion: output: {0}", detailDTO);
         return detailDTO;
     }
 
