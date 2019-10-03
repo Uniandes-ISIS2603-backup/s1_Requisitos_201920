@@ -21,9 +21,12 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
+import org.junit.Before;
 
 /**
  *
@@ -40,15 +43,50 @@ public class ModificacionesLogicTest {
     @Inject
     UserTransaction utx;
     
+    private List<ModificacionesEntity> data = new ArrayList<>();
+    
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(ModificacionesEntity.class)
-                .addClass(ModificacionesLogic.class)
-                .addClass(ModificacionesPersistence.class)
+                .addPackage(ModificacionesEntity.class.getPackage())
+                .addPackage(ModificacionesLogic.class.getPackage())
+                .addPackage(ModificacionesPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
+    
+    
+     @Before
+    public void configTest() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    private void clearData() {
+        em.createQuery("delete from ModificacionesEntity").executeUpdate();
+    }
+
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            ModificacionesEntity entidad = factory.manufacturePojo(ModificacionesEntity.class);
+            em.persist(entidad);
+            data.add(entidad);
+        }
+    }
+
     
     @Test
     public void createModificaciones()throws BusinessLogicException{
@@ -73,6 +111,61 @@ public class ModificacionesLogicTest {
         ModificacionesEntity mod= factory.manufacturePojo(ModificacionesEntity.class);
         mod.setFechaModificacion(null);
         ModificacionesEntity result= modificacionesLogic.createModificaciones(mod);
+    }
+    
+    @Test
+    public void findAllTest() {
+        List<ModificacionesEntity> lista = modificacionesLogic.getModificaciones();
+        Assert.assertEquals(data.size(), lista.size());
+
+        for (ModificacionesEntity ent1 : lista) {
+            boolean encontrado = false;
+            for (ModificacionesEntity ent2 : data) {
+                if (ent1.getId().equals(ent2.getId())) {
+                    encontrado = true;
+                }
+            }
+            Assert.assertTrue(encontrado);
+        }
+    }
+    
+    @Test
+    public void updateTest() throws BusinessLogicException{
+        ModificacionesEntity entidad = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ModificacionesEntity nuevaEnt = factory.manufacturePojo(ModificacionesEntity.class);
+
+        nuevaEnt.setId(entidad.getId());
+
+        modificacionesLogic.updateModificaciones(nuevaEnt);
+
+        ModificacionesEntity resp = em.find(ModificacionesEntity.class, entidad.getId());
+        Assert.assertEquals(resp.getDescripcion(), nuevaEnt.getDescripcion());
+        Assert.assertEquals(resp.getFechaModificacion(), nuevaEnt.getFechaModificacion());
+
+    }
+    
+    @Test (expected=BusinessLogicException.class)
+    public void updateModificacionesConDescripcionNull() throws BusinessLogicException{
+        ModificacionesEntity mod=data.get(0);
+        mod.setDescripcion(null);
+        modificacionesLogic.updateModificaciones(mod);
+    }
+    
+    @Test (expected=BusinessLogicException.class)
+    public void updateModificacionesConFechaNull() throws BusinessLogicException{
+        ModificacionesEntity mod=data.get(0);
+        mod.setFechaModificacion(null);
+        modificacionesLogic.updateModificaciones(mod);
+    }
+    
+    @Test
+    public void deleteCasoDeUsoTest(){
+        ModificacionesEntity mod= data.get(0);
+        modificacionesLogic.deleteModificaciones(mod.getId());
+        
+        ModificacionesEntity buscada= em.find(ModificacionesEntity.class, mod.getId());
+        Assert.assertNull(buscada);
     }
     
 }

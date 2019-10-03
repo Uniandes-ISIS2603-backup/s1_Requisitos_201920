@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.requisitos.dtos;
-
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import java.io.Serializable;
 
@@ -59,6 +58,7 @@ public class RequisitosDTO implements Serializable
      */
     public RequisitosDTO(RequisitosEntity entidad)
     {
+         setNombre(entidad.getNombre());
          setId(entidad.getId());
          setAutor(entidad.getAutor());
          setFuente(entidad.getFuente());
@@ -74,6 +74,7 @@ public class RequisitosDTO implements Serializable
     public RequisitosEntity toEntity(){
     
          RequisitosEntity entidad=new RequisitosEntity();
+         entidad.setNombre(this.getNombre());
          entidad.setId(this.getId());
          entidad.setAutor(this.getAutor());
          entidad.setFuente(this.getFuente());

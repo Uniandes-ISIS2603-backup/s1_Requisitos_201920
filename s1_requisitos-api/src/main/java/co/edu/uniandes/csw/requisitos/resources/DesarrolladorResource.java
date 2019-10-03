@@ -23,7 +23,7 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class DesarrolladorResource 
 {
-    private static final Logger LOGGER = Logger.getLogger(RequisitosResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DesarrolladorResource.class.getName());
      /**
      * Crea una nuevo desarrollador con la informacion que se recibe en el cuerpo de
      * la petición y se regresa un objeto identico con un id auto-generado por

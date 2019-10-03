@@ -28,7 +28,7 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class CasoDeUsoResource {
     
-        private static final Logger LOGGER = Logger.getLogger(RequisitosResource.class.getName());
+        private static final Logger LOGGER = Logger.getLogger(CasoDeUsoResource.class.getName());
         
         @Inject
         private CasoDeUsoLogic logica;

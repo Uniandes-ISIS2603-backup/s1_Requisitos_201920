@@ -5,15 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
-
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
-import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
-import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.persistence.CasoDeUsoPersistence;
-
-import co.edu.uniandes.csw.requisitos.persistence.ModificacionesPersistence;
-import co.edu.uniandes.csw.requisitos.persistence.RequisitoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -31,18 +24,14 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-
-
-
 /**
  *
  * @author Maria Alejandra Escalante
  */
 @RunWith(Arquillian.class)
 public class CasoDeUsoPersistenceTest {
-    
-    
-     /**
+
+    /**
      * Objeto requisitoPersistence a probar
      */
     @Inject
@@ -57,29 +46,22 @@ public class CasoDeUsoPersistenceTest {
      */
     @Inject
     UserTransaction utx;
-    
-    
-      /**
+
+    /**
      * Lista de objetos de prueba creados por el Podam
      */
     private List<CasoDeUsoEntity> data = new ArrayList<>();
-        
+
     @Deployment
-    public static JavaArchive createDeployment(){
+    public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CasoDeUsoEntity.class.getPackage())
                 .addPackage(CasoDeUsoPersistence.class.getPackage())
-                
-                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
-                .addAsManifestResource("META-INF/beans.xml","beans.xml");
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
- 
-           
-  
-    
-    
-    
-     @Before
+
+    @Before
     public void configTest() {
         try {
             utx.begin();
@@ -96,13 +78,12 @@ public class CasoDeUsoPersistenceTest {
             }
         }
     }
-    
-    
-         
+
     private void clearData() {
         em.createQuery("delete from CasoDeUsoEntity").executeUpdate();
     }
-       private void insertData() {
+
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             CasoDeUsoEntity entidad = factory.manufacturePojo(CasoDeUsoEntity.class);
@@ -110,40 +91,36 @@ public class CasoDeUsoPersistenceTest {
             data.add(entidad);
         }
     }
-       
-       
+
     @Test
-    public void testCreate()
-    {
-        PodamFactory factory=new PodamFactoryImpl();
-        CasoDeUsoEntity modificacion= factory.manufacturePojo(CasoDeUsoEntity.class);
-        CasoDeUsoEntity result= a.create(modificacion);
+    public void testCreate() {
+        PodamFactory factory = new PodamFactoryImpl();
+        CasoDeUsoEntity modificacion = factory.manufacturePojo(CasoDeUsoEntity.class);
+        CasoDeUsoEntity result = a.create(modificacion);
         Assert.assertNotNull(result);
-        
-         CasoDeUsoEntity entity=em.find(CasoDeUsoEntity.class, modificacion.getId());
-      
-      Assert.assertEquals(modificacion.getDocumentacion(),entity.getDocumentacion());
-    Assert.assertEquals(modificacion.getPruebas(),entity.getPruebas());
-    
-    Assert.assertEquals(modificacion.getServicios(),entity.getServicios());
-     
+
+        CasoDeUsoEntity entity = em.find(CasoDeUsoEntity.class, modificacion.getId());
+
+        Assert.assertEquals(modificacion.getDocumentacion(), entity.getDocumentacion());
+        Assert.assertEquals(modificacion.getPruebas(), entity.getPruebas());
+
+        Assert.assertEquals(modificacion.getServicios(), entity.getServicios());
+
     }
-    
-     @Test
+
+    @Test
     public void findTest() {
-       CasoDeUsoEntity entity = data.get(0);
+        CasoDeUsoEntity entity = data.get(0);
         CasoDeUsoEntity encontrado = a.find(entity.getId());
 
-    Assert.assertEquals(encontrado.getDocumentacion(),entity.getDocumentacion());
-    Assert.assertEquals(encontrado.getPruebas(),entity.getPruebas());
-   
-    Assert.assertEquals(encontrado.getServicios(),entity.getServicios());
-       
-        
+        Assert.assertEquals(encontrado.getDocumentacion(), entity.getDocumentacion());
+        Assert.assertEquals(encontrado.getPruebas(), entity.getPruebas());
+
+        Assert.assertEquals(encontrado.getServicios(), entity.getServicios());
+
     }
-    
-    
-     @Test
+
+    @Test
     public void findAllTest() {
         List<CasoDeUsoEntity> lista = a.findAll();
         Assert.assertEquals(data.size(), lista.size());
@@ -158,8 +135,8 @@ public class CasoDeUsoPersistenceTest {
             Assert.assertTrue(encontrado);
         }
     }
-  
-     @Test
+
+    @Test
     public void updateTest() {
         CasoDeUsoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
@@ -169,13 +146,12 @@ public class CasoDeUsoPersistenceTest {
 
         a.update(encontrado);
 
-       CasoDeUsoEntity resp = em.find(CasoDeUsoEntity.class, entity.getId());
-       Assert.assertEquals(resp.getDocumentacion(),encontrado.getDocumentacion());
-    Assert.assertEquals(resp.getPruebas(),encontrado.getPruebas());
- 
-    Assert.assertEquals(resp.getServicios(),encontrado.getServicios());
-     
-        
+        CasoDeUsoEntity resp = em.find(CasoDeUsoEntity.class, entity.getId());
+        Assert.assertEquals(resp.getDocumentacion(), encontrado.getDocumentacion());
+        Assert.assertEquals(resp.getPruebas(), encontrado.getPruebas());
+
+        Assert.assertEquals(resp.getServicios(), encontrado.getServicios());
+
     }
 
     @Test
