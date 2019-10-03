@@ -5,14 +5,16 @@
  */
 package co.edu.uniandes.csw.requisitos.persistence;
 
-
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -20,48 +22,61 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class ModificacionesPersistence {
-    @PersistenceContext(unitName="requisitosPU")
-    protected EntityManager em; 
-    
-    public ModificacionesEntity create (ModificacionesEntity modificacion){
+
+    @PersistenceContext(unitName = "requisitosPU")
+    protected EntityManager em;
+
+    public ModificacionesEntity create(ModificacionesEntity modificacion) {
         em.persist(modificacion);
         return modificacion;
     }
-    
-     public ModificacionesEntity find(Long requisitoId) {
-         System.out.println("me suicido");
-         System.out.println ("me quito un ovario"+em.find(ModificacionesEntity.class, requisitoId).getDescripcion());
+
+    public ModificacionesEntity find(Long requisitoId) {
+        System.out.println("me suicido");
+        System.out.println("me quito un ovario" + em.find(ModificacionesEntity.class, requisitoId).getDescripcion());
         return em.find(ModificacionesEntity.class, requisitoId);
     }
-  
+
     /**
      * Retorna una lista con todos los elementos
-     * @return 
+     *
+     * @return
      */
-    public List<ModificacionesEntity> findAll()
-    {
-        TypedQuery query=em.createQuery("select u from ModificacionesEntity u",ModificacionesEntity.class);
+    public List<ModificacionesEntity> findAll() {
+        TypedQuery query = em.createQuery("select u from ModificacionesEntity u", ModificacionesEntity.class);
         return query.getResultList();
     }
-    /**
-     * Actualiza la informacion de un requisito 
-     * @param requisito
-     * @return 
-     */
-    public ModificacionesEntity update(ModificacionesEntity requisito)
-    {
-       return em.merge(requisito);
+
+    public List<ModificacionesEntity> findByDate(Date fecha) {
+        List<ModificacionesEntity> buscado = new ArrayList<>();
+        List<ModificacionesEntity> lista = findAll();
+        for (ModificacionesEntity mod : lista) {
+            if (mod.getFechaModificacion().equals(fecha)) {
+                buscado.add(mod);
+            }
+        }
+
+        return buscado;
     }
-   
+
+    /**
+     * Actualiza la informacion de un requisito
+     *
+     * @param requisito
+     * @return
+     */
+    public ModificacionesEntity update(ModificacionesEntity requisito) {
+        return em.merge(requisito);
+    }
+
     /**
      * Elimina un requisito
-     * @param reqId 
+     *
+     * @param reqId
      */
-     
-    public void delete(Long reqId)
-    {
-       ModificacionesEntity requisito=em.find(ModificacionesEntity.class,reqId);
-       em.remove(requisito);
+    public void delete(Long reqId) {
+        ModificacionesEntity requisito = em.find(ModificacionesEntity.class, reqId);
+        em.remove(requisito);
     }
-   
+
 }

@@ -10,12 +10,7 @@ import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.ModificacionesPersistence;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
-import java.time.Instant;
-import java.util.Date;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import uk.co.jemos.podam.common.PodamStrategyValue;
+import java.util.List;
 
 /**
  *
@@ -23,8 +18,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  */
 @Stateless
 public class ModificacionesLogic {
-     @Temporal(TemporalType.DATE)
-     @PodamStrategyValue(DateStrategy.class)
+   
     @Inject
     private ModificacionesPersistence persistence;
     
@@ -39,5 +33,26 @@ public class ModificacionesLogic {
         
         modi=persistence.create(modi);
         return modi;
+    }
+    
+    public List<ModificacionesEntity> getModificaciones(){
+        List<ModificacionesEntity> lista = persistence.findAll();
+        return lista;
+    }
+    
+    public ModificacionesEntity updateModificaciones(ModificacionesEntity modi) throws BusinessLogicException{
+        if (modi.getDescripcion()==null){
+            throw new BusinessLogicException("descripcion vacia");
+        }
+        if (modi.getFechaModificacion()==null ){
+            throw new BusinessLogicException ("la fecha no puede estar vacia");
+        }
+        
+        ModificacionesEntity nueva= persistence.update(modi);
+        return nueva;
+    }
+    
+    public void deleteModificaciones(Long id){
+        persistence.delete(id);
     }
 }
