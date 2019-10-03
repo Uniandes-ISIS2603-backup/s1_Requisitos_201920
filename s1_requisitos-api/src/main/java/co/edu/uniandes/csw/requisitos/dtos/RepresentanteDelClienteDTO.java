@@ -40,6 +40,10 @@ public class RepresentanteDelClienteDTO implements Serializable {
     {
         this.setNombre(representante.getNombre());
     }
+    public RepresentanteDelClienteDTO()
+    {
+        
+    }
 
     
 }
