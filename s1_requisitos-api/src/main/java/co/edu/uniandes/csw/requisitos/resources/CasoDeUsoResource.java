@@ -73,7 +73,7 @@ public class CasoDeUsoResource
     
     
     @GET
-    @Path("{casosId:\\id+}")
+    @Path("{casosId:\\d+}")
     public CasoDeUsoDetailDTO getCasoDeUso (@PathParam("casosId") Long casosId){
         LOGGER.log(Level.INFO, "CasoDeUsoResource getCasoDeUso: input: {0}", casosId);
         CasoDeUsoEntity entidad= cl.getCaso(casosId);
@@ -88,7 +88,7 @@ public class CasoDeUsoResource
     
     @PUT
     @Path("{casosId: \\d+}")
-    public CasoDeUsoDetailDTO updateCasoDeUso (@PathParam("casosID") Long casosId, CasoDeUsoDetailDTO caso)throws BusinessLogicException{
+    public CasoDeUsoDetailDTO updateCasoDeUso (@PathParam("casosId") Long casosId, CasoDeUsoDetailDTO caso)throws BusinessLogicException{
         LOGGER.log(Level.INFO, "CasodeUsoResource updateCasoDeUso: input: id: {0} , caso: {1}", new Object[]{casosId, caso});
         caso.setId(casosId);
         if (cl.getCaso(casosId)==null){
