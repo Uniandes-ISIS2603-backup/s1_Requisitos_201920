@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.POST;
 import static javax.ws.rs.HttpMethod.PUT;
@@ -37,9 +38,9 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class FuncionalesResource {
+public class FuncionalResource {
     
-     private static final Logger LOGGER = Logger.getLogger(FuncionalesResource.class.getName()); 
+     private static final Logger LOGGER = Logger.getLogger(FuncionalResource.class.getName()); 
      /**
       * Atributo logica
       */
@@ -57,7 +58,7 @@ public class FuncionalesResource {
     @POST
     public FuncionalDTO createReqFuncional(FuncionalDTO requisito) throws BusinessLogicException     
     {
-        LOGGER.log(Level.INFO, "RequisitosFuncionalesResource createReqFuncional: input: {0}", requisito);
+        LOGGER.log(Level.INFO, "RequisitosFuncionalResource createReqFuncional: input: {0}", requisito);
         FuncionalDTO nuevoFuncionalDTO = new FuncionalDTO(fl.createFuncional(requisito.toEntity()));
         LOGGER.log(Level.INFO, "IteracionResource createRequncional: output: {0}", nuevoFuncionalDTO);
         return nuevoFuncionalDTO;
@@ -75,7 +76,7 @@ public class FuncionalesResource {
     @Path("{requisitoId: \\d+}")
     public FuncionalDTO getReqFuncional(@PathParam("requisitoId") Long requisitoId) 
     {
-        LOGGER.log(Level.INFO, "FuncionalesResource getReqFuncional: input: {0}", requisitoId);
+        LOGGER.log(Level.INFO, "FuncionalResource getReqFuncional: input: {0}", requisitoId);
         FuncionalEntity funcionalEntity = fl.getFuncional(requisitoId);
         if (funcionalEntity == null) {
             throw new WebApplicationException("El recurso /Funcional/" + requisitoId + " no existe.", 404);
@@ -93,9 +94,9 @@ public class FuncionalesResource {
     @GET
     public List<FuncionalDTO> getReqFuncionales() 
     {
-        LOGGER.info("IteracionResource getRequisitosFuncionales: input: void");
+        LOGGER.info("FuncionalResource getRequisitosFuncionales: input: void");
         List<FuncionalDTO> listaIteraciones = listEntity2DTO(fl.getFuncionales());
-        LOGGER.log(Level.INFO, "IteracionResource getIteraciones: output: {0}", listaIteraciones);
+        LOGGER.log(Level.INFO, "FuncionalResource getReqFuncionales: output: {0}", listaIteraciones);
         return listaIteraciones;
     }
     
@@ -123,15 +124,31 @@ public class FuncionalesResource {
             throw new WebApplicationException("El recurso /funcional/" + requisitoId + " no existe.", 404);
         }
         FuncionalDTO funDTO = new FuncionalDTO(fl.updateFuncional(funcional.toEntity()));
-        LOGGER.log(Level.INFO, "IteracionResource updateIteracion: output: {0}", funDTO);
+        LOGGER.log(Level.INFO, "IteracionResource updateReqFuncional: output: {0}", funDTO);
         return funDTO;
     }
-
-    
-    
-    
-    
-    
+  /**
+     * Borra el requisitoFuncional con el id asociado recibido en la URL.
+     *
+     * @param requisitoId
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el requisito a eliminar.
+     */
+    @DELETE
+    @Path("{requisitoId: \\d+}")
+    public void deleteReqFuncional(@PathParam("requisitoId") Long requisitoId) throws BusinessLogicException 
+    {
+        LOGGER.log(Level.INFO, "FuncionalesResource deleteReqFuncional: input: {0}", requisitoId);
+        RequisitosEntity entity = fl.getFuncional(requisitoId);
+        if (entity == null) 
+        {
+            throw new WebApplicationException("El recurso /funcional/" + requisitoId + " no existe.", 404);
+        }
+        //TODO recordar que cuando se terminen las asociaciones borrarlas antes de hacer el delete
+        fl.deleteFuncional(requisitoId);
+        LOGGER.info("FuncionalResource deleteReqFuncional output: void");
+    }    
      /**
      * Convierte una lista de entidades a DTO.
      *

@@ -73,7 +73,7 @@ public class ModificacionesResource {
     
     
     @GET 
-    @Path("{modificacionesId:\\id+}")
+    @Path("{modificacionesId:\\d+}")
     public ModificacionesDTO getModificacion(@PathParam("modificacionesId") Long id){
         LOGGER.log(Level.INFO, "ModificacionesResource getModificacion: input:{0}", id);
         ModificacionesEntity a= logica.getModificacion(id);
