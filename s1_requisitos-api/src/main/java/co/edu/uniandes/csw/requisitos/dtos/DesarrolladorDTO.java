@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class DesarrolladorDTO 
 {
-
       /**
      * String que representa el tipo del desarrollador
      */
@@ -21,7 +20,10 @@ public class DesarrolladorDTO
     /**
      * Constructor del detailDto
      */
-    public DesarrolladorDTO(){}
+    public DesarrolladorDTO()
+    {
+    
+    }
     /**
      * BLOQUE GETTER AND SETTER
      */
@@ -32,6 +34,5 @@ public class DesarrolladorDTO
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
     
 }

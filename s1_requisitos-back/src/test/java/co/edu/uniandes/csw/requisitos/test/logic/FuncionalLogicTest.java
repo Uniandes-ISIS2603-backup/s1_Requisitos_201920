@@ -101,6 +101,18 @@ private PodamFactory factory=new PodamFactoryImpl();
       newEntity.setNombre(null);
         FuncionalEntity result= funcionalLogic.createFuncional(newEntity);
     }
+    /**
+     * Prueba para asegurarse que no cree un requisito con un nombre repetido.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createFuncionalNombreRepetido()throws BusinessLogicException
+    {
+        FuncionalEntity nuevaEnt=factory.manufacturePojo(FuncionalEntity.class);
+        nuevaEnt.setNombre(data.get(0).getNombre());
+        FuncionalEntity resultado=funcionalLogic.createFuncional(nuevaEnt);
+    }
+    
 
     @Test
     public void getFuncionalesTest() {

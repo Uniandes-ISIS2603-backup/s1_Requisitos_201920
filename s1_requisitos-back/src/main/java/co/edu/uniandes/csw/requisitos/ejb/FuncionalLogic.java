@@ -33,6 +33,18 @@ public class FuncionalLogic
               {
                   throw new BusinessLogicException("El requisito funcional no tiene un nombre definido");
               }
+            else if(persistence.find(funcional.getId())!=null)
+            {
+              throw new BusinessLogicException("Ya existe un requisito funcional con ese id.");      
+            }
+             else if(persistence.findByName(funcional.getNombre())!=null)
+           {
+              throw new BusinessLogicException("Ya existe un requisito funcional con ese nombre.");      
+           }
+           //else if(funcional.getCasoFuncional()==null)
+           //{
+             // throw new BusinessLogicException("Deberia tener un caso Funcional");      
+           //}
            funcional=persistence.create(funcional);
            return funcional;
        }

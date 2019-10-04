@@ -48,7 +48,8 @@ public class RequisitosDTO implements Serializable
     /**
      * Constructor vacio
      */
-    public RequisitosDTO(){
+    public RequisitosDTO()
+    {
         
     }
     
@@ -84,8 +85,6 @@ public class RequisitosDTO implements Serializable
          entidad.setImportancia(this.getImportancia());
          return entidad;
     }
-    
-    
     
     /**
      * BLOQUE GETTERS AND SETTERS
