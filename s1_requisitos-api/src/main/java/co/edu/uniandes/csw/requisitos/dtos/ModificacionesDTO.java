@@ -5,7 +5,13 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
+import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -14,11 +20,29 @@ import java.io.Serializable;
 public class ModificacionesDTO implements Serializable {
     
     private Long id;
-    //@xmlJavaTypeAdapter(DateAdapater.class)
-    private String fechaModificacion;
+    @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
+    private Date fechaModificacion;
     
     private String descripcion;
 
+    public ModificacionesDTO (){
+        
+    }
+    
+    public ModificacionesDTO(ModificacionesEntity mod){
+        setId(mod.getId());
+        setDescripcion(mod.getDescripcion());
+        setFechaModificacion(mod.getFechaModificacion());
+    }
+    
+    public ModificacionesEntity toEntity(){
+        ModificacionesEntity nueva= new ModificacionesEntity();
+        nueva.setId(this.id);
+        nueva.setDescripcion(this.descripcion);
+        nueva.setFechaModificacion(this.fechaModificacion);
+        return nueva;
+    }
     /**
      * @return the id
      */
@@ -36,14 +60,14 @@ public class ModificacionesDTO implements Serializable {
     /**
      * @return the fechaModificacion
      */
-    public String getFechaModificacion() {
+    public Date getFechaModificacion() {
         return fechaModificacion;
     }
 
     /**
      * @param fechaModificacion the fechaModificacion to set
      */
-    public void setFechaModificacion(String fechaModificacion) {
+    public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
 
