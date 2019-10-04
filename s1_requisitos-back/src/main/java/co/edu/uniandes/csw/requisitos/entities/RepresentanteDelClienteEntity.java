@@ -41,5 +41,19 @@ public class RepresentanteDelClienteEntity extends BaseEntity implements Seriali
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    /**
+     * @return the casosDeUso
+     */
+    public List<CasoDeUsoEntity> getCasosDeUso() {
+        return casosDeUso;
+    }
+
+    /**
+     * @param casosDeUso the casosDeUso to set
+     */
+    public void setCasosDeUso(List<CasoDeUsoEntity> casosDeUso) {
+        this.casosDeUso = casosDeUso;
+    }
     
 }
