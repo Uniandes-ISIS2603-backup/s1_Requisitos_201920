@@ -40,6 +40,11 @@ public class ModificacionesLogic {
         return lista;
     }
     
+    public ModificacionesEntity getModificacion(Long id){
+        ModificacionesEntity nueva=persistence.find(id);
+        return nueva;
+    }
+    
     public ModificacionesEntity updateModificaciones(ModificacionesEntity modi) throws BusinessLogicException{
         if (modi.getDescripcion()==null){
             throw new BusinessLogicException("descripcion vacia");

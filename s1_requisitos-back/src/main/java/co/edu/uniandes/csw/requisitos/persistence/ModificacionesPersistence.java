@@ -32,8 +32,6 @@ public class ModificacionesPersistence {
     }
 
     public ModificacionesEntity find(Long requisitoId) {
-        System.out.println("me suicido");
-        System.out.println("me quito un ovario" + em.find(ModificacionesEntity.class, requisitoId).getDescripcion());
         return em.find(ModificacionesEntity.class, requisitoId);
     }
 

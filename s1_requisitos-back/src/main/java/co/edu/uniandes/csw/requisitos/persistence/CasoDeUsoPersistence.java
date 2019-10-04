@@ -20,41 +20,46 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class CasoDeUsoPersistence {
-    @PersistenceContext(unitName="requisitosPU")
-    protected EntityManager em; 
-    public CasoDeUsoEntity create (CasoDeUsoEntity casoDeUso){
+
+    @PersistenceContext(unitName = "requisitosPU")
+    protected EntityManager em;
+
+    public CasoDeUsoEntity create(CasoDeUsoEntity casoDeUso) {
         em.persist(casoDeUso);
         return casoDeUso;
     }
-      public CasoDeUsoEntity find(Long requisitoId) {
+
+    public CasoDeUsoEntity find(Long requisitoId) {
         return em.find(CasoDeUsoEntity.class, requisitoId);
     }
-   
+
     /**
      * Retorna una lista con todos los elementos
-     * @return 
+     *
+     * @return
      */
-    public List<CasoDeUsoEntity> findAll()
-    {
-        TypedQuery query=em.createQuery("select u from CasoDeUsoEntity u",CasoDeUsoEntity.class);
+    public List<CasoDeUsoEntity> findAll() {
+        TypedQuery query = em.createQuery("select u from CasoDeUsoEntity u", CasoDeUsoEntity.class);
         return query.getResultList();
     }
+
     /**
-     * Actualiza la informacion de un requisito 
+     * Actualiza la informacion de un requisito
+     *
      * @param requisito
-     * @return 
+     * @return
      */
-    public CasoDeUsoEntity update(CasoDeUsoEntity requisito)
-    {
-       return em.merge(requisito);
+    public CasoDeUsoEntity update(CasoDeUsoEntity requisito) {
+        return em.merge(requisito);
     }
+
     /**
      * Elimina un requisito
-     * @param reqId 
+     *
+     * @param reqId
      */
-    public void delete(Long reqId)
-    {
-      CasoDeUsoEntity requisito=em.find(CasoDeUsoEntity.class,reqId);
-       em.remove(requisito);
+    public void delete(Long reqId) {
+        CasoDeUsoEntity requisito = em.find(CasoDeUsoEntity.class, reqId);
+        em.remove(requisito);
     }
 }

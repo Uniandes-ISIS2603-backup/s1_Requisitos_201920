@@ -99,6 +99,7 @@ public class CasoDeUsoLogicTest {
 
     }
 
+    
     @Test(expected = BusinessLogicException.class)
     public void crearCasoPruebasNull() throws BusinessLogicException {
         CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
@@ -121,7 +122,16 @@ public class CasoDeUsoLogicTest {
     }
 
     @Test
-    public void getCasoDeUsoTest() {
+    public void getCasoDeUsoTest(){
+        CasoDeUsoEntity caso= data.get(0);
+        CasoDeUsoEntity encontrado= casoLogic.getCaso(caso.getId());
+        Assert.assertNotNull(encontrado);
+        Assert.assertEquals(encontrado.getDocumentacion(), caso.getDocumentacion());
+        Assert.assertEquals(encontrado.getPruebas(), caso.getPruebas());
+        Assert.assertEquals(encontrado.getServicios(), caso.getServicios());
+    }
+    @Test
+    public void getCasosDeUsoTest() {
         List<CasoDeUsoEntity> lista = casoLogic.getCasos();
         Assert.assertEquals(data.size(), lista.size());
 
@@ -173,7 +183,7 @@ public class CasoDeUsoLogicTest {
     @Test
     public void deleteCasoDeUso()  {
         CasoDeUsoEntity caso= data.get(0);
-        casoLogic.deleteRequisito(caso.getId());
+        casoLogic.deleteCaso(caso.getId());
         
         CasoDeUsoEntity buscado= em.find(CasoDeUsoEntity.class, caso.getId());
         Assert.assertNull(buscado);

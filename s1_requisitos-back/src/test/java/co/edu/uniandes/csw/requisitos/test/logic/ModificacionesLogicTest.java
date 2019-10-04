@@ -130,6 +130,16 @@ public class ModificacionesLogicTest {
     }
     
     @Test
+    public void findCaso(){
+        ModificacionesEntity entidad= data.get(0);
+        ModificacionesEntity encontrado= modificacionesLogic.getModificacion(entidad.getId());
+        Assert.assertNotNull(encontrado);
+        Assert.assertEquals(encontrado.getDescripcion(), entidad.getDescripcion());
+        Assert.assertEquals(encontrado.getFechaModificacion(), entidad.getFechaModificacion());
+        
+    }
+    
+    @Test
     public void updateTest() throws BusinessLogicException{
         ModificacionesEntity entidad = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
