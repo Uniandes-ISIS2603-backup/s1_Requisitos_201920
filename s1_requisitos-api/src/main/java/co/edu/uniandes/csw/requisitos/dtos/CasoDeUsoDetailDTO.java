@@ -24,32 +24,67 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
     private List<DescripcionDTO> caminosExcepcion;
     private List<DescripcionDTO> posCondiciones;
     private List<DescripcionDTO> preCondiciones;
-    private List<DescripcionDTO> preCaminoAlterno;
-    private List<DesarrolladorDTO> desarrollador;
+    private List<DescripcionDTO> caminoAlterno;
+    private List<DesarrolladorDTO> responsables;
 
     
       public CasoDeUsoDetailDTO() {
         super();
     }
     
-//    public CasoDeUsoDetailDTO(CasoDeUsoEntity entidad) {
-//        super(entidad);
-//        if (entidad!=null)
-//        {
-//            if (entidad.getCaminosExcepcion() !=null){
-//                caminosExcepcion=new ArrayList<>();
-//                for (DescripcionEntity desc:entidad.getCaminosExcepcion()){
-//                    caminosExcepcion.add(new DescripcionDTO(desc));
-//                }
-//            }
-//            if (entidad.getFuncional()!=null){
-//                requisitosFuncionales=new ArrayList<>();
-//                for (FuncionalEntity funcional:entidad.getFuncional()){
-//                    requisitosFuncionales.add(new FuncionalDTO(funcional));
-//                }
-//            }
-//        }
-//    }
+    public CasoDeUsoDetailDTO(CasoDeUsoEntity entidad) {
+        super(entidad);
+        /*
+        if (entidad!=null){
+            if (entidad.getCaminosExcepcion() !=null){
+                caminosExcepcion=new ArrayList<>();
+                for (DescripcionEntity desc:entidad.getCaminosExcepcion()){
+                    caminosExcepcion.add(new DescripcionDTO(desc));
+                }
+            }
+            if (entidad.getFuncional()!=null){
+                requisitosFuncionales=new ArrayList<>();
+                for (FuncionalEntity funcional:entidad.getFuncional()){
+                    requisitosFuncionales.add(new FuncionalDTO(funcional));
+                }
+            }
+            
+            if (entidad.getEntidades()!=null){
+                entidades=new ArrayList<>();
+                for (DescripcionEntity desc:entidad.getEntidades()){
+                    entidades.add(new DescripcionDTO(desc));
+                }
+            }
+            if (entidad.getPosCondiciones()!=null){
+                posCondiciones=new ArrayList<>();
+                for (DescripcionEntity desc:entidad.getPosCondiciones()){
+                    posCondiciones.add(new DescripcionDTO(desc));
+                }
+            }
+            if (entidad.getPreCondiciones()!=null){
+                preCondiciones=new ArrayList<>();
+                for (DescripcionEntity desc:entidad.getPreCondiciones()){
+                    preCondiciones.add(new DescripcionDTO(desc));
+                }
+            }
+            if (entidad.getPreCaminoAlterno()!=null){
+                caminoAlterno=new ArrayList<>();
+                for (DescripcionEntity desc:entidad.getPreCaminoAlterno()){
+                    caminoAlterno.add(new DescripcionDTO(desc));
+                }
+            }
+
+        }
+    }
+      
+     
+    }
+    @Override
+     public CasoDeUsoEntity toEntity(){
+         
+     }
+        */
+    }
     /**
      * @return the modificaciones
      */
@@ -137,29 +172,29 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
     /**
      * @return the preCaminoAlterno
      */
-    public List<DescripcionDTO> getPreCaminoAlterno() {
-        return preCaminoAlterno;
+    public List<DescripcionDTO> getCaminoAlterno() {
+        return caminoAlterno;
     }
 
     /**
      * @param preCaminoAlterno the preCaminoAlterno to set
      */
-    public void setPreCaminoAlterno(List<DescripcionDTO> preCaminoAlterno) {
-        this.preCaminoAlterno = preCaminoAlterno;
+    public void setCaminoAlterno(List<DescripcionDTO> preCaminoAlterno) {
+        this.caminoAlterno = preCaminoAlterno;
     }
 
     /**
      * @return the desarrollador
      */
-    public List<DesarrolladorDTO> getDesarrollador() {
-        return desarrollador;
+    public List<DesarrolladorDTO> getResponsable() {
+        return responsables;
     }
 
     /**
      * @param desarrollador the desarrollador to set
      */
-    public void setDesarrollador(List<DesarrolladorDTO> desarrollador) {
-        this.desarrollador = desarrollador;
+    public void setResponsable(List<DesarrolladorDTO> desarrollador) {
+        this.responsables = desarrollador;
     }
 
   

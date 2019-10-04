@@ -5,12 +5,14 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.adapters.DateAdapter;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
@@ -20,8 +22,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 public class ModificacionesDTO implements Serializable {
     
     private Long id;
-    @Temporal(TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class)
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date fechaModificacion;
     
     private String descripcion;
