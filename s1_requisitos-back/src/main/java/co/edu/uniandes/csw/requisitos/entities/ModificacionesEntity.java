@@ -33,8 +33,9 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     private String descripcion;
 
  
-    //@ManyToOne
-    //private PersonaEntity persona;
+    @ManyToOne
+    @PodamExclude
+    private PersonaEntity persona;
    
     
     //@ManyToOne
@@ -76,7 +77,7 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     /**
      * @return the persona
      */
-    /*
+    
     public PersonaEntity getPersona() {
         return persona;
     }
@@ -85,7 +86,7 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
      * @param persona the persona to set
      */
     
-   /*
+   
     public void setPersona(PersonaEntity persona) {
         this.persona = persona;
     }

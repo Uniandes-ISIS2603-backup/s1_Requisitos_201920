@@ -6,7 +6,12 @@
 package co.edu.uniandes.csw.requisitos.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,6 +21,10 @@ import javax.persistence.Entity;
 public class EquipoDesarrolloEntity extends BaseEntity implements Serializable{
     
     private String equipoDesarrollo;
+    
+       @PodamExclude
+    @OneToMany(mappedBy = "equipoDesarrollo",fetch=FetchType.LAZY)
+    private List<PersonaEntity> integrantes = new ArrayList<>();
 
     /**
      * @return the equipoDesarrollo
