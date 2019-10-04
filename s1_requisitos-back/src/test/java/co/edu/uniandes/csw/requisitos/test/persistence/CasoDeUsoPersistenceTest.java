@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
+import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.persistence.CasoDeUsoPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,7 @@ public class CasoDeUsoPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(RequisitosEntity.class.getPackage())
                 .addPackage(CasoDeUsoEntity.class.getPackage())
                 .addPackage(CasoDeUsoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")

@@ -17,7 +17,8 @@ import javax.inject.Inject;
  * @author Nicole Bahamon Martinez
  */
 @Stateless
-public class FuncionalLogic {
+public class FuncionalLogic 
+{
     @Inject
     private FuncionalPersistence persistence;
        /**

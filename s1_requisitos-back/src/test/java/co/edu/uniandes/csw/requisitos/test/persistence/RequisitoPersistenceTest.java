@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;

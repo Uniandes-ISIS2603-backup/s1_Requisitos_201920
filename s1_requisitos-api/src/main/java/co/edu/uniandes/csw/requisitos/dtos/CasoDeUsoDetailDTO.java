@@ -15,7 +15,12 @@ import java.util.List;
  *
  * @author Estudiante
  */
+<<<<<<< HEAD
 public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
+=======
+public class CasoDeUsoDetailDTO extends CasoDeUsoDTO 
+{
+>>>>>>> 9f4a7f7ca98847095f52143f25904d6442afcbe8
 /*
     private List<ModificacionesDTO> modificaciones;
      private List<FuncionalDTO> requisitosFuncionales;

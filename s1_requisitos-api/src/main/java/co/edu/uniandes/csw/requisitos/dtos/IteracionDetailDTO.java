@@ -5,14 +5,20 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.entities.IteracionEntity;
+
 /**
  *
  * @author rj.gonzalez10
  */
-public class IteracionDetailDTO extends RequisitosDTO {
+public class IteracionDetailDTO extends IteracionDTO {
     public IteracionDetailDTO ()
     {
         
+    }
+    public IteracionDetailDTO(IteracionEntity entidad)
+    {
+        super(entidad);
     }
     
 }

@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.ProyectoPersistence;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -102,8 +103,15 @@ public class ProyectoLogicTest {
     }
     
     @Test
-    public void createProyecto() throws BusinessLogicException{
+    public void createProyecto() throws BusinessLogicException
+    {
         ProyectoEntity entidadNueva = factory.manufacturePojo(ProyectoEntity.class);
+        if(entidadNueva.getFechaInicial().after(entidadNueva.getFechaFinal()))
+        {
+            Date tmp=entidadNueva.getFechaFinal();
+            entidadNueva.setFechaFinal(entidadNueva.getFechaInicial());
+            entidadNueva.setFechaInicial(tmp);
+        }
         ProyectoEntity result = proyectoLogic.createProyecto(entidadNueva);
         Assert.assertNotNull(result);
         
@@ -113,9 +121,8 @@ public class ProyectoLogicTest {
     
     @Test (expected = BusinessLogicException.class)
     public void createProyectoFechas() throws BusinessLogicException{
-        
         ProyectoEntity nuevaEntidad = factory.manufacturePojo(ProyectoEntity.class);
-        nuevaEntidad.setFechaInicial(nuevaEntidad.getFechaInicial());
+        nuevaEntidad.setFechaFinal(nuevaEntidad.getFechaInicial());
         ProyectoEntity result = proyectoLogic.createProyecto(nuevaEntidad);
     }
     

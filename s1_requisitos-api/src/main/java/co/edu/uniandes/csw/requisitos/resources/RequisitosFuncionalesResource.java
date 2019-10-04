@@ -23,13 +23,13 @@ import javax.ws.rs.Produces;
  * Clase que representa el servicio Rest para requisitos
  * @author Nicolas Tobo
  */
-@Path("/requisitos")
+@Path("/requisitosFuncionales")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class RequisitosResource {
+public class RequisitosFuncionalesResource {
     
-     private static final Logger LOGGER = Logger.getLogger(RequisitosResource.class.getName());
+     private static final Logger LOGGER = Logger.getLogger(RequisitosFuncionalesResource.class.getName());
      
      /**
       * Atributo logica
@@ -45,13 +45,15 @@ public class RequisitosResource {
      * id autogenerado.
      */
     @POST
-    public RequisitosDTO createRequisito(RequisitosDTO requisito) throws BusinessLogicException     
+    public RequisitosDTO createRequisitoFuncional(RequisitosDTO requisito) throws BusinessLogicException     
     {
-        //RequisitosEntity requisitoEntity=requisito.toEntity();
-        //requisitoEntity=rl.createRequisito(requisitoEntity);
-        //return new RequisitosDTO(requisitoEntity);
-        return requisito;
+        RequisitosEntity requisitoEntity=requisito.toEntity();
+        requisitoEntity=rl.createRequisito(requisitoEntity);
+        return new RequisitosDTO(requisitoEntity);
     }
+    
+    
+    
 
    
 }

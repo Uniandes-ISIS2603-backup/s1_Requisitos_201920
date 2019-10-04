@@ -63,8 +63,8 @@ public class AtributoCalidadPersistenceTest {
         AtributoCalidadEntity result = acp.create(atributoCalidad);
         Assert.assertNotNull(result);
         
-     AtributoCalidadEntity entity=em.find(AtributoCalidadEntity.class, result.getId());
-      Assert.assertEquals(atributoCalidad.getTipo(), entity.getTipo());
+       AtributoCalidadEntity entity=em.find(AtributoCalidadEntity.class, result.getId());
+       Assert.assertEquals(atributoCalidad.getTipo(), entity.getTipo());
     }
        /**
      * Configuración inicial de todas las pruebas.

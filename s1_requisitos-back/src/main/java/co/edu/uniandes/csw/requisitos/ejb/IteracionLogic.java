@@ -16,6 +16,7 @@ import javax.inject.Inject;
  *
  * @author Rodrigo José González
  */
+@Stateless
 public class IteracionLogic {
      /**
     * Clase persistence de iteracion.
