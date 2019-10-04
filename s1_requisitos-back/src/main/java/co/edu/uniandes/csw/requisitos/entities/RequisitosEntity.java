@@ -19,7 +19,7 @@ import uk.co.jemos.podam.common.PodamIntValue;
  * @author Nicolas Tobo
  */
 @Entity
-public class RequisitosEntity extends BaseEntity implements Serializable 
+public  class RequisitosEntity extends BaseEntity implements Serializable 
 {   
     /**
      * Desarrollador del requisito
@@ -27,43 +27,43 @@ public class RequisitosEntity extends BaseEntity implements Serializable
     @PodamExclude
     @ManyToOne
     DesarrolladorEntity desarrollador;
-    /*
+    
     @PodamExclude
     @OneToMany(
         mappedBy = "modificacionesRequisito", 
         fetch = javax.persistence.FetchType.LAZY
     )
-   private List<ModificacionesEntity> modificaciones=new ArrayList<>();
-    */
+    protected List<ModificacionesEntity> modificaciones=new ArrayList<>();
+    
     /**
      * Fuente de donde se escribe el requisito
      */
-    private String fuente;
+    protected String fuente;
     /**
      * Autor del requisito
      */
-    private String autor;
+    protected String autor;
     /**
      * Informacion que tiene el requisito
      */
-    private String descripcion;
+    protected String descripcion;
     /**
      * Numero que representa la importancia del requisito
      */
     @PodamIntValue(minValue=0,maxValue=Integer.MAX_VALUE)
-    private Integer importancia;
+    protected Integer importancia;
     /**
      * Boolena que representa si el requisito es estable(fijo)
      */
-    private Boolean estabilidad;
+    protected Boolean estabilidad;
     /**
      * Comentarios adicionales sobre el requisito
      */
-    private String comentariosAdicionales;
+    protected String comentariosAdicionales;
     /**
      * nombre del requisito
      */
-    private String nombre;
+    protected String nombre;
 
     /**
      * @return the fuente

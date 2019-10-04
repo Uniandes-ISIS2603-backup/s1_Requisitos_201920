@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.requisitos.test.logic;
 
 import co.edu.uniandes.csw.requisitos.ejb.FuncionalLogic;
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.FuncionalPersistence;
@@ -36,6 +37,7 @@ public class FuncionalLogicTest {
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(FuncionalEntity.class.getPackage())
+                .addPackage(CasoDeUsoEntity.class.getPackage())
                 .addPackage(FuncionalLogic.class.getPackage())
                 .addPackage(FuncionalPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
@@ -84,7 +86,8 @@ private PodamFactory factory=new PodamFactoryImpl();
         }
     }
     @Test
-    public void createFuncionalTest() throws BusinessLogicException{
+    public void createFuncionalTest() throws BusinessLogicException
+    {
         FuncionalEntity newEntity = factory.manufacturePojo(FuncionalEntity.class);
         FuncionalEntity result= funcionalLogic.createFuncional(newEntity);
         Assert.assertNotNull(result);
@@ -121,7 +124,7 @@ private PodamFactory factory=new PodamFactoryImpl();
         FuncionalEntity entidad = funcionalLogic.getFuncional(nuevaEnt.getId());
         Assert.assertNotNull(entidad);
         Assert.assertEquals(nuevaEnt.getId(),entidad.getId());
-            Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
+        Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
         
     }
   

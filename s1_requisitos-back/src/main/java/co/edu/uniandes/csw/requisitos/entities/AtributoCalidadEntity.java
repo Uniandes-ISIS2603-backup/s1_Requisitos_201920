@@ -13,7 +13,8 @@ import javax.persistence.Entity;
  * @author Nicole Bahamon
  */
 @Entity
-public class AtributoCalidadEntity extends BaseEntity implements Serializable {
+public class AtributoCalidadEntity extends RequisitosEntity implements Serializable {
+    
     private String tipo;
 
     /**

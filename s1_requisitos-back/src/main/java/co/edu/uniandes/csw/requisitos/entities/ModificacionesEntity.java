@@ -30,7 +30,7 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaModificacion;
     
-     private String descripcion;
+    private String descripcion;
 
  
     //@ManyToOne
@@ -41,8 +41,9 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     //private CasoDeUsoEntity casoModificaciones;
     
     
-    //@ManyToOne
-    //private RequisitosEntity modificacionesRequisito;
+    @ManyToOne
+    @PodamExclude
+    private RequisitosEntity modificacionesRequisito;
 
     /**
      * @return the fechaModificacion

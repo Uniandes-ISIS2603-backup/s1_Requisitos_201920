@@ -18,7 +18,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class RepresentanteDelClienteEntity extends BaseEntity implements Serializable {
-     @PodamExclude
+    @PodamExclude
    @OneToMany(
         mappedBy = "representante", 
         fetch = javax.persistence.FetchType.LAZY

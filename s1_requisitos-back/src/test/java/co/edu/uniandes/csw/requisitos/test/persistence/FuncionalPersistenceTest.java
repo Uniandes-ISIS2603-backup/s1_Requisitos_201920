@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
+import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.persistence.FuncionalPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +49,10 @@ public class FuncionalPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment(){
          return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(RequisitosEntity.class.getPackage())
                 .addPackage(FuncionalEntity.class.getPackage())
                 .addPackage(FuncionalPersistence.class.getPackage())
+                .addPackage(CasoDeUsoEntity.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
@@ -63,9 +67,9 @@ public class FuncionalPersistenceTest {
         FuncionalEntity funcional = factory.manufacturePojo(FuncionalEntity.class);
         FuncionalEntity result = fp.create(funcional);
         Assert.assertNotNull(result);
-        
-     FuncionalEntity entity=em.find(FuncionalEntity.class, result.getId());
-      Assert.assertEquals(funcional.getNombre(), entity.getNombre());
+   
+        FuncionalEntity entity=em.find(FuncionalEntity.class, result.getId());
+        Assert.assertEquals(funcional.getNombre(), entity.getNombre());
     }
        /**
      * Configuración inicial de todas las pruebas.

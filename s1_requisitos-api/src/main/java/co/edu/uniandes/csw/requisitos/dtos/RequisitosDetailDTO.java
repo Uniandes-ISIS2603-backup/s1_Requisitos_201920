@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import java.util.List;
+
 /**
  *
  * @author Nicolás Tobo
@@ -14,7 +16,8 @@ public class RequisitosDetailDTO extends RequisitosDTO
     /**
      * Lista de ModificacionesDTO que puede tener el requisito
      */
-    //private List<ModificacionesDTO> modificaciones;
+    private List<ModificacionesDTO> modificaciones;
+    
     /**
      * Constructor del detailDto
      */

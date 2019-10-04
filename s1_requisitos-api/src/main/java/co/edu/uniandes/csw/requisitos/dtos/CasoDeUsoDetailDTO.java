@@ -12,7 +12,8 @@ import java.util.List;
  *
  * @author Estudiante
  */
-public class CasoDeUsoDetailDTO extends CasoDeUsoDTO {
+public class CasoDeUsoDetailDTO extends CasoDeUsoDTO 
+{
 /*
     private List<ModificacionesDTO> modificaciones;
     private List<DescripcionDTO> entidades;

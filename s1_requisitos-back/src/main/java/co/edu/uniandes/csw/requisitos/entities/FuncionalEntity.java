@@ -8,31 +8,25 @@ package co.edu.uniandes.csw.requisitos.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author Nicole Bahamon
  */
 @Entity
-public class FuncionalEntity extends BaseEntity implements Serializable {
+public class FuncionalEntity extends RequisitosEntity implements Serializable 
+{
+    @PodamExclude
     @ManyToOne
     private CasoDeUsoEntity casoFuncional;
-    
-    private String nombre;
 
-    /**
-     * @return the nombre
-     */
-    public String getNombre() {
-        return nombre;
+    
+    public CasoDeUsoEntity getCasoFuncional() {
+        return casoFuncional;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCasoFuncional(CasoDeUsoEntity casoFuncional) {
+        this.casoFuncional = casoFuncional;
     }
-    
-    
 }

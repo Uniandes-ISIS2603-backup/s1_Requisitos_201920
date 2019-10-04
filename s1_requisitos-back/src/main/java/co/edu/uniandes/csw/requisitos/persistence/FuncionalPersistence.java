@@ -17,9 +17,11 @@ import javax.persistence.TypedQuery;
  * @author Nicole Bahamon
  */
 @Stateless
-public class FuncionalPersistence {
-@PersistenceContext(unitName="requisitosPU")
+public class FuncionalPersistence 
+{
+    @PersistenceContext(unitName="requisitosPU")
     protected EntityManager em;
+
     public FuncionalEntity create(FuncionalEntity funcional)
     {
         em.persist(funcional);

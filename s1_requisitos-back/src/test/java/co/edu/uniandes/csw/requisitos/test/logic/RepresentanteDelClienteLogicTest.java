@@ -5,10 +5,13 @@
  */
 package co.edu.uniandes.csw.requisitos.test.logic;
 
+
 import co.edu.uniandes.csw.requisitos.ejb.RepresentanteDelClienteLogic;
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.RepresentanteDelClienteEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.RepresentanteDelClientePersistence;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -32,7 +35,8 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Estudiante
  */
 @RunWith(Arquillian.class)
-public class RepresentanteDelClienteLogicTest {
+public class RepresentanteDelClienteLogicTest 
+{
       /**
      * Manejador de entidades usado para buscar el resultado creado por el Podam
      */
@@ -63,6 +67,7 @@ public class RepresentanteDelClienteLogicTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(RepresentanteDelClienteEntity.class.getPackage())
+                 .addPackage(CasoDeUsoEntity.class.getPackage())
                 .addPackage(RepresentanteDelClientePersistence.class.getPackage())
                 .addPackage(RepresentanteDelClienteLogic.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
