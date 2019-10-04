@@ -27,7 +27,8 @@ public class FuncionalPersistence
         em.persist(funcional);
         return funcional;
     }
-     public FuncionalEntity find(Long pFuncionalId ) {
+     public FuncionalEntity find(Long pFuncionalId ) 
+     {
         return em.find(FuncionalEntity.class, pFuncionalId);
     }
     
@@ -42,6 +43,26 @@ public class FuncionalPersistence
         }
         return buscado;
     }
+    
+    /**
+     * Encuentra en la base de datos el elemento con el nombre dado por parametro
+     * @param Name
+     * @return null si no lo encuentra, de lo contrario el elemento
+     */
+    public FuncionalEntity findByName(String Name)
+    {
+        FuncionalEntity buscado=null;
+        List<FuncionalEntity> lista=findAll();
+        for (FuncionalEntity funcional : lista) 
+        {
+            if(funcional.getNombre().equals(Name))
+                buscado=funcional;
+        }
+        return buscado;
+    }
+    
+    
+    
     public List<FuncionalEntity> findAll()
     {
         TypedQuery query = em.createQuery("SELECT u FROM FuncionalEntity u", FuncionalEntity.class);

@@ -9,12 +9,14 @@ import co.edu.uniandes.csw.requisitos.entities.RepresentanteDelClienteEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.RepresentanteDelClientePersistence;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author Rodrigo José González Oviedo
  */
+@Stateless
 public class RepresentanteDelClienteLogic {
      /**
     * Clase persistence del cliente.

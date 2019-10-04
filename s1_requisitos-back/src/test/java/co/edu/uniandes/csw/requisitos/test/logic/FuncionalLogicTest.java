@@ -101,6 +101,7 @@ private PodamFactory factory=new PodamFactoryImpl();
       newEntity.setNombre(null);
         FuncionalEntity result= funcionalLogic.createFuncional(newEntity);
     }
+    
 
     @Test
     public void getFuncionalesTest() {

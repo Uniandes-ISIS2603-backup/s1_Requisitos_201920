@@ -5,8 +5,11 @@
  */
 package co.edu.uniandes.csw.requisitos.resources;
 
+import co.edu.uniandes.csw.requisitos.dtos.FuncionalDTO;
 import co.edu.uniandes.csw.requisitos.dtos.RequisitosDTO;
+import co.edu.uniandes.csw.requisitos.ejb.FuncionalLogic;
 import co.edu.uniandes.csw.requisitos.ejb.RequisitoLogic;
+import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import java.util.logging.Level;
@@ -29,13 +32,12 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class RequisitosFuncionalesResource {
     
-     private static final Logger LOGGER = Logger.getLogger(RequisitosFuncionalesResource.class.getName());
-     
+     private static final Logger LOGGER = Logger.getLogger(RequisitosFuncionalesResource.class.getName()); 
      /**
       * Atributo logica
       */
      @Inject
-     private RequisitoLogic rl;
+     private FuncionalLogic rl;
         /**
      * Crea una nuevo requisito con la informacion que se recibe en el cuerpo de
      * la petición y se regresa un objeto identico con un id auto-generado por
@@ -45,15 +47,10 @@ public class RequisitosFuncionalesResource {
      * id autogenerado.
      */
     @POST
-    public RequisitosDTO createRequisitoFuncional(RequisitosDTO requisito) throws BusinessLogicException     
+    public RequisitosDTO createRequisitoFuncional(FuncionalDTO requisito) throws BusinessLogicException     
     {
-        RequisitosEntity requisitoEntity=requisito.toEntity();
-        requisitoEntity=rl.createRequisito(requisitoEntity);
+        FuncionalEntity requisitoEntity=requisito.toEntity();
+        requisitoEntity=rl.createFuncional(requisitoEntity);
         return new RequisitosDTO(requisitoEntity);
     }
-    
-    
-    
-
-   
 }
