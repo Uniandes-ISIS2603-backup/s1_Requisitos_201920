@@ -11,6 +11,9 @@ import co.edu.uniandes.csw.requisitos.dtos.RequisitosDTO;
 import co.edu.uniandes.csw.requisitos.ejb.CasoDeUsoLogic;
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -47,6 +50,14 @@ public class CasoDeUsoResource {
         return new CasoDeUsoDTO(entidadCaso);
 
     }
+    
+    @GET
+    public List<CasoDeUsoDetailDTO> getBooks() {
+        
+        List<CasoDeUsoDetailDTO> listaBooks = listEntity2DetailDTO(logica.getCasos());
+        
+        return listaBooks;
+    }
     /*
     @GET
     @Path("{casosId:\\id+}")
@@ -54,4 +65,12 @@ public class CasoDeUsoResource {
         
     }
     */
+    
+    private List<CasoDeUsoDetailDTO> listEntity2DetailDTO(List<CasoDeUsoEntity> entityList) {
+        List<CasoDeUsoDetailDTO> list = new ArrayList<>();
+        for (CasoDeUsoEntity entity : entityList) {
+            list.add(new CasoDeUsoDetailDTO(entity));
+        }
+        return list;
+    }
 }
