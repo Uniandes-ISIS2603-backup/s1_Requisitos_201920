@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.requisitos.resources;
 import co.edu.uniandes.csw.requisitos.dtos.CasoDeUsoDTO;
 import co.edu.uniandes.csw.requisitos.dtos.ModificacionesDTO;
 import co.edu.uniandes.csw.requisitos.ejb.ModificacionesLogic;
+import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -44,7 +45,10 @@ public class ModificacionesResource {
     @POST
     public ModificacionesDTO createModificacion(ModificacionesDTO mod) throws BusinessLogicException 
     {
-        return mod;
+        ModificacionesEntity nuevo=mod.toEntity();
+        nuevo= logica.createModificaciones(nuevo);
+        
+        return new ModificacionesDTO(nuevo);
     }
 }
     

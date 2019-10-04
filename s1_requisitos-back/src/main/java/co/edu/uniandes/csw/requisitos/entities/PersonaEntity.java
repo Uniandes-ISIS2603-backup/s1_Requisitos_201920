@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -18,14 +19,17 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class PersonaEntity extends BaseEntity implements Serializable {
-/*
+
      @PodamExclude
     @OneToMany(
         mappedBy = "persona", 
         fetch = javax.persistence.FetchType.LAZY
     )
     private List<ModificacionesEntity> modificaciones=new ArrayList<>();
-    */
+    @PodamExclude
+    @ManyToOne
+    EquipoDesarrolloEntity equipoDesarrollo;
+     
     /**
      * @return the correo
      */

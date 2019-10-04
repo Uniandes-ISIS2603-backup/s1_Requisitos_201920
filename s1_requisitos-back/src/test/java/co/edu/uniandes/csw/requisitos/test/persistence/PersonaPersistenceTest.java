@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.test.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
+import co.edu.uniandes.csw.requisitos.persistence.EquipoDesarrolloPersistence;
 import co.edu.uniandes.csw.requisitos.persistence.PersonaPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,8 @@ public class PersonaPersistenceTest {
                 
                 .addPackage(PersonaEntity.class.getPackage())
                 .addPackage(PersonaPersistence.class.getPackage())
+                .addPackage(EquipoDesarrolloPersistence.class.getPackage())
+                .addPackage(ModificacionesEntity.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
