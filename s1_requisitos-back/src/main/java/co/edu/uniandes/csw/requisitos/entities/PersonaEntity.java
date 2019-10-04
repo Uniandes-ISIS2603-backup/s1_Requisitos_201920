@@ -20,6 +20,34 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PersonaEntity extends BaseEntity implements Serializable {
 
+    /**
+     * @return the modificaciones
+     */
+    public List<ModificacionesEntity> getModificaciones() {
+        return modificaciones;
+    }
+
+    /**
+     * @param modificaciones the modificaciones to set
+     */
+    public void setModificaciones(List<ModificacionesEntity> modificaciones) {
+        this.modificaciones = modificaciones;
+    }
+
+    /**
+     * @return the equipoDesarrollo
+     */
+    public EquipoDesarrolloEntity getEquipoDesarrollo() {
+        return equipoDesarrollo;
+    }
+
+    /**
+     * @param equipoDesarrollo the equipoDesarrollo to set
+     */
+    public void setEquipoDesarrollo(EquipoDesarrolloEntity equipoDesarrollo) {
+        this.equipoDesarrollo = equipoDesarrollo;
+    }
+
      @PodamExclude
     @OneToMany(
         mappedBy = "persona", 
@@ -28,7 +56,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     private List<ModificacionesEntity> modificaciones=new ArrayList<>();
     @PodamExclude
     @ManyToOne
-    EquipoDesarrolloEntity equipoDesarrollo;
+    private EquipoDesarrolloEntity equipoDesarrollo;
      
     /**
      * @return the correo
