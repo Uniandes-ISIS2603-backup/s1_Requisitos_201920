@@ -6,13 +6,25 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
-
 /**
  *
  * @author Estudiante
  */
 public class PersonaDTO {
+
+    /**
+     * @return the equipoDesarrolloDTO
+     */
+    public EquipoDesarrolloDTO getEquipoDesarrolloDTO() {
+        return equipoDesarrolloDTO;
+    }
+
+    /**
+     * @param equipoDesarrolloDTO the equipoDesarrolloDTO to set
+     */
+    public void setEquipoDesarrolloDTO(EquipoDesarrolloDTO equipoDesarrolloDTO) {
+        this.equipoDesarrolloDTO = equipoDesarrolloDTO;
+    }
 
     /**
      * @return the id
@@ -74,6 +86,8 @@ public class PersonaDTO {
     private String correo;
     private Integer cedula;
     private Long id;
+    private EquipoDesarrolloDTO equipoDesarrolloDTO;
+    
     
     public PersonaEntity toEntity(){
     
@@ -101,7 +115,7 @@ public class PersonaDTO {
          setNombre(persona.getNombre());
          setCorreo(persona.getCorreo());
          setCedula(persona.getCedula());
-         
+         setEquipoDesarrolloDTO(new EquipoDesarrolloDTO(persona.getEquipoDesarrollo()));
    
     }
     

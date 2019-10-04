@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.resources;
 
 import co.edu.uniandes.csw.requisitos.dtos.PersonaDTO;
 import co.edu.uniandes.csw.requisitos.ejb.PersonaLogic;
+import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -34,9 +35,8 @@ public class PersonaResource {
       @POST
     public PersonaDTO createRequisito(PersonaDTO persona) throws BusinessLogicException     
     {
-        //RequisitosEntity requisitoEntity=requisito.toEntity();
-        //requisitoEntity=rl.createRequisito(requisitoEntity);
-        //return new RequisitosDTO(requisitoEntity);
-        return persona;
+        PersonaEntity personaEntity=persona.toEntity();
+        personaEntity=rl.createPersona(personaEntity);
+        return new PersonaDTO(personaEntity);
     }
 }
