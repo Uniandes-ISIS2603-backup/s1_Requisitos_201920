@@ -5,13 +5,14 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import java.util.List;
 
 /**
  *
  * @author Nicolas Tobo
  */
-public class DesarrolladorDTO 
+public class DesarrolladorDTO extends PersonaDTO
 {
       /**
      * String que representa el tipo del desarrollador
@@ -22,8 +23,33 @@ public class DesarrolladorDTO
      */
     public DesarrolladorDTO()
     {
-    
     }
+     /**
+     * Constructor del DTO a partir de una entidad
+     * @param casoDeUso
+     * @param entidad
+     */
+    public DesarrolladorDTO (DesarrolladorEntity entidad) 
+    {
+         super.setNombre(entidad.getNombre());
+         super.setId(entidad.getId());
+         super.setCorreo(entidad.getCorreo());
+         super.setCedula(entidad.getCedula());  
+    }
+    
+    /**
+     * Metodo que devuelve un entity a partir de un DTO
+     */
+    public DesarrolladorEntity toEntity()
+    {
+         DesarrolladorEntity entidad=new DesarrolladorEntity();
+         entidad.setNombre(this.getNombre());
+         entidad.setId(this.getId());
+         entidad.setCorreo(this.getCorreo());
+         entidad.setCedula(this.getCedula());
+       
+         return entidad;
+   }
     /**
      * BLOQUE GETTER AND SETTER
      */

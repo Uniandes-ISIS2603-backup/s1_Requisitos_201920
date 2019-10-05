@@ -19,9 +19,11 @@ public class RequisitosDetailDTO extends RequisitosDTO
     private List<ModificacionesDTO> modificaciones;
     
     /**
-     * Constructor del detailDto
+     * Constructor por defecto del detailDto
      */
-    public RequisitosDetailDTO(){  
+    public RequisitosDetailDTO()
+    {
+        super();
     }
 }
 
