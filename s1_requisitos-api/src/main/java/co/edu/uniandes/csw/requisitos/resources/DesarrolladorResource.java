@@ -6,8 +6,12 @@
 package co.edu.uniandes.csw.requisitos.resources;
 
 import co.edu.uniandes.csw.requisitos.dtos.DesarrolladorDTO;
+import co.edu.uniandes.csw.requisitos.ejb.DesarrolladorLogic;
+import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -24,6 +28,13 @@ import javax.ws.rs.Produces;
 public class DesarrolladorResource 
 {
     private static final Logger LOGGER = Logger.getLogger(DesarrolladorResource.class.getName());
+    /**
+      * Atributo logica
+      */
+     @Inject
+     private DesarrolladorLogic dl;
+    
+    
      /**
      * Crea una nuevo desarrollador con la informacion que se recibe en el cuerpo de
      * la petición y se regresa un objeto identico con un id auto-generado por
@@ -32,8 +43,11 @@ public class DesarrolladorResource
      * id autogenerado.
      */
     @POST
-    public DesarrolladorDTO createDesarrollador(DesarrolladorDTO desarrollador)     
+    public DesarrolladorDTO createDesarrollador(DesarrolladorDTO desarrollador) throws BusinessLogicException     
     {
-        return desarrollador;
+        LOGGER.log(Level.INFO, "DesarrolaldorResource createDesarrollador: input: {0}", desarrollador);
+        DesarrolladorDTO nuevoDesarrolladorDTO = new DesarrolladorDTO(dl.createDesarrollador(desarrollador.toEntity()));
+        LOGGER.log(Level.INFO, "DesarrolaldorResource createDesarrollador: output: {0}", nuevoDesarrolladorDTO);
+        return nuevoDesarrolladorDTO;
     }
 }
