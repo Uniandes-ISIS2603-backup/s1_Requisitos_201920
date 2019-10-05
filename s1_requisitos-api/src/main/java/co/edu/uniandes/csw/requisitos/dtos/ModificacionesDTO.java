@@ -20,30 +20,43 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  * @author Maria Alejandra Escalante
  */
 public class ModificacionesDTO implements Serializable {
-    
+
+    /*
+    atributos de modificacion
+     */
     private Long id;
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date fechaModificacion;
-    
+
     private String descripcion;
 
-    public ModificacionesDTO (){
-        
+    /*
+    constructor vacio
+     */
+    public ModificacionesDTO() {
+
     }
-    
-    public ModificacionesDTO(ModificacionesEntity mod){
+
+    /*
+    constructor que convierte de entidades a DTO
+     */
+    public ModificacionesDTO(ModificacionesEntity mod) {
         setId(mod.getId());
         setDescripcion(mod.getDescripcion());
         setFechaModificacion(mod.getFechaModificacion());
     }
-    
-    public ModificacionesEntity toEntity(){
-        ModificacionesEntity nueva= new ModificacionesEntity();
+
+    /*
+    metodo que convierte de DTO a entidades
+     */
+    public ModificacionesEntity toEntity() {
+        ModificacionesEntity nueva = new ModificacionesEntity();
         nueva.setId(this.id);
         nueva.setDescripcion(this.descripcion);
         nueva.setFechaModificacion(this.fechaModificacion);
         return nueva;
     }
+
     /**
      * @return the id
      */
@@ -85,5 +98,5 @@ public class ModificacionesDTO implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
 }

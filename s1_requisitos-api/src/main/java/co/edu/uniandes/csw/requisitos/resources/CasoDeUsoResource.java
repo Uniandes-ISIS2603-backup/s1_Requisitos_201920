@@ -30,6 +30,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author Maria Alejandra Escalante
  */
+//declaraciones necesarias para convertir a json y para pruebas en postman
 @Path("casos")
 @Produces("application/json")
 @Consumes("application/json")
@@ -61,7 +62,9 @@ public class CasoDeUsoResource
         return new CasoDeUsoDTO(casoDeUsoEntity);
     }
 
-    
+    /*
+    * retorna una lista con todos los casos de uso como DetailDTO
+    */
     @GET
     public List<CasoDeUsoDetailDTO> getCasosdeUso() {
         LOGGER.info("CasoDeUsoResource getcasosDeUso: input: void");
@@ -71,7 +74,9 @@ public class CasoDeUsoResource
     }
     
     
-    
+    /*
+    retorna un solo caso de uso dado por id como detailDTO
+    */
     @GET
     @Path("{casosId:\\d+}")
     public CasoDeUsoDetailDTO getCasoDeUso (@PathParam("casosId") Long casosId){
@@ -85,7 +90,9 @@ public class CasoDeUsoResource
         return detail;
     }
     
-    
+    /*
+    actualiza caso de uso y lo retorna como detailDTO
+    */
     @PUT
     @Path("{casosId: \\d+}")
     public CasoDeUsoDetailDTO updateCasoDeUso (@PathParam("casosId") Long casosId, Long idActual)throws BusinessLogicException{
@@ -101,6 +108,9 @@ public class CasoDeUsoResource
         return nuevo;
     }
     
+    /*
+    borra un caso de uso dado por id
+    */
     @Path("{casosId: \\d+}")
     @DELETE
     public void deleteCaso(@PathParam ("casosId") Long casosId) throws BusinessLogicException{
@@ -115,7 +125,10 @@ public class CasoDeUsoResource
         LOGGER.info("CasoDeUsoResource deleteCasoDeUso: output: void");
     }
    
-    
+   
+    /*
+    metodo que convierte una lista de entidades a una lista de DetailDTO
+    */
     private List<CasoDeUsoDetailDTO> listEntity2DetailDTO(List<CasoDeUsoEntity> entityList) {
         List<CasoDeUsoDetailDTO> list = new ArrayList<>();
         for (CasoDeUsoEntity entity : entityList) {
