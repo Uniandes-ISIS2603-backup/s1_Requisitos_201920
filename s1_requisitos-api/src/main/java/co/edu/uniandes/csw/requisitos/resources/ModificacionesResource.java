@@ -103,14 +103,14 @@ public class ModificacionesResource {
     
     @Path("{modificacionesId: \\d+}")
     @DELETE
-    public void deleteModificacion(@PathParam ("modificacionId") Long modId) throws BusinessLogicException{
-        LOGGER.log(Level.INFO, "ModificacionResource deleteModificacion: input: {0}", modId);
+    public void deleteModificacion(@PathParam ("modificacionesId") Long modId) throws BusinessLogicException{
+        LOGGER.log(Level.INFO, "ModificacionesResource deleteModificacion: input: {0}", modId);
         ModificacionesEntity nuevo = logica.getModificacion(modId);
         if (nuevo == null) {
             throw new WebApplicationException("El recurso /modificaciones/" + modId + " no existe.", 404);
         }
         
-        LOGGER.info("ModificacionResource deleteModificacion: output: void");
+        LOGGER.info("ModificacionesResource deleteModificacion: output: void");
         logica.deleteModificaciones(modId);
         
     }
