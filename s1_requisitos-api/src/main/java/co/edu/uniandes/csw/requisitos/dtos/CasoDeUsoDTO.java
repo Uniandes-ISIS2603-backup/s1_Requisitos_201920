@@ -14,15 +14,23 @@ import java.io.Serializable;
  * @author Maria Alejandra Escalante
  */
 public class CasoDeUsoDTO implements Serializable {
+    /*
+    se crean las variables del tipo caso de uso
+    */
     private Long id;
     
     private String servicios;
     private String documentacion;
     private Boolean pruebas;
-
+/*
+    consructor vacio
+    */
     public CasoDeUsoDTO (){
         
     }
+    /*
+    constructor que convierte de entidades a DTOS
+    */
       public CasoDeUsoDTO ( CasoDeUsoEntity entidad){
           setId(entidad.getId());
           setDocumentacion(entidad.getDocumentacion());
@@ -30,7 +38,9 @@ public class CasoDeUsoDTO implements Serializable {
           setServicios(entidad.getServicios());
     }
     
-    
+    /*
+      metodo que convierte DTO a entidades
+      */
     public CasoDeUsoEntity toEntity(){
         CasoDeUsoEntity entidad= new CasoDeUsoEntity();
         entidad.setId(this.id);

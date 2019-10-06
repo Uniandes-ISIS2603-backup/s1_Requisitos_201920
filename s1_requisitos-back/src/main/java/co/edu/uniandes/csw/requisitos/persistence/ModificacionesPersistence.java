@@ -23,14 +23,26 @@ import javax.persistence.TemporalType;
 @Stateless
 public class ModificacionesPersistence {
 
+    //conexion con la base de datos
     @PersistenceContext(unitName = "requisitosPU")
+    //entity manager
     protected EntityManager em;
 
+    /*
+    *metodo que crea en la base de datos un modificacion
+    *@param ModificacionEntity a ser creada en la base
+    *@return retorna una variable de tipo ModificacionesEntity creada  
+     */
     public ModificacionesEntity create(ModificacionesEntity modificacion) {
         em.persist(modificacion);
         return modificacion;
     }
 
+    /*
+    *metodo que busca en la base de datos por id
+    *@param id buscado
+    *@return retorna una variable de tipo ModificacionesEntity encontrada
+     */
     public ModificacionesEntity find(Long requisitoId) {
         return em.find(ModificacionesEntity.class, requisitoId);
     }
@@ -38,13 +50,18 @@ public class ModificacionesPersistence {
     /**
      * Retorna una lista con todos los elementos
      *
-     * @return
+     * @return lista con todas las modificaciones
      */
     public List<ModificacionesEntity> findAll() {
         TypedQuery query = em.createQuery("select u from ModificacionesEntity u", ModificacionesEntity.class);
         return query.getResultList();
     }
 
+    /*
+    * Busca una Modificacion por fecha y retorna una lista con las encontrada
+    *@param fecha de la busqueda
+    * @return una lista de modificaciones que fueron creadas en la fecha dada por parametro
+     */
     public List<ModificacionesEntity> findByDate(Date fecha) {
         List<ModificacionesEntity> buscado = new ArrayList<>();
         List<ModificacionesEntity> lista = findAll();
@@ -58,19 +75,19 @@ public class ModificacionesPersistence {
     }
 
     /**
-     * Actualiza la informacion de un requisito
+     * Actualiza la informacion de una Modificacion
      *
-     * @param requisito
-     * @return
+     * @param ModificacionEntity
+     * @return Modificacion entity actualizada
      */
     public ModificacionesEntity update(ModificacionesEntity requisito) {
         return em.merge(requisito);
     }
 
     /**
-     * Elimina un requisito
+     * Elimina una Modificacion
      *
-     * @param reqId
+     * @param id de la modificacion a ser borrada
      */
     public void delete(Long reqId) {
         ModificacionesEntity requisito = em.find(ModificacionesEntity.class, reqId);

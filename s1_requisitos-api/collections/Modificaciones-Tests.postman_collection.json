@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "7f7e338a-23aa-46b4-9782-062fe93aa2a0",
+		"name": "ModificacionResourceTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createModificacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "053e2ef6-6632-4bda-aa7a-8613b9aca193",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_m\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"descripcion\": \"aqui describo la modificacion\",\n\"fechaModificacion\": \"2014-01-01T23:28:56.782Z\"\n\t\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						""
+					]
+				},
+				"description": "crea una modificacion"
+			},
+			"response": []
+		},
+		{
+			"name": "getModificaciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						""
+					]
+				},
+				"description": "retorna la lista de todas las modificaciones en la base de datos"
+			},
+			"response": []
+		},
+		{
+			"name": "getModificacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "abffdf09-b843-4b05-b08e-f40209997886",
+						"exec": [
+							"tests[\"no genera error en el get\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/{{new_id_m}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						"{{new_id_m}}"
+					]
+				},
+				"description": "retorna una modificacion creada previamente"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteModificacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d6f4987-883c-402e-983a-229ba9908f3e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/{{new_id_m}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						"{{new_id_m}}"
+					]
+				},
+				"description": "borra la modificacion creada previamente"
+			},
+			"response": []
+		},
+		{
+			"name": "crearModificacionFechaNull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "866b0bdd-e02a-4564-8bd5-87b529dbddd6",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"descripcion\":\"hola\"\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						""
+					]
+				},
+				"description": "intenta crear un modificacion con la fecha vacia"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearModificacionDescripcionNull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ee62e78-2005-4506-84ea-bcaca8f972cd",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fechaModificacion\": \"2014-01-01T23:28:56.782Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						""
+					]
+				},
+				"description": "intenta crear una modificacion con la descripcion vacia"
+			},
+			"response": []
+		},
+		{
+			"name": "getModificacionNula",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e575d67c-829e-4b7e-a34f-934090756a11",
+						"exec": [
+							"tests[\"no se encuentra\"] = responseCode.code ===404;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/-1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						"-1"
+					]
+				},
+				"description": "intenta buscar una modificacion que no existe"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

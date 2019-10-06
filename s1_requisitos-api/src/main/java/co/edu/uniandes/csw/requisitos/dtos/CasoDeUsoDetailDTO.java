@@ -14,10 +14,12 @@ import java.util.List;
 
 /**
  *
- * @author Estudiante
+ * @author Maria Alejandra Escalante
  */
 public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
-
+/*
+    listas con las relaciones 1 a muchos que tiene caso de uso
+    */
     private List<ModificacionesDTO> modificaciones;
     private List<FuncionalDTO> requisitosFuncionales;
     private List<DescripcionDTO> entidades;
@@ -27,11 +29,16 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
     private List<DescripcionDTO> caminoAlterno;
     private List<DesarrolladorDTO> responsables;
 
-    
+    /*
+    constructor vacio
+    */
       public CasoDeUsoDetailDTO() {
         super();
     }
     
+      /*
+      constructor que convierte de entidad a DTO
+      */
     public CasoDeUsoDetailDTO(CasoDeUsoEntity entidad) {
         super(entidad);
         /*

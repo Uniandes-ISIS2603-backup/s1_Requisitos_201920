@@ -20,15 +20,26 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class CasoDeUsoPersistence {
+//conexion a la base de datos
 
     @PersistenceContext(unitName = "requisitosPU")
     protected EntityManager em;
 
+    /*
+    *Crea un caso de uso en la base de datos
+    *@param CasoDeUso entity a ser persistido
+    *@return casoDeUsoEntity que fue persistido
+     */
     public CasoDeUsoEntity create(CasoDeUsoEntity casoDeUso) {
         em.persist(casoDeUso);
         return casoDeUso;
     }
 
+    /*
+    * busca un caso de uso con un id
+    *@param id a ser buscado
+    *@return CasoDeUsoEntity encontrado
+    */
     public CasoDeUsoEntity find(Long requisitoId) {
         return em.find(CasoDeUsoEntity.class, requisitoId);
     }
@@ -36,7 +47,7 @@ public class CasoDeUsoPersistence {
     /**
      * Retorna una lista con todos los elementos
      *
-     * @return
+     * @return Lista con todos los casos de uso
      */
     public List<CasoDeUsoEntity> findAll() {
         TypedQuery query = em.createQuery("select u from CasoDeUsoEntity u", CasoDeUsoEntity.class);
@@ -44,19 +55,19 @@ public class CasoDeUsoPersistence {
     }
 
     /**
-     * Actualiza la informacion de un requisito
+     * Actualiza la informacion de un casoDeUso
      *
-     * @param requisito
-     * @return
+     * @param CasoDeUsoEntity a ser modificado
+     * @return CasoDeUsoEntity modificado
      */
     public CasoDeUsoEntity update(CasoDeUsoEntity requisito) {
         return em.merge(requisito);
     }
 
     /**
-     * Elimina un requisito
+     * Elimina un CasoDeUso
      *
-     * @param reqId
+     * @param id del caso de uso a ser eliminado
      */
     public void delete(Long reqId) {
         CasoDeUsoEntity requisito = em.find(CasoDeUsoEntity.class, reqId);

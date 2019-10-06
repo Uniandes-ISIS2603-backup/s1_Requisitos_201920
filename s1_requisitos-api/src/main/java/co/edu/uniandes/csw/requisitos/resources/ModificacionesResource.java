@@ -32,6 +32,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author Maria Alejandra Escalante
  */
+//declaraciones necesarios para la conversion a json y para las pruebas de postman
 @Path("modificaciones")
 @Produces("application/json")
 @Consumes("application/json")
@@ -43,10 +44,10 @@ public class ModificacionesResource {
         @Inject
         private ModificacionesLogic logica;
         /**
-     * Crea una nuevorequisito con la informacion que se recibe en el cuerpo de
+     * Crea una modificacion con la informacion que se recibe en el cuerpo de
      * la petición y se regresa un objeto identico con un id auto-generado por
      * la base de datos.
-     * @param requisito
+     * @param modificacionDTO
      * @return JSON {@link EditorialDTO} - La requisito guardado con el atributo
      * id autogenerado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
@@ -63,7 +64,9 @@ public class ModificacionesResource {
         return nuevo2;
     }
     
-    
+    /*
+    retorna una lista de modificaciones como ModificacionesDTO
+    */
     @GET
     public List<ModificacionesDTO> getModificaciones(){
         LOGGER.log(Level.INFO, "ModificacionesResource getModificaciones: input:void");
@@ -71,7 +74,9 @@ public class ModificacionesResource {
         return lista;
     }
     
-    
+    /*
+    retorna una modificacionDTO dado un id
+    */
     @GET 
     @Path("{modificacionesId:\\d+}")
     public ModificacionesDTO getModificacion(@PathParam("modificacionesId") Long id){
@@ -86,6 +91,9 @@ public class ModificacionesResource {
         
     }
     
+    /*
+    actualiza la modificacion DTO
+    */
     @PUT
     @Path("{casosId: \\d+}")
     public ModificacionesDTO updateModificaciones(@PathParam("modificacionesId") Long modId, ModificacionesDTO mod)throws BusinessLogicException{
@@ -100,17 +108,19 @@ public class ModificacionesResource {
         
     }
     
-    
+    /*
+    borra una modificacionDTO dado un id
+    */
     @Path("{modificacionesId: \\d+}")
     @DELETE
-    public void deleteModificacion(@PathParam ("modificacionId") Long modId) throws BusinessLogicException{
-        LOGGER.log(Level.INFO, "ModificacionResource deleteModificacion: input: {0}", modId);
+    public void deleteModificacion(@PathParam ("modificacionesId") Long modId) throws BusinessLogicException{
+        LOGGER.log(Level.INFO, "ModificacionesResource deleteModificacion: input: {0}", modId);
         ModificacionesEntity nuevo = logica.getModificacion(modId);
         if (nuevo == null) {
             throw new WebApplicationException("El recurso /modificaciones/" + modId + " no existe.", 404);
         }
         
-        LOGGER.info("ModificacionResource deleteModificacion: output: void");
+        LOGGER.info("ModificacionesResource deleteModificacion: output: void");
         logica.deleteModificaciones(modId);
         
     }

@@ -34,7 +34,13 @@ import org.junit.Before;
  */
 @RunWith(Arquillian.class)
 public class ModificacionesLogicTest {
+    /*
+    se incia podam factory para poder generar valores aleatorios para las pruebas
+    */
     private PodamFactory factory= new PodamFactoryImpl();
+    /*
+    entity manager
+    */
     @PersistenceContext
     private EntityManager em;
     @Inject
@@ -42,9 +48,15 @@ public class ModificacionesLogicTest {
     
     @Inject
     UserTransaction utx;
-    
+    /*
+    lista para guardar los datos de tipo moficacion para las pruebas
+    */
     private List<ModificacionesEntity> data = new ArrayList<>();
     
+    /*
+    inicializacion del entorno de pruebas
+    conexion a la base de datos y a las clases de persistencia y logica
+    */
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
@@ -55,7 +67,10 @@ public class ModificacionesLogicTest {
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
     
-    
+    /*
+    operaciones que se realizan antes de cada prueba
+    se borran los datps de la lista y se vuelven a inicializar
+    */
      @Before
     public void configTest() {
         try {
@@ -74,10 +89,15 @@ public class ModificacionesLogicTest {
         }
     }
 
+    /*
+    borra los datos de la lista
+    */
     private void clearData() {
         em.createQuery("delete from ModificacionesEntity").executeUpdate();
     }
-
+/*
+    pobla la lista de datps generador por el podam factory
+    */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
@@ -87,7 +107,9 @@ public class ModificacionesLogicTest {
         }
     }
 
-    
+    /*
+    test de  crera modificaciones
+    */
     @Test
     public void createModificaciones()throws BusinessLogicException{
         ModificacionesEntity mod=factory.manufacturePojo(ModificacionesEntity.class);
@@ -98,14 +120,18 @@ public class ModificacionesLogicTest {
         Assert.assertEquals(entity.getFechaModificacion(), result.getFechaModificacion());
         
     }
-    
+    /*
+    test de crear modificacion con la descripcion nula
+    */
     @Test(expected=BusinessLogicException.class)
     public void crearModificacionesDescripcionNull()throws BusinessLogicException{
         ModificacionesEntity mod= factory.manufacturePojo(ModificacionesEntity.class);
         mod.setDescripcion(null);
         ModificacionesEntity result= modificacionesLogic.createModificaciones(mod);
     }
-    
+    /*
+    test de crear Modificaciones con Fechas en null
+    */
     @Test(expected=BusinessLogicException.class)
     public void crearModificacionesFechaNull()throws BusinessLogicException{
         ModificacionesEntity mod= factory.manufacturePojo(ModificacionesEntity.class);
@@ -113,6 +139,9 @@ public class ModificacionesLogicTest {
         ModificacionesEntity result= modificacionesLogic.createModificaciones(mod);
     }
     
+    /*
+    test de retornar todas las modificaciones
+    */
     @Test
     public void findAllTest() {
         List<ModificacionesEntity> lista = modificacionesLogic.getModificaciones();
@@ -128,7 +157,9 @@ public class ModificacionesLogicTest {
             Assert.assertTrue(encontrado);
         }
     }
-    
+    /*
+    test de encontrar una modificacion dado un id
+    */
     @Test
     public void findCaso(){
         ModificacionesEntity entidad= data.get(0);
@@ -138,7 +169,9 @@ public class ModificacionesLogicTest {
         Assert.assertEquals(encontrado.getFechaModificacion(), entidad.getFechaModificacion());
         
     }
-    
+    /*
+    test de actualizar una modificacion
+    */
     @Test
     public void updateTest() throws BusinessLogicException{
         ModificacionesEntity entidad = data.get(0);
@@ -154,7 +187,9 @@ public class ModificacionesLogicTest {
         Assert.assertEquals(resp.getFechaModificacion(), nuevaEnt.getFechaModificacion());
 
     }
-    
+    /*
+    test de actualizar una modificacion con descripcion nula
+    */
     @Test (expected=BusinessLogicException.class)
     public void updateModificacionesConDescripcionNull() throws BusinessLogicException{
         ModificacionesEntity mod=data.get(0);
@@ -162,13 +197,18 @@ public class ModificacionesLogicTest {
         modificacionesLogic.updateModificaciones(mod);
     }
     
+    /*
+    test de actualizar modificacion con fechas nulas
+    */
     @Test (expected=BusinessLogicException.class)
     public void updateModificacionesConFechaNull() throws BusinessLogicException{
         ModificacionesEntity mod=data.get(0);
         mod.setFechaModificacion(null);
         modificacionesLogic.updateModificaciones(mod);
     }
-    
+    /*
+    test de borrar modificacion
+    */
     @Test
     public void deleteCasoDeUsoTest(){
         ModificacionesEntity mod= data.get(0);
