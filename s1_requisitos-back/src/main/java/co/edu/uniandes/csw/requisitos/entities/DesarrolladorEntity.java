@@ -19,7 +19,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author Nicolás Tobo
  */
 @Entity
-public class DesarrolladorEntity extends BaseEntity implements Serializable {
+public class DesarrolladorEntity extends PersonaEntity implements Serializable {
 
     /**
      * String que representa el tipo del desarrollador
@@ -46,5 +46,15 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public List<RequisitosEntity> getRequisitos() {
+        return requisitos;
+    }
+
+    public void setRequisitos(List<RequisitosEntity> requisitos) {
+        this.requisitos = requisitos;
+    }
+    
+    
 }
 
