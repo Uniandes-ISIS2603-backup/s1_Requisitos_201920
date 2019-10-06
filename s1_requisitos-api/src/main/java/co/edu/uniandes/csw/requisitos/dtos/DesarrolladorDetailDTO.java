@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author Na.tobo
+ * Representacion relaciones de desarrollador
+ * @author Nicolás Tobo
  */
 public class DesarrolladorDetailDTO extends DesarrolladorDTO
 {

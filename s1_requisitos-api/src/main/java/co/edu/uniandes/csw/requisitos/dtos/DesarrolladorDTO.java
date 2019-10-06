@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class DesarrolladorDTO extends PersonaDTO
 {
-      /**
+     /**
      * String que representa el tipo del desarrollador
      */
     private String tipo;
@@ -35,6 +35,7 @@ public class DesarrolladorDTO extends PersonaDTO
          super.setId(entidad.getId());
          super.setCorreo(entidad.getCorreo());
          super.setCedula(entidad.getCedula());  
+         this.setTipo(entidad.getTipo());
     }
     
     /**
@@ -47,6 +48,7 @@ public class DesarrolladorDTO extends PersonaDTO
          entidad.setId(this.getId());
          entidad.setCorreo(this.getCorreo());
          entidad.setCedula(this.getCedula());
+         entidad.setTipo(this.tipo);
        
          return entidad;
    }

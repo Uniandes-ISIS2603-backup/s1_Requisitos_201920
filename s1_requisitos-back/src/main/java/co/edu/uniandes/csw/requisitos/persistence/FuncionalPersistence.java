@@ -44,11 +44,6 @@ public class FuncionalPersistence
         return buscado;
     }
     
-    /**
-     * Encuentra en la base de datos el elemento con el nombre dado por parametro
-     * @param Name
-     * @return null si no lo encuentra, de lo contrario el elemento
-     */
     public FuncionalEntity findByName(String Name)
     {
         FuncionalEntity buscado=null;

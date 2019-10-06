@@ -6,9 +6,7 @@
 package co.edu.uniandes.csw.requisitos.resources;
 
 import co.edu.uniandes.csw.requisitos.dtos.FuncionalDTO;
-import co.edu.uniandes.csw.requisitos.dtos.RequisitosDTO;
 import co.edu.uniandes.csw.requisitos.ejb.FuncionalLogic;
-import co.edu.uniandes.csw.requisitos.ejb.RequisitoLogic;
 import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
@@ -21,8 +19,6 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
-import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;

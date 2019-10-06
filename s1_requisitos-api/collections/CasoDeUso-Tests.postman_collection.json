@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "53492e8f-b914-4757-8713-8cbefd29efa0",
+		"name": "CasoDeUsoResourceTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getCasosDeUso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca96f711-dc0e-49b7-9d2d-259897cb8823",
+						"exec": [
+							"tests[\"no genera error en el get\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "get listra de casos de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "crearCasoDeUso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34d042c5-6e3f-4e5c-b2ad-c4bc115ab7bb",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_c\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"servicios\": \"serviciosPrueba\",\n\t\"pruebas\": false,\n\t\"documentacion\":\"doc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "crea un caso de uso con parametros dados"
+			},
+			"response": []
+		},
+		{
+			"name": "getCasoDeUso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca96f711-dc0e-49b7-9d2d-259897cb8823",
+						"exec": [
+							"tests[\"no genera error en el get\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c}}"
+					]
+				},
+				"description": "get caso de uso con id dado"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCasoDeUso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d289fa53-9d97-4e66-8b62-d6e3eecbb36e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c}}"
+					]
+				},
+				"description": "borra un caso de uso de la base de datos"
+			},
+			"response": []
+		},
+		{
+			"name": "createCasoDeUsoServiciosNull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bcc9abb5-7871-4093-941c-2e81d4dd3418",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"pruebas\": false,\n\t\"documentacion\":\"doc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						""
+					]
+				},
+				"description": "intenta crear un caso de uso con los servicios en null"
+			},
+			"response": []
+		},
+		{
+			"name": "crearCasoDeUso2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19daed54-34b7-4874-84a8-f560084f5f99",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"documentacion\": \"documentacion\",\n\t\"pruebas\":false,\n\t\"servicios\": \"servicios2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "crear otro caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "crearCasoDeUsoConPruebasNull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "92f7c9f6-d4f0-4a6a-b9ae-ae7a96512c4c",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"servicios\": \"serviciosPrueba\",\n\t\"documentacion\":\"doc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "intenta crear un caso de uso con las pruebas en null "
+			},
+			"response": []
+		},
+		{
+			"name": "createCasoDeUsoDocumentacionNull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2c076b61-e41f-4f7e-9ccf-c15778c84b34",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"pruebas\":false,\n\t\"servicios\": \"serviciosPrueba\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "intenta crear un caso de uso con documentacion nula"
+			},
+			"response": []
+		},
+		{
+			"name": "getCasoDeUso nulo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4036402b-740b-44cf-a747-ddf9873b7c6a",
+						"exec": [
+							"tests[\"no se encuentra\"] = responseCode.code ===404;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/-1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"-1"
+					]
+				},
+				"description": "intenta ver un caso de uso que no existe"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

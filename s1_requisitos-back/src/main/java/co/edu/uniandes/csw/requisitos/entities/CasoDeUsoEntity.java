@@ -22,10 +22,11 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CasoDeUsoEntity extends BaseEntity implements Serializable {
-  
+  //variable encargada de almacenar los servicios del caso de uso
     private String servicios;
-
+//variable encargada de almacenar la documentacion del caso de uso
     private String documentacion;
+   //variable encargada de almacenar los resultados de las pruebas del caso de uso
     private Boolean pruebas;
     
     /*

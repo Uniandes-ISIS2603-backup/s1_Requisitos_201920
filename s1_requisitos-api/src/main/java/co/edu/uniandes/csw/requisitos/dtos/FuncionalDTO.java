@@ -58,7 +58,6 @@ public class FuncionalDTO extends RequisitosDTO implements Serializable
          entidad.setComentariosAdicionales(this.getComentariosAdicionales());
          entidad.setImportancia(this.getImportancia());
          entidad.setCasoFuncional(casoDeUso.toEntity());
-       
          return entidad;
    }
 

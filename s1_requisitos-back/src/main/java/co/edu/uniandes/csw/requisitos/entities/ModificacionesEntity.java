@@ -26,22 +26,24 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  */
 @Entity
 public class ModificacionesEntity extends BaseEntity implements Serializable{
+    //declaraciones necesarias para Date
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
+    //variable de la fecha en la que se creo la modificacion
     private Date fechaModificacion;
-    
+    //variable que describe la modificacion que fue realizada
     private String descripcion;
 
- 
+    //relacion con la entidad persona
     @ManyToOne
     @PodamExclude
     private PersonaEntity persona;
    
-    
+    //relacion con casos de uso
     //@ManyToOne
     //private CasoDeUsoEntity casoModificaciones;
     
-    
+    //relacion con requisitos
     @ManyToOne
     @PodamExclude
     private RequisitosEntity modificacionesRequisito;

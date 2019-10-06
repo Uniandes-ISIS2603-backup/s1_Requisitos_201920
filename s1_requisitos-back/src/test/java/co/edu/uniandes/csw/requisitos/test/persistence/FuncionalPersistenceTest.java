@@ -181,7 +181,18 @@ public class FuncionalPersistenceTest {
         Assert.assertNotNull(nuevaEnt);
         
         Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
-      
     }
+    
+     @Test
+    public void findByNombreTest() 
+    {
+        FuncionalEntity entidad = data.get(0);
+        FuncionalEntity nuevaEnt= fp.findByName(entidad.getNombre());
+        Assert.assertNotNull(nuevaEnt);
+        
+        Assert.assertEquals(nuevaEnt.getNombre(), entidad.getNombre());
+    }
+    
+    
 }
 

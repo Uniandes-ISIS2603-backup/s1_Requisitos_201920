@@ -6,12 +6,12 @@
 package co.edu.uniandes.csw.requisitos.test.logic;
 
 import co.edu.uniandes.csw.requisitos.ejb.CasoDeUsoLogic;
-import co.edu.uniandes.csw.requisitos.ejb.ModificacionesLogic;
+
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
-import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
+
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.CasoDeUsoPersistence;
-import com.sun.jdo.api.persistence.enhancer.util.Assertion;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -36,15 +36,25 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class CasoDeUsoLogicTest {
 
+    //podamn factory para generar valores random
     private PodamFactory factory = new PodamFactoryImpl();
+    //entity manager
     @PersistenceContext
     private EntityManager em;
+    //logica
     @Inject
     private CasoDeUsoLogic casoLogic;
+    //User transaction
     @Inject
     UserTransaction utx;
+
+    //lista de datos que seran usados para las pruebas
     private List<CasoDeUsoEntity> data = new ArrayList<>();
 
+    /*
+
+    *inicio de las pruebas (conexion a la persistencia ya las calses de logica y persistencia
+     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -55,6 +65,9 @@ public class CasoDeUsoLogicTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
+    /*
+    *borra la lista y la llena de nuevo antes de cada prueba
+     */
     @Before
     public void configTest() {
         try {
@@ -73,10 +86,16 @@ public class CasoDeUsoLogicTest {
         }
     }
 
+    /*
+    * borra los datos de la lista 
+     */
     private void clearData() {
         em.createQuery("delete from CasoDeUsoEntity").executeUpdate();
     }
 
+    /*
+    ¨*inserta datos generados por el podam fatcory a la lista
+     */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
@@ -86,6 +105,9 @@ public class CasoDeUsoLogicTest {
         }
     }
 
+    /*
+    *test de crear caso de uso 
+     */
     @Test
     public void createCasoDeUso() throws BusinessLogicException {
         CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
@@ -99,7 +121,9 @@ public class CasoDeUsoLogicTest {
 
     }
 
-    
+    /*
+    teste de crear un caso con las pruebas en null
+     */
     @Test(expected = BusinessLogicException.class)
     public void crearCasoPruebasNull() throws BusinessLogicException {
         CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
@@ -107,6 +131,9 @@ public class CasoDeUsoLogicTest {
         CasoDeUsoEntity result = casoLogic.crearCasoDeUso(caso);
     }
 
+    /*
+    test de crear un caso con los servicios en null
+     */
     @Test(expected = BusinessLogicException.class)
     public void crearCasoServiciosNull() throws BusinessLogicException {
         CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
@@ -114,6 +141,9 @@ public class CasoDeUsoLogicTest {
         CasoDeUsoEntity result = casoLogic.crearCasoDeUso(caso);
     }
 
+    /*
+    test de crear un caso con la documentacion en null
+     */
     @Test(expected = BusinessLogicException.class)
     public void crearCasoDocumentacionNull() throws BusinessLogicException {
         CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
@@ -121,15 +151,22 @@ public class CasoDeUsoLogicTest {
         CasoDeUsoEntity result = casoLogic.crearCasoDeUso(caso);
     }
 
+    /*
+    test de buscar con caso dado un id
+     */
     @Test
-    public void getCasoDeUsoTest(){
-        CasoDeUsoEntity caso= data.get(0);
-        CasoDeUsoEntity encontrado= casoLogic.getCaso(caso.getId());
+    public void getCasoDeUsoTest() {
+        CasoDeUsoEntity caso = data.get(0);
+        CasoDeUsoEntity encontrado = casoLogic.getCaso(caso.getId());
         Assert.assertNotNull(encontrado);
         Assert.assertEquals(encontrado.getDocumentacion(), caso.getDocumentacion());
         Assert.assertEquals(encontrado.getPruebas(), caso.getPruebas());
         Assert.assertEquals(encontrado.getServicios(), caso.getServicios());
     }
+
+    /*
+    test de dar todos los casos de uso
+     */
     @Test
     public void getCasosDeUsoTest() {
         List<CasoDeUsoEntity> lista = casoLogic.getCasos();
@@ -146,6 +183,9 @@ public class CasoDeUsoLogicTest {
         }
     }
 
+    /*
+    test de actualizar un caso de uso
+     */
     public void updateCasoDeUsoTest() throws BusinessLogicException {
         CasoDeUsoEntity caso = data.get(0);
         CasoDeUsoEntity nueva = factory.manufacturePojo(CasoDeUsoEntity.class);
@@ -159,33 +199,45 @@ public class CasoDeUsoLogicTest {
         Assert.assertEquals(encontrado.getServicios(), nueva.getServicios());
     }
 
+    /*
+    test de actualizar un caso de uso pero con los servicios en null
+     */
     @Test(expected = BusinessLogicException.class)
     public void updateCasoDeUsoConServiciosNull() throws BusinessLogicException {
-        CasoDeUsoEntity caso= data.get(0);
+        CasoDeUsoEntity caso = data.get(0);
         caso.setServicios(null);
         casoLogic.updateCasoDeUso(caso);
     }
-    
+
+    /*
+    test de actualizar un caso de uso con documentacion en null
+     */
     @Test(expected = BusinessLogicException.class)
     public void updateCasoDeUsoDocumentacionNull() throws BusinessLogicException {
-        CasoDeUsoEntity caso= data.get(0);
+        CasoDeUsoEntity caso = data.get(0);
         caso.setDocumentacion(null);
         casoLogic.updateCasoDeUso(caso);
     }
-    
+
+    /*
+    test de actualizar caso de uso con pruebas en null
+     */
     @Test(expected = BusinessLogicException.class)
     public void updateCasoDeUsoPruebasNull() throws BusinessLogicException {
-        CasoDeUsoEntity caso= data.get(0);
+        CasoDeUsoEntity caso = data.get(0);
         caso.setPruebas(null);
         casoLogic.updateCasoDeUso(caso);
     }
-    
+
+    /*
+    test de borrar caso de uso
+     */
     @Test
-    public void deleteCasoDeUso()  {
-        CasoDeUsoEntity caso= data.get(0);
+    public void deleteCasoDeUso() {
+        CasoDeUsoEntity caso = data.get(0);
         casoLogic.deleteCaso(caso.getId());
-        
-        CasoDeUsoEntity buscado= em.find(CasoDeUsoEntity.class, caso.getId());
+
+        CasoDeUsoEntity buscado = em.find(CasoDeUsoEntity.class, caso.getId());
         Assert.assertNull(buscado);
     }
 

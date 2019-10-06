@@ -63,6 +63,9 @@ public class CasoDeUsoPersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
+    /*
+    antes de cada prueba reinicia la lista de los casos de prueba
+     */
     @Before
     public void configTest() {
         try {
@@ -81,10 +84,16 @@ public class CasoDeUsoPersistenceTest {
         }
     }
 
+    /*
+    borra los datos de la lista
+     */
     private void clearData() {
         em.createQuery("delete from CasoDeUsoEntity").executeUpdate();
     }
 
+    /*
+    inserta datos en la lista dados por el podam
+     */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
@@ -94,6 +103,9 @@ public class CasoDeUsoPersistenceTest {
         }
     }
 
+    /*
+    test de crear casos de uso
+     */
     @Test
     public void testCreate() {
         PodamFactory factory = new PodamFactoryImpl();
@@ -110,6 +122,9 @@ public class CasoDeUsoPersistenceTest {
 
     }
 
+    /*
+    test de retornar un caso de uso dado un id
+     */
     @Test
     public void findTest() {
         CasoDeUsoEntity entity = data.get(0);
@@ -122,6 +137,9 @@ public class CasoDeUsoPersistenceTest {
 
     }
 
+    /*
+    test de retornar todos los casos de uso
+     */
     @Test
     public void findAllTest() {
         List<CasoDeUsoEntity> lista = a.findAll();
@@ -138,6 +156,9 @@ public class CasoDeUsoPersistenceTest {
         }
     }
 
+    /*
+    test de actualizar el caso de uso
+     */
     @Test
     public void updateTest() {
         CasoDeUsoEntity entity = data.get(0);
@@ -156,6 +177,9 @@ public class CasoDeUsoPersistenceTest {
 
     }
 
+    /*
+    test de borrar el caso de uso
+     */
     @Test
     public void deleteTest() {
         CasoDeUsoEntity entidad = data.get(0);

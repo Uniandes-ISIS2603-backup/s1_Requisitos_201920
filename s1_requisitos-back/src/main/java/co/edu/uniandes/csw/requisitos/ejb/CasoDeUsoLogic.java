@@ -19,9 +19,15 @@ import javax.inject.Inject;
 @Stateless
 public class CasoDeUsoLogic {
 
+    //declaracion de la persistencia
     @Inject
     private CasoDeUsoPersistence persistence;
 
+    /*
+    * crea un casoDeUsoEntity teniendo en cuenta las reglas del negocio
+    *@param CasoDeUsoEntity a ser creado
+    *@return CasoDeUsoEntity creado
+     */
     public CasoDeUsoEntity crearCasoDeUso(CasoDeUsoEntity caso) throws BusinessLogicException {
         if (caso.getPruebas() == null) {
             throw new BusinessLogicException("Las pruebas no deben ser nulas");
@@ -54,16 +60,30 @@ public class CasoDeUsoLogic {
         return caso;
     }
 
+    /*
+    * retorna una lista de todos los casos
+    *@return lista con todos los casos
+     */
     public List<CasoDeUsoEntity> getCasos() {
         List<CasoDeUsoEntity> casos = persistence.findAll();
         return casos;
     }
 
+    /*
+    * retorna un caso de uso buscado por id
+    *@param id del caso de uso a ser buscado
+    *@return caso de uso encontrado
+     */
     public CasoDeUsoEntity getCaso(Long id) {
         CasoDeUsoEntity encontrado = persistence.find(id);
         return encontrado;
     }
 
+    /*
+    *actualiza un caso de uso existente
+    *@param caso de uso a ser modificado
+    *@return caso de uso modificado cumpliendo con las reglas de negocio
+     */
     public CasoDeUsoEntity updateCasoDeUso(CasoDeUsoEntity caso) throws BusinessLogicException {
         if (caso.getPruebas() == null) {
             throw new BusinessLogicException("Las pruebas no deben ser nulas");
@@ -93,6 +113,9 @@ public class CasoDeUsoLogic {
         return nueva;
     }
 
+    /*
+    *Elimina un caso de uso
+     */
     public void deleteCaso(Long CasoDeUSoId) {
         persistence.delete(CasoDeUSoId);
     }
