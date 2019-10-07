@@ -97,6 +97,7 @@ public class CasoDeUsoLogic {
             throw new BusinessLogicException("Los Servicios no deben ser nulos");
 
         }
+        /*
         if (caso.getEntidades().size() < 1) {
             throw new BusinessLogicException("debe tener al menos una entidad asociada al caso");
         }
@@ -109,6 +110,8 @@ public class CasoDeUsoLogic {
         if (caso.getPreCondiciones().size() < 1) {
             throw new BusinessLogicException("debe especificar las pre condiciones del caso");
         }
+        
+        */
         CasoDeUsoEntity nueva = persistence.update(caso);
         return nueva;
     }

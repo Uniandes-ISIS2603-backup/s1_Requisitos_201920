@@ -95,10 +95,9 @@ public class CasoDeUsoResource
     */
     @PUT
     @Path("{casosId: \\d+}")
-    public CasoDeUsoDetailDTO updateCasoDeUso (@PathParam("casosId") Long casosId, Long idActual)throws BusinessLogicException{
-        LOGGER.log(Level.INFO, "CasodeUsoResource updateCasoDeUso: input: id: {0} , caso: {1}", new Object[]{casosId, idActual});
-        CasoDeUsoEntity a = cl.getCaso(idActual);
-        CasoDeUsoDetailDTO caso= new CasoDeUsoDetailDTO(a);
+    public CasoDeUsoDetailDTO updateCasoDeUso (@PathParam("casosId") Long casosId, CasoDeUsoDTO caso)throws BusinessLogicException{
+        LOGGER.log(Level.INFO, "CasodeUsoResource updateCasoDeUso: input: id: {0} , caso: {1}", new Object[]{casosId, caso});
+        
         caso.setId(casosId);
         if (cl.getCaso(casosId)==null){
              throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
