@@ -248,8 +248,10 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "19daed54-34b7-4874-84a8-f560084f5f99",
+						"id": "4a0a1e67-330a-45a5-b9b0-fa000e63f711",
 						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_c2\", data.id)",
 							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
 						],
 						"type": "text/javascript"
@@ -424,6 +426,210 @@
 					]
 				},
 				"description": "intenta ver un caso de uso que no existe"
+			},
+			"response": []
+		},
+		{
+			"name": "updateCasoDeUso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ce4f874-21dd-4c72-80b9-a8574aa5b949",
+						"exec": [
+							"tests[\"no genera error en el update\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"documentacion\": \"documentacionCambiada2\",\n\t\"pruebas\":true,\n\t\"servicios\": \"servicios3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "actualiza un caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "updateCasoDeUsoDcumentacionNull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ecb51e4-3342-47e9-97ee-a32e063db34a",
+						"exec": [
+							"tests[\"no genera error en el update\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"pruebas\":true,\n\t\"servicios\": \"servicios3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "intenta actualizar un caso de uso con documentacion nula"
+			},
+			"response": []
+		},
+		{
+			"name": "updateCasoDeUsoPruebasNull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee33608f-35c5-4227-9ace-b36a234e9a69",
+						"exec": [
+							"tests[\"no genera error en el update\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"documentacion\": \"nueva\",\n\t\"servicios\": \"servicios3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "intenta crear un caso de uso con las pruebas nulas"
+			},
+			"response": []
+		},
+		{
+			"name": "updateCasoDeUsoServiciosNull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "918379ed-74e5-4926-ba2e-bfc97b983306",
+						"exec": [
+							"tests[\"no genera error en el update\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"pruebas\": false,\n\t\"documentacion\": \"nueva\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "intenta crear un caso de uso con los servicios nulos"
 			},
 			"response": []
 		}

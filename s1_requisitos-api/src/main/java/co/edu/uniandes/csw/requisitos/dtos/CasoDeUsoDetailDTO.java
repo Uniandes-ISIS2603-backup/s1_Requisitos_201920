@@ -82,16 +82,19 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
             }
 
         }
+        */
     }
       
      
-    }
+    
     @Override
      public CasoDeUsoEntity toEntity(){
-         
+         CasoDeUsoEntity nueva= new CasoDeUsoEntity();
+         return nueva;
      }
-        */
-    }
+        
+    
+   
     /**
      * @return the modificaciones
      */
