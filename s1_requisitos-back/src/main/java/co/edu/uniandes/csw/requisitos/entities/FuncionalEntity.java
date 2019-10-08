@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -22,7 +23,7 @@ public class FuncionalEntity extends RequisitosEntity implements Serializable
      * Casos funcionales
      */
     @PodamExclude
-    @ManyToOne
+    @ManyToOne//(cascade = CascadeType.PERSIST)
     private CasoDeUsoEntity casoFuncional;
 
     /**

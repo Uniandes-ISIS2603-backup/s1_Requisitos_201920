@@ -73,14 +73,13 @@ public class DesarrolladorResource
     {
         LOGGER.info("Desarrollador getDesarrollador: input: void");
         List<DesarrolladorDetailDTO> listaDesarrollador = listEntity2DetailDTO(dl.getDesarrolladores());
-        LOGGER.log(Level.INFO, "IteracionResource getIteraciones: output: {0}", listaDesarrollador);
+        LOGGER.log(Level.INFO, "DesarrolladorResource getDesarrolladores: output: {0}", listaDesarrollador);
         return listaDesarrollador;
     }
     
      /**
      * Busca el desarrollador con el id asociado recibido en la URL y lo devuelve.
-     *
-     * @param Desarrolladord Identificador del desarrollador que se esta buscando. Este debe
+     * @param desarrolladorId Identificador del desarrollador que se esta buscando. Este debe
      * ser una cadena de dígitos.
      * @return JSON {@link DesarrolaldorDetailDTO} - el desarrollador
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
