@@ -158,7 +158,7 @@ public  class RequisitosEntity extends BaseEntity implements Serializable
     public void setDesarrollador(DesarrolladorEntity desarrollador) {
         this.desarrollador = desarrollador;
     }
-/*
+
     public List<ModificacionesEntity> getModificaciones() {
         return modificaciones;
     }
@@ -166,7 +166,7 @@ public  class RequisitosEntity extends BaseEntity implements Serializable
     public void setModificaciones(List<ModificacionesEntity> modificaciones) {
         this.modificaciones = modificaciones;
     }
-*/
+
     public String getNombre() {
         return nombre;
     }

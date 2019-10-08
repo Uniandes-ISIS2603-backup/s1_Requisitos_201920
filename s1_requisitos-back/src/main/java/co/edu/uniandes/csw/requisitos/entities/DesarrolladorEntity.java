@@ -46,15 +46,19 @@ public class DesarrolladorEntity extends PersonaEntity implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+    /**
+     * Retorna los requisitos en los que trabaja el desarrollador
+     * @return lista de requisitos
+     */
     public List<RequisitosEntity> getRequisitos() {
         return requisitos;
     }
-
+    /**
+     * Define los requisitos en los que trabaja el desarrollador
+     * @param requisitos 
+     */
     public void setRequisitos(List<RequisitosEntity> requisitos) {
         this.requisitos = requisitos;
-    }
-    
-    
+    }   
 }
 

@@ -181,4 +181,24 @@ public class DesarrolladorPersistenceTest {
         DesarrolladorEntity eliminada = em.find(DesarrolladorEntity.class, entidad.getId());
         Assert.assertNull(eliminada);
     }
+    
+      @Test
+    public void findByNameTest() 
+    {
+        DesarrolladorEntity entidad = data.get(0);
+        DesarrolladorEntity nuevaEnt= dp.findByName(entidad.getNombre());
+        Assert.assertNotNull(nuevaEnt);
+        Assert.assertEquals(entidad.getNombre(),nuevaEnt.getNombre());
+        Assert.assertEquals(entidad.getTipo(),nuevaEnt.getTipo());
+    }
+    
+     @Test
+    public void findByCedulaTest() 
+    {
+        DesarrolladorEntity entidad = data.get(0);
+        DesarrolladorEntity nuevaEnt= dp.findByCedula(entidad.getCedula());
+        Assert.assertNotNull(nuevaEnt);
+        Assert.assertEquals(entidad.getNombre(),nuevaEnt.getNombre());
+        Assert.assertEquals(entidad.getTipo(),nuevaEnt.getTipo());
+    }
 }

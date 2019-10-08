@@ -5,43 +5,44 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Nicolás Tobo
+ * Clase que representa la relacion entre un requisito funcional y sus modificaciones
+ * @author Nicolas Tobo
  */
-public class RequisitosDetailDTO extends RequisitosDTO 
+public class FuncionalDetailDTO extends FuncionalDTO
 {
     /**
-     * Lista de ModificacionesDTO que puede tener el requisito
+     * Lista de ModificacionesDTO que puede tener el requisito Funcional
      */
     protected List<ModificacionesDTO> modificaciones;
     
     /**
      * Constructor por defecto del detailDto
      */
-    public RequisitosDetailDTO()
+    public FuncionalDetailDTO()
     {
         super();
     }
     /**
-     * Crea un objeto RequisitosDetailDTO a partir de un objeto RequisitosEntity
-     * incluyendo los atributos de RequisitoDTO.
+     * Crea un objeto FuncionalDetailDTO a partir de un objeto FuncionalEntity
+     * incluyendo los atributos de FuncionalDTO.
      *
-     * @param requisitoEntity Entidad RequisitosEntity desde la cual se va a crear el
+     * @param funcionalEntity Entidad FuncionalEntity desde la cual se va a crear el
      * nuevo objeto.
      *
      */
-    public RequisitosDetailDTO(RequisitosEntity requisitoEntity) 
+    public FuncionalDetailDTO(FuncionalEntity funcionalEntity) 
     {
-         super(requisitoEntity);
-         if (requisitoEntity != null&&requisitoEntity.getModificaciones()!=null) 
+         super(funcionalEntity);
+         if (funcionalEntity != null&&funcionalEntity.getModificaciones()!=null) 
          {
             modificaciones = new ArrayList<>();
-            for (ModificacionesEntity entityMod : requisitoEntity.getModificaciones()) 
+            for (ModificacionesEntity entityMod : funcionalEntity.getModificaciones()) 
             {
                 modificaciones.add(new ModificacionesDTO(entityMod));
             }
@@ -49,31 +50,38 @@ public class RequisitosDetailDTO extends RequisitosDTO
     }
     
     /**
-     * Convierte un objeto RequisitosDetailDTO a RequisitosEntity incluyendo los
-     * atributos de RequisitosDTO.
+     * Convierte un objeto FuncionalDetailDTO a FuncionalEntity incluyendo los
+     * atributos de FuncionalDTO.
      *
-     * @return Nueva objeto RequisitosEntity.
+     * @return Nuevo objeto FuncionalEntity.
      *
      */
     @Override
-    public RequisitosEntity toEntity() {
-        RequisitosEntity desarrolladorEntity = super.toEntity();
+    public FuncionalEntity toEntity() {
+        FuncionalEntity funcionalEntity = super.toEntity();
         if (modificaciones != null) {
             List<ModificacionesEntity> modsEntity = new ArrayList<>();
             for (ModificacionesDTO dtoReq : modificaciones) {
                 modsEntity.add(dtoReq.toEntity());
             }
-            desarrolladorEntity.setModificaciones(modsEntity);
+            funcionalEntity.setModificaciones(modsEntity);
         }
-        return desarrolladorEntity;
+        return funcionalEntity;
     }
 
     //Bloque getters and setters
-    
-    public List<ModificacionesDTO> getModificaciones() {
+    /**
+     * Retorna la lista de modificaciones del requisito funcional
+     * @return lista de modificaciones del requisito funcional
+     */
+    public List<ModificacionesDTO> getModificaciones() 
+    {
         return modificaciones;
     }
-
+     /**
+     * Define la lista de modificaciones del requisito funcional
+     * @param modificaciones
+     */
     public void setModificaciones(List<ModificacionesDTO> modificaciones) {
         this.modificaciones = modificaciones;
     }
@@ -90,5 +98,5 @@ public class RequisitosDetailDTO extends RequisitosDTO
             modificaciones.add(new ModificacionesDTO(entityMod));
         }
     }
+    
 }
-

@@ -6,9 +6,8 @@
 package co.edu.uniandes.csw.requisitos.resources;
 
 import co.edu.uniandes.csw.requisitos.dtos.FuncionalDTO;
-import co.edu.uniandes.csw.requisitos.dtos.RequisitosDTO;
+import co.edu.uniandes.csw.requisitos.dtos.FuncionalDetailDTO;
 import co.edu.uniandes.csw.requisitos.ejb.FuncionalLogic;
-import co.edu.uniandes.csw.requisitos.ejb.RequisitoLogic;
 import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
@@ -21,8 +20,6 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
-import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -68,21 +65,21 @@ public class FuncionalResource {
      * Busca el requisito funcional con el id asociado recibido en la URL y lo devuelve.
      * @param requisitoId Identificador del requisito funcional que se esta buscando. Este debe
      * ser una cadena de dígitos.
-     * @return JSON {@link RequisitoFuncionalDTO} - requisito funcional
+     * @return JSON {@link RequisitoFuncionalDetailDTO} - requisito funcional
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra la iteracion.
      */
     @GET
     @Path("{requisitoId: \\d+}")
-    public FuncionalDTO getReqFuncional(@PathParam("requisitoId") Long requisitoId) 
+    public FuncionalDetailDTO getReqFuncional(@PathParam("requisitoId") Long requisitoId) 
     {
         LOGGER.log(Level.INFO, "FuncionalResource getReqFuncional: input: {0}", requisitoId);
         FuncionalEntity funcionalEntity = fl.getFuncional(requisitoId);
         if (funcionalEntity == null) {
             throw new WebApplicationException("El recurso /Funcional/" + requisitoId + " no existe.", 404);
         }
-        FuncionalDTO funcionalDTO = new FuncionalDTO(funcionalEntity);
-        LOGGER.log(Level.INFO, "FuncionalResource getIteracion: output: {0}", funcionalDTO);
+        FuncionalDetailDTO funcionalDTO = new FuncionalDetailDTO(funcionalEntity);
+        LOGGER.log(Level.INFO, "FuncionalResource getReqFuncional: output: {0}", funcionalDTO);
         return funcionalDTO;
     }
     /**
@@ -92,10 +89,10 @@ public class FuncionalResource {
      * aplicación. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<FuncionalDTO> getReqFuncionales() 
+    public List<FuncionalDetailDTO> getReqFuncionales() 
     {
         LOGGER.info("FuncionalResource getRequisitosFuncionales: input: void");
-        List<FuncionalDTO> listaIteraciones = listEntity2DTO(fl.getFuncionales());
+        List<FuncionalDetailDTO> listaIteraciones = listEntity2DetailDTO(fl.getFuncionales());
         LOGGER.log(Level.INFO, "FuncionalResource getReqFuncionales: output: {0}", listaIteraciones);
         return listaIteraciones;
     }
@@ -106,8 +103,8 @@ public class FuncionalResource {
      *
      * @param requisitoId Identificador del requisito que se desea actualizar. Este debe
      * ser una cadena de dígitos.
-     * @param funcional {@link funcionalDTO} La requisitoFuncional que se desea guardar.
-     * @return JSON {@link FuncionalDTO} - el requisitoFuncional guardado.
+     * @param funcional {@link FuncionalDetailDTO} La requisitoFuncional que se desea guardar.
+     * @return JSON {@link FuncionalDetailDTO} - el requisitoFuncional guardado.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra el requisito funcional a
      * actualizar.
@@ -116,20 +113,19 @@ public class FuncionalResource {
      */
     @PUT
     @Path("{requisitoId: \\d+}")
-    public FuncionalDTO updateReqFuncional(@PathParam("requisitoId") Long requisitoId, FuncionalDTO funcional) throws BusinessLogicException 
+    public FuncionalDetailDTO updateReqFuncional(@PathParam("requisitoId") Long requisitoId, FuncionalDetailDTO funcional) throws BusinessLogicException 
     {
         LOGGER.log(Level.INFO, "FuncionalResource updateReqFuncional: input: id: {0} , funcional: {1}", new Object[]{requisitoId, funcional});
         funcional.setId(requisitoId);
         if (fl.getFuncional(requisitoId) == null) {
             throw new WebApplicationException("El recurso /funcional/" + requisitoId + " no existe.", 404);
         }
-        FuncionalDTO funDTO = new FuncionalDTO(fl.updateFuncional(funcional.toEntity()));
-        LOGGER.log(Level.INFO, "IteracionResource updateReqFuncional: output: {0}", funDTO);
+        FuncionalDetailDTO funDTO = new FuncionalDetailDTO(fl.updateFuncional(funcional.toEntity()));
+        LOGGER.log(Level.INFO, "FuncionalResource updateReqFuncional: output: {0}", funDTO);
         return funDTO;
     }
   /**
      * Borra el requisitoFuncional con el id asociado recibido en la URL.
-     *
      * @param requisitoId
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
@@ -150,18 +146,18 @@ public class FuncionalResource {
         LOGGER.info("FuncionalResource deleteReqFuncional output: void");
     }    
      /**
-     * Convierte una lista de entidades a DTO.
+     * Convierte una lista de entidades a DetailDTO.
      *
      * Este método convierte una lista de objetos FuncionalEntity a una lista de
-     * objetos FuncionalDTO (json)
+     * objetos FuncionalDetailDTO (json)
      * @param entityList corresponde a la lista de requisitos funcionales de tipo Entity que
-     * vamos a convertir a DTO.
-     * @return la lista de Iteraciones en forma DTO (json)
+     * vamos a convertir a DetDTO.
+     * @return la lista de requisitos Funcionales en forma DetailDTO (json)
      */
-    private List<FuncionalDTO> listEntity2DTO(List<FuncionalEntity> entityList) {
-        List<FuncionalDTO> list = new ArrayList<>();
+    private List<FuncionalDetailDTO> listEntity2DetailDTO(List<FuncionalEntity> entityList) {
+        List<FuncionalDetailDTO> list = new ArrayList<>();
         for (FuncionalEntity entity : entityList) {
-            list.add(new FuncionalDTO(entity));
+            list.add(new FuncionalDetailDTO(entity));
         }
         return list;
     }

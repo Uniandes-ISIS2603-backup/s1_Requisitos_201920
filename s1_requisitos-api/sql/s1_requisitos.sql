@@ -1,6 +1,8 @@
 delete from RequisitosEntity;
 delete from CasoDeUsoEntity;
 delete from ModificacionesEntity;
+delete from PersonaEntity;
+delete from RequisitosEntity;
 
 
 

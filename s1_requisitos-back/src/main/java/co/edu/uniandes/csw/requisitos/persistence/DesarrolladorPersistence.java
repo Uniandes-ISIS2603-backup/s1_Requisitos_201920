@@ -68,4 +68,38 @@ public class DesarrolladorPersistence
        em.remove(desarrollador);
     }
     
+    /**
+     * Encuentra en la base de datos el elemento con el nombre dado por parametro
+     * @param Name
+     * @return null si no lo encuentra, de lo contrario el elemento
+     */
+    public DesarrolladorEntity findByName(String Name)
+    {
+        DesarrolladorEntity buscado=null;
+        List<DesarrolladorEntity> lista=findAll();
+        for (DesarrolladorEntity requisito : lista) 
+        {
+            if(requisito.getNombre().equals(Name))
+                buscado=requisito;
+        }
+        return buscado;
+    }
+    
+    /**
+     * Encuentra en la base de datos el elemento con la cedula dado por parametro
+     * @param pCedula 
+     * @return null si no lo encuentra, de lo contrario el elemento
+     */
+    public DesarrolladorEntity findByCedula(int pCedula)
+    {
+        DesarrolladorEntity buscado=null;
+        List<DesarrolladorEntity> lista=findAll();
+        for (DesarrolladorEntity dev : lista) 
+        {
+            if(dev.getCedula()==pCedula)
+                buscado=dev;
+        }
+        return buscado;
+    }
+    
 }
