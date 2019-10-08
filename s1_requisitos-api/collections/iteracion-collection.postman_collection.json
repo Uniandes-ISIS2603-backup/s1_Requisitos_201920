@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "3d99c5d2-9405-4850-b61c-85dce278c4b7",
+		"name": "iteracion-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post iteracion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33f285ef-023d-4d7d-82df-ef146a25e1d4",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_i\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n  \t\"descripcion\": \"strinrwerg\",\r\n    \"fechaFin\": \"2000-08-20T00:00:00Z[UTC]\",\r\n    \"fechaInicio\": \"2000-08-20T00:00:00Z[UTC]\",\r\n    \"nombre\": \"popopqweu\"\r\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/api/iteracion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"iteracion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post iteracion 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "962df6c5-94f5-42bf-9471-102b7fd68a92",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_i2\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n  \t\"descripcion\": \"Cierres de ciclo 2 correspondiente al grupo 1\",\n    \"fechaFin\": \"2009-08-20T00:00:00Z[UTC]\",\n    \"fechaInicio\": \"2010-08-20T00:00:00Z[UTC]\",\n    \"nombre\": \"cierre\"\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/api/iteracion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"iteracion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get todas las iteraciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57f793b4-0abd-47f5-b543-7321b6037bdb",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get all\"] = responseCode.code === 200;",
+							"tests[\"iteraciones count\"] = data.length >= 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/api/iteracion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"iteracion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get iteracion creada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23402429-90c4-4d41-8ed0-38dddccf3773",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/api/iteracion/{{new_id_i}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"iteracion",
+						"{{new_id_i}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar una iteracion ",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n  \t\"descripcion\": \"cierre iteracion 2 correjido\",\r\n    \"fechaFin\": \"2012-05-20T00:00:00Z[UTC]\",\r\n    \"fechaInicio\": \"2010-08-20T00:00:00Z[UTC]\",\r\n    \"nombre\": \"iteracion 2 arreglado\"\r\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/api/iteracion/{{new_id_i}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"iteracion",
+						"{{new_id_i}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar iteracion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1807886-4ef7-4a69-9ac7-0712a0cfe9e0",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/api/iteracion/{{new_id_i}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"iteracion",
+						"{{new_id_i}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
