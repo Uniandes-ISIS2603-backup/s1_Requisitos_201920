@@ -22,7 +22,7 @@ public class ModificacionesLogic {
     //persistencia de Modificaciones
     @Inject
     private ModificacionesPersistence persistence;
-
+    
     /*
     *crea las modificaciones teniendo en cuenta las reglas de negocio
     * @param Modificaciones entity a ser creada

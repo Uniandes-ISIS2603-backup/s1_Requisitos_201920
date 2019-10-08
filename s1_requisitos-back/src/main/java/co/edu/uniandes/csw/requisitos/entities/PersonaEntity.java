@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.requisitos.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -48,10 +49,11 @@ public class PersonaEntity extends BaseEntity implements Serializable {
         this.equipoDesarrollo = equipoDesarrollo;
     }
 
-     @PodamExclude
+    @PodamExclude
     @OneToMany(
         mappedBy = "persona", 
-        fetch = javax.persistence.FetchType.LAZY
+        fetch = javax.persistence.FetchType.LAZY,
+        cascade = CascadeType.PERSIST
     )
     private List<ModificacionesEntity> modificaciones=new ArrayList<>();
     @PodamExclude

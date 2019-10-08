@@ -3,7 +3,21 @@
   <persistence-unit name="requisitosPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <!--Toca entity por entity, exclude-unlisted-clases = false no funciona-->
-    
+    <class>co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.AtributoCalidadEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.DescripcionEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.DesempenoEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.EscalabilidadEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.FuncionalEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.IteracionEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.PersonaEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.PlataformaEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.ProyectoEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.RepresentanteDelClienteEntity</class>
+    <class>co.edu.uniandes.csw.requisitos.entities.RequisitosEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
  <shared-cache-mode>NONE</shared-cache-mode>
     <properties>

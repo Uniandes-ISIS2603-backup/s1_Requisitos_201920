@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.requisitos.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,7 +32,8 @@ public  class RequisitosEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToMany(
         mappedBy = "modificacionesRequisito", 
-        fetch = javax.persistence.FetchType.LAZY
+        fetch = javax.persistence.FetchType.LAZY,
+        cascade = CascadeType.PERSIST
     )
     protected List<ModificacionesEntity> modificaciones=new ArrayList<>();
     

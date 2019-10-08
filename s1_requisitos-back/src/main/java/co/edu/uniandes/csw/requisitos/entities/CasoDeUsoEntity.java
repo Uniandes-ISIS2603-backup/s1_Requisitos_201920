@@ -29,15 +29,16 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
    //variable encargada de almacenar los resultados de las pruebas del caso de uso
     private Boolean pruebas;
     
-    /*
+    
     //Relacion con Modificacion
     @PodamExclude
     @OneToMany(
         mappedBy = "casoModificaciones", 
-        fetch = javax.persistence.FetchType.LAZY
+        fetch = javax.persistence.FetchType.LAZY,
+        cascade = CascadeType.PERSIST
     )
     private List<ModificacionesEntity> modificaciones=new ArrayList<>();
-     */
+     
      
     //Relaciones con Descripcion
       @PodamExclude
@@ -95,6 +96,7 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     )
     private List<FuncionalEntity> funcional= new ArrayList<>();
 
+      
     /**
      * @return the servicios
      */

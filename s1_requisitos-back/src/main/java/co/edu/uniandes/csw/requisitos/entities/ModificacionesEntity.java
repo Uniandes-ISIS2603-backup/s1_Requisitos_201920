@@ -35,17 +35,17 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     private String descripcion;
 
     //relacion con la entidad persona
-    @ManyToOne
     @PodamExclude
+    @ManyToOne
     private PersonaEntity persona;
    
     //relacion con casos de uso
-    //@ManyToOne
-    //private CasoDeUsoEntity casoModificaciones;
+    @ManyToOne
+    private CasoDeUsoEntity casoModificaciones;
     
     //relacion con requisitos
-    @ManyToOne
     @PodamExclude
+    @ManyToOne
     private RequisitosEntity modificacionesRequisito;
 
     /**
@@ -96,22 +96,22 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     /**
      * @return the casoModificaciones
      */
-    //public CasoDeUsoEntity getCasoModificaciones() {
-     //   return casoModificaciones;
-    //}
+    public CasoDeUsoEntity getCasoModificaciones() {
+        return casoModificaciones;
+    }
 
     /**
      * @param casoModificaciones the casoModificaciones to set
      */
-    //public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
-      //  this.casoModificaciones = casoModificaciones;
-    //}
+    public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
+        this.casoModificaciones = casoModificaciones;
+    }
     /**
      * @return the modificacionesrequisito
-     */
+     
+    */
     
     
-    /*
     public RequisitosEntity getModificacionesRequisito() {
         return modificacionesRequisito;
     }
@@ -119,11 +119,11 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     /**
      * @param modificacionesRequisito the modificacionesrequisito to set
      **/
-     /*
+     
     public void setModificacionesRequisito(RequisitosEntity modificacionesRequisito) {
         this.modificacionesRequisito = modificacionesRequisito;
     }
-    */
+    
    
     
  
