@@ -8,6 +8,8 @@ package co.edu.uniandes.csw.requisitos.test.logic;
 import co.edu.uniandes.csw.requisitos.ejb.CasoDeUsoLogic;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
+import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+import co.edu.uniandes.csw.requisitos.entities.DescripcionEntity;
 
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.CasoDeUsoPersistence;
@@ -111,9 +113,15 @@ public class CasoDeUsoLogicTest {
     @Test
     public void createCasoDeUso() throws BusinessLogicException {
         CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
+        /*
+        DesarrolladorEntity resp= factory.manufacturePojo(DesarrolladorEntity.class);
+        resp.setTipo("Desarrollador");
+        Assert.assertNotNull(resp);
+        caso.setResponsable(resp);
+    */
         CasoDeUsoEntity result = casoLogic.crearCasoDeUso(caso);
         Assert.assertNotNull(result);
-
+        
         CasoDeUsoEntity entity = em.find(CasoDeUsoEntity.class, result.getId());
         Assert.assertEquals(entity.getDocumentacion(), result.getDocumentacion());
         Assert.assertEquals(entity.getPruebas(), result.getPruebas());

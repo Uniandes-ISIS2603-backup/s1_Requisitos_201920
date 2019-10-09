@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.requisitos.dtos;
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.DescripcionEntity;
 import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
+import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
     private List<DescripcionDTO> posCondiciones;
     private List<DescripcionDTO> preCondiciones;
     private List<DescripcionDTO> caminoAlterno;
-    private List<DesarrolladorDTO> responsables;
+  
 
     /*
     constructor vacio
@@ -41,14 +42,16 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
       */
     public CasoDeUsoDetailDTO(CasoDeUsoEntity entidad) {
         super(entidad);
-        /*
+        
         if (entidad!=null){
+            /*
             if (entidad.getCaminosExcepcion() !=null){
                 caminosExcepcion=new ArrayList<>();
                 for (DescripcionEntity desc:entidad.getCaminosExcepcion()){
                     caminosExcepcion.add(new DescripcionDTO(desc));
                 }
             }
+            */
             if (entidad.getFuncional()!=null){
                 requisitosFuncionales=new ArrayList<>();
                 for (FuncionalEntity funcional:entidad.getFuncional()){
@@ -56,6 +59,15 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
                 }
             }
             
+            if (entidad.getModificaciones()!=null){
+                modificaciones=new ArrayList<>();
+                for (ModificacionesEntity funcional:entidad.getModificaciones()){
+                    modificaciones.add(new ModificacionesDTO(funcional));
+                }
+            }
+            
+           
+            /*
             if (entidad.getEntidades()!=null){
                 entidades=new ArrayList<>();
                 for (DescripcionEntity desc:entidad.getEntidades()){
@@ -80,9 +92,10 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
                     caminoAlterno.add(new DescripcionDTO(desc));
                 }
             }
+            */
 
         }
-        */
+        
     }
       
      
@@ -193,20 +206,10 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
         this.caminoAlterno = preCaminoAlterno;
     }
 
-    /**
-     * @return the desarrollador
-     */
-    public List<DesarrolladorDTO> getResponsable() {
-        return responsables;
-    }
-
-    /**
-     * @param desarrollador the desarrollador to set
-     */
-    public void setResponsable(List<DesarrolladorDTO> desarrollador) {
-        this.responsables = desarrollador;
-    }
-
+ 
+    
+    
+   
   
      
 }

@@ -123,6 +123,8 @@ public class CasoDeUsoResource
         cl.deleteCaso(casosId);
         LOGGER.info("CasoDeUsoResource deleteCasoDeUso: output: void");
     }
+    
+    
    
    
     /*

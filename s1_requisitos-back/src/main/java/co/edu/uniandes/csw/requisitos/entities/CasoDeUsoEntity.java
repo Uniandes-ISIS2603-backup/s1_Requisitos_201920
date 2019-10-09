@@ -22,81 +22,79 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CasoDeUsoEntity extends BaseEntity implements Serializable {
-  //variable encargada de almacenar los servicios del caso de uso
+    //variable encargada de almacenar los servicios del caso de uso
+
     private String servicios;
 //variable encargada de almacenar la documentacion del caso de uso
     private String documentacion;
-   //variable encargada de almacenar los resultados de las pruebas del caso de uso
+    //variable encargada de almacenar los resultados de las pruebas del caso de uso
     private Boolean pruebas;
-    
-    
+
     //Relacion con Modificacion
     @PodamExclude
     @OneToMany(
-        mappedBy = "casoModificaciones", 
-        fetch = javax.persistence.FetchType.LAZY,
-        cascade = CascadeType.PERSIST
+            mappedBy = "casoModificaciones",
+            fetch = javax.persistence.FetchType.LAZY,
+            cascade = CascadeType.PERSIST
     )
-    private List<ModificacionesEntity> modificaciones=new ArrayList<>();
-     
-     
+    private List<ModificacionesEntity> modificaciones = new ArrayList<>();
+
     //Relaciones con Descripcion
-      @PodamExclude
-   @OneToMany(
-        mappedBy = "casoEntidades", 
-        fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> entidades= new ArrayList<>() ;
-      
-      
     @PodamExclude
-   @OneToMany(
-        mappedBy = "casoCaminos", 
-        fetch = javax.persistence.FetchType.LAZY
+    @OneToMany(
+            mappedBy = "casoEntidades",
+            fetch = javax.persistence.FetchType.LAZY
     )
-    private List<DescripcionEntity> caminosExcepcion= new ArrayList<>();
-    
-    
-    @PodamExclude
-   @OneToMany(
-        mappedBy = "casoPosCondiciones", 
-        fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> posCondiciones= new ArrayList<>();
-   
-    @PodamExclude
-   @OneToMany(
-        mappedBy = "casoPreCondiciones", 
-        fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> preCondiciones= new ArrayList<>();
-    
-    
-    @PodamExclude
-   @OneToMany(
-        mappedBy = "casoAlterno", 
-        fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> preCaminoAlterno= new ArrayList<>();
+    private List<DescripcionEntity> entidades = new ArrayList<>();
 
-   
-   
-   //Relacion con representante del cliente
-     @PodamExclude
-   @ManyToOne
-   private RepresentanteDelClienteEntity representante;
-   
-   //relacion con requisito funcional
-      @PodamExclude
-   @OneToMany(
-        mappedBy = "casoFuncional", 
-        //cascade =CascadeType.ALL ,
-        fetch = javax.persistence.FetchType.LAZY
-        
+    @PodamExclude
+    @OneToMany(
+            mappedBy = "casoCaminos",
+            fetch = javax.persistence.FetchType.LAZY
     )
-    private List<FuncionalEntity> funcional= new ArrayList<>();
+    private List<DescripcionEntity> caminosExcepcion = new ArrayList<>();
 
-      
+    @PodamExclude
+    @OneToMany(
+            mappedBy = "casoPosCondiciones",
+            fetch = javax.persistence.FetchType.LAZY
+    )
+    private List<DescripcionEntity> posCondiciones = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(
+            mappedBy = "casoPreCondiciones",
+            fetch = javax.persistence.FetchType.LAZY
+    )
+    private List<DescripcionEntity> preCondiciones = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(
+            mappedBy = "casoAlterno",
+            fetch = javax.persistence.FetchType.LAZY
+    )
+    private List<DescripcionEntity> preCaminoAlterno = new ArrayList<>();
+
+    //Relacion con representante del cliente
+    @PodamExclude
+    @ManyToOne
+    private RepresentanteDelClienteEntity representante;
+
+    //relacion con requisito funcional
+    @PodamExclude
+    @OneToMany(
+            mappedBy = "casoFuncional",
+            //cascade =CascadeType.ALL ,
+            fetch = javax.persistence.FetchType.LAZY
+    )
+    private List<FuncionalEntity> funcional = new ArrayList<>();
+
+    @PodamExclude
+    @ManyToOne(
+    cascade = CascadeType.ALL
+    )
+    private DesarrolladorEntity responsable;
+
     /**
      * @return the servicios
      */
@@ -110,8 +108,6 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     public void setServicios(String servicios) {
         this.servicios = servicios;
     }
-
- 
 
     /**
      * @return the documentacion
@@ -144,17 +140,17 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     /**
      * @return the modificaciones
      */
-   /* public List<ModificacionesEntity> getModificaciones() {
+    public List<ModificacionesEntity> getModificaciones() {
         return modificaciones;
     }
-*/
+
     /**
      * @param modificaciones the modificaciones to set
-     *//*
+     */
     public void setModificaciones(List<ModificacionesEntity> modificaciones) {
         this.modificaciones = modificaciones;
     }
-*/
+
     /**
      * @return the entidades
      */
@@ -252,9 +248,20 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     public void setFuncional(List<FuncionalEntity> funcional) {
         this.funcional = funcional;
     }
-   
-  
 
-   
+    /**
+     * @return the responsable
+     */
+    public DesarrolladorEntity getResponsable() {
+        return responsable;
+    }
 
+    /**
+     * @param responsable the responsable to set
+     */
+    public void setResponsable(DesarrolladorEntity responsable) {
+        this.responsable = responsable;
+    }
+    
+   
 }

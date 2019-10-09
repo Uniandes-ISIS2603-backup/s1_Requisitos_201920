@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.requisitos.ejb;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.ModificacionesPersistence;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
@@ -35,7 +36,9 @@ public class ModificacionesLogic {
         if (modi.getFechaModificacion() == null) {
             throw new BusinessLogicException("la fecha no puede estar vacia");
         }
-
+        if (modi.getFechaModificacion().after(new Date())){
+            throw new BusinessLogicException("la fecha no puede ser despues de la fecha actual");
+        }
         modi = persistence.create(modi);
         return modi;
     }

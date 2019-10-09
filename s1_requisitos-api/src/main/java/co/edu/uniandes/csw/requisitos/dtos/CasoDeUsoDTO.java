@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
+import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
 import java.io.Serializable;
 
@@ -22,6 +23,7 @@ public class CasoDeUsoDTO implements Serializable {
     private String servicios;
     private String documentacion;
     private Boolean pruebas;
+    private DesarrolladorEntity responsable;
 /*
     consructor vacio
     */
@@ -36,6 +38,7 @@ public class CasoDeUsoDTO implements Serializable {
           setDocumentacion(entidad.getDocumentacion());
           setPruebas(entidad.getPruebas());
           setServicios(entidad.getServicios());
+          setResponsable(entidad.getResponsable());
     }
     
     /*
@@ -43,12 +46,14 @@ public class CasoDeUsoDTO implements Serializable {
       */
     public CasoDeUsoEntity toEntity(){
         CasoDeUsoEntity entidad= new CasoDeUsoEntity();
-        entidad.setId(this.id);
-        entidad.setDocumentacion(this.documentacion);
-        entidad.setServicios(this.servicios);
-        entidad.setPruebas(this.pruebas);
+        entidad.setId(this.getId());
+        entidad.setDocumentacion(this.getDocumentacion());
+        entidad.setServicios(this.getServicios());
+        entidad.setPruebas(this.getPruebas());
+        entidad.setResponsable(this.getResponsable());
         return entidad;
     } 
+
     /**
      * @return the id
      */
@@ -104,4 +109,19 @@ public class CasoDeUsoDTO implements Serializable {
     public void setPruebas(Boolean pruebas) {
         this.pruebas = pruebas;
     }
+
+    /**
+     * @return the responsable
+     */
+    public DesarrolladorEntity getResponsable() {
+        return responsable;
+    }
+
+    /**
+     * @param responsable the responsable to set
+     */
+    public void setResponsable(DesarrolladorEntity responsable) {
+        this.responsable = responsable;
+    }
+    
 }

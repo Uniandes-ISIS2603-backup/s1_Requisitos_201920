@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.requisitos.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -32,33 +33,54 @@ public class DesarrolladorEntity extends PersonaEntity implements Serializable {
     @OneToMany(mappedBy = "desarrollador",fetch=FetchType.LAZY)
     private List<RequisitosEntity> requisitos = new ArrayList<>();
 
+    @PodamExclude
+    @OneToMany(
+    mappedBy = "responsable",
+    fetch = javax.persistence.FetchType.LAZY,
+    cascade = CascadeType.PERSIST
+    )
+    private List<CasoDeUsoEntity> casosDeUso= new ArrayList<>();
+
     /**
-     * retorna el tipo de la prueba.
-     * @return tipo
+     * @return the tipo
      */
     public String getTipo() {
         return tipo;
     }
+
     /**
-     * reescribe el valor de tipo del objeto.
-     * @param tipo 
+     * @param tipo the tipo to set
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
     /**
-     * Retorna los requisitos en los que trabaja el desarrollador
-     * @return lista de requisitos
+     * @return the requisitos
      */
     public List<RequisitosEntity> getRequisitos() {
         return requisitos;
     }
+
     /**
-     * Define los requisitos en los que trabaja el desarrollador
-     * @param requisitos 
+     * @param requisitos the requisitos to set
      */
     public void setRequisitos(List<RequisitosEntity> requisitos) {
         this.requisitos = requisitos;
-    }   
-}
+    }
 
+    /**
+     * @return the casosDeUso
+     */
+    public List<CasoDeUsoEntity> getCasosDeUso() {
+        return casosDeUso;
+    }
+
+    /**
+     * @param casosDeUso the casosDeUso to set
+     */
+    public void setCasosDeUso(List<CasoDeUsoEntity> casosDeUso) {
+        this.casosDeUso = casosDeUso;
+    }
+
+}   

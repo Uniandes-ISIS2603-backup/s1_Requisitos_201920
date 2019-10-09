@@ -53,7 +53,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     @OneToMany(
         mappedBy = "persona", 
         fetch = javax.persistence.FetchType.LAZY,
-        cascade = CascadeType.PERSIST
+        cascade = CascadeType.ALL
     )
     private List<ModificacionesEntity> modificaciones=new ArrayList<>();
     @PodamExclude

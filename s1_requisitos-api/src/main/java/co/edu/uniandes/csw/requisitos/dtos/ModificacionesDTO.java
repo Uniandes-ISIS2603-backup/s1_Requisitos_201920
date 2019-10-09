@@ -6,7 +6,10 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.adapters.DateAdapter;
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
+import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
+import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
@@ -29,7 +32,9 @@ public class ModificacionesDTO implements Serializable {
     private Date fechaModificacion;
 
     private String descripcion;
-
+    private PersonaEntity persona;
+    private CasoDeUsoEntity casoModificaciones;
+    private RequisitosEntity modificacionesRequisito;
     /*
     constructor vacio
      */
@@ -44,6 +49,10 @@ public class ModificacionesDTO implements Serializable {
         setId(mod.getId());
         setDescripcion(mod.getDescripcion());
         setFechaModificacion(mod.getFechaModificacion());
+        setPersona(mod.getPersona());
+        setCasoModificaciones(mod.getCasoModificaciones());
+        setModificacionesRequisito(mod.getModificacionesRequisito());
+        
     }
 
     /*
@@ -51,9 +60,12 @@ public class ModificacionesDTO implements Serializable {
      */
     public ModificacionesEntity toEntity() {
         ModificacionesEntity nueva = new ModificacionesEntity();
-        nueva.setId(this.id);
-        nueva.setDescripcion(this.descripcion);
-        nueva.setFechaModificacion(this.fechaModificacion);
+        nueva.setId(this.getId());
+        nueva.setDescripcion(this.getDescripcion());
+        nueva.setFechaModificacion(this.getFechaModificacion());
+        nueva.setCasoModificaciones(this.casoModificaciones);
+        nueva.setModificacionesRequisito(this.getModificacionesRequisito());
+        nueva.setPersona(this.getPersona());
         return nueva;
     }
 
@@ -98,5 +110,49 @@ public class ModificacionesDTO implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    /**
+     * @return the persona
+     */
+    public PersonaEntity getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
+    }
+
+    /**
+     * @return the casoModificaciones
+     */
+    public CasoDeUsoEntity getCasoModificaciones() {
+        return casoModificaciones;
+    }
+
+    /**
+     * @param casoModificaciones the casoModificaciones to set
+     */
+    public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
+        this.casoModificaciones = casoModificaciones;
+    }
+
+    /**
+     * @return the modificacionesRequisito
+     */
+    public RequisitosEntity getModificacionesRequisito() {
+        return modificacionesRequisito;
+    }
+
+    /**
+     * @param modificacionesRequisito the modificacionesRequisito to set
+     */
+    public void setModificacionesRequisito(RequisitosEntity modificacionesRequisito) {
+        this.modificacionesRequisito = modificacionesRequisito;
+    }
+
+    
 
 }

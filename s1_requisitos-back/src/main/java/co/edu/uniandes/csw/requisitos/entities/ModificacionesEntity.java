@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -36,16 +37,22 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
 
     //relacion con la entidad persona
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(
+    cascade = CascadeType.ALL
+    )
     private PersonaEntity persona;
    
     //relacion con casos de uso
-    @ManyToOne
+    @ManyToOne(
+    cascade = CascadeType.ALL
+    )
     private CasoDeUsoEntity casoModificaciones;
     
     //relacion con requisitos
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(
+    cascade = CascadeType.ALL
+    )
     private RequisitosEntity modificacionesRequisito;
 
     /**
@@ -79,7 +86,6 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     /**
      * @return the persona
      */
-    
     public PersonaEntity getPersona() {
         return persona;
     }
@@ -87,8 +93,6 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     /**
      * @param persona the persona to set
      */
-    
-   
     public void setPersona(PersonaEntity persona) {
         this.persona = persona;
     }
@@ -106,25 +110,21 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
         this.casoModificaciones = casoModificaciones;
     }
+
     /**
-     * @return the modificacionesrequisito
-     
-    */
-    
-    
+     * @return the modificacionesRequisito
+     */
     public RequisitosEntity getModificacionesRequisito() {
         return modificacionesRequisito;
     }
 
     /**
-     * @param modificacionesRequisito the modificacionesrequisito to set
-     **/
-     
+     * @param modificacionesRequisito the modificacionesRequisito to set
+     */
     public void setModificacionesRequisito(RequisitosEntity modificacionesRequisito) {
         this.modificacionesRequisito = modificacionesRequisito;
     }
-    
-   
+
     
  
    

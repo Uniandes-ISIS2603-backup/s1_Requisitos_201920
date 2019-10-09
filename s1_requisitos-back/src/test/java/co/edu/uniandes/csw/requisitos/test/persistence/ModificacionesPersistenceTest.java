@@ -110,9 +110,7 @@ public class ModificacionesPersistenceTest {
     @Test
     public void findTest() {
         ModificacionesEntity Entity1 = data.get(0);
-        System.out.println("hola" + Entity1.getId());
         ModificacionesEntity encontrado = a.find(Entity1.getId());
-        System.out.println("hola2" + encontrado.getId());
         Assert.assertEquals(Entity1.getDescripcion(), encontrado.getDescripcion());
         Assert.assertEquals(Entity1.getFechaModificacion(), encontrado.getFechaModificacion());
 

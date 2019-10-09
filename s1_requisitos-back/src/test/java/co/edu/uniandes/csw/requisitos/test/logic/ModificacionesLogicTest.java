@@ -21,8 +21,13 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
@@ -113,6 +118,16 @@ public class ModificacionesLogicTest {
     @Test
     public void createModificaciones()throws BusinessLogicException{
         ModificacionesEntity mod=factory.manufacturePojo(ModificacionesEntity.class);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        String dateString = format.format(new Date());
+        try { 
+            Date date= format.parse("2009-12-31");
+            mod.setFechaModificacion(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(ModificacionesLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         ModificacionesEntity result= modificacionesLogic.createModificaciones(mod);
         Assert.assertNotNull(result);
         ModificacionesEntity entity= em.find(ModificacionesEntity.class, result.getId());
