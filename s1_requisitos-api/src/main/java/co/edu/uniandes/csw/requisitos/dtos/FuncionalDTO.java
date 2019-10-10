@@ -9,8 +9,54 @@ import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
 import java.io.Serializable;
 
 /**
+ * FuncionalDTO Objeto de transferencia de datos de Funcional. Los DTO contienen las
+ * representaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
  *
- * @author Nicolás Tobo
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+     {
+        "autor": String,
+        "casoDeUso": {},
+        "comentariosAdicionales": String,
+        "descripcion": String,
+        "estabilidad": boolean,
+        "fuente": String,
+        "id": number,
+        "importancia": number,
+        "nombre": String,
+        "modificaciones": []
+    }
+}
+ * </pre> Por ejemplo de desarrollador se representa asi:<br>
+ *
+ * <pre>
+ *
+ *  {
+        "autor": "Carlos Barragan",
+        "casoDeUso": {
+            "documentacion": "doc",
+            "id": 15,
+            "pruebas": false,
+            "servicios": "FuncionalPrueba"
+        },
+        "comentariosAdicionales": "Hola",
+        "descripcion": "Intento1",
+        "estabilidad": true,
+        "fuente": "Empresa X",
+        "id": 34,
+        "importancia": 10,
+        "nombre": "ImplementarIntento1",
+        "modificaciones": [
+        	{
+              "descripcion": "cambie X",
+               "fechaModificacion": "2019-08-08T23:28:56.782Z"
+	        }
+        	]
+    }
+ *
+ * </pre>
+ * @author Nicolas Tobo
  */
 public class FuncionalDTO extends RequisitosDTO implements Serializable 
 {

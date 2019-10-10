@@ -10,7 +10,7 @@ import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
-import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Temporal;

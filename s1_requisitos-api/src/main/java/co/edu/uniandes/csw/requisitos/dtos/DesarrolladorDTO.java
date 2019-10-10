@@ -9,7 +9,53 @@ import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import java.util.List;
 
 /**
+ * DesarrolladorDTO Objeto de transferencia de datos de Desarrollador. Los DTO contienen las
+ * representaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
  *
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "id":number,
+ *      "nombre":string,
+ *      "correo":string,
+ *      "cedula":number,
+ *      "tipo":string,
+ *      "requisitos":[],
+ *      "modificaciones":[]   
+ *  }
+ * </pre> Por ejemplo un desarrollador se representa asi:<br>
+ *
+ * <pre>
+ *
+ *  {
+ * "id":20,
+ * "nombre":"F Bogoya",
+ * "correo":"cb@compañiax.com",
+ * "cedula":666,
+ * "tipo":"Lider",
+ * "requisitos":[{
+ * "id": 13,
+ * "fuente":"Ove",
+ * "autor":"L",
+ * "descripcion":"BLA",
+ * "importancia":5,
+ * "estabilidad":true,
+ * "nombre":"Prueba herencia",
+ * "comentariosAdicionales":"",
+ * "casoDeUso":
+ * {
+ * "servicios":"hola",
+ * "id": 12,
+ * "documentacion":"como",
+ * "pruebas":true
+ * },
+ * "modificaciones":[]
+ * }
+ * ]
+ * }
+ *
+ * </pre>
  * @author Nicolas Tobo
  */
 public class DesarrolladorDTO extends PersonaDTO
