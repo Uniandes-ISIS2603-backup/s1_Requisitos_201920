@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "39329de6-3a4d-4ea6-a556-5f33095a30b5",
+		"name": "EquipoDesarrollo Test",
+		"description": "Colección de pruebas sobre el recurso Author",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post equipo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "694741e6-4794-48fd-b32b-d790963ac9b0",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_i\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						""
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo proyecto.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Post equipo 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "694741e6-4794-48fd-b32b-d790963ac9b0",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_i\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						""
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo proyecto.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Get equipos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ffc24813-89a3-47fa-9d38-241d31b1e7c3",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get all\"] = responseCode.code === 200;",
+							"tests[\"iteraciones count\"] = data.length >= 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						""
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nConsulta todos los autores de la aplicacion. \r\nLa petición no tiene cuerpo.\r\n\r\nPara la prueba, se verifica que el conjunto de autores en la respuesta tenga mas de uno.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Get equipo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "20acc8ea-cadf-4ea4-b92e-f4d8218ce963",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						"1"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nConsulta un autor de la aplicación.  \r\nLa petición no tiene cuerpo.\r\nSe envía el id del autor deseado por la URL de la petición.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Get equipo 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "20acc8ea-cadf-4ea4-b92e-f4d8218ce963",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/2",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						"2"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nConsulta un autor de la aplicación.  \r\nLa petición no tiene cuerpo.\r\nSe envía el id del autor deseado por la URL de la petición.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Get equipo nulo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "39dc353d-ae0a-41c6-99a5-89218360c4d3",
+						"exec": [
+							"tests[\"No se deberia obtener un autor con un id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /proyecto/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						"0"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nConsulta un autor que no existe en la aplicación.  \r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /authors/0 no existe.\".\r\n\r\n**Código http esperado: 404**"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar equipo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "68dc8b6c-6d16-40b8-8f51-b61db7113074",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n    \"id\": 1\n\t}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						"1"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nActualiza un autor existente. \r\nse envía el Id en la URL de la petición.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar equipo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d403e21b-3da3-4bbc-9b8a-9a2285ec0292",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/2",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						"2"
+					]
+				},
+				"description": "**Release: Paso-5**\n\nBorra un autor. Se envía el id del autor creado anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9f629ffc-3644-4dca-a8af-f28ae4a4e739",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b1e97bf7-3232-412f-96bc-7ac233e25ab5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
