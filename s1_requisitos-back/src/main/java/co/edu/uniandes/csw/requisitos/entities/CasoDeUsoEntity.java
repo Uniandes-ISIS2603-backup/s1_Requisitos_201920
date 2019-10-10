@@ -84,7 +84,7 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(
             mappedBy = "casoFuncional",
-            //cascade =CascadeType.ALL ,
+            cascade =CascadeType.PERSIST ,
             fetch = javax.persistence.FetchType.LAZY
     )
     private List<FuncionalEntity> funcional = new ArrayList<>();
