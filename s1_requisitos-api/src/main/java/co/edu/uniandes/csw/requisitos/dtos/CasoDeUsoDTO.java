@@ -12,6 +12,30 @@ import java.io.Serializable;
 
 /**
  *
+ * CasoDeUsoDTO Objeto de transferencia de datos de CasoDeUso. Los DTO contienen las
+ * representaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
+ *
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "id": number,
+ *      "servicios": string,
+ *      "documentacion": string,
+ *      "pruebas": boolean
+ *   }
+ * </pre> Por ejemplo un casoDeUso se representa asi:<br>
+ *
+ * <pre>
+ *
+ *   {
+ *      "id": 1,
+ *      "servicios": "Login",
+ *      "documentacion": "realiza el logn de usuario",
+ *      "prubas": "false"
+ *   }
+ *
+ * </pre>
  * @author Maria Alejandra Escalante
  */
 public class CasoDeUsoDTO implements Serializable {
