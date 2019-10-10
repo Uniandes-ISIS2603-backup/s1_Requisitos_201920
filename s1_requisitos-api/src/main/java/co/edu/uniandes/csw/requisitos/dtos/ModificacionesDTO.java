@@ -19,7 +19,29 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
+  * ModificacionDTO Objeto de transferencia de datos de Modificacion. Los DTO contienen las
+ * representaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
  *
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "id": number,
+ *      "descripcion": string,
+ *      "fechaModificacion ": Date
+ *     
+ *   }
+ * </pre> Por ejemplo una  Modificacion se representa asi:<br>
+ *
+ * <pre>
+ *
+ *   {
+ *       "id": 2,
+ *      "descripcion": "se cambio el nombre del usuario",
+ *      "fechaModificacion ": "2014-01-01T23:28:56.782Z"
+ *   }
+ *
+ * </pre>
  * @author Maria Alejandra Escalante
  */
 public class ModificacionesDTO implements Serializable {
