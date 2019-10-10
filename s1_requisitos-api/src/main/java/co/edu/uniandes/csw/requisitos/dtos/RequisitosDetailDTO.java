@@ -68,12 +68,18 @@ public class RequisitosDetailDTO extends RequisitosDTO
         return desarrolladorEntity;
     }
 
-    //Bloque getters and setters
-    
+ 
+    /**
+     * Retorna el las modificacionesDto de un requisitoDetailDto
+     * @return 
+     */
     public List<ModificacionesDTO> getModificaciones() {
         return modificaciones;
     }
-
+    /**
+     * Define las modificacionesDto de un requisitoDetailDto
+     * @param modificaciones 
+     */
     public void setModificaciones(List<ModificacionesDTO> modificaciones) {
         this.modificaciones = modificaciones;
     }
@@ -91,4 +97,3 @@ public class RequisitosDetailDTO extends RequisitosDTO
         }
     }
 }
-

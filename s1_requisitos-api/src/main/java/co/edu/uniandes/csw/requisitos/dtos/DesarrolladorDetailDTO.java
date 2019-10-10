@@ -69,12 +69,18 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO
         return desarrolladorEntity;
     }
     
-    //Bloque getters y setters
-
+    
+    /**
+     * Retorna los requisitos en que trabaja un desarrollador
+     * @return 
+     */
     public List<RequisitosDTO> getRequisitos() {
         return requisitos;
     }
-
+    /**
+     * Define los requisitos en que trabaja un desarrollador
+     * @param requisitos 
+     */
     public void setRequisitos(List<RequisitosDTO> requisitos) {
         this.requisitos = requisitos;
     }

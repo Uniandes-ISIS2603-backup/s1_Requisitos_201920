@@ -87,68 +87,115 @@ public class RequisitosDTO implements Serializable
     }
     
     /**
-     * BLOQUE GETTERS AND SETTERS
+     * Retorna la fuente del requisito
+     * @return fuente del requisito
      */
      public String getFuente() {
         return fuente;
     }
-
+    /**
+     * Define la fuente del requisito
+     * @param fuente 
+     */
     public void setFuente(String fuente) {
         this.fuente = fuente;
     }
-
+    /**
+     * Retorna el autor del requisito
+     * @return 
+     */
     public String getAutor() {
         return autor;
     }
-
+    /**
+     * Define el autor del requisito
+     * @param autor 
+     */
     public void setAutor(String autor) {
         this.autor = autor;
     }
-
+    /**
+     * Retorna la descripcion del requisito
+     * @return descripcion del requisito
+     */
     public String getDescripcion() {
         return descripcion;
     }
-
+    /**
+     * 
+     * Define la descripcion del requisito
+     * @param descripcion 
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+    /**
+     * Retorna la importancia del requisito
+     * @return 
+     */
     public Integer getImportancia() {
         return importancia;
     }
-
+    /**
+     * Define la importancia del requisito
+     * @param importancia 
+     */
     public void setImportancia(Integer importancia) {
         this.importancia = importancia;
     }
-
+    /**
+     * Retorna un indicador si el requisito es estable
+     * @return 
+     */
     public Boolean getEstabilidad() {
         return estabilidad;
     }
-
+    /**
+     * Define la estabilidad del requisito
+     * @param estabilidad 
+     */
     public void setEstabilidad(Boolean estabilidad) {
         this.estabilidad = estabilidad;
     }
-
+    /**
+     * Retorna los comentarios adicionales que tenga un requisito
+     * @return comentarios adicionales
+     */
     public String getComentariosAdicionales() {
         return comentariosAdicionales;
     }
-
+    /**
+     * Define los comentarios adicionales de un requisito
+     * @param comentariosAdicionales 
+     */
     public void setComentariosAdicionales(String comentariosAdicionales) {
         this.comentariosAdicionales = comentariosAdicionales;
     }
-
+    /**
+     * Retorna el id de un requisito
+     * @return id
+     */
     public Long getId() {
         return id;
     }
-
+    /**
+     * Define el id de un requisito
+     * @param id 
+     */
     public void setId(Long id) {
         this.id = id;
     }
-
+    /**
+     * Retorna el nombre del requisito
+     * @return nombre
+     */
     public String getNombre() {
         return nombre;
     }
-
+    /**
+     * Define el nombre del requisito
+     * @param nombre 
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

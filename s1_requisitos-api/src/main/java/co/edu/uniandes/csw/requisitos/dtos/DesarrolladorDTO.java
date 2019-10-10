@@ -53,12 +53,16 @@ public class DesarrolladorDTO extends PersonaDTO
          return entidad;
    }
     /**
-     * BLOQUE GETTER AND SETTER
+     * Retorna el tipo del desarrollador
+     * @return tipo del desarrollador
      */
     public String getTipo() {
         return tipo;
     }
-
+    /**
+     * Define el tipo del desarrollador
+     * @param tipo 
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
