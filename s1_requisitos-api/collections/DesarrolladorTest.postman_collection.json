@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "612b9b9e-d519-46d7-9fa8-1d5070dc47ea",
+		"name": "DesarrolladorTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear desarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f26a9bae-a840-4f3f-9645-6921a23fd639",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_d\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":10,\n    \"nombre\":\"Carlos Rodriguez\",\n    \"correo\":\"cr@compañiax.com\",\n    \"cedula\":1010001050,\n    \"tipo\":\"General\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear desarrollador con el mismo nombre que otro ya existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4139035f-d95f-4009-bba9-4ca11a20eac4",
+						"exec": [
+							"tests[\"No crea dos desarrolladores con el mismo nombre\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Ya existe un desarrollador con ese nombre.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":10,\n    \"nombre\":\"Carlos Rodriguez\",\n    \"correo\":\"cr@compañiax.com\",\n    \"cedula\":1010001050,\n    \"tipo\":\"General\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear desarrollador con el mismo numero de documento a otro ya existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "86574dc8-874f-44ab-b327-f03771571e81",
+						"exec": [
+							"tests[\"No crea dos desarrolladores con el mismo nombre\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Ya existe un desarrollador con esa cedula.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":10,\n    \"nombre\":\"Luz Rodriguez\",\n    \"correo\":\"lr@compañiax.com\",\n    \"cedula\":1010001050,\n    \"tipo\":\"General\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dar todos los desarrolladores",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0529e30a-e3c4-4da5-8985-b7d82d2d5535",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get All\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Retorna todos los desarrolladores"
+			},
+			"response": []
+		},
+		{
+			"name": "Dar un desarrollador por un id dado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e87663d4-b287-4574-acdc-024f4f2c7977",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_d}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_d}}"
+					]
+				},
+				"description": "Da un desarrollador por un id dado"
+			},
+			"response": []
+		},
+		{
+			"name": "Dar un desarrollador no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "da5d99c3-3863-4cde-ae80-5be3554919bc",
+						"exec": [
+							"tests[\"No se deberia obtener un autor con un id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /desarrollador/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar desarrollador",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":20,\n    \"nombre\":\"F Bogoya\",\n    \"correo\":\"cb@compañiax.com\",\n    \"cedula\":666,\n    \"tipo\":\"Lider\",\n    \"requisitos\":[{\n    \"id\": 13,\n    \"fuente\":\"Ove\",\n    \"autor\":\"L\",\n    \"descripcion\":\"BLA\",\n    \"importancia\":5,\n    \"estabilidad\":true,\n    \"nombre\":\"Prueba herencia\",\n    \"comentariosAdicionales\":\"\",\n    \"casoDeUso\":\n    {\n    \"servicios\":\"hola\",\n    \"id\": 12,\n    \"documentacion\":\"como\",\n    \"pruebas\":true\n     },\n    \"modificaciones\":[]\n    } \n   ]\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_d}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_d}}"
+					]
+				},
+				"description": "Cambia la informacion de un desarrollador"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un desarrollador que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87f4b185-731c-48d7-a694-9f9afb79e8d4",
+						"exec": [
+							"tests[\"No se deberia actualizar un autor con id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /desarrollador/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":20,\n    \"nombre\":\"F Bogoya\",\n    \"correo\":\"cb@compañiax.com\",\n    \"cedula\":666,\n    \"tipo\":\"Lider\",\n    \"requisitos\":[{\n    \"id\": 13,\n    \"fuente\":\"Ove\",\n    \"autor\":\"L\",\n    \"descripcion\":\"BLA\",\n    \"importancia\":5,\n    \"estabilidad\":true,\n    \"nombre\":\"Prueba herencia\",\n    \"comentariosAdicionales\":\"\",\n    \"casoDeUso\":\n    {\n    \"servicios\":\"hola\",\n    \"id\": 12,\n    \"documentacion\":\"como\",\n    \"pruebas\":true\n     },\n    \"modificaciones\":[]\n    } \n   ]\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar desarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5993a5ac-8da0-4e2b-926b-c531181edba9",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_d}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_d}}"
+					]
+				},
+				"description": "Elimina un desarrollador de la aplicacion"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un desarrollador que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74636bbd-1e63-4809-9219-416472dac05f",
+						"exec": [
+							"tests[\"No se deberia borrar un desarrollador con un id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /desarrollador/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
