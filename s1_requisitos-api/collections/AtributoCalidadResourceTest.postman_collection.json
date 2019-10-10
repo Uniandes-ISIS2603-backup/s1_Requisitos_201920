@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "b1264dd5-37fd-4f89-970c-0d51a24d20ca",
+		"name": "AtributoCalidadResourceTest",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/s1_requisitos-api/atributoscalidad",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/atributoscalidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"atributoscalidad"
+					]
+				},
+				"description": "Trae una lista con todos los atributos de calidad"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/s1_requisitos-api/atributoscalidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s1_requisitos-api",
+								"atributoscalidad"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"{{atributoCalidadId}}"
+					]
+				},
+				"description": "Devuelve un atributo de calidad segùn el ID dado"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s1_requisitos-api",
+								"{{atributoCalidadId}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/s1_requisitos-api/atributoscalidad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/atributoscalidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"atributoscalidad"
+					]
+				},
+				"description": "Crea un atributo de calidad con parametros dados"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/s1_requisitos-api/atributoscalidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s1_requisitos-api",
+								"atributoscalidad"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"{{atributoCalidadId}}"
+					]
+				},
+				"description": "Actualiza el atributo de calidad con el ID dado"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s1_requisitos-api",
+								"{{atributoCalidadId}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s1_requisitos-api",
+						"{{atributoCalidadId}}"
+					]
+				},
+				"description": "Elimina el atributo de calidad con el ID dado"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/s1_requisitos-api/{{atributoCalidadId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s1_requisitos-api",
+								"{{atributoCalidadId}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
