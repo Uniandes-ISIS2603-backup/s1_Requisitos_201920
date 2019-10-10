@@ -46,8 +46,15 @@ public class DescripcionDTO {
      */
     private String descripcion;
     
+    /**
+     * id de la descripcion
+     */
     private Long id;
     
+    /**
+     * metodo que convierte el DTO de la descripción a una entidad
+     * @return entidad que la ingormación del DTO
+     */
     public DescripcionEntity toEntity(){
         DescripcionEntity descripcion= new DescripcionEntity();
         descripcion.setDescripcion(this.getDescripcion());
@@ -55,10 +62,17 @@ public class DescripcionDTO {
         return descripcion;
     }
     
+    /**
+     * constructor vacio de la descripcionDTO
+     */
     public DescripcionDTO(){
         
     }
     
+    /**
+     * Constructor de descriociónDTO mediante una entidad
+     * @param descripcion entidad de la descripcion de la cual se hará el DTO
+     */
     public DescripcionDTO(DescripcionEntity descripcion)
     {
         setDescripcion(descripcion.getDescripcion());

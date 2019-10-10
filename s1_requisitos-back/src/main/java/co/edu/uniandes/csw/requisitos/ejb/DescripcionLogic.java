@@ -21,6 +21,12 @@ public class DescripcionLogic {
     @Inject
     private DescripcionPersistence pDescripcion;
     
+    /**
+     * Método encargado de la creación de una descripción
+     * @param descripcion la entidad de la descripcion
+     * @return la entidad de la descripcion con sus respectivos elmeentos
+     * @throws BusinessLogicException 
+     */
     public DescripcionEntity createDescripcion(DescripcionEntity descripcion) throws BusinessLogicException
     {
         if(descripcion.getDescripcion()== null)

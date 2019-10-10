@@ -81,14 +81,36 @@ public class PersonaDTO {
     public void setCedula(int cedula) {
         this.cedula = cedula;
     }
-    
+    /**
+     * Nombre de la persona
+     */
     private String nombre;
+    
+    /**
+     * Correo de la peronsa
+     */
     private String correo;
+    
+    /**
+     * cedula de la persona
+     * 
+     */
     private Integer cedula;
+    
+    /**
+     * id de la persona
+     */
     private Long id;
+    
+    /**
+     * Equipo de desarrollo al que pertenece la persona
+     */
    private EquipoDesarrolloDTO equipoDesarrolloDTO;
     
-    
+    /**
+     * Metodo que convierte el DTO a una entidad de persona
+     * @return  entidad de persona con la información del DTO
+     */
     public PersonaEntity toEntity(){
     
          PersonaEntity persona=new PersonaEntity();

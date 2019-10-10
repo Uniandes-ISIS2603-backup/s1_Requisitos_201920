@@ -19,18 +19,37 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class PersonaPersistence {
 
+    /**
+     * Administrador de entidades
+     */
     @PersistenceContext(unitName="requisitosPU")
     protected EntityManager em;
+    
+    /**
+     * Metodo encargado de crear una entidad de persona
+     * @param persona la entidad de al persona
+     * @return la perosna que se envio por parametro
+     */
     public PersonaEntity create(PersonaEntity persona)
     {
       em.persist(persona);
       return persona;
     }
     
+    /**
+     * Encuentra la persona mediante un id único
+     * @param pPersonaId id de la peronsa
+     * @return  la entidad de la persona
+     */
     public PersonaEntity find(Long pPersonaId ) {
         return em.find(PersonaEntity.class, pPersonaId);
     }
     
+    /**
+     * Encontrar por nombre
+     * @param pNombre el nombre de la persona que se quiere encontrar
+     * @return 
+     */
     public PersonaEntity findByNombre(String pNombre)
     {
         PersonaEntity buscado = null;
@@ -42,6 +61,12 @@ public class PersonaPersistence {
         }
         return buscado;
     }
+    
+    /**
+     * Encuentra a la persona por correo
+     * @param pCorreo el correo de la persona
+     * @return la perosna con el correo esperado
+     */
        public PersonaEntity findByCorreo(String pCorreo)
     {
         PersonaEntity buscado = null;
@@ -64,16 +89,30 @@ public class PersonaPersistence {
         }
         return buscado;
     }
+          /**
+           * Encontrar toas las personas
+           * @return 
+           */
     public List<PersonaEntity> findAll()
     {
         TypedQuery query = em.createQuery("SELECT u FROM PersonaEntity u", PersonaEntity.class);
         return query.getResultList();
     }
+    
+    /**
+     * modificar a una persona
+     * @param pPersona la persona a modificar
+     * @return  la persona modificada
+     */
     public PersonaEntity update(PersonaEntity pPersona)
     {
         return em.merge(pPersona);
     }
     
+    /**
+     * borra una persona mediante su id
+     * @param perId 
+     */
     public void delete(Long perId)
     {
         PersonaEntity persona = em.find(PersonaEntity.class, perId);

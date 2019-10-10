@@ -87,9 +87,18 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     public void setCedula(int cedula) {
         this.cedula = cedula;
     }
-    
+    /**
+     * nombre de la persona
+     */
     private String nombre;
+    /**
+     * Correo de la persona
+     */
     private String correo;
+    
+    /**
+     * cedula de la perosna
+     */
     private int cedula;
 
     /**

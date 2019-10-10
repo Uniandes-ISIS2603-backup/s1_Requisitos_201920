@@ -16,18 +16,33 @@ import javax.persistence.ManyToOne;
 @Entity
 public class DescripcionEntity extends BaseEntity implements Serializable {
 
+    /**
+     * Caso de uso entidades
+     */
     @ManyToOne
     private CasoDeUsoEntity casoEntidades;
     
+     /**
+     * Caso de uso caminos
+     */
     @ManyToOne
     private CasoDeUsoEntity casoCaminos;
     
+     /**
+     * Caso de uso pos condiciones
+     */
     @ManyToOne
     private CasoDeUsoEntity casoPosCondiciones;
     
+     /**
+     * Caso de uso precondiciones
+     */
     @ManyToOne
     private CasoDeUsoEntity casoPreCondiciones;
     
+    /**
+     * Caso de uso alterno
+     */
     @ManyToOne
     private CasoDeUsoEntity casoAlterno;
     /**
