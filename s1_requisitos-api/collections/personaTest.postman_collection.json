@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "e30e0004-6fc0-4cfc-8811-a00354353bc1",
+		"name": "personaTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CrearChambon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e61613e5-8efd-4a65-8d98-6710fd83d112",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"var_equipo\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \t\"equipoDesarrollo\":\"X\",\r\n        \t\"id\":32\r\n  }"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo"
+					]
+				},
+				"description": "k chmabona"
+			},
+			"response": []
+		},
+		{
+			"name": "crearPersona",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "066d3d7b-2ffe-4b39-a2ca-926cd8d36b6d",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_idPersona\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"cedula\": 14233212,\r\n        \"correo\": \"javier@gmail.com\",\r\n        \"equipoDesarrolloDTO\": \r\n           {\r\n        \t\"equipoDesarrollo\":\"X\",\r\n        \t\"id\": \"{{var_equipo}}\"\r\n           },\r\n        \"nombre\": \"Javier Sánchez\",\r\n        \"modificaciones\": []\r\n        \r\n    }\r\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/persona",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"persona"
+					]
+				},
+				"description": "Es necesario crear una perosna"
+			},
+			"response": []
+		},
+		{
+			"name": "getPersonas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c7ed8bab-ed4e-4c7c-b110-d9f03100f78e",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get All\"] = responseCode.code === 200;",
+							"tests[\"authors count\"] = data.length >= 1;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/persona",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"persona"
+					]
+				},
+				"description": "trae a las personas"
+			},
+			"response": []
+		},
+		{
+			"name": "getPersonaPorId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "367d47e6-a38f-46ee-8acd-a21b72f6650b",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/persona/{{new_idPersona}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"persona",
+						"{{new_idPersona}}"
+					]
+				},
+				"description": "Consigue una persona por un id"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Persona",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3707cf4c-50d8-490b-9f01-9d19dc6b29e6",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Put\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cedula\": 12345678,\r\n    \"correo\": \"javier@gmail.com\",\r\n    \"equipoDesarrolloDTO\": {\r\n        \"id\": 1\r\n    },\r\n    \"id\": 1,\r\n    \"nombre\": \"Javier Felipe Sánchez\"\r\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/persona/{{new_idPersona}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"persona",
+						"{{new_idPersona}}"
+					]
+				},
+				"description": "Se edita la persona"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una persona",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "140814ce-f83f-475a-b294-7b014de52d12",
+						"exec": [
+							"tests[\"No genera error en el Delete\" +  responseCode.code] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/persona/{{new_idPersona}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"persona",
+						"{{new_idPersona}}"
+					]
+				},
+				"description": "Se borra una persona"
+			},
+			"response": []
+		}
+	]
+}

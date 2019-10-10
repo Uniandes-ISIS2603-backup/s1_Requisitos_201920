@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "729d1cfb-81ed-44ba-a306-d427d842a8e5",
+		"name": "descripcionTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crearDescripcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9c8ceeb3-54a3-4db1-b843-b99b12acccfa",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_idDescripcion\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"descripcion\": \"hola\"\r\n    }\r\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/descripcion",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"descripcion"
+					]
+				},
+				"description": "Crea una descripción"
+			},
+			"response": []
+		},
+		{
+			"name": "getDescripcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b4fd0f8-07a8-448f-b430-9aa70484140e",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get All\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/descripcion",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"descripcion"
+					]
+				},
+				"description": "consigue las descripciones"
+			},
+			"response": []
+		},
+		{
+			"name": "getDescripcionPorID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a626cef9-4cef-4cc1-a44c-5703eff84541",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/descripcion/{{new_idDescripcion}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"descripcion",
+						"{{new_idDescripcion}}"
+					]
+				},
+				"description": "Consigue la descripción por id"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Descripcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6cab3011-15d1-4930-a9fc-029441dca6bf",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Put\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descripcion\": \"Editada\"\r\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/descripcion/{{new_idDescripcion}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"descripcion",
+						"{{new_idDescripcion}}"
+					]
+				},
+				"description": "se edita una descripción"
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar  una descripcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34bcb28c-2fce-4cbd-9c56-a569b7136d69",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/descripcion/{{new_idDescripcion}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"descripcion",
+						"{{new_idDescripcion}}"
+					]
+				},
+				"description": "Se elimina una descripción"
+			},
+			"response": []
+		}
+	]
+}

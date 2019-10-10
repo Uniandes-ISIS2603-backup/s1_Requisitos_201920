@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.requisitos.dtos;
 import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
 /**
  *
- * @author Estudiante
+ * @author jf.rubio
  */
 public class PersonaDTO {
 
@@ -86,7 +86,7 @@ public class PersonaDTO {
     private String correo;
     private Integer cedula;
     private Long id;
-    private EquipoDesarrolloDTO equipoDesarrolloDTO;
+   private EquipoDesarrolloDTO equipoDesarrolloDTO;
     
     
     public PersonaEntity toEntity(){
@@ -96,6 +96,7 @@ public class PersonaDTO {
          persona.setNombre(this.getNombre());
          persona.setCorreo(this.getCorreo());
          persona.setCedula(this.getCedula());
+         persona.setEquipoDesarrollo(this.getEquipoDesarrolloDTO().toEntity());
          return persona;
     }
       /**
