@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 @Entity
 public class AtributoCalidadEntity extends RequisitosEntity implements Serializable {
     
-    private String tipo;
+private String tipo;
 
     /**
      * @return the tipo
@@ -30,5 +30,10 @@ public class AtributoCalidadEntity extends RequisitosEntity implements Serializa
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
+   
+
+   
+
     
 }

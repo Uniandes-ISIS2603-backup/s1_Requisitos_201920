@@ -174,8 +174,7 @@ public class AtributoCalidadPersistenceTest {
         AtributoCalidadEntity entidad = data.get(0);
         AtributoCalidadEntity nuevaEnt= acp.findByTipo(entidad.getTipo());
         Assert.assertNotNull(nuevaEnt);
-        
-        Assert.assertEquals(nuevaEnt.getTipo(), entidad.getTipo());
+       Assert.assertEquals(nuevaEnt.getTipo(), entidad.getTipo());
       
     }
 }
