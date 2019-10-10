@@ -142,17 +142,6 @@ public class RequisitoLogicTest
         RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
     }
     /**
-     * Prueba para asegurarse que un requisito con id repetido.
-     * @throws BusinessLogicException 
-     */
-    @Test(expected=BusinessLogicException.class)
-    public void createRequisitoIdRepetido()throws BusinessLogicException
-    {
-        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
-        nuevaEnt.setId(data.get(0).getId());
-        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
-    }
-    /**
      * Prueba para asegurarse que un autor de un requisito no puede ser un string vacio.
      * @throws BusinessLogicException 
      */
