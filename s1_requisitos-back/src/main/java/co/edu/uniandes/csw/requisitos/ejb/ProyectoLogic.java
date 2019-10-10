@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.requisitos.ejb;
 import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.ProyectoPersistence;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -28,10 +29,55 @@ public class ProyectoLogic {
         }else{
             throw new BusinessLogicException("La fecha iicial es posterior a la final");
         }
-        
-       
     }
     
+    /**
+     * Obtener todos los proyectos existentes en la base de datos.
+     * @return una lista de requisitos.
+     */
+    public List<ProyectoEntity> getProyectos() 
+    {
+        List<ProyectoEntity> iteraciones = persistence.findAll();
+        return iteraciones;
+    }
+    /**
+     * Obtener una iteracion por medio de su id.
+     * @param iteracionId: id del desarrollador para ser buscada.
+     * @return la iteracion solicitada por medio de su id.
+     */
+    
+    public ProyectoEntity getProyecto(Long iteracionId) 
+    { 
+        ProyectoEntity iteracionEntity = persistence.find(iteracionId);
+        return iteracionEntity;
+    }
+       /**
+     *
+     * Actualiza una iteracion
+     * @param iteracion
+     * @return iteracion con los cambios actualizados en la base de datos.
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    public ProyectoEntity  updateProyecto(ProyectoEntity  iteracion) throws BusinessLogicException 
+    {
+       if(iteracion.getFechaFinal()==null||iteracion.getFechaInicial()==null)
+      {
+         throw new BusinessLogicException("Las fechas no estan bien definidas");      
+      }
+        ProyectoEntity newEntity =persistence.update(iteracion);
+        return newEntity;
+    }  
+     /**
+     * Borra una iteracion.
+     * @param iteracionId: id de la iteracion a borrar
+     */
+    public void deleteProyecto(Long iteracionId) 
+    {
+         persistence.delete(iteracionId);
+    }
+    
+
+
     
     
     

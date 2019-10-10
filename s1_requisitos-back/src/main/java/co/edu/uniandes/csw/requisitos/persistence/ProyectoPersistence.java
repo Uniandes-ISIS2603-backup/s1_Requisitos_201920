@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.requisitos.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -38,6 +40,16 @@ public class ProyectoPersistence {
      */
     public ProyectoEntity find(Long id){
         return em.find(ProyectoEntity.class, id);
+    }
+    
+    /**
+     * Retorna una lista con todos los elementos
+     * @return 
+     */
+    public List<ProyectoEntity> findAll()
+    {
+        TypedQuery query=em.createQuery("select u from ProyectoEntity u",ProyectoEntity.class);
+        return query.getResultList();
     }
     
     /**
