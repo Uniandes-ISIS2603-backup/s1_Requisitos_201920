@@ -24,7 +24,7 @@ import org.junit.Test;
  * @author Juan Martinez
  */
 public class ProyectoIT {
-    private static final String COLLECTION = "Proyecto Test.postman_collection";
+    private static final String COLLECTION = "ProyectoTest.postman_collection";
 
     @Deployment(testable = true)
     public static WebArchive createDeployment() {
