@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.requisitos.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
-import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
+
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import java.util.List;
 import javax.ejb.Stateless;

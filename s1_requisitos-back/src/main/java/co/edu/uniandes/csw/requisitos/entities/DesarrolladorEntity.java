@@ -20,7 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author Nicolás Tobo
  */
 @Entity
-public class DesarrolladorEntity extends PersonaEntity implements Serializable {
+public class DesarrolladorEntity extends BaseEntity implements Serializable {
 
     /**
      * String que representa el tipo del desarrollador

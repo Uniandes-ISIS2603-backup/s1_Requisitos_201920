@@ -21,11 +21,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class EquipoDesarrolloEntity extends BaseEntity implements Serializable{
     
     private String equipoDesarrollo;
-    
+    /*
        @PodamExclude
     @OneToMany(mappedBy = "equipoDesarrollo",fetch=FetchType.LAZY)
     private List<PersonaEntity> integrantes = new ArrayList<>();
-
+*/
     /**
      * @return the equipoDesarrollo
      */
