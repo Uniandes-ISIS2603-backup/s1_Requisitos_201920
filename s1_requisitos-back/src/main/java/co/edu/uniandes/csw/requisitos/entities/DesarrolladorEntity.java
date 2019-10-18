@@ -36,10 +36,23 @@ public class DesarrolladorEntity extends PersonaEntity implements Serializable {
     @PodamExclude
     @OneToMany(
     mappedBy = "responsable",
-    fetch = javax.persistence.FetchType.LAZY,
-    cascade = CascadeType.PERSIST
+    fetch = javax.persistence.FetchType.LAZY
     )
-    private List<CasoDeUsoEntity> casosDeUso= new ArrayList<>();
+    private List<CasoDeUsoEntity> casosDeUsoResponsable= new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(
+    mappedBy = "representanteDelCliente",
+    fetch = javax.persistence.FetchType.LAZY
+    )
+    private List<CasoDeUsoEntity> casosDeUsoRepresentante= new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(
+    mappedBy = "desarrolladorModificaciones",
+    fetch = javax.persistence.FetchType.LAZY
+    )
+    private List <ModificacionesEntity> modificaciones=new ArrayList<>();
 
     /**
      * @return the tipo
@@ -70,17 +83,51 @@ public class DesarrolladorEntity extends PersonaEntity implements Serializable {
     }
 
     /**
-     * @return the casosDeUso
+     * @return the casosDeUsoResponsable
      */
-    public List<CasoDeUsoEntity> getCasosDeUso() {
-        return casosDeUso;
+    public List<CasoDeUsoEntity> getCasosDeUsoResponsable() {
+        return casosDeUsoResponsable;
     }
 
     /**
-     * @param casosDeUso the casosDeUso to set
+     * @param casosDeUsoResponsable the casosDeUsoResponsable to set
      */
-    public void setCasosDeUso(List<CasoDeUsoEntity> casosDeUso) {
-        this.casosDeUso = casosDeUso;
+    public void setCasosDeUsoResponsable(List<CasoDeUsoEntity> casosDeUsoResponsable) {
+        this.casosDeUsoResponsable = casosDeUsoResponsable;
     }
+
+    /**
+     * @return the casosDeUsoRepresentante
+     */
+    public List<CasoDeUsoEntity> getCasosDeUsoRepresentante() {
+        return casosDeUsoRepresentante;
+    }
+
+    /**
+     * @param casosDeUsoRepresentante the casosDeUsoRepresentante to set
+     */
+    public void setCasosDeUsoRepresentante(List<CasoDeUsoEntity> casosDeUsoRepresentante) {
+        this.casosDeUsoRepresentante = casosDeUsoRepresentante;
+    }
+
+    /**
+     * @return the modificaciones
+     */
+    public List <ModificacionesEntity> getModificaciones() {
+        return modificaciones;
+    }
+
+    /**
+     * @param modificaciones the modificaciones to set
+     */
+    public void setModificaciones(List <ModificacionesEntity> modificaciones) {
+        this.modificaciones = modificaciones;
+    }
+
+   
+    
+    
+    
+    
 
 }   

@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -22,90 +24,80 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CasoDeUsoEntity extends BaseEntity implements Serializable {
-    //variable encargada de almacenar los servicios del caso de uso
 
-    private String servicios;
-//variable encargada de almacenar la documentacion del caso de uso
+    //variable encargada de almacenar los servicios del caso de uso
+    @ElementCollection
+    @CollectionTable(name = "servicios")
+    private List<String> servicios = new ArrayList<>();
+    //variable encargada de almacenar la documentacion del caso de uso
     private String documentacion;
     //variable encargada de almacenar los resultados de las pruebas del caso de uso
     private Boolean pruebas;
+    //variable encargada de almacenar las entidades involucradas en el caso
+    @ElementCollection
+    @CollectionTable(name = "entidades")
+    private ArrayList<String> entidades = new ArrayList<>();
+
+    //variable encargada de almacenar los caminos de excepcion involucradas en el caso
+    @ElementCollection
+    @CollectionTable(name = "caminosExcepcion")
+    private ArrayList<String> caminosExcepcion = new ArrayList<>();
+
+    //variable encargada de almacenar las postcondiciones involucradas en el caso
+    @ElementCollection
+    @CollectionTable(name = "posCondiciones")
+    private ArrayList<String> posCondiciones = new ArrayList<>();
+
+    //variable encargada de almacenar las pre condicionesinvolucradas en el caso
+    @ElementCollection
+    @CollectionTable(name = "preCondiciones")
+    private ArrayList<String> preCondiciones = new ArrayList<>();
+
+    //variable encargada de almacenar los caminos alternos involucradas en el caso
+    @ElementCollection
+    @CollectionTable(name = "caminosAlternos")
+    private ArrayList<String> caminosAlternos = new ArrayList<>();
 
     //Relacion con Modificacion
     @PodamExclude
     @OneToMany(
             mappedBy = "casoModificaciones",
-            fetch = javax.persistence.FetchType.LAZY,
-            cascade = CascadeType.PERSIST
+            fetch = javax.persistence.FetchType.LAZY
     )
     private List<ModificacionesEntity> modificaciones = new ArrayList<>();
-
-    //Relaciones con Descripcion
-    @PodamExclude
-    @OneToMany(
-            mappedBy = "casoEntidades",
-            fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> entidades = new ArrayList<>();
-
-    @PodamExclude
-    @OneToMany(
-            mappedBy = "casoCaminos",
-            fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> caminosExcepcion = new ArrayList<>();
-
-    @PodamExclude
-    @OneToMany(
-            mappedBy = "casoPosCondiciones",
-            fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> posCondiciones = new ArrayList<>();
-
-    @PodamExclude
-    @OneToMany(
-            mappedBy = "casoPreCondiciones",
-            fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> preCondiciones = new ArrayList<>();
-
-    @PodamExclude
-    @OneToMany(
-            mappedBy = "casoAlterno",
-            fetch = javax.persistence.FetchType.LAZY
-    )
-    private List<DescripcionEntity> preCaminoAlterno = new ArrayList<>();
 
     //Relacion con representante del cliente
     @PodamExclude
     @ManyToOne
-    private RepresentanteDelClienteEntity representante;
+    private DesarrolladorEntity representanteDelCliente;
 
     //relacion con requisito funcional
     @PodamExclude
     @OneToMany(
-            mappedBy = "casoFuncional",
-            cascade =CascadeType.PERSIST ,
+            mappedBy = "requisitosFuncionalesCaso",
             fetch = javax.persistence.FetchType.LAZY
     )
-    private List<FuncionalEntity> funcional = new ArrayList<>();
+    private List<RequisitosEntity> funcionales = new ArrayList<>();
 
     @PodamExclude
-    @ManyToOne(
-    cascade = CascadeType.ALL
-    )
+    @ManyToOne
     private DesarrolladorEntity responsable;
 
+    
+    
+    
+    
     /**
      * @return the servicios
      */
-    public String getServicios() {
+    public List<String> getServicios() {
         return servicios;
     }
 
     /**
      * @param servicios the servicios to set
      */
-    public void setServicios(String servicios) {
+    public void setServicios(List<String> servicios) {
         this.servicios = servicios;
     }
 
@@ -138,6 +130,76 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * @return the entidades
+     */
+    public ArrayList<String> getEntidades() {
+        return entidades;
+    }
+
+    /**
+     * @param entidades the entidades to set
+     */
+    public void setEntidades(ArrayList<String> entidades) {
+        this.entidades = entidades;
+    }
+
+    /**
+     * @return the caminosExcepcion
+     */
+    public ArrayList<String> getCaminosExcepcion() {
+        return caminosExcepcion;
+    }
+
+    /**
+     * @param caminosExcepcion the caminosExcepcion to set
+     */
+    public void setCaminosExcepcion(ArrayList<String> caminosExcepcion) {
+        this.caminosExcepcion = caminosExcepcion;
+    }
+
+    /**
+     * @return the posCondiciones
+     */
+    public ArrayList<String> getPosCondiciones() {
+        return posCondiciones;
+    }
+
+    /**
+     * @param posCondiciones the posCondiciones to set
+     */
+    public void setPosCondiciones(ArrayList<String> posCondiciones) {
+        this.posCondiciones = posCondiciones;
+    }
+
+    /**
+     * @return the preCondiciones
+     */
+    public ArrayList<String> getPreCondiciones() {
+        return preCondiciones;
+    }
+
+    /**
+     * @param preCondiciones the preCondiciones to set
+     */
+    public void setPreCondiciones(ArrayList<String> preCondiciones) {
+        this.preCondiciones = preCondiciones;
+    }
+
+    /**
+     * @return the caminosAlternos
+     */
+    public ArrayList<String> getCaminosAlternos() {
+        return caminosAlternos;
+    }
+
+    /**
+     * @param caminosAlternos the caminosAlternos to set
+     */
+    public void setCaminosAlternos(ArrayList<String> caminosAlternos) {
+        this.caminosAlternos = caminosAlternos;
+    }
+
+    /**
      * @return the modificaciones
      */
     public List<ModificacionesEntity> getModificaciones() {
@@ -152,101 +214,31 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * @return the entidades
+     * @return the representanteDelCliente
      */
-    public List<DescripcionEntity> getEntidades() {
-        return entidades;
+    public DesarrolladorEntity getRepresentanteDelCliente() {
+        return representanteDelCliente;
     }
 
     /**
-     * @param entidades the entidades to set
+     * @param representanteDelCliente the representanteDelCliente to set
      */
-    public void setEntidades(List<DescripcionEntity> entidades) {
-        this.entidades = entidades;
+    public void setRepresentanteDelCliente(DesarrolladorEntity representanteDelCliente) {
+        this.representanteDelCliente = representanteDelCliente;
     }
 
     /**
-     * @return the caminosExcepcion
+     * @return the funcionales
      */
-    public List<DescripcionEntity> getCaminosExcepcion() {
-        return caminosExcepcion;
+    public List<RequisitosEntity> getFuncionales() {
+        return funcionales;
     }
 
     /**
-     * @param caminosExcepcion the caminosExcepcion to set
+     * @param funcionales the funcionales to set
      */
-    public void setCaminosExcepcion(List<DescripcionEntity> caminosExcepcion) {
-        this.caminosExcepcion = caminosExcepcion;
-    }
-
-    /**
-     * @return the posCondiciones
-     */
-    public List<DescripcionEntity> getPosCondiciones() {
-        return posCondiciones;
-    }
-
-    /**
-     * @param posCondiciones the posCondiciones to set
-     */
-    public void setPosCondiciones(List<DescripcionEntity> posCondiciones) {
-        this.posCondiciones = posCondiciones;
-    }
-
-    /**
-     * @return the preCondiciones
-     */
-    public List<DescripcionEntity> getPreCondiciones() {
-        return preCondiciones;
-    }
-
-    /**
-     * @param preCondiciones the preCondiciones to set
-     */
-    public void setPreCondiciones(List<DescripcionEntity> preCondiciones) {
-        this.preCondiciones = preCondiciones;
-    }
-
-    /**
-     * @return the preCaminoAlterno
-     */
-    public List<DescripcionEntity> getPreCaminoAlterno() {
-        return preCaminoAlterno;
-    }
-
-    /**
-     * @param preCaminoAlterno the preCaminoAlterno to set
-     */
-    public void setPreCaminoAlterno(List<DescripcionEntity> preCaminoAlterno) {
-        this.preCaminoAlterno = preCaminoAlterno;
-    }
-
-    /**
-     * @return the representante
-     */
-    public RepresentanteDelClienteEntity getRepresentante() {
-        return representante;
-    }
-
-    /**
-     * @param representante the representante to set
-     */
-    public void setRepresentante(RepresentanteDelClienteEntity representante) {
-        this.representante = representante;
-    }
-
-    /**
-     * @return the funcional
-     */
-    public List<FuncionalEntity> getFuncional() {
-        return funcional;
-    }
-
-    /**
-     * @param funcional the funcional to set
-     */
-    public void setFuncional(List<FuncionalEntity> funcional) {
-        this.funcional = funcional;
+    public void setFuncionales(List<RequisitosEntity> funcionales) {
+        this.funcionales = funcionales;
     }
 
     /**
@@ -262,6 +254,5 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     public void setResponsable(DesarrolladorEntity responsable) {
         this.responsable = responsable;
     }
-    
-   
+
 }

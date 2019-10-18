@@ -27,151 +27,60 @@ public  class RequisitosEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @ManyToOne
-    DesarrolladorEntity desarrollador;
+    private DesarrolladorEntity desarrollador;
     
     @PodamExclude
     @OneToMany(
         mappedBy = "modificacionesRequisito", 
-        fetch = javax.persistence.FetchType.LAZY,
-        cascade = CascadeType.PERSIST
+        fetch = javax.persistence.FetchType.LAZY
     )
-    protected List<ModificacionesEntity> modificaciones=new ArrayList<>();
+    private List<ModificacionesEntity> modificaciones=new ArrayList<>();
     
-    /**
-     * Fuente de donde se escribe el requisito
-     */
-    protected String fuente;
-    /**
-     * Autor del requisito
-     */
-    protected String autor;
-    /**
-     * Informacion que tiene el requisito
-     */
-    protected String descripcion;
-    /**
-     * Numero que representa la importancia del requisito
-     */
-    @PodamIntValue(minValue=0,maxValue=Integer.MAX_VALUE)
-    protected Integer importancia;
-    /**
-     * Boolena que representa si el requisito es estable(fijo)
-     */
-    protected Boolean estabilidad;
-    /**
-     * Comentarios adicionales sobre el requisito
-     */
-    protected String comentariosAdicionales;
-    /**
-     * nombre del requisito
-     */
-    protected String nombre;
+    @PodamExclude
+    @ManyToOne
+    private CasoDeUsoEntity requisitosFuncionalesCaso;
 
     /**
-     * @return the fuente
+     * @return the desarrollador
      */
-    public String getFuente() {
-        return fuente;
-    }
-
-    /**
-     * @param fuente the fuente to set
-     */
-    public void setFuente(String fuente) {
-        this.fuente = fuente;
-    }
-
-    /**
-     * @return the autor
-     */
-    public String getAutor() {
-        return autor;
-    }
-
-    /**
-     * @param autor the autor to set
-     */
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    /**
-     * @return the descripcion
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    /**
-     * @param descripcion the descripcion to set
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    /**
-     * @return the importancia
-     */
-    public Integer getImportancia() {
-        return importancia;
-    }
-
-    /**
-     * @param importancia the importancia to set
-     */
-    public void setImportancia(Integer importancia) {
-        this.importancia = importancia;
-    }
-
-    /**
-     * @return the estabilidad
-     */
-    public Boolean getEstabilidad() {
-        return estabilidad;
-    }
-
-    /**
-     * @param estabilidad the estabilidad to set
-     */
-    public void setEstabilidad(Boolean estabilidad) {
-        this.estabilidad = estabilidad;
-    }
-
-    /**
-     * @return the comentariosAdicionales
-     */
-    public String getComentariosAdicionales() {
-        return comentariosAdicionales;
-    }
-
-    /**
-     * @param comentariosAdicionales the comentariosAdicionales to set
-     */
-    public void setComentariosAdicionales(String comentariosAdicionales) {
-        this.comentariosAdicionales = comentariosAdicionales;
-    }  
-
     public DesarrolladorEntity getDesarrollador() {
         return desarrollador;
     }
 
+    /**
+     * @param desarrollador the desarrollador to set
+     */
     public void setDesarrollador(DesarrolladorEntity desarrollador) {
         this.desarrollador = desarrollador;
     }
 
+    /**
+     * @return the modificaciones
+     */
     public List<ModificacionesEntity> getModificaciones() {
         return modificaciones;
     }
 
+    /**
+     * @param modificaciones the modificaciones to set
+     */
     public void setModificaciones(List<ModificacionesEntity> modificaciones) {
         this.modificaciones = modificaciones;
     }
 
-    public String getNombre() {
-        return nombre;
+    /**
+     * @return the requisitosFuncionalesCaso
+     */
+    public CasoDeUsoEntity getRequisitosFuncionalesCaso() {
+        return requisitosFuncionalesCaso;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    /**
+     * @param requisitosFuncionalesCaso the requisitosFuncionalesCaso to set
+     */
+    public void setRequisitosFuncionalesCaso(CasoDeUsoEntity requisitosFuncionalesCaso) {
+        this.requisitosFuncionalesCaso = requisitosFuncionalesCaso;
     }
+    
+   
 }

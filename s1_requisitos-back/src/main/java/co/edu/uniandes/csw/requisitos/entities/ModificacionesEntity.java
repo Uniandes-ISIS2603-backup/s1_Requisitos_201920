@@ -27,6 +27,20 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  */
 @Entity
 public class ModificacionesEntity extends BaseEntity implements Serializable{
+
+    /**
+     * @return the desarrolladorModificaciones
+     */
+    public DesarrolladorEntity getDesarrolladorModificaciones() {
+        return desarrolladorModificaciones;
+    }
+
+    /**
+     * @param desarrolladorModificaciones the desarrolladorModificaciones to set
+     */
+    public void setDesarrolladorModificaciones(DesarrolladorEntity desarrolladorModificaciones) {
+        this.desarrolladorModificaciones = desarrolladorModificaciones;
+    }
     //declaraciones necesarias para Date
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
@@ -37,22 +51,16 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
 
     //relacion con la entidad persona
     @PodamExclude
-    @ManyToOne(
-    cascade = CascadeType.ALL
-    )
-    private PersonaEntity persona;
+    @ManyToOne
+    private DesarrolladorEntity desarrolladorModificaciones;
    
     //relacion con casos de uso
-    @ManyToOne(
-    cascade = CascadeType.ALL
-    )
+    @ManyToOne
     private CasoDeUsoEntity casoModificaciones;
     
     //relacion con requisitos
     @PodamExclude
-    @ManyToOne(
-    cascade = CascadeType.ALL
-    )
+    @ManyToOne
     private RequisitosEntity modificacionesRequisito;
 
     /**
@@ -84,20 +92,6 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * @return the persona
-     */
-    public PersonaEntity getPersona() {
-        return persona;
-    }
-
-    /**
-     * @param persona the persona to set
-     */
-    public void setPersona(PersonaEntity persona) {
-        this.persona = persona;
-    }
-
-    /**
      * @return the casoModificaciones
      */
     public CasoDeUsoEntity getCasoModificaciones() {
@@ -126,8 +120,11 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     }
 
     
- 
-   
-
-  
+    
+    
+    
+    
+    
+    
+      
 }
