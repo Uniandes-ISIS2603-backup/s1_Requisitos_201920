@@ -28,19 +28,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class ModificacionesEntity extends BaseEntity implements Serializable{
 
-    /**
-     * @return the desarrolladorModificaciones
-     */
-    public DesarrolladorEntity getDesarrolladorModificaciones() {
-        return desarrolladorModificaciones;
-    }
-
-    /**
-     * @param desarrolladorModificaciones the desarrolladorModificaciones to set
-     */
-    public void setDesarrolladorModificaciones(DesarrolladorEntity desarrolladorModificaciones) {
-        this.desarrolladorModificaciones = desarrolladorModificaciones;
-    }
+  
     //declaraciones necesarias para Date
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
@@ -92,6 +80,20 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
     }
 
     /**
+     * @return the desarrolladorModificaciones
+     */
+    public DesarrolladorEntity getDesarrolladorModificaciones() {
+        return desarrolladorModificaciones;
+    }
+
+    /**
+     * @param desarrolladorModificaciones the desarrolladorModificaciones to set
+     */
+    public void setDesarrolladorModificaciones(DesarrolladorEntity desarrolladorModificaciones) {
+        this.desarrolladorModificaciones = desarrolladorModificaciones;
+    }
+
+    /**
      * @return the casoModificaciones
      */
     public CasoDeUsoEntity getCasoModificaciones() {
@@ -119,12 +121,7 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
         this.modificacionesRequisito = modificacionesRequisito;
     }
 
-    
-    
-    
-    
-    
-    
+   
     
       
 }

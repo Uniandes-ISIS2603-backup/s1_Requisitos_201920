@@ -35,36 +35,37 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class CasoDeUsoResource 
-{
-    private static final Logger LOGGER = Logger.getLogger(CasoDeUsoResource.class.getName()); 
-     /**
-      * Atributo logica
-      */
-     @Inject
-     private CasoDeUsoLogic cl;
-       /**
-     * Crea una nuevo caso de uso con la informacion que se recibe en el cuerpo de
-     * la petición y se regresa un objeto identico con un id auto-generado por
-     * la base de datos.
+public class CasoDeUsoResource {
+
+    private static final Logger LOGGER = Logger.getLogger(CasoDeUsoResource.class.getName());
+    /**
+     * Atributo logica
+     */
+    @Inject
+    private CasoDeUsoLogic cl;
+
+    /**
+     * Crea una nuevo caso de uso con la informacion que se recibe en el cuerpo
+     * de la petición y se regresa un objeto identico con un id auto-generado
+     * por la base de datos.
+     *
      * @param casoDeUso
      * @return JSON {@link CasoDeUsoDTO} -El requisito guardado con el atributo
      * id autogenerado.
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @POST
-    public CasoDeUsoDTO createCasoDeUso(CasoDeUsoDTO casoDeUso) throws BusinessLogicException     
-    {
+    public CasoDeUsoDTO createCasoDeUso(CasoDeUsoDTO casoDeUso) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "CasoDeUsoResource createCasoDeUso: input: {0}", casoDeUso);
-        CasoDeUsoEntity casoDeUsoEntity=casoDeUso.toEntity();
+        CasoDeUsoEntity casoDeUsoEntity = casoDeUso.toEntity();
         LOGGER.log(Level.INFO, "CasoDeUsoResource createCasoDeUso: input: {0}", casoDeUso);
-        casoDeUsoEntity=cl.crearCasoDeUso(casoDeUsoEntity);
+        casoDeUsoEntity = cl.crearCasoDeUso(casoDeUsoEntity);
         return new CasoDeUsoDTO(casoDeUsoEntity);
     }
 
     /*
     * retorna una lista con todos los casos de uso como DetailDTO
-    */
+     */
     @GET
     public List<CasoDeUsoDetailDTO> getCasosdeUso() {
         LOGGER.info("CasoDeUsoResource getcasosDeUso: input: void");
@@ -72,47 +73,46 @@ public class CasoDeUsoResource
         LOGGER.log(Level.INFO, "CasoDeUsoResource getCasosDeUso: output: {0}", listaCasos);
         return listaCasos;
     }
-    
-    
+
     /*
     retorna un solo caso de uso dado por id como detailDTO
-    */
+     */
     @GET
     @Path("{casosId:\\d+}")
-    public CasoDeUsoDetailDTO getCasoDeUso (@PathParam("casosId") Long casosId){
+    public CasoDeUsoDetailDTO getCasoDeUso(@PathParam("casosId") Long casosId) {
         LOGGER.log(Level.INFO, "CasoDeUsoResource getCasoDeUso: input: {0}", casosId);
-        CasoDeUsoEntity entidad= cl.getCaso(casosId);
-        if (entidad==null){
-             throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
+        CasoDeUsoEntity entidad = cl.getCaso(casosId);
+        if (entidad == null) {
+            throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
         }
-        CasoDeUsoDetailDTO detail= new CasoDeUsoDetailDTO(entidad);
+        CasoDeUsoDetailDTO detail = new CasoDeUsoDetailDTO(entidad);
         LOGGER.log(Level.INFO, "CasoDeUsoResource getCasoDeUso: output:{0}", detail);
         return detail;
     }
-    
+
     /*
     actualiza caso de uso y lo retorna como detailDTO
-    */
+     */
     @PUT
     @Path("{casosId: \\d+}")
-    public CasoDeUsoDetailDTO updateCasoDeUso (@PathParam("casosId") Long casosId, CasoDeUsoDTO caso)throws BusinessLogicException{
+    public CasoDeUsoDetailDTO updateCasoDeUso(@PathParam("casosId") Long casosId, CasoDeUsoDTO caso) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "CasodeUsoResource updateCasoDeUso: input: id: {0} , caso: {1}", new Object[]{casosId, caso});
-        
+
         caso.setId(casosId);
-        if (cl.getCaso(casosId)==null){
-             throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
+        if (cl.getCaso(casosId) == null) {
+            throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
         }
-        CasoDeUsoDetailDTO nuevo= new CasoDeUsoDetailDTO(cl.updateCasoDeUso(caso.toEntity()));
+        CasoDeUsoDetailDTO nuevo = new CasoDeUsoDetailDTO(cl.updateCasoDeUso(caso.toEntity()));
         LOGGER.log(Level.INFO, "CasoDeUsoResource updateCasoDeUso: output:{0}", nuevo);
         return nuevo;
     }
-    
+
     /*
     borra un caso de uso dado por id
-    */
+     */
     @Path("{casosId: \\d+}")
     @DELETE
-    public void deleteCaso(@PathParam ("casosId") Long casosId) throws BusinessLogicException{
+    public void deleteCaso(@PathParam("casosId") Long casosId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "CasoDeUsoResource deleteCaso: input: {0}", casosId);
         CasoDeUsoEntity nuevo = cl.getCaso(casosId);
         if (nuevo == null) {
@@ -123,12 +123,9 @@ public class CasoDeUsoResource
         LOGGER.info("CasoDeUsoResource deleteCasoDeUso: output: void");
     }
     
-    
-   
-   
     /*
     metodo que convierte una lista de entidades a una lista de DetailDTO
-    */
+     */
     private List<CasoDeUsoDetailDTO> listEntity2DetailDTO(List<CasoDeUsoEntity> entityList) {
         List<CasoDeUsoDetailDTO> list = new ArrayList<>();
         for (CasoDeUsoEntity entity : entityList) {
@@ -137,5 +134,4 @@ public class CasoDeUsoResource
         return list;
     }
 
-    
 }
