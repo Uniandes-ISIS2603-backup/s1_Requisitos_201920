@@ -57,13 +57,31 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
         }
 
     }
-/*
+
     @Override
     public CasoDeUsoEntity toEntity() {
         CasoDeUsoEntity entity = super.toEntity();
+        if (modificaciones!=null){
+            List <ModificacionesEntity> modificacionesEntity= new ArrayList<>();
+            for (ModificacionesDTO dto: modificaciones ){
+                modificacionesEntity.add(dto.toEntity());
+            }
+            entity.setModificaciones(modificacionesEntity);
+        }
+        
+        
+        if (funcionales!=null){
+            List <RequisitosEntity> reqEntity= new ArrayList<>();
+            for (RequisitosDTO dto: funcionales ){
+                reqEntity.add(dto.toEntity());
+            }
+            
+            entity.setFuncionales(reqEntity);
+        }
+        return entity;
         
     }
-*/
+
     /**
      * @return the modificaciones
      */

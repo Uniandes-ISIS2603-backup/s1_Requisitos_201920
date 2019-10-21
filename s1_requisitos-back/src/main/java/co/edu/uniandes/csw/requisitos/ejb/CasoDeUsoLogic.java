@@ -37,25 +37,32 @@ public class CasoDeUsoLogic {
             throw new BusinessLogicException("la Documentacion no debe ser nula");
 
         }
-        if (caso.getServicios().size()==0){
+        if (caso.getServicios().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos un servicio");
             
         }
-         if (caso.getEntidades().size()==0){
+         if (caso.getEntidades().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos una entidad");
             
         }
-         if (caso.getPreCondiciones().size()==0){
+         if (caso.getPreCondiciones().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos una precondicion");
             
         }
-         if (caso.getPosCondiciones().size()==0){
+         if (caso.getPosCondiciones().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos una posCondicion");
             
         }
-      
-        
-       
+         /*
+        if (!caso.getRepresentanteDelCliente().tipo().equals("RepresentanteDelCliente")){
+         throw new BusinessLogicException("el desarrollador representante debe ser de tipo "RepresentanteDelCliente");
+         }
+         
+        if (!caso.getResponsable.tipo().equals("Desarrollador")){
+         throw new BusinessLogicException("el desarrollador responsable debe ser de tipo "Desarrollador");
+         } 
+         
+       */
         caso = persistence.create(caso);
         return caso;
     }

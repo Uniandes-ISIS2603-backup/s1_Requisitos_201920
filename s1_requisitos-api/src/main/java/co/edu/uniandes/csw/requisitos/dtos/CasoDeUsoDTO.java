@@ -92,6 +92,8 @@ public class CasoDeUsoDTO implements Serializable {
         this.entidades=caso.getEntidades();
         this.posCondiciones=caso.getPosCondiciones();
         this.preCondiciones=caso.getPreCondiciones();
+        this.representanteDelCliente=caso.getRepresentanteDelCliente();
+        this.responsable=caso.getResponsable();
         
     }
     }
@@ -108,6 +110,8 @@ public class CasoDeUsoDTO implements Serializable {
         entidad.setEntidades(this.getEntidades());
         entidad.setPosCondiciones(this.getPosCondiciones());
         entidad.setPreCondiciones(this.getPreCondiciones());
+        entidad.setRepresentanteDelCliente(this.getRepresentanteDelCliente());
+        entidad.setResponsable(this.getResponsable());
         
         return entidad;
     }

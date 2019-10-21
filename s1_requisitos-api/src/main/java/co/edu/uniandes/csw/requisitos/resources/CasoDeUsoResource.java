@@ -118,7 +118,6 @@ public class CasoDeUsoResource
         if (nuevo == null) {
             throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
         }
-        
         LOGGER.info("CasoDeUsoResource deleteCaso: output: void");
         cl.deleteCaso(casosId);
         LOGGER.info("CasoDeUsoResource deleteCasoDeUso: output: void");
