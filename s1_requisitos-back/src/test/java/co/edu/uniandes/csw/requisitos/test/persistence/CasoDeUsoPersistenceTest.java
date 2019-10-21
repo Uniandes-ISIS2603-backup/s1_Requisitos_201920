@@ -117,16 +117,12 @@ public class CasoDeUsoPersistenceTest {
 
         Assert.assertEquals(modificacion.getDocumentacion(), entity.getDocumentacion());
         Assert.assertEquals(modificacion.getPruebas(), entity.getPruebas());
-
         Assert.assertEquals(modificacion.getServicios(), entity.getServicios());
         Assert.assertEquals(modificacion.getEntidades(), entity.getEntidades());
         Assert.assertEquals(modificacion.getCaminosExcepcion(), entity.getCaminosExcepcion());
-        Assert.assertEquals(modificacion.getFuncional(), entity.getFuncional());
         Assert.assertEquals(modificacion.getPosCondiciones(), entity.getPosCondiciones());
         Assert.assertEquals(modificacion.getPreCondiciones(), entity.getPreCondiciones());
-        Assert.assertEquals(modificacion.getPreCaminoAlterno(), entity.getPreCaminoAlterno());
-        Assert.assertEquals(modificacion.getResponsable(), entity.getResponsable());
-        Assert.assertEquals(modificacion.getRepresentante(), entity.getRepresentante());
+        Assert.assertEquals(modificacion.getCaminosAlternos(), entity.getCaminosAlternos());
 
     }
 
@@ -140,17 +136,12 @@ public class CasoDeUsoPersistenceTest {
 
         Assert.assertEquals(encontrado.getDocumentacion(), entity.getDocumentacion());
         Assert.assertEquals(encontrado.getPruebas(), entity.getPruebas());
-
         Assert.assertEquals(encontrado.getServicios(), entity.getServicios());
-        
         Assert.assertEquals(encontrado.getEntidades(), entity.getEntidades());
         Assert.assertEquals(encontrado.getCaminosExcepcion(), entity.getCaminosExcepcion());
-        Assert.assertEquals(encontrado.getFuncional(), entity.getFuncional());
         Assert.assertEquals(encontrado.getPosCondiciones(), entity.getPosCondiciones());
         Assert.assertEquals(encontrado.getPreCondiciones(), entity.getPreCondiciones());
-        Assert.assertEquals(encontrado.getPreCaminoAlterno(), entity.getPreCaminoAlterno());
-        Assert.assertEquals(encontrado.getResponsable(), entity.getResponsable());
-        Assert.assertEquals(encontrado.getRepresentante(), entity.getRepresentante());
+        Assert.assertEquals(encontrado.getCaminosAlternos(), entity.getCaminosAlternos());
 
     }
 
@@ -189,8 +180,12 @@ public class CasoDeUsoPersistenceTest {
         CasoDeUsoEntity resp = em.find(CasoDeUsoEntity.class, entity.getId());
         Assert.assertEquals(resp.getDocumentacion(), encontrado.getDocumentacion());
         Assert.assertEquals(resp.getPruebas(), encontrado.getPruebas());
-
         Assert.assertEquals(resp.getServicios(), encontrado.getServicios());
+        Assert.assertEquals(resp.getEntidades(), encontrado.getEntidades());
+        Assert.assertEquals(resp.getCaminosExcepcion(), encontrado.getCaminosExcepcion());
+        Assert.assertEquals(resp.getPosCondiciones(), encontrado.getPosCondiciones());
+        Assert.assertEquals(resp.getPreCondiciones(), encontrado.getPreCondiciones());
+        Assert.assertEquals(resp.getCaminosAlternos(), encontrado.getCaminosAlternos());
 
     }
 

@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.requisitos.dtos;
 import co.edu.uniandes.csw.requisitos.adapters.DateAdapter;
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
-import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
+
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 
 import java.io.Serializable;
@@ -72,7 +72,6 @@ public class ModificacionesDTO implements Serializable {
         setId(mod.getId());
         setDescripcion(mod.getDescripcion());
         setFechaModificacion(mod.getFechaModificacion());
-        setPersona(mod.getPersona());
         setCasoModificaciones(mod.getCasoModificaciones());
         setModificacionesRequisito(mod.getModificacionesRequisito());
         

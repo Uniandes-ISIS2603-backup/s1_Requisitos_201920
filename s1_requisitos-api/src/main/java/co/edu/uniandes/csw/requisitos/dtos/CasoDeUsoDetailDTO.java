@@ -6,9 +6,9 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
-import co.edu.uniandes.csw.requisitos.entities.DescripcionEntity;
-import co.edu.uniandes.csw.requisitos.entities.FuncionalEntity;
+
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
+import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,96 +18,52 @@ import java.util.List;
  * @author Maria Alejandra Escalante
  */
 public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
-/*
+
+    /*
     listas con las relaciones 1 a muchos que tiene caso de uso
-    */
-    private List<ModificacionesDTO> modificaciones;
-    private List<FuncionalDTO> requisitosFuncionales;
-    private List<DescripcionDTO> entidades;
-    private List<DescripcionDTO> caminosExcepcion;
-    private List<DescripcionDTO> posCondiciones;
-    private List<DescripcionDTO> preCondiciones;
-    private List<DescripcionDTO> caminoAlterno;
-  
+     */
+    private List<ModificacionesDTO> modificaciones = new ArrayList<>();
+    private List<RequisitosDTO> funcionales = new ArrayList<>();
+
 
     /*
     constructor vacio
-    */
-      public CasoDeUsoDetailDTO() {
+     */
+    public CasoDeUsoDetailDTO() {
         super();
     }
-    
-      /*
+
+    /*
       constructor que convierte de entidad a DTO
-      */
+     */
     public CasoDeUsoDetailDTO(CasoDeUsoEntity entidad) {
         super(entidad);
-        
-        if (entidad!=null){
-            /*
-            if (entidad.getCaminosExcepcion() !=null){
-                caminosExcepcion=new ArrayList<>();
-                for (DescripcionEntity desc:entidad.getCaminosExcepcion()){
-                    caminosExcepcion.add(new DescripcionDTO(desc));
+
+        if (entidad != null) {
+
+            if (entidad.getModificaciones() != null) {
+                modificaciones = new ArrayList<>();
+                for (ModificacionesEntity lis : entidad.getModificaciones()) {
+                    modificaciones.add(new ModificacionesDTO(lis));
                 }
             }
-            */
-            if (entidad.getFuncional()!=null){
-                requisitosFuncionales=new ArrayList<>();
-                for (FuncionalEntity funcional:entidad.getFuncional()){
-                    requisitosFuncionales.add(new FuncionalDTO(funcional));
+            if (entidad.getFuncionales() != null) {
+                funcionales = new ArrayList<>();
+                for (RequisitosEntity lis : entidad.getFuncionales()) {
+                    funcionales.add(new RequisitosDTO(lis));
                 }
             }
-            
-            if (entidad.getModificaciones()!=null){
-                modificaciones=new ArrayList<>();
-                for (ModificacionesEntity funcional:entidad.getModificaciones()){
-                    modificaciones.add(new ModificacionesDTO(funcional));
-                }
-            }
-            
-           
-            /*
-            if (entidad.getEntidades()!=null){
-                entidades=new ArrayList<>();
-                for (DescripcionEntity desc:entidad.getEntidades()){
-                    entidades.add(new DescripcionDTO(desc));
-                }
-            }
-            if (entidad.getPosCondiciones()!=null){
-                posCondiciones=new ArrayList<>();
-                for (DescripcionEntity desc:entidad.getPosCondiciones()){
-                    posCondiciones.add(new DescripcionDTO(desc));
-                }
-            }
-            if (entidad.getPreCondiciones()!=null){
-                preCondiciones=new ArrayList<>();
-                for (DescripcionEntity desc:entidad.getPreCondiciones()){
-                    preCondiciones.add(new DescripcionDTO(desc));
-                }
-            }
-            if (entidad.getPreCaminoAlterno()!=null){
-                caminoAlterno=new ArrayList<>();
-                for (DescripcionEntity desc:entidad.getPreCaminoAlterno()){
-                    caminoAlterno.add(new DescripcionDTO(desc));
-                }
-            }
-            */
 
         }
+
+    }
+/*
+    @Override
+    public CasoDeUsoEntity toEntity() {
+        CasoDeUsoEntity entity = super.toEntity();
         
     }
-      
-     
-    
-    @Override
-     public CasoDeUsoEntity toEntity(){
-         CasoDeUsoEntity nueva= new CasoDeUsoEntity();
-         return nueva;
-     }
-        
-    
-   
+*/
     /**
      * @return the modificaciones
      */
@@ -123,93 +79,18 @@ public class CasoDeUsoDetailDTO extends CasoDeUsoDTO implements Serializable {
     }
 
     /**
-     * @return the requisitosFuncionales
+     * @return the funcionales
      */
-    public List<FuncionalDTO> getRequisitosFuncionales() {
-        return requisitosFuncionales;
+    public List<RequisitosDTO> getFuncionales() {
+        return funcionales;
     }
 
     /**
-     * @param requisitosFuncionales the requisitosFuncionales to set
+     * @param funcionales the funcionales to set
      */
-    public void setRequisitosFuncionales(List<FuncionalDTO> requisitosFuncionales) {
-        this.requisitosFuncionales = requisitosFuncionales;
+    public void setFuncionales(List<RequisitosDTO> funcionales) {
+        this.funcionales = funcionales;
     }
 
-    /**
-     * @return the entidades
-     */
-    public List<DescripcionDTO> getEntidades() {
-        return entidades;
-    }
-
-    /**
-     * @param entidades the entidades to set
-     */
-    public void setEntidades(List<DescripcionDTO> entidades) {
-        this.entidades = entidades;
-    }
-
-    /**
-     * @return the caminosExcepcion
-     */
-    public List<DescripcionDTO> getCaminosExcepcion() {
-        return caminosExcepcion;
-    }
-
-    /**
-     * @param caminosExcepcion the caminosExcepcion to set
-     */
-    public void setCaminosExcepcion(List<DescripcionDTO> caminosExcepcion) {
-        this.caminosExcepcion = caminosExcepcion;
-    }
-
-    /**
-     * @return the posCondiciones
-     */
-    public List<DescripcionDTO> getPosCondiciones() {
-        return posCondiciones;
-    }
-
-    /**
-     * @param posCondiciones the posCondiciones to set
-     */
-    public void setPosCondiciones(List<DescripcionDTO> posCondiciones) {
-        this.posCondiciones = posCondiciones;
-    }
-
-    /**
-     * @return the preCondiciones
-     */
-    public List<DescripcionDTO> getPreCondiciones() {
-        return preCondiciones;
-    }
-
-    /**
-     * @param preCondiciones the preCondiciones to set
-     */
-    public void setPreCondiciones(List<DescripcionDTO> preCondiciones) {
-        this.preCondiciones = preCondiciones;
-    }
-
-    /**
-     * @return the preCaminoAlterno
-     */
-    public List<DescripcionDTO> getCaminoAlterno() {
-        return caminoAlterno;
-    }
-
-    /**
-     * @param preCaminoAlterno the preCaminoAlterno to set
-     */
-    public void setCaminoAlterno(List<DescripcionDTO> preCaminoAlterno) {
-        this.caminoAlterno = preCaminoAlterno;
-    }
-
- 
-    
-    
    
-  
-     
 }

@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.requisitos.ejb.CasoDeUsoLogic;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
-import co.edu.uniandes.csw.requisitos.entities.DescripcionEntity;
 
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.CasoDeUsoPersistence;
@@ -113,19 +112,18 @@ public class CasoDeUsoLogicTest {
     @Test
     public void createCasoDeUso() throws BusinessLogicException {
         CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
-        /*
-        DesarrolladorEntity resp= factory.manufacturePojo(DesarrolladorEntity.class);
-        resp.setTipo("Desarrollador");
-        Assert.assertNotNull(resp);
-        caso.setResponsable(resp);
-    */
         CasoDeUsoEntity result = casoLogic.crearCasoDeUso(caso);
         Assert.assertNotNull(result);
-        
+
         CasoDeUsoEntity entity = em.find(CasoDeUsoEntity.class, result.getId());
         Assert.assertEquals(entity.getDocumentacion(), result.getDocumentacion());
         Assert.assertEquals(entity.getPruebas(), result.getPruebas());
         Assert.assertEquals(entity.getServicios(), result.getServicios());
+        Assert.assertEquals(entity.getCaminosAlternos(), result.getCaminosAlternos());
+        Assert.assertEquals(entity.getCaminosExcepcion(), result.getCaminosExcepcion());
+        Assert.assertEquals(entity.getPreCondiciones(), result.getPreCondiciones());
+        Assert.assertEquals(entity.getPosCondiciones(), result.getPosCondiciones());
+        Assert.assertEquals(entity.getEntidades(), result.getEntidades());
 
     }
 
@@ -164,12 +162,17 @@ public class CasoDeUsoLogicTest {
      */
     @Test
     public void getCasoDeUsoTest() {
-        CasoDeUsoEntity caso = data.get(0);
-        CasoDeUsoEntity encontrado = casoLogic.getCaso(caso.getId());
-        Assert.assertNotNull(encontrado);
-        Assert.assertEquals(encontrado.getDocumentacion(), caso.getDocumentacion());
-        Assert.assertEquals(encontrado.getPruebas(), caso.getPruebas());
-        Assert.assertEquals(encontrado.getServicios(), caso.getServicios());
+        CasoDeUsoEntity result = data.get(0);
+        CasoDeUsoEntity entity = casoLogic.getCaso(result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(entity.getDocumentacion(), result.getDocumentacion());
+        Assert.assertEquals(entity.getPruebas(), result.getPruebas());
+        Assert.assertEquals(entity.getServicios(), result.getServicios());
+        Assert.assertEquals(entity.getCaminosAlternos(), result.getCaminosAlternos());
+        Assert.assertEquals(entity.getCaminosExcepcion(), result.getCaminosExcepcion());
+        Assert.assertEquals(entity.getPreCondiciones(), result.getPreCondiciones());
+        Assert.assertEquals(entity.getPosCondiciones(), result.getPosCondiciones());
+        Assert.assertEquals(entity.getEntidades(), result.getEntidades());
     }
 
     /*
@@ -196,15 +199,20 @@ public class CasoDeUsoLogicTest {
      */
     public void updateCasoDeUsoTest() throws BusinessLogicException {
         CasoDeUsoEntity caso = data.get(0);
-        CasoDeUsoEntity nueva = factory.manufacturePojo(CasoDeUsoEntity.class);
+        CasoDeUsoEntity result = factory.manufacturePojo(CasoDeUsoEntity.class);
 
-        nueva.setId(caso.getId());
-        casoLogic.updateCasoDeUso(nueva);
+        result.setId(caso.getId());
+        casoLogic.updateCasoDeUso(result);
 
-        CasoDeUsoEntity encontrado = em.find(CasoDeUsoEntity.class, caso.getId());
-        Assert.assertEquals(encontrado.getDocumentacion(), nueva.getDocumentacion());
-        Assert.assertEquals(encontrado.getPruebas(), nueva.getPruebas());
-        Assert.assertEquals(encontrado.getServicios(), nueva.getServicios());
+        CasoDeUsoEntity entity = em.find(CasoDeUsoEntity.class, caso.getId());
+        Assert.assertEquals(entity.getDocumentacion(), result.getDocumentacion());
+        Assert.assertEquals(entity.getPruebas(), result.getPruebas());
+        Assert.assertEquals(entity.getServicios(), result.getServicios());
+        Assert.assertEquals(entity.getCaminosAlternos(), result.getCaminosAlternos());
+        Assert.assertEquals(entity.getCaminosExcepcion(), result.getCaminosExcepcion());
+        Assert.assertEquals(entity.getPreCondiciones(), result.getPreCondiciones());
+        Assert.assertEquals(entity.getPosCondiciones(), result.getPosCondiciones());
+        Assert.assertEquals(entity.getEntidades(), result.getEntidades());
     }
 
     /*

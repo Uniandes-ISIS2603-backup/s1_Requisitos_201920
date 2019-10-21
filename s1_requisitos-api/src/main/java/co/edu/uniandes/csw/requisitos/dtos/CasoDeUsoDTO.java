@@ -7,8 +7,12 @@ package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
-import co.edu.uniandes.csw.requisitos.entities.PersonaEntity;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 
 /**
  *
@@ -43,41 +47,70 @@ public class CasoDeUsoDTO implements Serializable {
     se crean las variables del tipo caso de uso
     */
     private Long id;
-    
-    private String servicios;
+    private List<String> servicios = new ArrayList<>();
+    //variable encargada de almacenar la documentacion del caso de uso
     private String documentacion;
+    //variable encargada de almacenar los resultados de las pruebas del caso de uso
     private Boolean pruebas;
+    //variable encargada de almacenar las entidades involucradas en el caso
+
+    private ArrayList<String> entidades = new ArrayList<>();
+
+    //variable encargada de almacenar los caminos de excepcion involucradas en el caso
+
+    private ArrayList<String> caminosExcepcion = new ArrayList<>();
+
+    //variable encargada de almacenar las postcondiciones involucradas en el caso
+
+    private ArrayList<String> posCondiciones = new ArrayList<>();
+
+    //variable encargada de almacenar las pre condicionesinvolucradas en el caso
+
+    private ArrayList<String> preCondiciones = new ArrayList<>();
+
+    //variable encargada de almacenar los caminos alternos involucradas en el caso
+
+    private ArrayList<String> caminosAlternos = new ArrayList<>();
+
+    
+    private DesarrolladorEntity representanteDelCliente;
     private DesarrolladorEntity responsable;
-/*
-    consructor vacio
-    */
+
+    
     public CasoDeUsoDTO (){
         
     }
-    /*
-    constructor que convierte de entidades a DTOS
-    */
-      public CasoDeUsoDTO ( CasoDeUsoEntity entidad){
-          setId(entidad.getId());
-          setDocumentacion(entidad.getDocumentacion());
-          setPruebas(entidad.getPruebas());
-          setServicios(entidad.getServicios());
-          setResponsable(entidad.getResponsable());
+    
+    public CasoDeUsoDTO(CasoDeUsoEntity caso){
+        if (caso!=null){
+        this.id=caso.getId();
+        this.pruebas=caso.getPruebas();
+        this.documentacion=caso.getDocumentacion();
+        this.servicios=caso.getServicios();
+        this.caminosAlternos=caso.getCaminosAlternos();
+        this.caminosExcepcion=caso.getCaminosExcepcion();
+        this.entidades=caso.getEntidades();
+        this.posCondiciones=caso.getPosCondiciones();
+        this.preCondiciones=caso.getPreCondiciones();
+        
+    }
     }
     
-    /*
-      metodo que convierte DTO a entidades
-      */
+    
     public CasoDeUsoEntity toEntity(){
         CasoDeUsoEntity entidad= new CasoDeUsoEntity();
         entidad.setId(this.getId());
+        entidad.setPruebas(this.getPruebas());
         entidad.setDocumentacion(this.getDocumentacion());
         entidad.setServicios(this.getServicios());
-        entidad.setPruebas(this.getPruebas());
-        entidad.setResponsable(this.getResponsable());
+        entidad.setCaminosAlternos(this.getCaminosAlternos());
+        entidad.setCaminosExcepcion(this.getCaminosExcepcion());
+        entidad.setEntidades(this.getEntidades());
+        entidad.setPosCondiciones(this.getPosCondiciones());
+        entidad.setPreCondiciones(this.getPreCondiciones());
+        
         return entidad;
-    } 
-
+    }
     /**
      * @return the id
      */
@@ -95,14 +128,14 @@ public class CasoDeUsoDTO implements Serializable {
     /**
      * @return the servicios
      */
-    public String getServicios() {
+    public List<String> getServicios() {
         return servicios;
     }
 
     /**
      * @param servicios the servicios to set
      */
-    public void setServicios(String servicios) {
+    public void setServicios(List<String> servicios) {
         this.servicios = servicios;
     }
 
@@ -135,6 +168,90 @@ public class CasoDeUsoDTO implements Serializable {
     }
 
     /**
+     * @return the entidades
+     */
+    public ArrayList<String> getEntidades() {
+        return entidades;
+    }
+
+    /**
+     * @param entidades the entidades to set
+     */
+    public void setEntidades(ArrayList<String> entidades) {
+        this.entidades = entidades;
+    }
+
+    /**
+     * @return the caminosExcepcion
+     */
+    public ArrayList<String> getCaminosExcepcion() {
+        return caminosExcepcion;
+    }
+
+    /**
+     * @param caminosExcepcion the caminosExcepcion to set
+     */
+    public void setCaminosExcepcion(ArrayList<String> caminosExcepcion) {
+        this.caminosExcepcion = caminosExcepcion;
+    }
+
+    /**
+     * @return the posCondiciones
+     */
+    public ArrayList<String> getPosCondiciones() {
+        return posCondiciones;
+    }
+
+    /**
+     * @param posCondiciones the posCondiciones to set
+     */
+    public void setPosCondiciones(ArrayList<String> posCondiciones) {
+        this.posCondiciones = posCondiciones;
+    }
+
+    /**
+     * @return the preCondiciones
+     */
+    public ArrayList<String> getPreCondiciones() {
+        return preCondiciones;
+    }
+
+    /**
+     * @param preCondiciones the preCondiciones to set
+     */
+    public void setPreCondiciones(ArrayList<String> preCondiciones) {
+        this.preCondiciones = preCondiciones;
+    }
+
+    /**
+     * @return the caminosAlternos
+     */
+    public ArrayList<String> getCaminosAlternos() {
+        return caminosAlternos;
+    }
+
+    /**
+     * @param caminosAlternos the caminosAlternos to set
+     */
+    public void setCaminosAlternos(ArrayList<String> caminosAlternos) {
+        this.caminosAlternos = caminosAlternos;
+    }
+
+    /**
+     * @return the representanteDelCliente
+     */
+    public DesarrolladorEntity getRepresentanteDelCliente() {
+        return representanteDelCliente;
+    }
+
+    /**
+     * @param representanteDelCliente the representanteDelCliente to set
+     */
+    public void setRepresentanteDelCliente(DesarrolladorEntity representanteDelCliente) {
+        this.representanteDelCliente = representanteDelCliente;
+    }
+
+    /**
      * @return the responsable
      */
     public DesarrolladorEntity getResponsable() {
@@ -147,5 +264,7 @@ public class CasoDeUsoDTO implements Serializable {
     public void setResponsable(DesarrolladorEntity responsable) {
         this.responsable = responsable;
     }
+   
+    
     
 }
