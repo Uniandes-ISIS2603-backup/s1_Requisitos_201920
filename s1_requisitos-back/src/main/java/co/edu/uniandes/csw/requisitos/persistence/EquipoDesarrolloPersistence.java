@@ -71,4 +71,22 @@ public class EquipoDesarrolloPersistence {
          return eq;
      }
      
+       
+    /**
+     * Encuentra en la base de datos el elemento con el nombre dado por parametro
+     * @param Name
+     * @return null si no lo encuentra, de lo contrario el elemento
+     */
+    public EquipoDesarrolloEntity findByEquipoDesarrollo(String Name)
+    {
+        EquipoDesarrolloEntity buscado=null;
+        List<EquipoDesarrolloEntity> lista=findAll();
+        for (EquipoDesarrolloEntity requisito : lista) 
+        {
+            if(requisito.getEquipoDesarrollo().equals(Name))
+                buscado=requisito;
+        }
+        return buscado;
+    }
+    
 }

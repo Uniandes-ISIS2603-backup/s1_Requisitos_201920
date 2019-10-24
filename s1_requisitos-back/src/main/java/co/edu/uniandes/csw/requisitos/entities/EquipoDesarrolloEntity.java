@@ -16,16 +16,19 @@ import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author Juan Martinez
+ * corregido por: Juan Rubio
  */
 @Entity
 public class EquipoDesarrolloEntity extends BaseEntity implements Serializable{
-    
+
+
     private String equipoDesarrollo;
-    /*
+
        @PodamExclude
     @OneToMany(mappedBy = "equipoDesarrollo",fetch=FetchType.LAZY)
-    private List<PersonaEntity> integrantes = new ArrayList<>();
-*/
+    private List<DesarrolladorEntity> integrantes = new ArrayList<>();
+
+       
     /**
      * @return the equipoDesarrollo
      */
@@ -40,4 +43,17 @@ public class EquipoDesarrolloEntity extends BaseEntity implements Serializable{
         this.equipoDesarrollo = equipoDesarrollo;
     }
     
+       /**
+     * @return the integrantes
+     */
+    public List<DesarrolladorEntity> getIntegrantes() {
+        return integrantes;
+    }
+
+    /**
+     * @param integrantes the integrantes to set
+     */
+    public void setIntegrantes(List<DesarrolladorEntity> integrantes) {
+        this.integrantes = integrantes;
+    }
 }

@@ -15,15 +15,24 @@ import javax.inject.Inject;
 /**
  *
  * @author Juan Martinez
+ * corregido por: juan Rubio
  */
 @Stateless
 public class EquipoDesarrolloLogic {
+    
     @Inject
     private EquipoDesarrolloPersistence persistence;
     
     public EquipoDesarrolloEntity createEquipoDesarrollo(EquipoDesarrolloEntity equipo) throws BusinessLogicException{
         if(equipo.getId()==null){
             throw new BusinessLogicException("El equipo de desarrollo no existe");
+        }else if(persistence.find(equipo.getId())!=null)
+        {
+            throw new BusinessLogicException("Ya existe un equipo con ese id");
+        }
+        else if(persistence.findByEquipoDesarrollo(equipo.getEquipoDesarrollo())!=null)
+        {
+            throw new BusinessLogicException("Ya existe un equipo con ese nombre");
         }
         equipo = persistence.create(equipo);
         return equipo;
@@ -46,6 +55,17 @@ public class EquipoDesarrolloLogic {
     public EquipoDesarrolloEntity getEquipo(Long id) 
     { 
         EquipoDesarrolloEntity equipo = persistence.find(id);
+        return equipo;
+    }
+    
+      /**
+     * Obtener un equipo con un id dado
+     * @param equipoDesarrollo: id del equipo de desarrollo a buscar
+     * @return equipo con el id dado
+     */
+    public EquipoDesarrolloEntity getEquipoByEquipoDesarrollo(String equipoDesarrollo) 
+    { 
+        EquipoDesarrolloEntity equipo = persistence.findByEquipoDesarrollo(equipoDesarrollo);
         return equipo;
     }
     

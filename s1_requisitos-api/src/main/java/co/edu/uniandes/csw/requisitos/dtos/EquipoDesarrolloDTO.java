@@ -12,14 +12,22 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  *
  * @author Juan Martinez
+ * corregido por: Juan Felipe Rubio
  */
 public class EquipoDesarrolloDTO {
+
+  
     
     /**
-     * 
+     *  id del equipo de desarrollo
      */
     private Long id;
-
+    
+    /**
+     * equipo de desarrollo
+     */
+    private String equipoDesarrollo;
+    
     /**
      * @return the id
      */
@@ -34,17 +42,36 @@ public class EquipoDesarrolloDTO {
         this.id = id;
     }
     
+      /**
+     * @return the equipoDesarrollo
+     */
+    public String getEquipoDesarrollo() {
+        return equipoDesarrollo;
+    }
+
+    /**
+     * @param equipoDesarrollo the equipoDesarrollo to set
+     */
+    public void setEquipoDesarrollo(String equipoDesarrollo) {
+        this.equipoDesarrollo = equipoDesarrollo;
+    }
+    
+    /**
+     * constructor vació de equipo desarrollo DTO
+     */
     public EquipoDesarrolloDTO(){
         
     }
     
     public EquipoDesarrolloDTO(EquipoDesarrolloEntity equipo){
         this.id = equipo.getId();
+        this.equipoDesarrollo=equipo.getEquipoDesarrollo();
     }
     
     public EquipoDesarrolloEntity toEntity(){
         EquipoDesarrolloEntity equipoEntity= new EquipoDesarrolloEntity();
         equipoEntity.setId(this.id);
+        equipoEntity.setEquipoDesarrollo(this.equipoDesarrollo);
         return equipoEntity;
     }
     
