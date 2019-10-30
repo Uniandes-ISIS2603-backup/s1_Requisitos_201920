@@ -22,12 +22,43 @@ import uk.co.jemos.podam.common.PodamIntValue;
 @Entity
 public  class RequisitosEntity extends BaseEntity implements Serializable 
 {   
+    
     /**
      * Desarrollador del requisito
      */
     @PodamExclude
     @ManyToOne
     private DesarrolladorEntity desarrollador;
+    
+      /**
+     * Fuente de donde se escribe el requisito
+     */
+    private String fuente;
+    /**
+     * Autor del requisito
+     */
+    private String autor;
+    /**
+     * Informacion que tiene el requisito
+     */
+    private String descripcion;
+    /**
+     * Numero que representa la importancia del requisito
+     */
+    @PodamIntValue(minValue=0,maxValue=Integer.MAX_VALUE)
+    private Integer importancia;
+    /**
+     * Boolena que representa si el requisito es estable(fijo)
+     */
+    private Boolean estabilidad;
+    /**
+     * Comentarios adicionales sobre el requisito
+     */
+    private String comentariosAdicionales;
+    /**
+     * nombre del requisito
+     */
+    private String nombre;
     
     @PodamExclude
     @OneToMany(
@@ -43,14 +74,16 @@ public  class RequisitosEntity extends BaseEntity implements Serializable
     /**
      * @return the desarrollador
      */
-    public DesarrolladorEntity getDesarrollador() {
+    public DesarrolladorEntity getDesarrollador() 
+    {
         return desarrollador;
     }
 
     /**
      * @param desarrollador the desarrollador to set
      */
-    public void setDesarrollador(DesarrolladorEntity desarrollador) {
+    public void setDesarrollador(DesarrolladorEntity desarrollador) 
+    {
         this.desarrollador = desarrollador;
     }
 
@@ -80,6 +113,104 @@ public  class RequisitosEntity extends BaseEntity implements Serializable
      */
     public void setRequisitosFuncionalesCaso(CasoDeUsoEntity requisitosFuncionalesCaso) {
         this.requisitosFuncionalesCaso = requisitosFuncionalesCaso;
+    }
+   /**
+    * Retorna la fuente 
+    * @return 
+    */
+    public String getFuente() {
+        return fuente;
+    }
+    /**
+     * Define la fuente de 
+     * @param fuente 
+     */
+    public void setFuente(String fuente) {
+        this.fuente = fuente;
+    }
+    /**
+     * Retorna el autor del requisito
+     * @return 
+     */
+    public String getAutor() {
+        return autor;
+    }
+    /**
+     * Define el autor del requisito
+     * @param autor 
+     */
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+    /**
+     * Retorna la descripcion del requisito
+     * @return 
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+    /**
+     * Definerecibe la descripcion del requisito
+     * @param descripcion 
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+     /**
+      * Retorna la importancia del requisito
+      * @return 
+      */
+    public Integer getImportancia() {
+        return importancia;
+    }
+    /**
+     * Define la importancia del requisito  
+     * @param importancia 
+     */
+    public void setImportancia(Integer importancia) {
+        this.importancia = importancia;
+    }
+    /**
+     * Retorna si el requisito es estable o no
+     * @return 
+     */
+    public Boolean getEstabilidad() {
+        return estabilidad;
+    }
+    /**
+     * Define la estabilidad del requisito
+     * @param estabilidad 
+     */
+    public void setEstabilidad(Boolean estabilidad) {
+        this.estabilidad = estabilidad;
+    }
+    /**
+     * Retorna los comentarios adicionales del requisito
+     * @return 
+     */
+    public String getComentariosAdicionales() {
+        return comentariosAdicionales;
+    }
+    /**
+     * Define los comentarios adicionales del requisito
+     * @param comentariosAdicionales 
+     */
+    public void setComentariosAdicionales(String comentariosAdicionales) {
+        this.comentariosAdicionales = comentariosAdicionales;
+    }
+    /**
+     * Retorna el nombre del requisito
+     * @return 
+     */
+    public String getNombre() {
+        return nombre;
+    }
+    /**
+     * Define el nombre del requisito 
+     * @param nombre 
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
    
