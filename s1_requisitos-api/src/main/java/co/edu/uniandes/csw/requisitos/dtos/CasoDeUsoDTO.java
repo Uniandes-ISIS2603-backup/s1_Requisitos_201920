@@ -47,6 +47,7 @@ public class CasoDeUsoDTO implements Serializable {
     se crean las variables del tipo caso de uso
     */
     private Long id;
+    private String nombre;
     private List<String> servicios = new ArrayList<>();
     //variable encargada de almacenar la documentacion del caso de uso
     private String documentacion;
@@ -84,6 +85,7 @@ public class CasoDeUsoDTO implements Serializable {
     public CasoDeUsoDTO(CasoDeUsoEntity caso){
         if (caso!=null){
         this.id=caso.getId();
+        this.nombre=caso.getNombre();
         this.pruebas=caso.getPruebas();
         this.documentacion=caso.getDocumentacion();
         this.servicios=caso.getServicios();
@@ -112,7 +114,7 @@ public class CasoDeUsoDTO implements Serializable {
         entidad.setPreCondiciones(this.getPreCondiciones());
         entidad.setRepresentanteDelCliente(this.getRepresentanteDelCliente());
         entidad.setResponsable(this.getResponsable());
-        
+        entidad.setNombre(this.getNombre());
         return entidad;
     }
     /**
@@ -127,6 +129,20 @@ public class CasoDeUsoDTO implements Serializable {
      */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
@@ -268,6 +284,7 @@ public class CasoDeUsoDTO implements Serializable {
     public void setResponsable(DesarrolladorEntity responsable) {
         this.responsable = responsable;
     }
+
    
     
     

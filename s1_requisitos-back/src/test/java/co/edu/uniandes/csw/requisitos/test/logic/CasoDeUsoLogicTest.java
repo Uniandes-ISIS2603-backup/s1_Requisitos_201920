@@ -116,6 +116,8 @@ public class CasoDeUsoLogicTest {
         Assert.assertNotNull(result);
 
         CasoDeUsoEntity entity = em.find(CasoDeUsoEntity.class, result.getId());
+        
+        Assert.assertEquals(entity.getNombre(), result.getNombre());
         Assert.assertEquals(entity.getDocumentacion(), result.getDocumentacion());
         Assert.assertEquals(entity.getPruebas(), result.getPruebas());
         Assert.assertEquals(entity.getServicios(), result.getServicios());
@@ -165,6 +167,7 @@ public class CasoDeUsoLogicTest {
         CasoDeUsoEntity result = data.get(0);
         CasoDeUsoEntity entity = casoLogic.getCaso(result.getId());
         Assert.assertNotNull(entity);
+        Assert.assertEquals(entity.getNombre(), result.getNombre());
         Assert.assertEquals(entity.getDocumentacion(), result.getDocumentacion());
         Assert.assertEquals(entity.getPruebas(), result.getPruebas());
         Assert.assertEquals(entity.getServicios(), result.getServicios());
@@ -205,6 +208,7 @@ public class CasoDeUsoLogicTest {
         casoLogic.updateCasoDeUso(result);
 
         CasoDeUsoEntity entity = em.find(CasoDeUsoEntity.class, caso.getId());
+        Assert.assertEquals(entity.getNombre(), result.getNombre());
         Assert.assertEquals(entity.getDocumentacion(), result.getDocumentacion());
         Assert.assertEquals(entity.getPruebas(), result.getPruebas());
         Assert.assertEquals(entity.getServicios(), result.getServicios());

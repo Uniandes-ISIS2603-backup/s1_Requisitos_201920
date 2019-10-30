@@ -33,6 +33,8 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     private String documentacion;
     //variable encargada de almacenar los resultados de las pruebas del caso de uso
     private Boolean pruebas;
+    //variable que indica el nombre del caso
+    private String nombre;
     //variable encargada de almacenar las entidades involucradas en el caso
     @ElementCollection
     @CollectionTable(name = "entidades")
@@ -83,10 +85,6 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private DesarrolladorEntity responsable;
 
-    
-    
-    
-    
     /**
      * @return the servicios
      */
@@ -127,6 +125,20 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
      */
     public void setPruebas(Boolean pruebas) {
         this.pruebas = pruebas;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
@@ -254,5 +266,11 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
     public void setResponsable(DesarrolladorEntity responsable) {
         this.responsable = responsable;
     }
+
+    
+    
+    
+    
+    
 
 }

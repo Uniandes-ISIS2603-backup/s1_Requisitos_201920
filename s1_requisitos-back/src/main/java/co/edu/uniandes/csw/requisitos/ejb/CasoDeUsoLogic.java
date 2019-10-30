@@ -29,6 +29,9 @@ public class CasoDeUsoLogic {
     *@return CasoDeUsoEntity creado
      */
     public CasoDeUsoEntity crearCasoDeUso(CasoDeUsoEntity caso) throws BusinessLogicException {
+        if (caso.getNombre()==null){
+            throw new BusinessLogicException("el  nombre no debe ser nulo");
+        }
         if (caso.getPruebas() == null) {
             throw new BusinessLogicException("Las pruebas no deben ser nulas");
 
@@ -92,6 +95,9 @@ public class CasoDeUsoLogic {
     *@return caso de uso modificado cumpliendo con las reglas de negocio
      */
     public CasoDeUsoEntity updateCasoDeUso(CasoDeUsoEntity caso) throws BusinessLogicException {
+        if (caso.getNombre()==null){
+            throw new BusinessLogicException("el  nombre no debe ser nulo");
+        }
         if (caso.getPruebas() == null) {
             throw new BusinessLogicException("Las pruebas no deben ser nulas");
 

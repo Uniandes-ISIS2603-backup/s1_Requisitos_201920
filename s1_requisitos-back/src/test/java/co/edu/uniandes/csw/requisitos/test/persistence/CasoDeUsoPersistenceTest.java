@@ -114,7 +114,7 @@ public class CasoDeUsoPersistenceTest {
         Assert.assertNotNull(result);
 
         CasoDeUsoEntity entity = em.find(CasoDeUsoEntity.class, modificacion.getId());
-
+        Assert.assertEquals(modificacion.getNombre(), entity.getNombre());
         Assert.assertEquals(modificacion.getDocumentacion(), entity.getDocumentacion());
         Assert.assertEquals(modificacion.getPruebas(), entity.getPruebas());
         Assert.assertEquals(modificacion.getServicios(), entity.getServicios());
@@ -133,7 +133,9 @@ public class CasoDeUsoPersistenceTest {
     public void findTest() {
         CasoDeUsoEntity entity = data.get(0);
         CasoDeUsoEntity encontrado = a.find(entity.getId());
-
+        
+        
+        Assert.assertEquals(encontrado.getNombre(), entity.getNombre());
         Assert.assertEquals(encontrado.getDocumentacion(), entity.getDocumentacion());
         Assert.assertEquals(encontrado.getPruebas(), entity.getPruebas());
         Assert.assertEquals(encontrado.getServicios(), entity.getServicios());
@@ -177,7 +179,9 @@ public class CasoDeUsoPersistenceTest {
 
         a.update(encontrado);
 
+        
         CasoDeUsoEntity resp = em.find(CasoDeUsoEntity.class, entity.getId());
+        Assert.assertEquals(resp.getNombre(), encontrado.getNombre());
         Assert.assertEquals(resp.getDocumentacion(), encontrado.getDocumentacion());
         Assert.assertEquals(resp.getPruebas(), encontrado.getPruebas());
         Assert.assertEquals(resp.getServicios(), encontrado.getServicios());
