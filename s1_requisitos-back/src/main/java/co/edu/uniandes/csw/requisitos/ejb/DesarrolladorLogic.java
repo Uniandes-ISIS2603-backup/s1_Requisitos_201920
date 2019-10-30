@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
@@ -17,6 +18,7 @@ import javax.inject.Inject;
  * @author Nicolás Tobo 
  * Adaptado de :https://github.com/Uniandes-isis2603/backstepbystep/blob/master/backstepbystep-back/src/main/java/co/edu/uniandes/csw/bookstore/ejb/BookLogic.java
  */
+@Stateless
 public class DesarrolladorLogic 
 {
   /**

@@ -21,4 +21,7 @@ public class IteracionDetailDTO extends IteracionDTO {
         super(entidad);
     }
     
+    public IteracionEntity toEntity(){
+        return new IteracionEntity();
+    }
 }

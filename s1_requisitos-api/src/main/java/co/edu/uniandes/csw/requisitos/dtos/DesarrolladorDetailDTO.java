@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * Representacion relaciones de desarrollador
  * @author Nicolás Tobo
  */
-public class DesarrolladorDetailDTO extends DesarrolladorDTO
+public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializable
 {
            /**
      * Lista de ModificacionesDTO que puede tener el requisito

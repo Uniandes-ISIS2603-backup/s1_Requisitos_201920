@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -58,7 +59,7 @@ import java.util.List;
  * </pre>
  * @author Nicolas Tobo
  */
-public class DesarrolladorDTO extends PersonaDTO
+public class DesarrolladorDTO implements Serializable
 {
      /**
      * String que representa el tipo del desarrollador
