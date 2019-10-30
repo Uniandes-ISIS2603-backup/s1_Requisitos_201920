@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @author jf.rubio
  */
-public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO{
+public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Serializable{
 
  
     
