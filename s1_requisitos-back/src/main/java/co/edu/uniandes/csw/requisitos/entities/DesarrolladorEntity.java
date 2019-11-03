@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -34,29 +35,33 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
      * Lista de requisitos que tiene un desarrollador
      */
     @PodamExclude
-    @OneToMany(mappedBy = "desarrollador",fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "desarrollador",cascade = CascadeType.ALL)
     private List<RequisitosEntity> requisitos = new ArrayList<>();
 
     @PodamExclude
     @OneToMany(
     mappedBy = "responsable",
-    fetch = javax.persistence.FetchType.LAZY
+    cascade = CascadeType.ALL
     )
     private List<CasoDeUsoEntity> casosDeUsoResponsable= new ArrayList<>();
     
     @PodamExclude
     @OneToMany(
     mappedBy = "representanteDelCliente",
-    fetch = javax.persistence.FetchType.LAZY
+    cascade = CascadeType.ALL
     )
     private List<CasoDeUsoEntity> casosDeUsoRepresentante= new ArrayList<>();
     
     @PodamExclude
     @OneToMany(
     mappedBy = "desarrolladorModificaciones",
-    fetch = javax.persistence.FetchType.LAZY
+    cascade = CascadeType.ALL
     )
     private List <ModificacionesEntity> modificaciones=new ArrayList<>();
+    
+    @PodamExclude
+    @ManyToOne (fetch = javax.persistence.FetchType.LAZY)
+    private EquipoDesarrolloEntity equipoDesarrollo;
 
     /**
      * @return the tipo

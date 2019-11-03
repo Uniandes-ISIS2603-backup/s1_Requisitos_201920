@@ -180,7 +180,7 @@ public class CasoDeUsoPersistenceTest {
         a.update(encontrado);
 
         
-        CasoDeUsoEntity resp = em.find(CasoDeUsoEntity.class, entity.getId());
+        CasoDeUsoEntity resp = em.find(CasoDeUsoEntity.class, encontrado.getId());
         Assert.assertEquals(resp.getNombre(), encontrado.getNombre());
         Assert.assertEquals(resp.getDocumentacion(), encontrado.getDocumentacion());
         Assert.assertEquals(resp.getPruebas(), encontrado.getPruebas());

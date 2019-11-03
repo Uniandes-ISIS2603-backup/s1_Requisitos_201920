@@ -39,16 +39,16 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
 
     //relacion con la entidad persona
     @PodamExclude
-    @ManyToOne
+    @ManyToOne (fetch = javax.persistence.FetchType.LAZY)
     private DesarrolladorEntity desarrolladorModificaciones;
    
     //relacion con casos de uso
-    @ManyToOne
+    @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
     private CasoDeUsoEntity casoModificaciones;
     
     //relacion con requisitos
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
     private RequisitosEntity modificacionesRequisito;
 
     /**

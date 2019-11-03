@@ -64,7 +64,12 @@ public class DesarrolladorDTO implements Serializable
      /**
      * String que representa el tipo del desarrollador
      */
+   private Long Id;
     private String tipo;
+    private String nombre;
+    private String correo;
+    private Integer edad;
+    private Integer cedula;
     /**
      * Constructor del detailDto
      */
@@ -78,10 +83,10 @@ public class DesarrolladorDTO implements Serializable
      */
     public DesarrolladorDTO (DesarrolladorEntity entidad) 
     {
-         super.setNombre(entidad.getNombre());
-         super.setId(entidad.getId());
-         super.setCorreo(entidad.getCorreo());
-         super.setCedula(entidad.getCedula());  
+         this.setNombre(entidad.getNombre());
+         this.setId(entidad.getId());
+         this.setCorreo(entidad.getCorreo());
+         this.setCedula(entidad.getCedula());  
          this.setTipo(entidad.getTipo());
     }
     
@@ -95,23 +100,94 @@ public class DesarrolladorDTO implements Serializable
          entidad.setId(this.getId());
          entidad.setCorreo(this.getCorreo());
          entidad.setCedula(this.getCedula());
-         entidad.setTipo(this.tipo);
+         entidad.setTipo(this.getTipo());
        
          return entidad;
    }
+
     /**
-     * Retorna el tipo del desarrollador
-     * @return tipo del desarrollador
+     * @return the Id
+     */
+    public Long getId() {
+        return Id;
+    }
+
+    /**
+     * @param Id the Id to set
+     */
+    public void setId(Long Id) {
+        this.Id = Id;
+    }
+
+    /**
+     * @return the tipo
      */
     public String getTipo() {
         return tipo;
     }
+
     /**
-     * Define el tipo del desarrollador
-     * @param tipo 
+     * @param tipo the tipo to set
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the correo
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * @param correo the correo to set
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * @return the edad
+     */
+    public Integer getEdad() {
+        return edad;
+    }
+
+    /**
+     * @param edad the edad to set
+     */
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    /**
+     * @return the cedula
+     */
+    public Integer getCedula() {
+        return cedula;
+    }
+
+    /**
+     * @param cedula the cedula to set
+     */
+    public void setCedula(Integer cedula) {
+        this.cedula = cedula;
+    }
+
+   
 }
