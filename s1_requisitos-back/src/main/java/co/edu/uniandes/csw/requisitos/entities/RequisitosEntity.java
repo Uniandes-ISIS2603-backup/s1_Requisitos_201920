@@ -27,7 +27,7 @@ public  class RequisitosEntity extends BaseEntity implements Serializable
      * Desarrollador del requisito
      */
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
     private DesarrolladorEntity desarrollador;
     
       /**
@@ -63,12 +63,12 @@ public  class RequisitosEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToMany(
         mappedBy = "modificacionesRequisito", 
-        fetch = javax.persistence.FetchType.LAZY
+        cascade = CascadeType.ALL
     )
     private List<ModificacionesEntity> modificaciones=new ArrayList<>();
     
     @PodamExclude
-    @ManyToOne
+    @ManyToOne (fetch = javax.persistence.FetchType.LAZY)
     private CasoDeUsoEntity requisitosFuncionalesCaso;
 
     /**

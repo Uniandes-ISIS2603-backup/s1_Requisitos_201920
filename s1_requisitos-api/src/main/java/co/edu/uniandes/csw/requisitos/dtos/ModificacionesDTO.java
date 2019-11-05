@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.adapters.DateAdapter;
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
+import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
@@ -18,6 +19,8 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
   * ModificacionDTO Objeto de transferencia de datos de Modificacion. Los DTO contienen las
@@ -54,9 +57,17 @@ public class ModificacionesDTO implements Serializable {
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date fechaModificacion;
 
+    //variable que describe la modificacion que fue realizada
     private String descripcion;
-    private PersonaEntity persona;
+
+    //relacion con la entidad persona
+
+    private DesarrolladorEntity desarrolladorModificaciones;
+   
+    //relacion con casos de uso
+
     private CasoDeUsoEntity casoModificaciones;
+
     private RequisitosEntity modificacionesRequisito;
     /*
     constructor vacio
@@ -69,12 +80,12 @@ public class ModificacionesDTO implements Serializable {
     constructor que convierte de entidades a DTO
      */
     public ModificacionesDTO(ModificacionesEntity mod) {
-        setId(mod.getId());
-        setDescripcion(mod.getDescripcion());
-        setFechaModificacion(mod.getFechaModificacion());
-        setCasoModificaciones(mod.getCasoModificaciones());
-        setModificacionesRequisito(mod.getModificacionesRequisito());
-        
+        this.id= mod.getId();
+        this.fechaModificacion= mod.getFechaModificacion();
+        this.casoModificaciones=mod.getCasoModificaciones();
+        this.desarrolladorModificaciones=mod.getDesarrolladorModificaciones();
+        this.descripcion=mod.getDescripcion();
+        this.modificacionesRequisito=mod.getModificacionesRequisito();        
     }
 
     /*
@@ -85,9 +96,9 @@ public class ModificacionesDTO implements Serializable {
         nueva.setId(this.getId());
         nueva.setDescripcion(this.getDescripcion());
         nueva.setFechaModificacion(this.getFechaModificacion());
-        nueva.setCasoModificaciones(this.casoModificaciones);
+        nueva.setCasoModificaciones(this.getCasoModificaciones());
         nueva.setModificacionesRequisito(this.getModificacionesRequisito());
-        nueva.setPersona(this.getPersona());
+        nueva.setDesarrolladorModificaciones(this.getDesarrolladorModificaciones());
         return nueva;
     }
 
@@ -134,17 +145,17 @@ public class ModificacionesDTO implements Serializable {
     }
 
     /**
-     * @return the persona
+     * @return the desarrolladorModificaciones
      */
-    public PersonaEntity getPersona() {
-        return persona;
+    public DesarrolladorEntity getDesarrolladorModificaciones() {
+        return desarrolladorModificaciones;
     }
 
     /**
-     * @param persona the persona to set
+     * @param desarrolladorModificaciones the desarrolladorModificaciones to set
      */
-    public void setPersona(PersonaEntity persona) {
-        this.persona = persona;
+    public void setDesarrolladorModificaciones(DesarrolladorEntity desarrolladorModificaciones) {
+        this.desarrolladorModificaciones = desarrolladorModificaciones;
     }
 
     /**
