@@ -268,7 +268,13 @@ public class CasoDeUsoEntity extends BaseEntity implements Serializable {
         this.responsable = responsable;
     }
 
-   
+    /**
+     * @return Una cadena de caracteres con la información de la urgencia
+     */
+    @Override
+    public String toString() {
+        return "CasoDeUso [nombre=" +nombre + ", pruebas= " + pruebas + "]";
+    }
     
 
 }
