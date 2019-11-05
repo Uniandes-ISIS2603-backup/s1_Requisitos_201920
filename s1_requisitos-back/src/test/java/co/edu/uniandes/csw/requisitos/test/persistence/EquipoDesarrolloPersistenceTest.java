@@ -6,9 +6,9 @@
 package co.edu.uniandes.csw.requisitos.test.persistence;
 
 import co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity;
-
+import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.persistence.EquipoDesarrolloPersistence;
-
+import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -58,7 +58,8 @@ public class EquipoDesarrolloPersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addClass(EquipoDesarrolloEntity.class)
                 .addClass(EquipoDesarrolloPersistence.class)
-                
+                .addPackage(DesarrolladorPersistence.class.getPackage())
+                .addPackage(DesarrolladorEntity.class.getPackage())
                 .addAsManifestResource("Meta-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("Meta-INF/beans.xml","beans.xml");
     }
