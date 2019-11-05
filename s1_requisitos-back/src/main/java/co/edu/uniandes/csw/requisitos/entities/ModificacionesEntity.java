@@ -26,9 +26,8 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  * @author Maria Alejandra Escalante
  */
 @Entity
-public class ModificacionesEntity extends BaseEntity implements Serializable{
+public class ModificacionesEntity extends BaseEntity implements Serializable {
 
-  
     //declaraciones necesarias para Date
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
@@ -39,13 +38,13 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
 
     //relacion con la entidad persona
     @PodamExclude
-    @ManyToOne (fetch = javax.persistence.FetchType.LAZY)
+    @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
     private DesarrolladorEntity desarrolladorModificaciones;
-   
+
     //relacion con casos de uso
     @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
     private CasoDeUsoEntity casoModificaciones;
-    
+
     //relacion con requisitos
     @PodamExclude
     @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
@@ -121,7 +120,12 @@ public class ModificacionesEntity extends BaseEntity implements Serializable{
         this.modificacionesRequisito = modificacionesRequisito;
     }
 
-   
-    
-      
+    /**
+     * @return Una cadena de caracteres con la información de la urgencia
+     */
+    @Override
+    public String toString() {
+        return "Modificaciones [descripcion=" +descripcion + ", fechaModificacion= " + fechaModificacion + "]";
+    }
+
 }

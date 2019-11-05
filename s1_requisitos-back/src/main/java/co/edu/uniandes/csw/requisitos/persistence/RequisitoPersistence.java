@@ -20,7 +20,10 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class RequisitoPersistence {
-
+    
+    /**
+     * Entity manager que maneja la aplicacion
+     */
     @PersistenceContext(unitName = "requisitosPU")
     protected EntityManager em;
 
@@ -29,7 +32,8 @@ public class RequisitoPersistence {
      * @param requisito
      * @return requisito
      */
-    public RequisitosEntity create(RequisitosEntity requisito) {
+    public RequisitosEntity create(RequisitosEntity requisito) 
+    {
         em.persist(requisito);
         return requisito;
     }
@@ -38,7 +42,8 @@ public class RequisitoPersistence {
      * @param requisitoId
      * @return  null si no lo encuentra, de lo contrario el elemento
      */
-    public RequisitosEntity find(Long requisitoId) {
+    public RequisitosEntity find(Long requisitoId) 
+    {
         return em.find(RequisitosEntity.class, requisitoId);
     }
     /**
