@@ -72,6 +72,14 @@ public class RequisitoLogic
       {
          throw new BusinessLogicException("Falta la fuente del requisito.");      
       }
+        else if(requisito.getTipo()==null)
+      {
+         throw new BusinessLogicException("El tipo de un requisito no puede ser null.");      
+      }
+       else if(!(requisito.getTipo().equals(RequisitosEntity.TipoRequisito.DESEMPEÑO)||requisito.getTipo().equals(RequisitosEntity.TipoRequisito.ESCALABILIDAD)||requisito.getTipo().equals(RequisitosEntity.TipoRequisito.FUNCIONAL)||requisito.getTipo().equals(RequisitosEntity.TipoRequisito.PLATAFORMA)||requisito.getTipo().equals(RequisitosEntity.TipoRequisito.SEGURIDAD)))
+       {
+        throw new BusinessLogicException("El tipo deberia estar dentro de los tipos posibles."); 
+       }
       requisito=rp.create(requisito);
       return requisito;
   }
@@ -128,6 +136,14 @@ public class RequisitoLogic
       {
          throw new BusinessLogicException("Falta la fuente del requisito.");      
       }
+       else if(requisito.getTipo()==null)
+      {
+         throw new BusinessLogicException("El tipo de un requisito no puede ser null.");      
+      }
+       else if(!(requisito.getTipo().equals(RequisitosEntity.TipoRequisito.DESEMPEÑO)||requisito.getTipo().equals(RequisitosEntity.TipoRequisito.ESCALABILIDAD)||requisito.getTipo().equals(RequisitosEntity.TipoRequisito.FUNCIONAL)||requisito.getTipo().equals(RequisitosEntity.TipoRequisito.PLATAFORMA)||requisito.getTipo().equals(RequisitosEntity.TipoRequisito.SEGURIDAD)))
+       {
+        throw new BusinessLogicException("El tipo deberia estar dentro de los tipos posibles."); 
+       }
         RequisitosEntity newEntity =rp.update(requisito);
         return newEntity;
     }  

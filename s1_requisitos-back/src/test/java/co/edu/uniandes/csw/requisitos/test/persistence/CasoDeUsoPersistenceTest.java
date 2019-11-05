@@ -182,7 +182,6 @@ public class CasoDeUsoPersistenceTest {
         Assert.assertEquals(resp.getNombre(), encontrado.getNombre());
         Assert.assertEquals(resp.getDocumentacion(), encontrado.getDocumentacion());
         Assert.assertEquals(resp.getPruebas(), encontrado.getPruebas());
-
         Assert.assertTrue(resp.getServicios().size() == encontrado.getServicios().size() && resp.getServicios().containsAll(encontrado.getServicios()) && encontrado.getServicios().containsAll(resp.getServicios()));
         Assert.assertTrue(resp.getEntidades().size() == encontrado.getEntidades().size() && resp.getEntidades().containsAll(encontrado.getEntidades()) && encontrado.getEntidades().containsAll(resp.getEntidades()));
         Assert.assertTrue(resp.getCaminosExcepcion().size() == encontrado.getCaminosExcepcion().size() && resp.getCaminosExcepcion().containsAll(encontrado.getCaminosExcepcion()) && encontrado.getCaminosExcepcion().containsAll(resp.getCaminosExcepcion()));

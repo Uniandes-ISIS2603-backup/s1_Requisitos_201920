@@ -38,7 +38,9 @@ public class CasoDeUsoLogic {
         }
         if (caso.getDocumentacion() == null) {
             throw new BusinessLogicException("la Documentacion no debe ser nula");
-
+        } 
+        if (caso.getServicios() == null) {
+            throw new BusinessLogicException("los servicios no deben ser nulos");
         }
         if (caso.getServicios().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos un servicio");
@@ -104,7 +106,9 @@ public class CasoDeUsoLogic {
         }
         if (caso.getDocumentacion() == null) {
             throw new BusinessLogicException("la Documentacion no debe ser nula");
-
+        }
+        if (caso.getServicios() == null) {
+            throw new BusinessLogicException("los Servicios no deben ser nulos");
         }
         if (caso.getServicios().size()==0){
             throw new BusinessLogicException("debe haber por lo menos un servicio");

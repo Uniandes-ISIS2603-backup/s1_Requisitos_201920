@@ -163,6 +163,17 @@ public class RequisitoLogicTest
         nuevaEnt.setNombre("");
         RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
     }
+    /**
+     * Prueba para asegurarse que un tipo de un requisito no puede ser nulo.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void createRequisitoTestTipoNull()throws BusinessLogicException
+    {
+        RequisitosEntity nuevaEnt=factory.manufacturePojo(RequisitosEntity.class);
+        nuevaEnt.setTipo(null);
+        RequisitosEntity resultado=rl.createRequisito(nuevaEnt);
+    }
      /**
      * Prueba para asegurarse que una descripcion de un requisito no puede ser null.
      * @throws BusinessLogicException 
@@ -350,6 +361,19 @@ public class RequisitoLogicTest
         RequisitosEntity entidad = data.get(0);
         RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
         pojoEntity.setImportancia(null);
+        pojoEntity.setId(entidad.getId());
+        rl.updateRequisito(pojoEntity);
+    }
+    /**
+     * Prueba para asegurarse que un tipo de un requisito no puede ser nulo.
+     * @throws BusinessLogicException 
+     */
+    @Test(expected=BusinessLogicException.class)
+    public void updateRequisitoTestTipoNull()throws BusinessLogicException
+    {
+        RequisitosEntity entidad = data.get(0);
+        RequisitosEntity  pojoEntity = factory.manufacturePojo(RequisitosEntity.class);
+        pojoEntity.setTipo(null);
         pojoEntity.setId(entidad.getId());
         rl.updateRequisito(pojoEntity);
     }
