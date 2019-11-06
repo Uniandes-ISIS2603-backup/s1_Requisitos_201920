@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity;
+import java.io.Serializable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -14,7 +15,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @author Juan Martinez
  * corregido por: Juan Felipe Rubio
  */
-public class EquipoDesarrolloDTO {
+public class EquipoDesarrolloDTO implements Serializable{
 
   
     
@@ -64,8 +65,10 @@ public class EquipoDesarrolloDTO {
     }
     
     public EquipoDesarrolloDTO(EquipoDesarrolloEntity equipo){
+        if(equipo!=null){
         this.id = equipo.getId();
         this.equipoDesarrollo=equipo.getEquipoDesarrollo();
+        }
     }
     
     public EquipoDesarrolloEntity toEntity(){
