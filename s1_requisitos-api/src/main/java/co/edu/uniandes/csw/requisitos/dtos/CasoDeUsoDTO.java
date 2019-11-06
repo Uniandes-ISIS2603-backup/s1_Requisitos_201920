@@ -11,8 +11,7 @@ import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
+
 
 /**
  *
