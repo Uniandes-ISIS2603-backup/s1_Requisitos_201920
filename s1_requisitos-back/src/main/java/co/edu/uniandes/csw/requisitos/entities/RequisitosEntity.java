@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.requisitos.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -270,18 +271,5 @@ public class RequisitosEntity extends BaseEntity implements Serializable {
     public void setImportancia(Integer importancia) {
         this.importancia = importancia;
     }
-    /**
-     * Metotodo equlas
-     * @param obj
-     * @return 
-     */
-     @Override
-    public boolean equals(Object obj)
-    {
-        if ( ! (obj instanceof RequisitosEntity ) ) return false;
-        RequisitosEntity c = (RequisitosEntity) obj;
-        return this.getId() == c.getId() ;
-    }
-    
-
+   
 }
