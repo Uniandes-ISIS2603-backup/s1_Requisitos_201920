@@ -124,7 +124,7 @@ public class CasoDeUsoLogic {
     /*
     *Elimina un caso de uso
      */
-    public void deleteCaso(Long CasoDeUSoId) {
-        persistence.delete(CasoDeUSoId);
+    public void deleteCaso(Long casoDeUSoId) {
+        persistence.delete(casoDeUSoId);
     }
 }

@@ -14,13 +14,8 @@ import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import uk.co.jemos.podam.common.PodamStrategyValue;
-import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
-import javax.persistence.ManyToOne;
-import uk.co.jemos.podam.common.PodamExclude;
+
 
 /**
   * ModificacionDTO Objeto de transferencia de datos de Modificacion. Los DTO contienen las
