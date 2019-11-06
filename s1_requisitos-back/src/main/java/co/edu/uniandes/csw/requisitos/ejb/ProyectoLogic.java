@@ -4,14 +4,12 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.requisitos.ejb;
-
 import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.ProyectoPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-
 /**
  *
  * @author Juan Martinez
@@ -37,8 +35,9 @@ public class ProyectoLogic {
      */
     public List<ProyectoEntity> getProyectos() 
     {
-        List<ProyectoEntity> iteraciones = persistence.findAll();
-        return iteraciones;
+        return persistence.findAll();
+
+        
     }
     /**
      * Obtener una iteracion por medio de su id.
@@ -48,8 +47,8 @@ public class ProyectoLogic {
     
     public ProyectoEntity getProyecto(Long iteracionId) 
     { 
-        ProyectoEntity iteracionEntity = persistence.find(iteracionId);
-        return iteracionEntity;
+        return persistence.find(iteracionId);
+
     }
        /**
      *
@@ -64,8 +63,7 @@ public class ProyectoLogic {
       {
          throw new BusinessLogicException("Las fechas no estan bien definidas");      
       }
-        ProyectoEntity newEntity =persistence.update(iteracion);
-        return newEntity;
+        return  persistence.update(iteracion);
     }  
      /**
      * Borra una iteracion.
@@ -76,8 +74,6 @@ public class ProyectoLogic {
          persistence.delete(iteracionId);
     }
     
-
-
     
     
     
