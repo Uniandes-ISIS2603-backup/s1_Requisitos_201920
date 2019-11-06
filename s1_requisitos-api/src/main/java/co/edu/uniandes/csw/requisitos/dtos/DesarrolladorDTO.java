@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import java.io.Serializable;
-import java.util.List;
+
 
 /**
  * DesarrolladorDTO Objeto de transferencia de datos de Desarrollador. Los DTO contienen las
@@ -64,7 +64,7 @@ public class DesarrolladorDTO implements Serializable
      /**
      * String que representa el tipo del desarrollador
      */
-   private Long Id;
+   private Long id;
     private String tipo;
     private String nombre;
     private String correo;
@@ -109,14 +109,14 @@ public class DesarrolladorDTO implements Serializable
      * @return the Id
      */
     public Long getId() {
-        return Id;
+        return id;
     }
 
     /**
      * @param Id the Id to set
      */
-    public void setId(Long Id) {
-        this.Id = Id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**
