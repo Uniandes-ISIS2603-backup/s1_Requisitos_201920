@@ -95,7 +95,8 @@ public class RequisitoPersistenceTest {
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    private void clearData() 
+    {
         em.createQuery("delete from RequisitosEntity").executeUpdate();
     }
 
@@ -103,7 +104,8 @@ public class RequisitoPersistenceTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    private void insertData() 
+    {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             RequisitosEntity entidad = factory.manufacturePojo(RequisitosEntity.class);
@@ -173,7 +175,8 @@ public class RequisitoPersistenceTest {
      * Prueba el metodo update.
      */
     @Test
-    public void updateTest() {
+    public void updateTest() 
+    {
         RequisitosEntity entidad = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         RequisitosEntity nuevaEnt = factory.manufacturePojo(RequisitosEntity.class);
@@ -194,7 +197,6 @@ public class RequisitoPersistenceTest {
     /**
      * Prueba el método delete.
      */
-    
     @Test
     public void deleteTest() {
         RequisitosEntity entidad = data.get(0);
@@ -204,12 +206,11 @@ public class RequisitoPersistenceTest {
     }
 
     @Test
-    public void findByAuthorTest() 
-    {
+    public void findByAuthorTest() {
         RequisitosEntity entidad = data.get(0);
-        RequisitosEntity nuevaEnt= rp.findByAuthor(entidad.getAutor());
+        RequisitosEntity nuevaEnt = rp.findByAuthor(entidad.getAutor());
         Assert.assertNotNull(nuevaEnt);
-        
+
         Assert.assertEquals(nuevaEnt.getAutor(), entidad.getAutor());
         Assert.assertEquals(nuevaEnt.getFuente(), entidad.getFuente());
         Assert.assertEquals(nuevaEnt.getEstabilidad(), entidad.getEstabilidad());
@@ -217,13 +218,13 @@ public class RequisitoPersistenceTest {
         Assert.assertEquals(nuevaEnt.getDescripcion(), entidad.getDescripcion());
         Assert.assertEquals(nuevaEnt.getImportancia(), entidad.getImportancia());
     }
-     @Test
-    public void findByNameTest() 
-    {
+
+    @Test
+    public void findByNameTest() {
         RequisitosEntity entidad = data.get(0);
-        RequisitosEntity nuevaEnt= rp.findByName(entidad.getNombre());
+        RequisitosEntity nuevaEnt = rp.findByName(entidad.getNombre());
         Assert.assertNotNull(nuevaEnt);
-        
+
         Assert.assertEquals(nuevaEnt.getAutor(), entidad.getAutor());
         Assert.assertEquals(nuevaEnt.getFuente(), entidad.getFuente());
         Assert.assertEquals(nuevaEnt.getEstabilidad(), entidad.getEstabilidad());

@@ -143,7 +143,8 @@ public class CasoDeUsoLogicTest {
     test de crear un caso con los servicios en null
      */
     @Test(expected = BusinessLogicException.class)
-    public void crearCasoServiciosNull() throws BusinessLogicException {
+    public void crearCasoServiciosNull() throws BusinessLogicException 
+    {
         CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
         caso.setServicios(null);
         CasoDeUsoEntity result = casoLogic.crearCasoDeUso(caso);
@@ -223,7 +224,8 @@ public class CasoDeUsoLogicTest {
     test de actualizar un caso de uso pero con los servicios en null
      */
     @Test(expected = BusinessLogicException.class)
-    public void updateCasoDeUsoConServiciosNull() throws BusinessLogicException {
+    public void updateCasoDeUsoConServiciosNull() throws BusinessLogicException 
+    {
         CasoDeUsoEntity caso = data.get(0);
         caso.setServicios(null);
         casoLogic.updateCasoDeUso(caso);
@@ -248,6 +250,7 @@ public class CasoDeUsoLogicTest {
         caso.setPruebas(null);
         casoLogic.updateCasoDeUso(caso);
     }
+    
 
     /*
     test de borrar caso de uso

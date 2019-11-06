@@ -72,7 +72,8 @@ public class ModificacionesLogic {
         if (modi.getFechaModificacion() == null) {
             throw new BusinessLogicException("la fecha no puede estar vacia");
         }
-        if (modi.getFechaModificacion().after(new Date())){
+        if (modi.getFechaModificacion().after(new Date()))
+        {
             throw new BusinessLogicException("la fecha no puede ser despues de la fecha actual");
         }
 

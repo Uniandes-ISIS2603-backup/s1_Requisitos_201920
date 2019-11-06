@@ -38,7 +38,9 @@ public class CasoDeUsoLogic {
         }
         if (caso.getDocumentacion() == null) {
             throw new BusinessLogicException("la Documentacion no debe ser nula");
-
+        } 
+        if (caso.getServicios() == null) {
+            throw new BusinessLogicException("los servicios no deben ser nulos");
         }
         if (caso.getServicios().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos un servicio");
@@ -56,16 +58,7 @@ public class CasoDeUsoLogic {
             throw new BusinessLogicException("debe haber por lo menos una posCondicion");
             
         }
-         /*
-        if (!caso.getRepresentanteDelCliente().tipo().equals("RepresentanteDelCliente")){
-         throw new BusinessLogicException("el desarrollador representante debe ser de tipo "RepresentanteDelCliente");
-         }
-         
-        if (!caso.getResponsable.tipo().equals("Desarrollador")){
-         throw new BusinessLogicException("el desarrollador responsable debe ser de tipo "Desarrollador");
-         } 
-         
-       */
+        
         caso = persistence.create(caso);
         return caso;
     }
@@ -75,8 +68,8 @@ public class CasoDeUsoLogic {
     *@return lista con todos los casos
      */
     public List<CasoDeUsoEntity> getCasos() {
-        List<CasoDeUsoEntity> casos = persistence.findAll();
-        return casos;
+        return persistence.findAll();
+        
     }
 
     /*
@@ -85,8 +78,8 @@ public class CasoDeUsoLogic {
     *@return caso de uso encontrado
      */
     public CasoDeUsoEntity getCaso(Long id) {
-        CasoDeUsoEntity encontrado = persistence.find(id);
-        return encontrado;
+        return persistence.find(id);
+        
     }
 
     /*
@@ -104,21 +97,23 @@ public class CasoDeUsoLogic {
         }
         if (caso.getDocumentacion() == null) {
             throw new BusinessLogicException("la Documentacion no debe ser nula");
-
         }
-        if (caso.getServicios().size()==0){
+        if (caso.getServicios() == null) {
+            throw new BusinessLogicException("los Servicios no deben ser nulos");
+        }
+        if (caso.getServicios().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos un servicio");
             
         }
-         if (caso.getEntidades().size()==0){
+         if (caso.getEntidades().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos una entidad");
             
         }
-         if (caso.getPreCondiciones().size()==0){
+         if (caso.getPreCondiciones().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos una precondicion");
             
         }
-         if (caso.getPosCondiciones().size()==0){
+         if (caso.getPosCondiciones().isEmpty()){
             throw new BusinessLogicException("debe haber por lo menos una posCondicion");
             
         }
@@ -129,7 +124,7 @@ public class CasoDeUsoLogic {
     /*
     *Elimina un caso de uso
      */
-    public void deleteCaso(Long CasoDeUSoId) {
-        persistence.delete(CasoDeUSoId);
+    public void deleteCaso(Long casoDeUSoId) {
+        persistence.delete(casoDeUSoId);
     }
 }

@@ -133,8 +133,7 @@ public class CasoDeUsoPersistenceTest {
     public void findTest() {
         CasoDeUsoEntity entity = data.get(0);
         CasoDeUsoEntity encontrado = a.find(entity.getId());
-        
-        
+
         Assert.assertEquals(encontrado.getNombre(), entity.getNombre());
         Assert.assertEquals(encontrado.getDocumentacion(), entity.getDocumentacion());
         Assert.assertEquals(encontrado.getPruebas(), entity.getPruebas());
@@ -174,23 +173,21 @@ public class CasoDeUsoPersistenceTest {
         CasoDeUsoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         CasoDeUsoEntity encontrado = factory.manufacturePojo(CasoDeUsoEntity.class);
-
         encontrado.setId(entity.getId());
 
         a.update(encontrado);
 
-        
         CasoDeUsoEntity resp = em.find(CasoDeUsoEntity.class, encontrado.getId());
+
         Assert.assertEquals(resp.getNombre(), encontrado.getNombre());
         Assert.assertEquals(resp.getDocumentacion(), encontrado.getDocumentacion());
         Assert.assertEquals(resp.getPruebas(), encontrado.getPruebas());
-        Assert.assertEquals(resp.getServicios(), encontrado.getServicios());
-        Assert.assertEquals(resp.getEntidades(), encontrado.getEntidades());
-        Assert.assertEquals(resp.getCaminosExcepcion(), encontrado.getCaminosExcepcion());
-        Assert.assertEquals(resp.getPosCondiciones(), encontrado.getPosCondiciones());
-        Assert.assertEquals(resp.getPreCondiciones(), encontrado.getPreCondiciones());
-        Assert.assertEquals(resp.getCaminosAlternos(), encontrado.getCaminosAlternos());
-
+        Assert.assertTrue(resp.getServicios().size() == encontrado.getServicios().size() && resp.getServicios().containsAll(encontrado.getServicios()) && encontrado.getServicios().containsAll(resp.getServicios()));
+        Assert.assertTrue(resp.getEntidades().size() == encontrado.getEntidades().size() && resp.getEntidades().containsAll(encontrado.getEntidades()) && encontrado.getEntidades().containsAll(resp.getEntidades()));
+        Assert.assertTrue(resp.getCaminosExcepcion().size() == encontrado.getCaminosExcepcion().size() && resp.getCaminosExcepcion().containsAll(encontrado.getCaminosExcepcion()) && encontrado.getCaminosExcepcion().containsAll(resp.getCaminosExcepcion()));
+        Assert.assertTrue(resp.getPosCondiciones().size() == encontrado.getPosCondiciones().size() && resp.getPosCondiciones().containsAll(encontrado.getPosCondiciones()) && encontrado.getPosCondiciones().containsAll(resp.getPosCondiciones()));
+        Assert.assertTrue(resp.getPreCondiciones().size() == encontrado.getPreCondiciones().size() && resp.getPreCondiciones().containsAll(encontrado.getPreCondiciones()) && encontrado.getPreCondiciones().containsAll(resp.getPreCondiciones()));
+        Assert.assertTrue(resp.getCaminosAlternos().size() == encontrado.getCaminosAlternos().size() && resp.getCaminosAlternos().containsAll(encontrado.getCaminosAlternos()) && encontrado.getCaminosAlternos().containsAll(resp.getCaminosAlternos()));
     }
 
     /*
