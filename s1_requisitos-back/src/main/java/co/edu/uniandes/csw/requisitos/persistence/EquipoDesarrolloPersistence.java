@@ -77,13 +77,13 @@ public class EquipoDesarrolloPersistence {
      * @param Name
      * @return null si no lo encuentra, de lo contrario el elemento
      */
-    public EquipoDesarrolloEntity findByEquipoDesarrollo(String Name)
+    public EquipoDesarrolloEntity findByEquipoDesarrollo(String name)
     {
         EquipoDesarrolloEntity buscado=null;
         List<EquipoDesarrolloEntity> lista=findAll();
         for (EquipoDesarrolloEntity requisito : lista) 
         {
-            if(requisito.getEquipoDesarrollo().equals(Name))
+            if(requisito.getEquipoDesarrollo().equals(name))
                 buscado=requisito;
         }
         return buscado;
