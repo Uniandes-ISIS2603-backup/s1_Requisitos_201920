@@ -27,7 +27,7 @@ public class RequisitosEntity extends BaseEntity implements Serializable {
      * Enumeracion que determina el tipo de requsito
      * @author Nicolas Tobo
      */
-    public static enum TipoRequisito 
+    public enum TipoRequisito 
     {
         FUNCIONAL,SEGURIDAD,PLATAFORMA,ESCALABILIDAD,DESEMPENO
     }
