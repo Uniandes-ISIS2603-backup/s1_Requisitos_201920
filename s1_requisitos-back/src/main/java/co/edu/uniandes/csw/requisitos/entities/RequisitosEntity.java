@@ -29,7 +29,7 @@ public class RequisitosEntity extends BaseEntity implements Serializable {
      */
     public static enum TipoRequisito 
     {
-        FUNCIONAL,SEGURIDAD,PLATAFORMA,ESCALABILIDAD,DESEMPEÑO
+        FUNCIONAL,SEGURIDAD,PLATAFORMA,ESCALABILIDAD,DESEMPENO
     }
 
     /**
@@ -131,77 +131,6 @@ public class RequisitosEntity extends BaseEntity implements Serializable {
         this.requisitosFuncionalesCaso = requisitosFuncionalesCaso;
     }
 
-    /**
-     * Retorna la fuente
-     *
-     * @return
-     */
-    public String getFuente() {
-        return fuente;
-    }
-
-    /**
-     * Define la fuente de
-     *
-     * @param fuente
-     */
-    public void setFuente(String fuente) {
-        this.fuente = fuente;
-    }
-
-    /**
-     * Retorna el autor del requisito
-     *
-     * @return
-     */
-    public String getAutor() {
-        return autor;
-    }
-
-    /**
-     * Define el autor del requisito
-     *
-     * @param autor
-     */
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    /**
-     * Retorna la descripcion del requisito
-     *
-     * @return
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    /**
-     * Definerecibe la descripcion del requisito
-     *
-     * @param descripcion
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    /**
-     * Retorna la importancia del requisito
-     *
-     * @return
-     */
-    public Integer getImportancia() {
-        return importancia;
-    }
-
-    /**
-     * Define la importancia del requisito
-     *
-     * @param importancia
-     */
-    public void setImportancia(Integer importancia) {
-        this.importancia = importancia;
-    }
 
     /**
      * Retorna si el requisito es estable o no
@@ -249,6 +178,49 @@ public class RequisitosEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * Define el tipo del requisito
+     * @param tipo 
+     */
+    public void setTipo(TipoRequisito tipo) {
+        this.tipo = tipo;
+    }
+    
+    /**
+     * Retorna la fuente
+     *
+     * @return
+     */
+    public String getFuente() {
+        return fuente;
+    }
+
+    /**
+     * Define la fuente de
+     *
+     * @param fuente
+     */
+    public void setFuente(String fuente) {
+        this.fuente = fuente;
+    }
+
+    /**
+     * Retorna el autor del requisito
+     *
+     * @return
+     */
+    public String getAutor() {
+        return autor;
+    }
+
+    /**
+     * Define el autor del requisito
+     *
+     * @param autor
+     */
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+    /**
      * Define el nombre del requisito
      *
      * @param nombre
@@ -263,12 +235,40 @@ public class RequisitosEntity extends BaseEntity implements Serializable {
     public TipoRequisito getTipo() {
         return tipo;
     }
-    /**
-     * Define el tipo del requisito
-     * @param tipo 
+     /**
+     * Retorna la descripcion del requisito
+     *
+     * @return
      */
-    public void setTipo(TipoRequisito tipo) {
-        this.tipo = tipo;
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * Definerecibe la descripcion del requisito
+     *
+     * @param descripcion
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+     * Retorna la importancia del requisito
+     *
+     * @return
+     */
+    public Integer getImportancia() {
+        return importancia;
+    }
+
+    /**
+     * Define la importancia del requisito
+     *
+     * @param importancia
+     */
+    public void setImportancia(Integer importancia) {
+        this.importancia = importancia;
     }
 
 }
