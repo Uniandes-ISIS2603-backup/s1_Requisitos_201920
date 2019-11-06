@@ -117,6 +117,7 @@ public class ProyectoResource {
         List<ProyectoDTO> list = new ArrayList<>();
         for (ProyectoEntity entity : entityList) {
             list.add(new ProyectoDTO(entity));
+            
         }
         return list;
     }
