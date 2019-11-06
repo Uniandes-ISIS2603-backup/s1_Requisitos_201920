@@ -64,6 +64,7 @@ public class ProyectoLogic {
          throw new BusinessLogicException("Las fechas no estan bien definidas");      
       }
         return  persistence.update(iteracion);
+        
     }  
      /**
      * Borra una iteracion.
