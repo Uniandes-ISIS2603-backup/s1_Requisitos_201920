@@ -41,6 +41,7 @@ public class ProyectoResource {
     
     private static final Logger LOGGER = Logger.getLogger(ProyectoResource.class.getName());
     
+    
     @POST
     public ProyectoDTO createProyecto(ProyectoDTO proy) throws BusinessLogicException {
         LOGGER.info("ProyectoResource createProyecto: input:" +proy.toString());
@@ -58,8 +59,7 @@ public class ProyectoResource {
     @GET
     public List<ProyectoDTO> getProyectos(){
         LOGGER.log(Level.INFO, "ProyectoResource getProyectos: input:void");
-        List<ProyectoDTO> lista= listEntity2DTO(proyLogic.getProyectos());
-        return lista;
+        return listEntity2DTO(proyLogic.getProyectos());
     }
     
     /*
@@ -71,7 +71,7 @@ public class ProyectoResource {
         LOGGER.log(Level.INFO, "ModificacionesResource getModificacion: input:{0}", id);
         ProyectoEntity a= proyLogic.getProyecto(id);
         if (a==null){
-            throw new WebApplicationException("El recurso /proyecto/" + id + " no existe.", 404);
+            throw new WebApplicationException("El resource /proyecto/" + id + " no se encuentra.", 404);
         }
         ProyectoDTO dto= new ProyectoDTO(a);
         LOGGER.log(Level.INFO, "ProyectoResource getProyecto: output:{0}", dto);
@@ -88,7 +88,7 @@ public class ProyectoResource {
         LOGGER.log(Level.INFO, "ProyectoResource updateProyecto: input: id: {0} , caso: {1}", new Object[]{modId, mod});
         mod.setId(modId);
         if (proyLogic.getProyecto(modId)==null){
-            throw new WebApplicationException("El recurso /proyecto/" + modId + " no existe.", 404);
+            throw new WebApplicationException("Recurso /proyecto/" + modId + " no existe.", 404);
         }
         ProyectoDTO nuevo= new ProyectoDTO(proyLogic.updateProyecto(mod.toEntity()));
         LOGGER.log(Level.INFO, "ProyectoResource updateProyecto: output:{0}", nuevo);
@@ -105,7 +105,7 @@ public class ProyectoResource {
         LOGGER.log(Level.INFO, "ProyectoResource deleteProyecto: input: {0}", modId);
         ProyectoEntity nuevo = proyLogic.getProyecto(modId);
         if (nuevo == null) {
-            throw new WebApplicationException("El recurso /proyecto/" + modId + " no existe.", 404);
+            throw new WebApplicationException("El recurso /proyecto/" + modId + " no esta presente.", 404);
         }
         
         LOGGER.info("ProyectoResource deleteProyecto: output: void");

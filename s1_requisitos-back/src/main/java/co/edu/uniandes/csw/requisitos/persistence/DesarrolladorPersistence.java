@@ -73,13 +73,13 @@ public class DesarrolladorPersistence
      * @param Name
      * @return null si no lo encuentra, de lo contrario el elemento
      */
-    public DesarrolladorEntity findByName(String Name)
+    public DesarrolladorEntity findByName(String name)
     {
         DesarrolladorEntity buscado=null;
         List<DesarrolladorEntity> lista=findAll();
         for (DesarrolladorEntity requisito : lista) 
         {
-            if(requisito.getNombre().equals(Name))
+            if(requisito.getNombre().equals(name))
                 buscado=requisito;
         }
         return buscado;
