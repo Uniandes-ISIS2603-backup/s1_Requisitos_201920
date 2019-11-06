@@ -72,8 +72,7 @@ public class EquipoDesarrolloResource {
     @GET
     public List<EquipoDesarrolloDetailDTO> getEquipos(){
         LOGGER.log(Level.INFO, "EquipoDesarrolloResource getEquipos: input:void");
-        List<EquipoDesarrolloDetailDTO> lista= listEntity2DetailDTO(proyLogic.getEquipos());
-        return lista;
+     return listEntity2DetailDTO(proyLogic.getEquipos());
     }
     
     /**
@@ -90,7 +89,7 @@ public class EquipoDesarrolloResource {
         LOGGER.log(Level.INFO, "EquipoDesarrolloResource getEquipo: input:{0}", equipoId);
         EquipoDesarrolloEntity equipoDesarrolloEntity= proyLogic.getEquipo(equipoId);
         if (equipoDesarrolloEntity==null){
-            throw new WebApplicationException("El recurso /equipoDesarrollo/" + equipoId + " no existe.", 404);
+            throw new WebApplicationException("El recurso /equipoDesarrollo/" + equipoId + " no fue encontrado.", 404);
         }
         EquipoDesarrolloDetailDTO dto= new EquipoDesarrolloDetailDTO(equipoDesarrolloEntity);
         LOGGER.log(Level.INFO, "EquipoDesarrolloResource getEquipo: output:{0}", dto);
@@ -134,13 +133,13 @@ public class EquipoDesarrolloResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra el desarrollador.
      */
-    @Path("{proyectoId: \\d+}")
+    @Path("{equipoId: \\d+}")
     @DELETE
     public void deleteEquipo(@PathParam ("equipoId") Long equipoId) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "EquipoDesarrolloResource deleteEquipo: input: {0}", equipoId);
         EquipoDesarrolloEntity nuevo = proyLogic.getEquipo(equipoId);
         if (nuevo == null) {
-            throw new WebApplicationException("El recurso /equipo/" + equipoId + " no existe.", 404);
+            throw new WebApplicationException("El recurso /equipo/" + equipoId + " no aparece.", 404);
         }
         
         LOGGER.info("EquipoDesarrolloResource deleteEquipo: output: void");

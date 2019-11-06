@@ -54,8 +54,8 @@ public class EquipoDesarrolloLogic {
      */
     public EquipoDesarrolloEntity getEquipo(Long id) 
     { 
-        EquipoDesarrolloEntity equipo = persistence.find(id);
-        return equipo;
+        return persistence.find(id);
+
     }
     
       /**
@@ -65,8 +65,7 @@ public class EquipoDesarrolloLogic {
      */
     public EquipoDesarrolloEntity getEquipoByEquipoDesarrollo(String equipoDesarrollo) 
     { 
-        EquipoDesarrolloEntity equipo = persistence.findByEquipoDesarrollo(equipoDesarrollo);
-        return equipo;
+      return persistence.findByEquipoDesarrollo(equipoDesarrollo);
     }
     
     /**
@@ -79,8 +78,7 @@ public class EquipoDesarrolloLogic {
         if(equipo.getId()==null){
             throw new BusinessLogicException("El equipo de desarrollo no existe");
         }
-        equipo = persistence.update(equipo);
-        return equipo;
+        return  persistence.update(equipo);
     }
     
     /**
