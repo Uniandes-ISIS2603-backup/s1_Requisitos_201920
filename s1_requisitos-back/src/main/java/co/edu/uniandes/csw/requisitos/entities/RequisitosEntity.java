@@ -270,5 +270,18 @@ public class RequisitosEntity extends BaseEntity implements Serializable {
     public void setImportancia(Integer importancia) {
         this.importancia = importancia;
     }
+    /**
+     * Metotodo equlas
+     * @param obj
+     * @return 
+     */
+     @Override
+    public boolean equals(Object obj)
+    {
+        if ( ! (obj instanceof RequisitosEntity ) ) return false;
+        RequisitosEntity c = (RequisitosEntity) obj;
+        return this.getId() == c.getId() ;
+    }
+    
 
 }
