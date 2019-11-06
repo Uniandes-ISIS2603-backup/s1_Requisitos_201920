@@ -36,14 +36,22 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class DesarrolladorResource 
 {
-    private static final Logger LOGGER = Logger.getLogger(DesarrolladorResource.class.getName());
+    
+    
+   private static final Logger LOGGER = Logger.getLogger(DesarrolladorResource.class.getName());   
+   private static final String PATH1 = "El recurso /desarrollador/";
+      private static final String PATH2 = "no existe";
+  
     /**
       * Atributo logica
       */
      @Inject
      private DesarrolladorLogic dl;
-   
+
+     
+    
      /**
+      * 
      * Crea una nuevo desarrollador con la informacion que se recibe en el cuerpo de
      * la petición y se regresa un objeto identico con un id auto-generado por
      * la base de datos.
@@ -92,7 +100,7 @@ public class DesarrolladorResource
         LOGGER.log(Level.INFO, "DesarrolladorResource getDesarrollador: input: {0}", desarrolladorId);
         DesarrolladorEntity desarrolladorEntity = dl.getDesarrollador(desarrolladorId);
         if (desarrolladorEntity == null) {
-            throw new WebApplicationException("El recurso /desarrollador/" + desarrolladorId + " no existe.", 404);
+            throw new WebApplicationException(PATH1 + desarrolladorId + PATH2, 404);
         }
         DesarrolladorDetailDTO desarrolladorDetailDTO = new DesarrolladorDetailDTO(desarrolladorEntity);
         LOGGER.log(Level.INFO, "DesarrolladorResource getDesarrollador: output: {0}", desarrolladorDetailDTO);
@@ -119,7 +127,7 @@ public class DesarrolladorResource
         LOGGER.log(Level.INFO, "DesarrolladorResource updateDesarrollador: input: id: {0} , book: {1}", new Object[]{desarrolladorId, desarrollador});
         desarrollador.setId(desarrolladorId);
         if (dl.getDesarrollador(desarrolladorId) == null) {
-            throw new WebApplicationException("El recurso /desarrollador/" + desarrolladorId + " no existe.", 404);
+            throw new WebApplicationException(PATH1 + desarrolladorId + PATH2, 404);
         }
         DesarrolladorDetailDTO detailDTO = new DesarrolladorDetailDTO(dl.updateDesarrollador( desarrollador.toEntity()));
         LOGGER.log(Level.INFO, "DesarrolladorResource updateDesarrollador: output: {0}", detailDTO);
@@ -140,9 +148,9 @@ public class DesarrolladorResource
         LOGGER.log(Level.INFO, "DesarrolladorResource deleteDesarrollador: input: {0}", desarrolladorId);
         DesarrolladorEntity entity =dl.getDesarrollador(desarrolladorId);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /desarrollador/" + desarrolladorId + " no existe.", 404);
+            throw new WebApplicationException(PATH1 + desarrolladorId + PATH2, 404);
         }
-        //TODO recordar que cuando se terminen las asociaciones borrarlas antes de hacer el delete
+ 
         dl.deleteRequisito(desarrolladorId);
         LOGGER.info("DesarrolladorResource deleteDesarrollador: output: void");
     }

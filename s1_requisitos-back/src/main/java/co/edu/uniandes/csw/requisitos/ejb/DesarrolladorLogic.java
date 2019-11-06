@@ -61,8 +61,8 @@ public class DesarrolladorLogic
      */
     public List<DesarrolladorEntity> getDesarrolladores() 
     {
-        List<DesarrolladorEntity> desarrolladores = dp.findAll();
-        return desarrolladores;
+       return dp.findAll();
+
     }
    /**
      * Obtener un desarrollador por medio de su id.
@@ -71,8 +71,8 @@ public class DesarrolladorLogic
      */
     public DesarrolladorEntity getDesarrollador(Long desarrolladorId) 
     { 
-        DesarrolladorEntity requisitoEntity = dp.find(desarrolladorId);
-        return requisitoEntity;
+return dp.find(desarrolladorId);
+       
     }
        /**
      *
@@ -87,8 +87,8 @@ public class DesarrolladorLogic
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }
-        DesarrolladorEntity newEntity =dp.update(desarrollador);
-        return newEntity;
+        return dp.update(desarrollador);
+      
     }  
      /**
      * Borra un desarrollador.
