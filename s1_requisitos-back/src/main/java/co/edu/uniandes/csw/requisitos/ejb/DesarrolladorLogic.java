@@ -35,7 +35,7 @@ public class DesarrolladorLogic
    */
   public DesarrolladorEntity createDesarrollador(DesarrolladorEntity desarrollador) throws BusinessLogicException
   {
-       if(desarrollador.getTipo()==null||desarrollador.getTipo().equals(""))
+       if(desarrollador.getTipo()==null)
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }
@@ -83,7 +83,7 @@ return dp.find(desarrolladorId);
      */
     public DesarrolladorEntity  updateDesarrollador(DesarrolladorEntity  desarrollador) throws BusinessLogicException 
     {
-       if(desarrollador.getTipo()==null||desarrollador.getTipo().equals(""))
+       if(desarrollador.getTipo()==null)
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }
