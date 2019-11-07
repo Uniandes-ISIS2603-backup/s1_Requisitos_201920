@@ -5,10 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.entities;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;

@@ -20,14 +20,23 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class ProyectoEntity extends BaseEntity implements Serializable{
     
+    /**
+     * Nombre del proyecto
+     */
     private String nombre;
     
+    
     @Temporal(TemporalType.DATE)
+    /**
+     * FechaInicial del proyecto
+     */
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaInicial;
     
+    /**
+     * FechaFinal del proyecto
+     */
     @Temporal(TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class)
     private Date fechaFinal;
 
     /**
@@ -71,5 +80,7 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
     public void setFechaFinal(Date fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
+    
+    
     
 }
