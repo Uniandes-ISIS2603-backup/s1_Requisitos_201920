@@ -100,7 +100,7 @@ public class CasoDeUsoResource {
 
         caso.setId(casosId);
         if (cl.getCaso(casosId) == null) {
-            throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
+            throw new WebApplicationException("El resource /casos/" + casosId + " no existe", 404);
         }
         CasoDeUsoDetailDTO nuevo = new CasoDeUsoDetailDTO(cl.updateCasoDeUso(caso.toEntity()));
         LOGGER.log(Level.INFO, "CasoDeUsoResource updateCasoDeUso: output:{0}", nuevo);
@@ -116,7 +116,7 @@ public class CasoDeUsoResource {
         LOGGER.log(Level.INFO, "CasoDeUsoResource deleteCaso: input: {0}", casosId);
         CasoDeUsoEntity nuevo = cl.getCaso(casosId);
         if (nuevo == null) {
-            throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
+            throw new WebApplicationException("Resource /casos/" + casosId + " no existe ", 404);
         }
         LOGGER.info("CasoDeUsoResource deleteCaso: output: void");
         cl.deleteCaso(casosId);

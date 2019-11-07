@@ -34,8 +34,7 @@ public class EquipoDesarrolloLogic {
         {
             throw new BusinessLogicException("Ya existe un equipo con ese nombre");
         }
-        equipo = persistence.create(equipo);
-        return equipo;
+       return persistence.create(equipo);
     }
     
     /**
@@ -43,8 +42,7 @@ public class EquipoDesarrolloLogic {
      * @return lista con los equipos de desarrollo existentes
      */
     public List<EquipoDesarrolloEntity> getEquipos(){
-       List<EquipoDesarrolloEntity> equipo = persistence.findAll();
-        return equipo; 
+        return persistence.findAll();
     }
 
     /**

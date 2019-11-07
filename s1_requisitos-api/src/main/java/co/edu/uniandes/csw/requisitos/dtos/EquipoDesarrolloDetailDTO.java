@@ -37,10 +37,13 @@ public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Se
         super(equipoDesarrollo);
         if(equipoDesarrollo !=null)
         {
+            if(equipoDesarrollo.getIntegrantes()!= null)
+            {
             integrantes = new ArrayList<>();
             for(DesarrolladorEntity entityDes :equipoDesarrollo.getIntegrantes() )
             {
                 integrantes.add(new DesarrolladorDTO(entityDes));
+            }
             }
         }
     }

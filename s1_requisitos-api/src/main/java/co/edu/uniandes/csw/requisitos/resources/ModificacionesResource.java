@@ -5,11 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.resources;
 
-import co.edu.uniandes.csw.requisitos.dtos.CasoDeUsoDTO;
-import co.edu.uniandes.csw.requisitos.dtos.CasoDeUsoDetailDTO;
 import co.edu.uniandes.csw.requisitos.dtos.ModificacionesDTO;
 import co.edu.uniandes.csw.requisitos.ejb.ModificacionesLogic;
-import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -70,8 +67,8 @@ public class ModificacionesResource {
     @GET
     public List<ModificacionesDTO> getModificaciones(){
         LOGGER.log(Level.INFO, "ModificacionesResource getModificaciones: input:void");
-        List<ModificacionesDTO> lista= listEntity2DTO(logica.getModificaciones());
-        return lista;
+        return listEntity2DTO(logica.getModificaciones());
+        
     }
     
     /*
@@ -100,7 +97,7 @@ public class ModificacionesResource {
         LOGGER.log(Level.INFO, "ModificacioensResource updateModificaciones: input: id: {0} , caso: {1}", new Object[]{modId, mod});
         mod.setId(modId);
         if (logica.getModificacion(modId)==null){
-            throw new WebApplicationException("El recurso /modificaciones/" + modId + " no existe.", 404);
+            throw new WebApplicationException("El resource /modificaciones/" + modId + " no se encuentra, no existe.", 404);
         }
         ModificacionesDTO nuevo= new ModificacionesDTO(logica.updateModificaciones(mod.toEntity()));
         LOGGER.log(Level.INFO, "ModificacionesResource updateModificaciones: output:{0}", nuevo);
@@ -117,7 +114,7 @@ public class ModificacionesResource {
         LOGGER.log(Level.INFO, "ModificacionesResource deleteModificacion: input: {0}", modId);
         ModificacionesEntity nuevo = logica.getModificacion(modId);
         if (nuevo == null) {
-            throw new WebApplicationException("El recurso /modificaciones/" + modId + " no existe.", 404);
+            throw new WebApplicationException("Recurso /modificaciones/" + modId + "  no existe.", 404);
         }
         
         LOGGER.info("ModificacionesResource deleteModificacion: output: void");

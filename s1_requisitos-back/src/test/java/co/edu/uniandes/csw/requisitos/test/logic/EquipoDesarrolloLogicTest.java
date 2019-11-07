@@ -105,7 +105,7 @@ public class EquipoDesarrolloLogicTest {
      * @throws BusinessLogicException 
      */
     @Test
-    public void createProyecto() throws BusinessLogicException{
+    public void createEquipoDesarrollo() throws BusinessLogicException{
         EquipoDesarrolloEntity entidadNueva = factory.manufacturePojo(EquipoDesarrolloEntity.class);
         EquipoDesarrolloEntity result = equipoLogic.createEquipoDesarrollo(entidadNueva);
         Assert.assertNotNull(result);

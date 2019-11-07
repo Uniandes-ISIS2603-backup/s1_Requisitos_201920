@@ -18,7 +18,7 @@ public class RequisitosDetailDTO extends RequisitosDTO
     /**
      * Lista de ModificacionesDTO que puede tener el requisito
      */
-    protected List<ModificacionesDTO> modificaciones;
+    private List<ModificacionesDTO> modificaciones;
     
     /**
      * Constructor por defecto del detailDto

@@ -46,8 +46,7 @@ public class IteracionLogic {
      */
     public List<IteracionEntity> getIteraciones() 
     {
-        List<IteracionEntity> iteraciones = ip.findAll();
-        return iteraciones;
+        return ip.findAll();
     }
     /**
      * Obtener una iteracion por medio de su id.
@@ -57,8 +56,7 @@ public class IteracionLogic {
     
     public IteracionEntity getIteracion(Long iteracionId) 
     { 
-        IteracionEntity iteracionEntity = ip.find(iteracionId);
-        return iteracionEntity;
+        return ip.find(iteracionId);
     }
        /**
      *
@@ -73,8 +71,7 @@ public class IteracionLogic {
       {
          throw new BusinessLogicException("Las fechas no estan bien definidas");      
       }
-        IteracionEntity newEntity =ip.update(iteracion);
-        return newEntity;
+        return ip.update(iteracion);
     }  
      /**
      * Borra una iteracion.
