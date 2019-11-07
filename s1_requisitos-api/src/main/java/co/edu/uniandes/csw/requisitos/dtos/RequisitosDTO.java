@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.requisitos.dtos;
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
+import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity.TipoRequisito;
 import java.io.Serializable;
 
 /**
@@ -16,35 +18,43 @@ public class RequisitosDTO implements Serializable
    /**
      * Fuente de donde se escribe el requisito
      */
-    protected String fuente;
+    private String fuente;
     /**
      * Autor del requisito
      */
-    protected String autor;
+    private String autor;
     /**
      * Informacion que tiene el requisito
      */
-    protected String descripcion;
+    private String descripcion;
     /**
      * Numero que representa la importancia del requisito
      */
-    protected Integer importancia;
+    private Integer importancia;
     /**
      * Boolena que representa si el requisito es estable(fijo)
      */
-    protected Boolean estabilidad;
+    private Boolean estabilidad;
     /**
      * Comentarios adicionales sobre el requisito
      */
-    protected String comentariosAdicionales;
+    private String comentariosAdicionales;
     /**
      * Id del DTO
      */
-    protected Long id;
+    private Long id;
      /**
       * Nombre del requisito
       */
-     protected String nombre;
+     private String nombre;
+     /**
+      * tipo Del requisito
+      */
+     private TipoRequisito tipo;
+     /**
+      * Caso de uso del requisito
+      */
+     private CasoDeUsoEntity requisitosFuncionalesCaso;
     /**
      * Constructor vacio
      */
@@ -67,6 +77,9 @@ public class RequisitosDTO implements Serializable
          setEstabilidad(entidad.getEstabilidad());
          setComentariosAdicionales(entidad.getComentariosAdicionales());
          setImportancia(entidad.getImportancia()); 
+         setTipo(entidad.getTipo());
+         setRequisitosFuncionalesCaso(entidad.getRequisitosFuncionalesCaso());
+         
     }
     
     /**
@@ -83,6 +96,8 @@ public class RequisitosDTO implements Serializable
          entidad.setEstabilidad(this.getEstabilidad());
          entidad.setComentariosAdicionales(this.getComentariosAdicionales());
          entidad.setImportancia(this.getImportancia());
+         entidad.setTipo(this.getTipo());
+         entidad.setRequisitosFuncionalesCaso(this.getRequisitosFuncionalesCaso());
          return entidad;
     }
     
@@ -198,6 +213,33 @@ public class RequisitosDTO implements Serializable
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    /**
+     * Retorna el tipo del requisito
+     * @return 
+     */
+    public TipoRequisito getTipo() {
+        return tipo;
+    }
+    /**
+    *Define el tipo del requisito
+    */
+    public void setTipo(TipoRequisito tipo) {
+        this.tipo = tipo;
+    }
+    /**
+     * Retorna el caso de uso del requisito
+     * @return 
+     */
+    public CasoDeUsoEntity getRequisitosFuncionalesCaso() {
+        return requisitosFuncionalesCaso;
+    }
+    /**
+     * Define la base de datos 
+     * @param requisitosFuncionalesCaso 
+     */
+    public void setRequisitosFuncionalesCaso(CasoDeUsoEntity requisitosFuncionalesCaso) {
+        this.requisitosFuncionalesCaso = requisitosFuncionalesCaso;
     }
     
 }
