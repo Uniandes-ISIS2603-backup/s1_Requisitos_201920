@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
-import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity.TipoDesarrollador;
 import java.io.Serializable;
 
 
@@ -66,7 +65,7 @@ public class DesarrolladorDTO implements Serializable
      * String que representa el tipo del desarrollador
      */
    private Long id;
-    private TipoDesarrollador tipo;
+    private String tipo;
     private String nombre;
     private String correo;
     private Integer edad;
@@ -123,14 +122,14 @@ public class DesarrolladorDTO implements Serializable
     /**
      * @return the tipo
      */
-    public TipoDesarrollador getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
     /**
      * @param tipo the tipo to set
      */
-    public void setTipo(TipoDesarrollador tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
