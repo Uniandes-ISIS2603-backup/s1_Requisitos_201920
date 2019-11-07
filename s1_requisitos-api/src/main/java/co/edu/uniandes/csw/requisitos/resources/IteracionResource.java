@@ -117,7 +117,7 @@ public class IteracionResource {
         LOGGER.log(Level.INFO, "IteracionResource updateIteracion: input: id: {0} , book: {1}", new Object[]{iteracionId, iteracion});
         iteracion.setId(iteracionId);
         if (iteracionLogic.getIteracion(iteracionId) == null) {
-            throw new WebApplicationException("El recurso /iteracion/" + iteracionId + " no existe.", 404);
+            throw new WebApplicationException("El resource /iteracion/" + iteracionId + " no existe", 404);
         }
         IteracionDetailDTO detailDTO = new IteracionDetailDTO(iteracionLogic.updateIteracion( iteracion.toEntity()));
         LOGGER.log(Level.INFO, "IteracionResource updateIteracion: output: {0}", detailDTO);
@@ -138,7 +138,7 @@ public class IteracionResource {
         LOGGER.log(Level.INFO, "IteracionResource deleteIteracion: input: {0}", iteracionId);
         IteracionEntity entity = iteracionLogic.getIteracion(iteracionId);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /iteracion/" + iteracionId + " no existe.", 404);
+            throw new WebApplicationException("Recurso /iteracion/" + iteracionId + " no existe ", 404);
         }
         //TODO recordar que cuando se terminen las asociaciones borrarlas antes de hacer el delete
         iteracionLogic.deleteRequisito(iteracionId);

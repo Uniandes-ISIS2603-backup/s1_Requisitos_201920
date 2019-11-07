@@ -143,7 +143,7 @@ public class DesarrolladorLogicTest
     public void createRequisitoTestTipoVacio()throws BusinessLogicException
     {
         DesarrolladorEntity nuevaEnt=factory.manufacturePojo(DesarrolladorEntity.class);
-        nuevaEnt.setTipo("");
+        nuevaEnt.setTipo(null);
         DesarrolladorEntity resultado=dl.createDesarrollador(nuevaEnt);
     }
     /**
@@ -185,7 +185,7 @@ public class DesarrolladorLogicTest
     {
         DesarrolladorEntity entidad = data.get(0);
         DesarrolladorEntity  pojoEntity = factory.manufacturePojo(DesarrolladorEntity.class);
-        pojoEntity.setTipo("");
+        pojoEntity.setTipo(null);
         pojoEntity.setId(entidad.getId());
         dl.updateDesarrollador(pojoEntity);
     }

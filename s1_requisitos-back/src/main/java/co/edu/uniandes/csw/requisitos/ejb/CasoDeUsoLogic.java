@@ -117,8 +117,8 @@ public class CasoDeUsoLogic {
             throw new BusinessLogicException("debe haber por lo menos una posCondicion");
             
         }
-        CasoDeUsoEntity nueva = persistence.update(caso);
-        return nueva;
+         
+        return persistence.update(caso);
     }
 
     /*

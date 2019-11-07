@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,7 +22,11 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
            /**
      * Lista de ModificacionesDTO que puede tener el requisito
      */
-    private List<RequisitosDTO> requisitos;
+    private List<RequisitosDTO> requisitos= new ArrayList<>();
+    private List<ModificacionesDTO> modificaciones=  new ArrayList<>();
+    private List<CasoDeUsoDTO> casosdeusoResponsable = new ArrayList<>();
+    private List<CasoDeUsoDTO> casosdeusoRepresentante = new ArrayList<>();
+
     
      /**
      * Constructor del detailDto por defecto
@@ -42,14 +48,39 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
         super(desarrolladorEntity);
          if (desarrolladorEntity != null) 
          {
-            requisitos = new ArrayList<>();
-            for (RequisitosEntity entityReq : desarrolladorEntity.getRequisitos()) 
-            {
-                requisitos.add(new RequisitosDTO(entityReq));
+              if (desarrolladorEntity.getModificaciones() != null) {
+                modificaciones = new ArrayList<>();
+                for (ModificacionesEntity lis : desarrolladorEntity.getModificaciones()) {
+                    modificaciones.add(new ModificacionesDTO(lis));
+                }
             }
+              if (desarrolladorEntity.getRequisitos() != null) {
+                requisitos = new ArrayList<>();
+                for (RequisitosEntity lis : desarrolladorEntity.getRequisitos()) {
+                    requisitos.add(new RequisitosDTO(lis));
+                }
+            }
+             if (desarrolladorEntity.getCasosDeUsoRepresentante()!= null) {
+                casosdeusoRepresentante = new ArrayList<>();
+                for (CasoDeUsoEntity lis : desarrolladorEntity.getCasosDeUsoRepresentante()) {
+                    casosdeusoRepresentante.add(new CasoDeUsoDTO(lis));
+                }
+            }    
+              if (desarrolladorEntity.getCasosDeUsoResponsable()!= null) {
+                casosdeusoResponsable = new ArrayList<>();
+                for (CasoDeUsoEntity lis : desarrolladorEntity.getCasosDeUsoResponsable()) {
+                    casosdeusoResponsable.add(new CasoDeUsoDTO(lis));
+                }
+            }    
+            }
+           
          }
-    }
     
+    
+
+           
+
+        
     /**
      * Convierte un objeto DesarrolldorDetailDTO a DesarrolladorEntity incluyendo los
      * atributos de DesarrolladorDTO.
@@ -84,6 +115,52 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
      */
     public void setRequisitos(List<RequisitosDTO> requisitos) {
         this.requisitos = requisitos;
+    }
+
+    /**
+     * @return the modificaciones
+     */
+    public List<ModificacionesDTO> getModificaciones() {
+        return modificaciones;
+    }
+
+    /**
+     * @param modificaciones the modificaciones to set
+     */
+    public void setModificaciones(List<ModificacionesDTO> modificaciones) {
+        this.modificaciones = modificaciones;
+    }
+
+ 
+
+   
+
+    /**
+     * @return the casosdeusoResponsable
+     */
+    public List<CasoDeUsoDTO> getCasosdeusoResponsable() {
+        return casosdeusoResponsable;
+    }
+
+    /**
+     * @param casosdeusoResponsable the casosdeusoResponsable to set
+     */
+    public void setCasosdeusoResponsable(List<CasoDeUsoDTO> casosdeusoResponsable) {
+        this.casosdeusoResponsable = casosdeusoResponsable;
+    }
+
+    /**
+     * @return the casosdeusoRepresentante
+     */
+    public List<CasoDeUsoDTO> getCasosdeusoRepresentante() {
+        return casosdeusoRepresentante;
+    }
+
+    /**
+     * @param casosdeusoRepresentante the casosdeusoRepresentante to set
+     */
+    public void setCasosdeusoRepresentante(List<CasoDeUsoDTO> casosdeusoRepresentante) {
+        this.casosdeusoRepresentante = casosdeusoRepresentante;
     }
     
     

@@ -13,8 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 /**
  *
