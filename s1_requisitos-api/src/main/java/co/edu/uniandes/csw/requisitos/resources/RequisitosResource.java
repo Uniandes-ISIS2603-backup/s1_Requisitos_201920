@@ -115,13 +115,12 @@ public class RequisitosResource {
     @Path("{requisitoId: \\d+}")
     public RequisitosDetailDTO updateRequisito(@PathParam("requisitoId") Long requisitoId, RequisitosDetailDTO r) throws BusinessLogicException 
     {
-        LOGGER.log(Level.INFO, "RequisitoResource updateRequisito: input: id: {0} , : {1}", new Object[]{requisitoId, });
         r.setId(requisitoId);
         if (fl.getRequisito(requisitoId) == null) {
             throw new WebApplicationException("El recurso //" + requisitoId + " no existe.", 404);
         }
         RequisitosDetailDTO funDTO = new RequisitosDetailDTO(fl.updateRequisito(r.toEntity()));
-        LOGGER.log(Level.INFO, "RequisitoResource updateRequisito: output: {0}", funDTO);
+        
         return funDTO;
     }
   /**
