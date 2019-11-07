@@ -47,8 +47,8 @@ public class ModificacionesLogic {
     * retorna una lista con todas las modificaciones
      */
     public List<ModificacionesEntity> getModificaciones() {
-        List<ModificacionesEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+    
     }
 
     /*
@@ -57,8 +57,7 @@ public class ModificacionesLogic {
     * modificacion encontrada
      */
     public ModificacionesEntity getModificacion(Long id) {
-        ModificacionesEntity nueva = persistence.find(id);
-        return nueva;
+        return persistence.find(id);
     }
 
     /*
@@ -77,8 +76,7 @@ public class ModificacionesLogic {
             throw new BusinessLogicException("la fecha no puede ser despues de la fecha actual");
         }
 
-        ModificacionesEntity nueva = persistence.update(modi);
-        return nueva;
+        return persistence.update(modi);
     }
 
     /*
