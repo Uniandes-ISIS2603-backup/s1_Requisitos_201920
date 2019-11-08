@@ -39,7 +39,7 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     
      public enum TipoDesarrollador 
     {
-        FUNCIONAL,SEGURIDAD,PLATAFORMA,ESCALABILIDAD,DESEMPENO
+        REPRESENTANTEDELCLIENTE,RESPONSABLE,COMUN
     }
      /*
     /**
@@ -94,6 +94,26 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
      */
     public void setTipo(TipoDesarrollador tipo) {
         this.tipo = tipo;
+    }
+    
+      public void setTipoString(String tipo) throws Exception {
+          if (tipo.equalsIgnoreCase("Representantedelcliente"))
+          {
+        this.tipo = TipoDesarrollador.REPRESENTANTEDELCLIENTE;
+          }
+          else if(tipo.equalsIgnoreCase("Responsable"))
+          {
+          this.tipo = TipoDesarrollador.RESPONSABLE;
+          }
+          else if(tipo.equalsIgnoreCase("Comun"))
+          {
+          this.tipo=TipoDesarrollador.COMUN;
+                  }
+                 else
+                  {
+                   throw new Exception("No es valido el tipo")  ;     
+                          }
+          
     }
 
     /**

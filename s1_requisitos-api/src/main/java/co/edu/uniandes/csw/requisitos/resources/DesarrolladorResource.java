@@ -69,7 +69,10 @@ public class DesarrolladorResource
         LOGGER.log(Level.INFO, "DesarrolladorResource createDesarrollador: output: {0}", nuevoDesarrolladorDTO);
         return nuevoDesarrolladorDTO;
     }
- 
+
+    
+
+
     /**
      * Busca y devuelve todos los desarrolladores que existen en la aplicacion.
      *
@@ -173,4 +176,6 @@ public class DesarrolladorResource
         }
         return list;
     }
+   
 }
+
