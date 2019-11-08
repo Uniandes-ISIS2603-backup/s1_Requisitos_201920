@@ -27,7 +27,11 @@ public class EquipoDesarrolloEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @OneToMany(mappedBy = "equipoDesarrollo",cascade = CascadeType.PERSIST)
     private List<DesarrolladorEntity> integrantes = new ArrayList<>();
-
+    
+    @PodamExclude
+    @OneToMany (mappedBy = "equipo",cascade = CascadeType.PERSIST)
+    private List<ProyectoEntity> proyectos;
+    
        
     /**
      * @return the equipoDesarrollo
@@ -56,4 +60,19 @@ public class EquipoDesarrolloEntity extends BaseEntity implements Serializable{
     public void setIntegrantes(List<DesarrolladorEntity> integrantes) {
         this.integrantes = integrantes;
     }
+
+    /**
+     * @return the proyectos
+     */
+    public List<ProyectoEntity> getProyectos() {
+        return proyectos;
+    }
+
+    /**
+     * @param proyectos the proyectos to set
+     */
+    public void setProyectos(List<ProyectoEntity> proyectos) {
+        this.proyectos = proyectos;
+    }
+    
 }

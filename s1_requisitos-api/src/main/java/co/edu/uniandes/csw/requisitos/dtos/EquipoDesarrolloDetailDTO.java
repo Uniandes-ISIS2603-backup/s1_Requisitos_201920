@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity;
+import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,11 @@ public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Se
      * Lista de DesarrolladorDTO que puede tener un equipo
      */
     private List<DesarrolladorDTO> integrantes;
+    /**
+     * Lista de ProyectoEn
+    */
+    
+    private List<ProyectoDTO> proyectos;
     
     /**
      * 
@@ -45,6 +51,14 @@ public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Se
                 integrantes.add(new DesarrolladorDTO(entityDes));
             }
             }
+            if(equipoDesarrollo.getProyectos()!= null)
+            {
+                proyectos = new ArrayList<>();
+            for(ProyectoEntity entityPro :equipoDesarrollo.getProyectos() )
+                    {
+                        proyectos.add(new ProyectoDTO(entityPro));
+                    }
+            }
         }
     }
     
@@ -65,6 +79,13 @@ public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Se
             }
             equipoDesarrolloEntity.setIntegrantes(reqsEntity);
         }
+        if (getProyectos() != null) {
+            List<ProyectoEntity> reqsEntity = new ArrayList<>();
+            for (ProyectoDTO dtoReq : getProyectos()) {
+                reqsEntity.add(dtoReq.toEntity());
+            }
+            equipoDesarrolloEntity.setProyectos(reqsEntity);
+        }
         return equipoDesarrolloEntity;
     }
     
@@ -80,6 +101,20 @@ public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Se
      */
     public void setIntegrantes(List<DesarrolladorDTO> integrantes) {
         this.integrantes = integrantes;
+    }
+
+    /**
+     * @return the proyectos
+     */
+    public List<ProyectoDTO> getProyectos() {
+        return proyectos;
+    }
+
+    /**
+     * @param proyectos the proyectos to set
+     */
+    public void setProyectos(List<ProyectoDTO> proyectos) {
+        this.proyectos = proyectos;
     }
     
 }

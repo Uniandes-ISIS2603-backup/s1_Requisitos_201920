@@ -9,8 +9,10 @@ import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
@@ -24,6 +26,10 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
      * Nombre del proyecto
      */
     private String nombre;
+    
+     @PodamExclude
+     @ManyToOne
+     private EquipoDesarrolloEntity equipo;
     
     
     @Temporal(TemporalType.DATE)
@@ -80,7 +86,20 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
     public void setFechaFinal(Date fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
-    
+
+    /**
+     * @return the equipo
+     */
+    public EquipoDesarrolloEntity getEquipo() {
+        return equipo;
+    }
+
+    /**
+     * @param equipo the equipo to set
+     */
+    public void setEquipo(EquipoDesarrolloEntity equipo) {
+        this.equipo = equipo;
+    }
     
     
 }

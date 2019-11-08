@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.adapters.DateAdapter;
+import co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity;
 import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
 import java.io.Serializable;
 import java.util.Date;
@@ -41,6 +42,8 @@ public class ProyectoDTO implements Serializable{
      * Identificador del proyecto
      */
     private Long id;
+    
+    private EquipoDesarrolloEntity equipo;
     
     public ProyectoDTO(){
     
@@ -123,6 +126,20 @@ public class ProyectoDTO implements Serializable{
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+    }
+
+    /**
+     * @return the equipo
+     */
+    public EquipoDesarrolloEntity getEquipo() {
+        return equipo;
+    }
+
+    /**
+     * @param equipo the equipo to set
+     */
+    public void setEquipo(EquipoDesarrolloEntity equipo) {
+        this.equipo = equipo;
     }
 
     
