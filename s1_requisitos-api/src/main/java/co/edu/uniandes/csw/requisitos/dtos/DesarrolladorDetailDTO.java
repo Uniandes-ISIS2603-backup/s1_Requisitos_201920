@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,6 +23,9 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
      * Lista de ModificacionesDTO que puede tener el requisito
      */
     private List<RequisitosDTO> requisitos;
+     private List<CasoDeUsoDTO> casosDeUsoRepresentante;
+      private List<CasoDeUsoDTO> casosDeUsoResponsable;
+       private List<ModificacionesDTO> modificaciones;
     
      /**
      * Constructor del detailDto por defecto
@@ -40,14 +45,34 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
     public DesarrolladorDetailDTO(DesarrolladorEntity desarrolladorEntity) 
     {
         super(desarrolladorEntity);
-         if (desarrolladorEntity != null) 
-         {
-            requisitos = new ArrayList<>();
-            for (RequisitosEntity entityReq : desarrolladorEntity.getRequisitos()) 
-            {
-                requisitos.add(new RequisitosDTO(entityReq));
+         if (desarrolladorEntity != null) {
+
+            if (desarrolladorEntity.getModificaciones() != null) {
+                modificaciones = new ArrayList<>();
+                for (ModificacionesEntity lis : desarrolladorEntity.getModificaciones()) {
+                    modificaciones.add(new ModificacionesDTO(lis));
+                }
             }
-         }
+            if (desarrolladorEntity.getRequisitos() != null) {
+                requisitos = new ArrayList<>();
+                for (RequisitosEntity lis : desarrolladorEntity.getRequisitos()) {
+                    requisitos.add(new RequisitosDTO(lis));
+                }
+            }
+             if (desarrolladorEntity.getCasosDeUsoRepresentante() != null) {
+                casosDeUsoRepresentante = new ArrayList<>();
+                for (CasoDeUsoEntity lis : desarrolladorEntity.getCasosDeUsoRepresentante()) {
+                    casosDeUsoRepresentante.add(new CasoDeUsoDTO(lis));
+                }
+            }
+              if (desarrolladorEntity.getCasosDeUsoResponsable() != null) {
+                casosDeUsoResponsable = new ArrayList<>();
+                for (CasoDeUsoEntity lis : desarrolladorEntity.getCasosDeUsoResponsable()) {
+                    casosDeUsoResponsable.add(new CasoDeUsoDTO(lis));
+                }
+            }
+
+        }
     }
     
     /**
@@ -59,7 +84,15 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
      */
     @Override
     public DesarrolladorEntity toEntity() {
-        DesarrolladorEntity desarrolladorEntity = super.toEntity();
+           DesarrolladorEntity desarrolladorEntity = super.toEntity();
+        if (modificaciones!=null){
+            List <ModificacionesEntity> modificacionesEntity= new ArrayList<>();
+            for (ModificacionesDTO dto: modificaciones ){
+                modificacionesEntity.add(dto.toEntity());
+            }
+            desarrolladorEntity.setModificaciones(modificacionesEntity);
+        }
+     
         if (requisitos != null) {
             List<RequisitosEntity> reqsEntity = new ArrayList<>();
             for (RequisitosDTO dtoReq : requisitos) {
@@ -67,6 +100,21 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
             }
             desarrolladorEntity.setRequisitos(reqsEntity);
         }
+           if (casosDeUsoRepresentante != null) {
+            List<CasoDeUsoEntity> casoDeUsoEntity = new ArrayList<>();
+            for (CasoDeUsoDTO dtoCasoDeUso : casosDeUsoRepresentante) {
+                casoDeUsoEntity.add(dtoCasoDeUso.toEntity());
+            }
+            desarrolladorEntity.setCasosDeUsoRepresentante(casoDeUsoEntity);
+        }
+                if (casosDeUsoResponsable != null) {
+            List<CasoDeUsoEntity> casoDeUsoEntity = new ArrayList<>();
+            for (CasoDeUsoDTO dtoCasoDeUso : casosDeUsoResponsable) {
+                casoDeUsoEntity.add(dtoCasoDeUso.toEntity());
+            }
+            desarrolladorEntity.setCasosDeUsoResponsable(casoDeUsoEntity);
+        }
+        
         return desarrolladorEntity;
     }
     
@@ -84,6 +132,48 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
      */
     public void setRequisitos(List<RequisitosDTO> requisitos) {
         this.requisitos = requisitos;
+    }
+
+    /**
+     * @return the casosDeUsoRepresentante
+     */
+    public List<CasoDeUsoDTO> getCasosDeUsoRepresentante() {
+        return casosDeUsoRepresentante;
+    }
+
+    /**
+     * @param casosDeUsoRepresentante the casosDeUsoRepresentante to set
+     */
+    public void setCasosDeUsoRepresentante(List<CasoDeUsoDTO> casosDeUsoRepresentante) {
+        this.casosDeUsoRepresentante = casosDeUsoRepresentante;
+    }
+
+    /**
+     * @return the casosDeUsoResponsable
+     */
+    public List<CasoDeUsoDTO> getCasosDeUsoResponsable() {
+        return casosDeUsoResponsable;
+    }
+
+    /**
+     * @param casosDeUsoResponsable the casosDeUsoResponsable to set
+     */
+    public void setCasosDeUsoResponsable(List<CasoDeUsoDTO> casosDeUsoResponsable) {
+        this.casosDeUsoResponsable = casosDeUsoResponsable;
+    }
+
+    /**
+     * @return the modificaciones
+     */
+    public List<ModificacionesDTO> getModificaciones() {
+        return modificaciones;
+    }
+
+    /**
+     * @param modificaciones the modificaciones to set
+     */
+    public void setModificaciones(List<ModificacionesDTO> modificaciones) {
+        this.modificaciones = modificaciones;
     }
     
     
