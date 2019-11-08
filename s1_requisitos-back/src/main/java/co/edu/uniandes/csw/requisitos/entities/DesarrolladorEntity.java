@@ -23,9 +23,29 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class DesarrolladorEntity extends BaseEntity implements Serializable {
 
     /**
+     * @return the equipoDesarrollo
+     */
+    public EquipoDesarrolloEntity getEquipoDesarrollo() {
+        return equipoDesarrollo;
+    }
+
+    /**
+     * @param equipoDesarrollo the equipoDesarrollo to set
+     */
+    public void setEquipoDesarrollo(EquipoDesarrolloEntity equipoDesarrollo) {
+        this.equipoDesarrollo = equipoDesarrollo;
+    }
+
+    
+     public enum TipoDesarrollador 
+    {
+        FUNCIONAL,SEGURIDAD,PLATAFORMA,ESCALABILIDAD,DESEMPENO
+    }
+     /*
+    /**
      * String que representa el tipo del desarrollador
      */
-    private String tipo;
+    private TipoDesarrollador tipo;
     private String nombre;
     private String correo;
     private Integer edad;
@@ -65,14 +85,14 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     /**
      * @return the tipo
      */
-    public String getTipo() {
+    public TipoDesarrollador getTipo() {
         return tipo;
     }
 
     /**
      * @param tipo the tipo to set
      */
-    public void setTipo(String tipo) {
+    public void setTipo(TipoDesarrollador tipo) {
         this.tipo = tipo;
     }
 

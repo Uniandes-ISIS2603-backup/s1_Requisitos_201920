@@ -135,17 +135,7 @@ public class DesarrolladorLogicTest
         nuevaEnt.setTipo(null);
         DesarrolladorEntity resultado=dl.createDesarrollador(nuevaEnt);
     }
-      /**
-     * Prueba para asegurarse que el tipo de un desarrollador no puede ser un string vacio.
-     * @throws BusinessLogicException 
-     */
-    @Test(expected=BusinessLogicException.class)
-    public void createRequisitoTestTipoVacio()throws BusinessLogicException
-    {
-        DesarrolladorEntity nuevaEnt=factory.manufacturePojo(DesarrolladorEntity.class);
-        nuevaEnt.setTipo("");
-        DesarrolladorEntity resultado=dl.createDesarrollador(nuevaEnt);
-    }
+
     /**
      * Prueba para consultar un desarrollador.
      */
@@ -175,20 +165,7 @@ public class DesarrolladorLogicTest
             Assert.assertTrue(encontrado);
         }
     }
-     /**
-     * Prueba para actualizar un desarrollador con un tipo vacio.
-     *
-     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
-     */
-    @Test(expected = BusinessLogicException.class)
-    public void updateDesarrolladorConTipoVacioTest() throws BusinessLogicException 
-    {
-        DesarrolladorEntity entidad = data.get(0);
-        DesarrolladorEntity  pojoEntity = factory.manufacturePojo(DesarrolladorEntity.class);
-        pojoEntity.setTipo("");
-        pojoEntity.setId(entidad.getId());
-        dl.updateDesarrollador(pojoEntity);
-    }
+    
      /**
      * Prueba para actualizar un desarrollador con un tipo nulo.
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
