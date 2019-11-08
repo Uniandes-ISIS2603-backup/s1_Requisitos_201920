@@ -22,6 +22,20 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class DesarrolladorEntity extends BaseEntity implements Serializable {
 
+    /**
+     * @return the equipoDesarrollo
+     */
+    public EquipoDesarrolloEntity getEquipoDesarrollo() {
+        return equipoDesarrollo;
+    }
+
+    /**
+     * @param equipoDesarrollo the equipoDesarrollo to set
+     */
+    public void setEquipoDesarrollo(EquipoDesarrolloEntity equipoDesarrollo) {
+        this.equipoDesarrollo = equipoDesarrollo;
+    }
+
     
      public enum TipoDesarrollador 
     {
