@@ -2,9 +2,62 @@
 	"info": {
 		"_postman_id": "53492e8f-b914-4757-8713-8cbefd29efa0",
 		"name": "CasoDeUsoResourceTest",
+		"description": "Chequea los metodos get, update, delete y create de casos de uso\n\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "crearCasoDeUso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34d042c5-6e3f-4e5c-b2ad-c4bc115ab7bb",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_c\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"nombre\": \"Crear equipo\",\r\n        \"servicios\": [\r\n            \"Login\",\r\n            \"CrearCaso\"\r\n        ],\r\n        \"documentacion\": \"Hola\",\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "crea un caso de uso con parametros dados"
+			},
+			"response": []
+		},
 		{
 			"name": "getCasosDeUso",
 			"event": [
@@ -43,58 +96,6 @@
 					]
 				},
 				"description": "get listra de casos de uso"
-			},
-			"response": []
-		},
-		{
-			"name": "crearCasoDeUso",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "34d042c5-6e3f-4e5c-b2ad-c4bc115ab7bb",
-						"exec": [
-							"var data = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"new_id_c\", data.id)",
-							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"servicios\": \"serviciosPrueba\",\n\t\"pruebas\": false,\n\t\"documentacion\":\"doc\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
-					"protocol": "http",
-					"host": [
-						"{{ip}}"
-					],
-					"port": "{{puerto}}",
-					"path": [
-						"s1_requisitos-api",
-						"api",
-						"casos"
-					]
-				},
-				"description": "crea un caso de uso con parametros dados"
 			},
 			"response": []
 		},
@@ -217,7 +218,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\n\t\"pruebas\": false,\n\t\"documentacion\":\"doc\"\n}",
+					"raw": " {\r\n        \"nombre\": \"Crear equipo\",\r\n       \r\n        \"documentacion\": \"Hola\",\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -270,7 +271,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"documentacion\": \"documentacion\",\n\t\"pruebas\":false,\n\t\"servicios\": \"servicios2\"\n}",
+					"raw": " {\r\n        \"nombre\": \"Crear equipo\",\r\n        \"servicios\": [\r\n            \"Login\",\r\n            \"CrearCaso\"\r\n        ],\r\n        \"documentacion\": \"Hola\",\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -320,7 +321,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"servicios\": \"serviciosPrueba\",\n\t\"documentacion\":\"doc\"\n}",
+					"raw": " {\r\n        \"nombre\": \"Crear equipo\",\r\n        \"servicios\": [\r\n            \"Login\",\r\n            \"CrearCaso\"\r\n        ],\r\n        \"documentacion\": \"Hola\",\r\n\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -370,7 +371,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"pruebas\":false,\n\t\"servicios\": \"serviciosPrueba\"\n}",
+					"raw": " {\r\n        \"nombre\": \"Crear equipo\",\r\n        \"servicios\": [\r\n            \"Login\",\r\n            \"CrearCaso\"\r\n        ],\r\n\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -455,7 +456,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"documentacion\": \"documentacionCambiada2\",\n\t\"pruebas\":true,\n\t\"servicios\": \"servicios3\"\n}",
+					"raw": " {\r\n        \"nombre\": \"Crvbnear equipo\",\r\n        \"servicios\": [\r\n            \"Loghwin\",\r\n            \"CrewarCaso\"\r\n        ],\r\n        \"documentacion\": \"Holawjsjw\",\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"howwla\",\r\n            \"howwla2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"howwla\",\r\n            \"howwwwwwla2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"howwla\",\r\n            \"howwla2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -506,7 +507,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"pruebas\":true,\n\t\"servicios\": \"servicios3\"\n}",
+					"raw": " {\r\n        \"nombre\": \"Crear equipo\",\r\n        \"servicios\": [\r\n            \"Login\",\r\n            \"CrearCaso\"\r\n        ],\r\n\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -557,7 +558,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"documentacion\": \"nueva\",\n\t\"servicios\": \"servicios3\"\n}",
+					"raw": " {\r\n        \"nombre\": \"Crear equipo\",\r\n        \"servicios\": [\r\n            \"Login\",\r\n            \"CrearCaso\"\r\n        ],\r\n        \"documentacion\": \"Hola\",\r\n\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -608,7 +609,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"pruebas\": false,\n\t\"documentacion\": \"nueva\"\n}",
+					"raw": " {\r\n        \"nombre\": \"Crear equipo\",\r\n     \r\n        \"documentacion\": \"Hola\",\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
