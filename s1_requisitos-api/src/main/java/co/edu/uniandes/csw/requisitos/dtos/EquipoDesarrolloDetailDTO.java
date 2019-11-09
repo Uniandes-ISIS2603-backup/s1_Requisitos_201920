@@ -40,7 +40,7 @@ public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Se
         super();
     }
     
-    public EquipoDesarrolloDetailDTO(EquipoDesarrolloEntity equipoDesarrollo) throws Exception
+    public EquipoDesarrolloDetailDTO(EquipoDesarrolloEntity equipoDesarrollo)
     {
         super(equipoDesarrollo);
         if(equipoDesarrollo !=null)

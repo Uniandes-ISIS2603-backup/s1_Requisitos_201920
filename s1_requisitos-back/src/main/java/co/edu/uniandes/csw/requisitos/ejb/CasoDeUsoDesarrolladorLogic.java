@@ -30,7 +30,7 @@ public class CasoDeUsoDesarrolladorLogic {
     public DesarrolladorEntity addRepresentante(Long representanteId, Long CasoId)throws BusinessLogicException{
         
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
-        if (!desEntity.getTipo().equals("RepresentanteDelCliente")){
+        if (!desEntity.getTipoString().equals("RepresentanteDelCliente")){
             throw new BusinessLogicException("la persona debe ser de  tipo respresantante");
         }
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
@@ -48,7 +48,7 @@ public class CasoDeUsoDesarrolladorLogic {
     
     public DesarrolladorEntity cambiarRepresentante(Long representanteId, Long CasoId)throws BusinessLogicException{
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
-        if (!desEntity.getTipo().equals("RepresentanteDelCliente")){
+        if (!desEntity.getTipoString().equals("RepresentanteDelCliente")){
             throw new BusinessLogicException("la persona debe ser de tipo representante");
         }
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
@@ -61,7 +61,7 @@ public class CasoDeUsoDesarrolladorLogic {
     
      public DesarrolladorEntity addResponsable(Long representanteId, Long CasoId)throws BusinessLogicException{
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
-        if (!desEntity.getTipo().equals("Responsable")){
+        if (!desEntity.getTipoString().equals("Responsable")){
             throw new BusinessLogicException("la persona debe ser de tipo responsable");
         }
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
@@ -79,7 +79,7 @@ public class CasoDeUsoDesarrolladorLogic {
     
     public DesarrolladorEntity cambiarResponsable(Long representanteId, Long CasoId) throws BusinessLogicException{
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
-        if (!desEntity.getTipo().equals("Responsable")){
+        if (!desEntity.getTipoString().equals("Responsable")){
             throw new BusinessLogicException("la persona debe ser de tipo responsable");
         }
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
