@@ -74,6 +74,7 @@ public class CasoDeUsoDesarrolladorResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra el autor.
      */
+    /*
     @POST
     @Path("{desarrolladorId: \\d+}")
     public DesarrolladorDTO addRepresentante(@PathParam("casoId") Long casoId, @PathParam("desId") Long desId) throws BusinessLogicException {
@@ -85,6 +86,7 @@ public class CasoDeUsoDesarrolladorResource {
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addRepresentante: output: {0}", desDTO);
         return desDTO;
     }
+*/
     
     
     
