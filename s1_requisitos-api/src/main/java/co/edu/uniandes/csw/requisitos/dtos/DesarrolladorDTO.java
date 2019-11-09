@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
-import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity.TipoDesarrollador;
 import java.io.Serializable;
 
 
@@ -68,7 +67,7 @@ public class DesarrolladorDTO implements Serializable
      * String que representa el tipo del desarrollador
      */
    private Long id;
-    private TipoDesarrollador tipo;
+    private String tipo;
     private String nombre;
     private String correo;
     private Integer edad;
@@ -81,7 +80,6 @@ public class DesarrolladorDTO implements Serializable
     }
      /**
      * Constructor del DTO a partir de una entidad
-     * @param casoDeUso
      * @param entidad
      */
     public DesarrolladorDTO (DesarrolladorEntity entidad) 
@@ -91,21 +89,22 @@ public class DesarrolladorDTO implements Serializable
          this.setId(entidad.getId());
          this.setCorreo(entidad.getCorreo());
          this.setCedula(entidad.getCedula());  
-         this.setTipo(entidad.getTipo());
+         this.setTipo(entidad.getTipoString());
         }
     }
     
     /**
      * Metodo que devuelve un entity a partir de un DTO
+     * @return DesarrolladorEntity
      */
-    public DesarrolladorEntity toEntity()
+    public DesarrolladorEntity toEntity() 
     {
          DesarrolladorEntity entidad=new DesarrolladorEntity();
          entidad.setNombre(this.getNombre());
          entidad.setId(this.getId());
          entidad.setCorreo(this.getCorreo());
          entidad.setCedula(this.getCedula());
-         entidad.setTipo(this.getTipo());
+         entidad.setTipoString(this.getTipo());
        
          return entidad;
    }
@@ -118,7 +117,7 @@ public class DesarrolladorDTO implements Serializable
     }
 
     /**
-     * @param Id the Id to set
+     * @param id the Id to set
      */
     public void setId(Long id) {
         this.id = id;
@@ -127,14 +126,14 @@ public class DesarrolladorDTO implements Serializable
     /**
      * @return the tipo
      */
-    public TipoDesarrollador getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
     /**
      * @param tipo the tipo to set
      */
-    public void setTipo(TipoDesarrollador tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 

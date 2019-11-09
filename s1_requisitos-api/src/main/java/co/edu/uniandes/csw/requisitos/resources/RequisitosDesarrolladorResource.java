@@ -76,7 +76,7 @@ public class RequisitosDesarrolladorResource {
      * Error de lógica que se genera cuando el premio no tiene autor.
      */
     @GET
-    public DesarrolladorDetailDTO getAuthor(@PathParam("requisitoId") Long requisitoId) {
+    public DesarrolladorDetailDTO getAuthor(@PathParam("requisitoId") Long requisitoId){
         LOGGER.log(Level.INFO, "RequisitosDesarrolladorResource getAuthor: input: {0}", requisitoId);
         DesarrolladorEntity authorEntity = requisitosDesarrolladorLogic.getDesarrollador(requisitoId);
         if (authorEntity == null) {
@@ -114,8 +114,7 @@ public class RequisitosDesarrolladorResource {
      * Elimina la conexión entre el desarrollador y el requisito recibido en la URL.
      *
      * @param requisitoId El ID del premio al cual se le va a desasociar el autor
-     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
-     * Error de lógica que se genera cuando el premio no tiene autor.
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @DELETE
     public void removeAuthor(@PathParam("requisitoId") Long requisitoId) throws BusinessLogicException {

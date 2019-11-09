@@ -87,17 +87,17 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
         return tipo;
     }
     public String getTipoString(){
-    if (tipo==TipoDesarrollador.REPRESENTANTEDELCLIENTE)
-        {
-            return "RepresentanteDelCliente";
-        }
-    else if (tipo==TipoDesarrollador.RESPONSABLE)
-        {
-            return "Responsable";
-        }
-    else
-            {
-            return "Comun";
+    if (null==tipo)
+    {
+        return "Comun";
+    }
+    else switch (tipo) {
+            case REPRESENTANTEDELCLIENTE:
+                return "RepresentanteDelCliente";
+            case RESPONSABLE:
+                return "Responsable";
+            default:
+                return "Comun";
         }
     }
             
@@ -109,15 +109,18 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
         this.tipo = tipo;
     }
 
-    public void setTipoString(String tipo) throws Exception {
-        if (tipo.equals("RepresentanteDelCliente")) {
-            this.tipo = TipoDesarrollador.REPRESENTANTEDELCLIENTE;
-        } else if (tipo.equals("Responsable")) {
-            this.tipo = TipoDesarrollador.RESPONSABLE;
-        } else if (tipo.equals("Comun")) {
-            this.tipo = TipoDesarrollador.COMUN;
-        } else {
-            throw new Exception("No es valido el tipo");
+    public void setTipoString(String tipo) {
+        switch (tipo) {
+            case "RepresentanteDelCliente":
+                this.tipo = TipoDesarrollador.REPRESENTANTEDELCLIENTE;
+                break;
+            case "Responsable":
+                this.tipo = TipoDesarrollador.RESPONSABLE;
+                break; 
+            case "Comun":
+                this.tipo = TipoDesarrollador.COMUN;
+                break;
+          
         }
 
     }
