@@ -33,25 +33,24 @@ public class RequisitosDesarrolladorLogic {
     /**
      * Agregar un desarrollador a un requisito
      *
-     * @param RequisitoId El id requisito a guardar
-     * @param DesarrolladorId El id del desarrollador al cual se le va a guardar el premio.
+     * @param requisitoId El id requisito a guardar
+     * @param desarrolladorId El id del desarrollador al cual se le va a guardar el premio.
      * @return El requisito que fue agregado al desarrollador.
      */
     public DesarrolladorEntity addAuthor(Long requisitoId, Long desarrolladorId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar el desarrollador con id = {0} al requisito con id = " + requisitoId, desarrolladorId);
+       
         DesarrolladorEntity desarrolladorEntity = desarrolladorPersistence.find(desarrolladorId);
         RequisitosEntity requisitosEntity = requisitoPersistence.find(requisitoId);
         requisitosEntity.setAutor(desarrolladorEntity.getNombre());
         requisitosEntity.setDesarrollador(desarrolladorEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de asociar el autor con id = {0} al premio con id = " + requisitoId, desarrolladorId);
-        return desarrolladorPersistence.find(desarrolladorId);
+       return desarrolladorPersistence.find(desarrolladorId);
     }
 
     /**
      *
      * Obtener un requisito por medio de su id y el de su desarrollador.
      *
-     * @param RequisitoId id del requisito a ser buscado.
+     * @param requisitoId id del requisito a ser buscado.
      * @return el desarrollador solicitada por medio de su id.
      */
     public DesarrolladorEntity getDesarrollador(Long requisitoId) {
@@ -64,8 +63,8 @@ public class RequisitosDesarrolladorLogic {
     /**
      * Remplazar desarrollador de un requisito
      *
-     * @param RequisitoId el id del requisito que se quiere actualizar.
-     * @param DesarrolladorId El id del nuevo desarrollador asociado al premio.
+     * @param requisitoId el id del requisito que se quiere actualizar.
+     * @param desarrolladorId El id del nuevo desarrollador asociado al premio.
      * @return el nuevo desarrollador asociado.
      */
     public DesarrolladorEntity replaceAuthor(Long requisitoId, Long desarrolladorId) {
@@ -73,14 +72,13 @@ public class RequisitosDesarrolladorLogic {
         DesarrolladorEntity autorEntity = desarrolladorPersistence.find(desarrolladorId);
         RequisitosEntity requisitoEntity = requisitoPersistence.find(requisitoId);
         requisitoEntity.setDesarrollador(autorEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de asociar el autor con id = {0} al premio con id = " + requisitoId, desarrolladorId);
-        return desarrolladorPersistence.find(desarrolladorId);
+       return desarrolladorPersistence.find(desarrolladorId);
     }
 
     /**
      * Borrar el autor de un requisito
      *
-     * @param RequisitoId El requisito que se desea borrar del autor.
+     * @param requisitoId El requisito que se desea borrar del autor.
      * @throws BusinessLogicException si el requisito no tiene autor
      */
     public void removeDesarrollador(Long requisitoId) throws BusinessLogicException {
@@ -92,7 +90,7 @@ public class RequisitosDesarrolladorLogic {
         DesarrolladorEntity desarrolladorEntity = desarrolladorPersistence.find(requisitoEntity.getDesarrollador().getId());
         requisitoEntity.setDesarrollador(null);
         desarrolladorEntity.getRequisitos().remove(requisitoEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar el desarrollador con id = {0} del requisito con id = " + requisitoId, desarrolladorEntity.getId());
+       
     }
 }
  

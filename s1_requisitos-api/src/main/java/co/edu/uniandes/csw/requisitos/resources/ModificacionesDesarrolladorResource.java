@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.requisitos.dtos.DesarrolladorDTO;
 import co.edu.uniandes.csw.requisitos.dtos.DesarrolladorDetailDTO;
 import co.edu.uniandes.csw.requisitos.ejb.DesarrolladorLogic;
 import co.edu.uniandes.csw.requisitos.ejb.ModificacionesDesarrolladorLogic;
-import co.edu.uniandes.csw.requisitos.ejb.RequisitosDesarrolladorLogic;
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import java.util.logging.Level;
