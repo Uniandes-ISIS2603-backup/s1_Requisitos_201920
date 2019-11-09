@@ -46,7 +46,7 @@ public class CasoDeUsoDesarrolladorLogicTest {
     @Inject
     private UserTransaction utx;
 
-    private List<DesarrolladorEntity> data = new ArrayList<DesarrolladorEntity>();
+    private List<DesarrolladorEntity> data = new ArrayList();
 
     private List<CasoDeUsoEntity> casoData = new ArrayList();
 
@@ -67,13 +67,14 @@ public class CasoDeUsoDesarrolladorLogicTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
-    /**
-     * Configuración inicial de la prueba.
+    /*
+    *borra la lista y la llena de nuevo antes de cada prueba
      */
     @Before
     public void configTest() {
         try {
             utx.begin();
+            em.joinTransaction();
             clearData();
             insertData();
             utx.commit();
@@ -98,16 +99,20 @@ public class CasoDeUsoDesarrolladorLogicTest {
      * pruebas.
      */
     private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
 
+            CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
+            
             em.persist(caso);
             casoData.add(caso);
+   
         }
+    
         for (int i = 0; i < 3; i++) {
-            DesarrolladorEntity entity = factory.manufacturePojo(DesarrolladorEntity.class);
-            em.persist(entity);
-            data.add(entity);
+            DesarrolladorEntity entidad = factory.manufacturePojo(DesarrolladorEntity.class);
+            em.persist(entidad);
+            data.add(entidad);
         }
     }
 
@@ -118,9 +123,11 @@ public class CasoDeUsoDesarrolladorLogicTest {
      */
     @Test
     public void addRepresentanteTest() throws BusinessLogicException, Exception {
-
+        
         DesarrolladorEntity entity = data.get(0);
         entity.setTipoString("RepresentanteDelCliente");
+        System.out.println("aca"+entity.getId());
+        System.out.println("aca"+entity.getTipoString());
         CasoDeUsoEntity casoEntity = casoData.get(0);
         DesarrolladorEntity response = logica.addRepresentante(entity.getId(), casoEntity.getId());
 

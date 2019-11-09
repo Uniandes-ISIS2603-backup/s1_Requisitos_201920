@@ -30,6 +30,8 @@ public class CasoDeUsoDesarrolladorLogic {
     public DesarrolladorEntity addRepresentante(Long representanteId, Long CasoId)throws BusinessLogicException{
         
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
+        System.out.println("aca2"+desEntity.getTipoString());
+         System.out.println("aca2"+desEntity.getId());
         if (!desEntity.getTipoString().equals("RepresentanteDelCliente")){
             throw new BusinessLogicException("la persona debe ser de  tipo respresantante");
         }
@@ -48,6 +50,7 @@ public class CasoDeUsoDesarrolladorLogic {
     
     public DesarrolladorEntity cambiarRepresentante(Long representanteId, Long CasoId)throws BusinessLogicException{
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
+        
         if (!desEntity.getTipoString().equals("RepresentanteDelCliente")){
             throw new BusinessLogicException("la persona debe ser de tipo representante");
         }
@@ -61,6 +64,7 @@ public class CasoDeUsoDesarrolladorLogic {
     
      public DesarrolladorEntity addResponsable(Long representanteId, Long CasoId)throws BusinessLogicException{
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
+        System.out.println(desEntity.getTipoString());
         if (!desEntity.getTipoString().equals("Responsable")){
             throw new BusinessLogicException("la persona debe ser de tipo responsable");
         }

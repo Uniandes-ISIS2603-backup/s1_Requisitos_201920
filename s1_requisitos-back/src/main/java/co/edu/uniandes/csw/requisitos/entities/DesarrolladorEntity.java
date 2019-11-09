@@ -97,7 +97,7 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
         }
     else
             {
-            return "Comùn";
+            return "Comun";
         }
     }
             
@@ -110,11 +110,11 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     }
 
     public void setTipoString(String tipo) throws Exception {
-        if (tipo.equalsIgnoreCase("Representantedelcliente")) {
+        if (tipo.equals("RepresentanteDelCliente")) {
             this.tipo = TipoDesarrollador.REPRESENTANTEDELCLIENTE;
-        } else if (tipo.equalsIgnoreCase("Responsable")) {
+        } else if (tipo.equals("Responsable")) {
             this.tipo = TipoDesarrollador.RESPONSABLE;
-        } else if (tipo.equalsIgnoreCase("Comun")) {
+        } else if (tipo.equals("Comun")) {
             this.tipo = TipoDesarrollador.COMUN;
         } else {
             throw new Exception("No es valido el tipo");
