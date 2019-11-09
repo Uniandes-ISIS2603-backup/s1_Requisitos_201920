@@ -11,8 +11,8 @@
     <name>s1_requisitos</name>
  
     <modules>
-        <module>s1_requisitos-back</module>
         <module>s1_requisitos-api</module>
+        <module>s1_requisitos-back</module>
     </modules>
     
     <repositories>
