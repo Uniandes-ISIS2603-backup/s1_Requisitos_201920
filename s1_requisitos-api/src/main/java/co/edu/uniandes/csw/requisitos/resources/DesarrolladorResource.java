@@ -30,7 +30,7 @@ import javax.ws.rs.WebApplicationException;
  * Clase que representa el servicio Rest para desarrollador.
  * @author Nicolas Tobo
  */
-@Path("/desarrollador")
+@Path("desarrollador")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
