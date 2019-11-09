@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.requisitos.dtos.RequisitosDTO;
 import co.edu.uniandes.csw.requisitos.dtos.RequisitosDetailDTO;
 import co.edu.uniandes.csw.requisitos.ejb.RequisitoLogic;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,13 +73,13 @@ public class RequisitosResource {
     public RequisitosDetailDTO getRequisito(@PathParam("requisitoId") Long requisitoId) 
     {
         LOGGER.log(Level.INFO, "RequisitoResource getRequisito: input: {0}", requisitoId);
-        RequisitosEntity Entity = fl.getRequisito(requisitoId);
-        if (Entity == null) {
-            throw new WebApplicationException("El recurso /Requisito/" + requisitoId + " no existe.", 404);
+        RequisitosEntity entity = fl.getRequisito(requisitoId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Requisito/" + requisitoId + " no existe", 404);
         }
-        RequisitosDetailDTO DTO = new RequisitosDetailDTO(Entity);
-        LOGGER.log(Level.INFO, "RequisitoResource getRequisito: output: {0}", DTO);
-        return DTO;
+        RequisitosDetailDTO dto = new RequisitosDetailDTO(entity);
+        LOGGER.log(Level.INFO, "RequisitoResource getRequisito: output: {0}", dto);
+        return dto;
     }
     /**
      * Busca y devuelve todos los requisitos es que existen en la aplicacion.
@@ -119,9 +118,9 @@ public class RequisitosResource {
         if (fl.getRequisito(requisitoId) == null) {
             throw new WebApplicationException("El recurso //" + requisitoId + " no existe.", 404);
         }
-        RequisitosDetailDTO funDTO = new RequisitosDetailDTO(fl.updateRequisito(r.toEntity()));
+       return  new RequisitosDetailDTO(fl.updateRequisito(r.toEntity()));
         
-        return funDTO;
+       
     }
   /**
      * Borra el requisitoRequisito con el id asociado recibido en la URL.
@@ -138,7 +137,7 @@ public class RequisitosResource {
         RequisitosEntity entity = fl.getRequisito(requisitoId);
         if (entity == null) 
         {
-            throw new WebApplicationException("El recurso //" + requisitoId + " no existe.", 404);
+            throw new WebApplicationException("El recurso //" + requisitoId + "no esta.", 404);
         }
       
         fl.deleteRequisito(requisitoId);
