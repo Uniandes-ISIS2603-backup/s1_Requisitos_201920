@@ -140,7 +140,7 @@ public class IteracionResource {
         if (entity == null) {
             throw new WebApplicationException("Recurso /iteracion/" + iteracionId + " no existe ", 404);
         }
-        //TODO recordar que cuando se terminen las asociaciones borrarlas antes de hacer el delete
+       
         iteracionLogic.deleteRequisito(iteracionId);
         LOGGER.info("IteracionResource deleteIteracion: output: void");
     }
