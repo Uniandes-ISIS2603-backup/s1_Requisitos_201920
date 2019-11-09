@@ -140,7 +140,7 @@ public class RequisitosResource {
         {
             throw new WebApplicationException("El recurso //" + requisitoId + " no existe.", 404);
         }
-        //TODO recordar que cuando se terminen las asociaciones borrarlas antes de hacer el delete
+      
         fl.deleteRequisito(requisitoId);
         LOGGER.info("RequisitoResource deleteRequisito output: void");
     }    
