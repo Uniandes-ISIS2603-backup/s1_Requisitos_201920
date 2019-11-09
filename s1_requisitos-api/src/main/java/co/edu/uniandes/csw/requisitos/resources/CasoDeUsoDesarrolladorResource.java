@@ -51,12 +51,29 @@ public class CasoDeUsoDesarrolladorResource {
     @POST
     @Path("{desarrolladorId: \\d+}")
     public DesarrolladorDTO addResponsable(@PathParam("casoId") Long casoId, @PathParam("desId") Long desId) throws BusinessLogicException {
+        
+       // DesarrolladorDTO desDTO= new DesarrolladorDTO();
+  
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addResponsable: input: casoID: {0} , desId: {1}", new Object[]{casoId, desId});
         if (desLogic.getDesarrollador(desId) == null) {
             throw new WebApplicationException("El recurso /desarrollador/" + desId + " no existe.", 404);
         }
         DesarrolladorDTO desDTO = new DesarrolladorDTO(cdLogic.addResponsable(desId, casoId));
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addResponsable: output: {0}", desDTO);
+       
+        
+        
+    /*
+        if (tipo==2){
+             LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addRepresentante: input: casoID: {0} , desId: {1}", new Object[]{casoId, desId});
+        if (desLogic.getDesarrollador(desId) == null) {
+            throw new WebApplicationException("El recurso /desarrollador/" + desId + " no existe.", 404);
+        }
+        desDTO = new DesarrolladorDTO(cdLogic.addRepresentante(desId, casoId));
+        LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addRepresentante: output: {0}", desDTO);
+      
+    }
+    */
         return desDTO;
     }
     

@@ -149,8 +149,9 @@ public class CasoDeUsoResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se el premio.
      */
-    @Path("{casosId: \\d+}/desarrollador")
+    @Path("{casosId: \\d+}/desarrolladorc")
     public Class<CasoDeUsoDesarrolladorResource> getCasoDeUsoDesarrolladorResource(@PathParam("casoId") Long casoId) {
+
         if (cl.getCaso(casoId) == null) {
             throw new WebApplicationException("El recurso /casos/" + casoId + " no existe.", 404);
         }

@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.CasoDeUsoPersistence;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -23,6 +24,7 @@ public class CasoDeUsoDesarrolladorLogic {
     @Inject
     private CasoDeUsoPersistence casoPersistence;
     
+    private static final Logger LOGGER = Logger.getLogger(CasoDeUsoDesarrolladorLogic.class.getName());
     @Inject
     private DesarrolladorPersistence desPersistence;
     
@@ -71,6 +73,7 @@ public class CasoDeUsoDesarrolladorLogic {
         if (!desEntity.getTipoString().equals("Responsable")){
             throw new BusinessLogicException("la persona debe ser de tipo responsable");
         }
+         LOGGER.log(Level.INFO, "fuck this shit");
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
         casoEntity.setResponsable(desEntity);
         casoPersistence.update(casoEntity);
