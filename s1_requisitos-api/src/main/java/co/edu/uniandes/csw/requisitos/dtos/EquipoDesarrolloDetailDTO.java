@@ -11,6 +11,8 @@ import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,7 +40,7 @@ public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Se
         super();
     }
     
-    public EquipoDesarrolloDetailDTO(EquipoDesarrolloEntity equipoDesarrollo)
+    public EquipoDesarrolloDetailDTO(EquipoDesarrolloEntity equipoDesarrollo) throws Exception
     {
         super(equipoDesarrollo);
         if(equipoDesarrollo !=null)
@@ -75,7 +77,11 @@ public class EquipoDesarrolloDetailDTO extends EquipoDesarrolloDTO implements Se
         if (getIntegrantes() != null) {
             List<DesarrolladorEntity> reqsEntity = new ArrayList<>();
             for (DesarrolladorDTO dtoReq : getIntegrantes()) {
-                reqsEntity.add(dtoReq.toEntity());
+                try {
+                    reqsEntity.add(dtoReq.toEntity());
+                } catch (Exception ex) {
+                    Logger.getLogger(EquipoDesarrolloDetailDTO.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             equipoDesarrolloEntity.setIntegrantes(reqsEntity);
         }

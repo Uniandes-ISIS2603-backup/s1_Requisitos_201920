@@ -42,7 +42,7 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
      * nuevo objeto.
      *
      */
-    public DesarrolladorDetailDTO(DesarrolladorEntity desarrolladorEntity) 
+    public DesarrolladorDetailDTO(DesarrolladorEntity desarrolladorEntity) throws Exception 
     {
         super(desarrolladorEntity);
          if (desarrolladorEntity != null) {
@@ -83,7 +83,7 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
      *
      */
     @Override
-    public DesarrolladorEntity toEntity() {
+    public DesarrolladorEntity toEntity()  {
            DesarrolladorEntity desarrolladorEntity = super.toEntity();
         if (modificaciones!=null){
             List <ModificacionesEntity> modificacionesEntity= new ArrayList<>();

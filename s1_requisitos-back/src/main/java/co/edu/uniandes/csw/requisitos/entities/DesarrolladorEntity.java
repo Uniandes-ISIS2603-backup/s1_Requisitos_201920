@@ -36,12 +36,10 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
         this.equipoDesarrollo = equipoDesarrollo;
     }
 
-    
-     public enum TipoDesarrollador 
-    {
-        REPRESENTANTEDELCLIENTE,RESPONSABLE,COMUN
+    public enum TipoDesarrollador {
+        REPRESENTANTEDELCLIENTE, RESPONSABLE, COMUN
     }
-     /*
+    /*
     /**
      * String que representa el tipo del desarrollador
      */
@@ -54,32 +52,32 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
      * Lista de requisitos que tiene un desarrollador
      */
     @PodamExclude
-    @OneToMany(mappedBy = "desarrollador",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "desarrollador", cascade = CascadeType.ALL)
     private List<RequisitosEntity> requisitos = new ArrayList<>();
 
     @PodamExclude
     @OneToMany(
-    mappedBy = "responsable",
-    cascade = CascadeType.ALL
+            mappedBy = "responsable",
+            cascade = CascadeType.ALL
     )
-    private List<CasoDeUsoEntity> casosDeUsoResponsable= new ArrayList<>();
-    
+    private List<CasoDeUsoEntity> casosDeUsoResponsable = new ArrayList<>();
+
     @PodamExclude
     @OneToMany(
-    mappedBy = "representanteDelCliente",
-    cascade = CascadeType.ALL
+            mappedBy = "representanteDelCliente",
+            cascade = CascadeType.ALL
     )
-    private List<CasoDeUsoEntity> casosDeUsoRepresentante= new ArrayList<>();
-    
+    private List<CasoDeUsoEntity> casosDeUsoRepresentante = new ArrayList<>();
+
     @PodamExclude
     @OneToMany(
-    mappedBy = "desarrolladorModificaciones",
-    cascade = CascadeType.ALL
+            mappedBy = "desarrolladorModificaciones",
+            cascade = CascadeType.ALL
     )
-    private List <ModificacionesEntity> modificaciones=new ArrayList<>();
-    
+    private List<ModificacionesEntity> modificaciones = new ArrayList<>();
+
     @PodamExclude
-    @ManyToOne (fetch = javax.persistence.FetchType.LAZY)
+    @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
     private EquipoDesarrolloEntity equipoDesarrollo;
 
     /**
@@ -95,26 +93,20 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     public void setTipo(TipoDesarrollador tipo) {
         this.tipo = tipo;
     }
-    
-      public void setTipoString(String tipo) throws Exception {
-          if (tipo.equalsIgnoreCase("Representantedelcliente"))
-          {
-        this.tipo = TipoDesarrollador.REPRESENTANTEDELCLIENTE;
-          }
-          else if(tipo.equalsIgnoreCase("Responsable"))
-          {
-          this.tipo = TipoDesarrollador.RESPONSABLE;
-          }
-          else if(tipo.equalsIgnoreCase("Comun"))
-          {
-          this.tipo=TipoDesarrollador.COMUN;
-                  }
-                 else
-                  {
-                   throw new Exception("No es valido el tipo")  ;     
-                          }
-          
+
+    public void setTipoString(String tipo) throws Exception {
+        if (tipo.equalsIgnoreCase("Representantedelcliente")) {
+            this.tipo = TipoDesarrollador.REPRESENTANTEDELCLIENTE;
+        } else if (tipo.equalsIgnoreCase("Responsable")) {
+            this.tipo = TipoDesarrollador.RESPONSABLE;
+        } else if (tipo.equalsIgnoreCase("Comun")) {
+            this.tipo = TipoDesarrollador.COMUN;
+        } else {
+            throw new Exception("No es valido el tipo");
+        }
+
     }
+
 
     /**
      * @return the requisitos
@@ -161,14 +153,14 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     /**
      * @return the modificaciones
      */
-    public List <ModificacionesEntity> getModificaciones() {
+    public List<ModificacionesEntity> getModificaciones() {
         return modificaciones;
     }
 
     /**
      * @param modificaciones the modificaciones to set
      */
-    public void setModificaciones(List <ModificacionesEntity> modificaciones) {
+    public void setModificaciones(List<ModificacionesEntity> modificaciones) {
         this.modificaciones = modificaciones;
     }
 
@@ -228,10 +220,4 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
         this.cedula = cedula;
     }
 
-   
-    
-    
-    
-    
-
-}   
+}
