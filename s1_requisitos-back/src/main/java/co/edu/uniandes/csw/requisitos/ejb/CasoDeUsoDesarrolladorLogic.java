@@ -37,6 +37,8 @@ public class CasoDeUsoDesarrolladorLogic {
         }
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
         casoEntity.setRepresentanteDelCliente(desEntity);
+        casoPersistence.update(casoEntity);
+     
         return desEntity;
     }
     
@@ -56,6 +58,7 @@ public class CasoDeUsoDesarrolladorLogic {
         }
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
         casoEntity.setRepresentanteDelCliente(desEntity);
+        casoPersistence.update(casoEntity);
         return desEntity;
         
     }
@@ -70,6 +73,7 @@ public class CasoDeUsoDesarrolladorLogic {
         }
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
         casoEntity.setResponsable(desEntity);
+        casoPersistence.update(casoEntity);
         return desEntity;
     }
     
@@ -88,6 +92,8 @@ public class CasoDeUsoDesarrolladorLogic {
         }
         CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
         casoEntity.setResponsable(desEntity);
+        casoPersistence.update(casoEntity);
+        
         return desEntity;
         
     }
