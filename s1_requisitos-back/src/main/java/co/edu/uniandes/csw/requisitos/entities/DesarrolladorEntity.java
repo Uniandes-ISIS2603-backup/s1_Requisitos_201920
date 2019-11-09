@@ -86,6 +86,21 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     public TipoDesarrollador getTipo() {
         return tipo;
     }
+    public String getTipoString(){
+    if (tipo==TipoDesarrollador.REPRESENTANTEDELCLIENTE)
+        {
+            return "RepresentanteDelCliente";
+        }
+    else if (tipo==TipoDesarrollador.RESPONSABLE)
+        {
+            return "Responsable";
+        }
+    else
+            {
+            return "Comùn";
+        }
+    }
+            
 
     /**
      * @param tipo the tipo to set
