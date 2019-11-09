@@ -43,6 +43,7 @@ public class RequisitosDesarrolladorLogic {
         RequisitosEntity requisitosEntity = requisitoPersistence.find(requisitoId);
         requisitosEntity.setAutor(desarrolladorEntity.getNombre());
         requisitosEntity.setDesarrollador(desarrolladorEntity);
+        requisitoPersistence.update(requisitosEntity);
        return desarrolladorPersistence.find(desarrolladorId);
     }
 
@@ -57,7 +58,7 @@ public class RequisitosDesarrolladorLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el desarrollador del requisito con id = {0}", requisitoId);
         DesarrolladorEntity authorEntity = requisitoPersistence.find(requisitoId).getDesarrollador();
         LOGGER.log(Level.INFO, "Termina proceso de consultar el desarrollador del requisito con id = {0}", requisitoId);
-        return authorEntity;
+       return authorEntity;
     }
 
     /**
@@ -72,6 +73,7 @@ public class RequisitosDesarrolladorLogic {
         DesarrolladorEntity autorEntity = desarrolladorPersistence.find(desarrolladorId);
         RequisitosEntity requisitoEntity = requisitoPersistence.find(requisitoId);
         requisitoEntity.setDesarrollador(autorEntity);
+        requisitoPersistence.update(requisitoEntity);
        return desarrolladorPersistence.find(desarrolladorId);
     }
 
