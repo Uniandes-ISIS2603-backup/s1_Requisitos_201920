@@ -43,7 +43,9 @@ public class ModificacionesDesarrolladorLogic {
         ModificacionesEntity modificacionEntity = modificacionPersistence.find(modificacionId);
         modificacionEntity.setDesarrolladorModificaciones(desarrolladorEntity);
         LOGGER.log(Level.INFO, "Termina proceso de asociar el autor con id = {0} al premio con id = " + modificacionId, desarrolladorId);
+        modificacionPersistence.update(modificacionEntity);
         return desarrolladorPersistence.find(desarrolladorId);
+
     }
 
     /**
@@ -73,6 +75,7 @@ public class ModificacionesDesarrolladorLogic {
         ModificacionesEntity modificacionEntity = modificacionPersistence.find(modificacionId);
         modificacionEntity.setDesarrolladorModificaciones(autorEntity);
         LOGGER.log(Level.INFO, "Termina proceso de asociar el desarrollador con id = {0} la modificaciòn con id = " + modificacionId, desarrolladorId);
+        modificacionPersistence.update(modificacionEntity);
         return desarrolladorPersistence.find(desarrolladorId);
     }
 
