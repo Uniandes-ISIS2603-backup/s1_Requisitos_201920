@@ -28,7 +28,7 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
- *Test de la clase RequisitoLogic
+ * Test de la clase RequisitoLogic
  * @author Nicolás Tobo
  * Adaptado de: https://github.com/Uniandes-isis2603/backstepbystep/blob/master/backstepbystep-back/src/test/java/co/edu/uniandes/csw/bookstore/test/logic/BookLogicTest.java
  */
