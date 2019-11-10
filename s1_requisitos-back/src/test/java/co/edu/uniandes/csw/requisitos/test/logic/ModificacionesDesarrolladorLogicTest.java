@@ -119,7 +119,7 @@ public class ModificacionesDesarrolladorLogicTest {
        public void addDesarrolladorTest() {
           DesarrolladorEntity entity = data.get(0);
            ModificacionesEntity modEntity = modificacionesData.get(1);
-          DesarrolladorEntity response = modificacionesDesarrolladorLogic.addAuthor(entity.getId(), modEntity.getId());
+          DesarrolladorEntity response = modificacionesDesarrolladorLogic.addAuthor(modEntity.getId(),entity.getId());
   
            Assert.assertNotNull(response);
           Assert.assertEquals(entity.getId(), response.getId());
