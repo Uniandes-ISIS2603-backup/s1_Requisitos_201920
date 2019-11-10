@@ -130,6 +130,29 @@ public class ModificacionesResource {
         }
         return list;
     }
+    
+    /**
+     * Conexión con el servicio casos de uso a un desarrollador
+     * {@link PrizeAuthorResource}
+     *
+     * Este método conecta la ruta de /prizes con las rutas de /author que
+     * dependen del premio, es una redirección al servicio que maneja el
+     * segmento de la URL que se encarga del autor del premio.
+     *
+     * @param modificacionesId El ID de la editorial con respecto a la cual se accede al
+     * servicio.
+     * @return El servicio de autor para este premio en paricular.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que s genera cuando no se el premio.
+     */
+    @Path("{modificacionesId: \\d+}/casos")
+    public Class<ModificacionesCasoDeUsoResource> getModificacionesCasoDeUsoResource(@PathParam("modificacionesId") Long modificacionesId) {
+    
+        if (logica.getModificacion(modificacionesId) == null) {
+            throw new WebApplicationException("El recurso /modificaciones/" + modificacionesId + " no existe.", 404);
+        }
+        return ModificacionesCasoDeUsoResource.class;
+    }
   
 }
     

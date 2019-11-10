@@ -84,7 +84,7 @@ public class EquipoDesarrolloLogicTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from ProyectoEntity").executeUpdate();
+        em.createQuery("delete from EquipoDesarrolloEntity").executeUpdate();
     }
     
     /**
