@@ -87,7 +87,8 @@ public class RequisitosDesarrolladorLogicTest {
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    private void clearData() 
+    {
         em.createQuery("delete from RequisitosEntity").executeUpdate();
         em.createQuery("delete from DesarrolladorEntity").executeUpdate();
     }
