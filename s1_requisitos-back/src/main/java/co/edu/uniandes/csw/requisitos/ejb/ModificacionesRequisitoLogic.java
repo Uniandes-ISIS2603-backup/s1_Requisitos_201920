@@ -76,11 +76,11 @@ public class ModificacionesRequisitoLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el requisito de la modificacion con id = " +modId, modId);
         //Encuentra las dos entidades
         ModificacionesEntity modEntity = modPersistence.find(modId);
-        if (modEntity.getModificacionesRequisito().equals(null)) {
+        if (modEntity.getModificacionesRequisito()==null) {
             throw new BusinessLogicException("La modificacion no tiene requisito");
         }
         RequisitosEntity reqEntity = requisitoPersistence.find(modEntity.getModificacionesRequisito().getId());
-        if (reqEntity.equals(null)) {
+        if (reqEntity==null) {
             throw new BusinessLogicException("La modificacion no tiene requisito");
         }
         //Elimina del requisito el caso de uso y del caso de uso el requisito
