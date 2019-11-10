@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "fc736050-813a-49a0-a492-2311a3663b6d",
+		"name": "CasoDeUsoDesarrolladorTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crearCaso para relacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2cc87619-d5ce-46c5-92fe-2e9aec4c38a4",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_relacion\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"caminosAlternos\": [\r\n        \"prueba\",\r\n        \"prueba2\"\r\n    ],\r\n    \"caminosExcepcion\": [\r\n        \"hallo\",\r\n        \"wie geht's\"\r\n    ],\r\n    \"documentacion\": \"Hola\",\r\n    \"entidades\": [\r\n        \"hola\",\r\n        \"hola2\"\r\n    ],\r\n    \"id\": 10,\r\n    \"nombre\": \"Crear equipo\",\r\n    \"posCondiciones\": [\r\n        \"hola\",\r\n        \"hola2\"\r\n    ],\r\n    \"preCondiciones\": [\r\n        \"hola\",\r\n        \"hola2\"\r\n    ],\r\n    \"pruebas\": true,\r\n    \"servicios\": [\r\n        \"Login\",\r\n        \"CrearCaso\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "crea un caso de uso al que se le va a relacionar un representante y un responsable"
+			},
+			"response": []
+		},
+		{
+			"name": "crearResponsable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61aa1dfe-fe2d-4239-af1f-66e25ab10126",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_responsable\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"Responsable\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "crea un responsable para el caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearRepresentante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a6499fb6-0e5c-4518-ad19-37c71ae2eb51",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_representante\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"nombre\":\"Testuser{{$randomInt}}\",\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"RepresentanteDelCliente\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "crea un representante para el caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "crearRelacionCasoRepresentante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ab47056-a5be-4aab-900f-d599e8344fc9",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_relacion}}/desarrolladorc/{{new_id_representante}}/2",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_relacion}}",
+						"desarrolladorc",
+						"{{new_id_representante}}",
+						"2"
+					]
+				},
+				"description": "crea la realcion entre el caso de uso y el representante"
+			},
+			"response": []
+		},
+		{
+			"name": "crearRelacionCasoResponsable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aea277c8-35d0-4a86-8a1a-8ca62a3d0234",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_relacion}}/desarrolladorc/{{new_id_responsable}}/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_relacion}}",
+						"desarrolladorc",
+						"{{new_id_responsable}}",
+						"1"
+					]
+				},
+				"description": "cera la relacion entre el caso y el responsable"
+			},
+			"response": []
+		},
+		{
+			"name": "getResponsables",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f7496c3-e5f4-40b0-bdc5-e1734bd815dd",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_relacion}}/desarrolladorc/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_relacion}}",
+						"desarrolladorc",
+						"1"
+					]
+				},
+				"description": "da el responsable de una caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "getRepresentante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a1cc060-57b9-4f59-9252-99f930fbfc52",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_relacion}}/desarrolladorc/2",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_relacion}}",
+						"desarrolladorc",
+						"2"
+					]
+				},
+				"description": "da el representante del cliente del caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "crearResponsable2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61aa1dfe-fe2d-4239-af1f-66e25ab10126",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_responsable\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"Responsable\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "crea un responsable para el caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearRepresentante2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a6499fb6-0e5c-4518-ad19-37c71ae2eb51",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_representante\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"nombre\":\"Testuser{{$randomInt}}\",\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"RepresentanteDelCliente\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "crea un representante para el caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarRepresentante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "584cf3e6-02e2-4962-a0d7-49313d7c26b7",
+						"exec": [
+							"tests[\"no genera error en el put\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_relacion}}/desarrolladorc/{{new_id_representante}}/2",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_relacion}}",
+						"desarrolladorc",
+						"{{new_id_representante}}",
+						"2"
+					]
+				},
+				"description": "actualiza el representante del caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarRepresentante Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "584cf3e6-02e2-4962-a0d7-49313d7c26b7",
+						"exec": [
+							"tests[\"no genera error en el put\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_relacion}}/desarrolladorc/{{new_id_responsable}}/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_relacion}}",
+						"desarrolladorc",
+						"{{new_id_responsable}}",
+						"1"
+					]
+				},
+				"description": "actualiza el responsable del caso de uso"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

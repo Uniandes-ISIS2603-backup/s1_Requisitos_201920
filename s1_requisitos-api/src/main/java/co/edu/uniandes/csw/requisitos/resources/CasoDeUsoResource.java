@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.requisitos.resources;
 
 import co.edu.uniandes.csw.requisitos.dtos.CasoDeUsoDTO;
 import co.edu.uniandes.csw.requisitos.dtos.CasoDeUsoDetailDTO;
+import co.edu.uniandes.csw.requisitos.dtos.DesarrolladorDTO;
 import co.edu.uniandes.csw.requisitos.ejb.CasoDeUsoLogic;
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
@@ -147,15 +148,18 @@ public class CasoDeUsoResource {
      * servicio.
      * @return El servicio de autor para este premio en paricular.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando no se el premio.
+     * Error de lógica que s genera cuando no se el premio.
      */
     @Path("{casosId: \\d+}/desarrolladorc")
-    public Class<CasoDeUsoDesarrolladorResource> getCasoDeUsoDesarrolladorResource(@PathParam("casoId") Long casoId) {
-
-        if (cl.getCaso(casoId) == null) {
-            throw new WebApplicationException("El recurso /casos/" + casoId + " no existe.", 404);
+    public Class<CasoDeUsoDesarrolladorResource> getCasoDeUsoDesarrolladorResource(@PathParam("casosId") Long casosId) {
+    
+        if (cl.getCaso(casosId) == null) {
+            throw new WebApplicationException("El recurso /casos/" + casosId + " no existe.", 404);
         }
         return CasoDeUsoDesarrolladorResource.class;
     }
+    
+    
+  
 
 }
