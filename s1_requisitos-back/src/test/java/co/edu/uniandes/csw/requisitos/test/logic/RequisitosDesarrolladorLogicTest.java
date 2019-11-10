@@ -120,7 +120,7 @@ public class RequisitosDesarrolladorLogicTest {
      public void addDesarrolladorTest() {
          DesarrolladorEntity entity = data.get(0);
          RequisitosEntity reqEntity = requisitosData.get(1);
-         DesarrolladorEntity response = requisitosDesarrolladorLogic.addAuthor(entity.getId(), reqEntity.getId());
+         DesarrolladorEntity response = requisitosDesarrolladorLogic.addAuthor( reqEntity.getId(),entity.getId());
 
          Assert.assertNotNull(response);
          Assert.assertEquals(entity.getId(), response.getId());
