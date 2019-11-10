@@ -115,17 +115,17 @@ public class RequisitosDesarrolladorLogicTest {
     }
      /**
      * Prueba para asociar un requisito existente a un desarrollador.
-     
-     *@Test
-    * public void addDesarrolladorTest() {
-      *   DesarrolladorEntity entity = data.get(0);
-      *   RequisitosEntity reqEntity = requisitosData.get(1);
-      *   DesarrolladorEntity response = requisitosDesarrolladorLogic.addAuthor(entity.getId(), reqEntity.getId());
+      */
+     @Test
+     public void addDesarrolladorTest() {
+         DesarrolladorEntity entity = data.get(0);
+         RequisitosEntity reqEntity = requisitosData.get(1);
+         DesarrolladorEntity response = requisitosDesarrolladorLogic.addAuthor(entity.getId(), reqEntity.getId());
 
-      *   Assert.assertNotNull(response);
-      *   Assert.assertEquals(entity.getId(), response.getId());
-     *}
-  */
+         Assert.assertNotNull(response);
+         Assert.assertEquals(entity.getId(), response.getId());
+     }
+  
     /**
      * Prueba para consultar un desarrollador.
      */
