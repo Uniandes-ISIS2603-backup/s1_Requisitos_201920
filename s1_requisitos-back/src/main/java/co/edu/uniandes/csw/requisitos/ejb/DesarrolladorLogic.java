@@ -39,10 +39,6 @@ public class DesarrolladorLogic
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }
-       else if(Integer.toString(desarrollador.getCedula()).length()<7)
-        {
-         throw new BusinessLogicException("Cedula incorrecta.");      
-      } 
       else if(dp.find(desarrollador.getId())!=null)
       {
          throw new BusinessLogicException("Ya existe un desarrollador con ese id.");      
@@ -93,10 +89,7 @@ public class DesarrolladorLogic
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }
-        else if(Integer.toString(desarrollador.getCedula()).length()<7)
-        {
-         throw new BusinessLogicException("Cedula incorrecta.");      
-      } 
+ 
          else if(dp.findByName(desarrollador.getNombre())!=null && dp.findByName(desarrollador.getNombre()).getId()!=desarrollador.getId())
       {
          throw new BusinessLogicException("Ya existe un desarrollador con ese nombre.");      
