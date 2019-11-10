@@ -7,9 +7,7 @@ package co.edu.uniandes.csw.requisitos.resources;
 
 import co.edu.uniandes.csw.requisitos.dtos.RequisitosDTO;
 import co.edu.uniandes.csw.requisitos.dtos.RequisitosDetailDTO;
-import co.edu.uniandes.csw.requisitos.ejb.CasoDeUsoLogic;
 import co.edu.uniandes.csw.requisitos.ejb.RequisitoLogic;
-import co.edu.uniandes.csw.requisitos.ejb.RequisitosCasoDeUsoLogic;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -30,7 +28,6 @@ import javax.ws.rs.WebApplicationException;
 
 /**
  * Clase que representa el servicio Rest para requisitos
- *
  * @author Nicolas Tobo
  */
 @Path("requisitos")
@@ -39,140 +36,120 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class RequisitosResource {
 
-    private static final Logger LOGGER = Logger.getLogger(RequisitosResource.class.getName());
-    /**
-     * Atributo logica requisito, se inyecta la dependencia
-     */
-    @Inject
-    private RequisitoLogic requisitoLogic;
-    /**
-     * Atributo logica caso de uso , se inyecta la dependencia
-     */
-    @Inject
-    private CasoDeUsoLogic casoDeUsoLogic;
-    /**
-     * Atributo logica relacion casoDeUso y requisito , se inyecta la
-     * dependencia
-     */
-    @Inject
-    private RequisitosCasoDeUsoLogic requisitosCasoDeUsoLogic;
-
-    /**
+     private static final Logger LOGGER = Logger.getLogger(RequisitosResource.class.getName()); 
+     /**
+      * Atributo logica
+      */
+     @Inject
+     private RequisitoLogic fl;
+        /**
      * Crea una nuevo requisito con la informacion que se recibe en el cuerpo de
      * la petición y se regresa un objeto identico con un id auto-generado por
      * la base de datos.
-     *
-     * @param requisito {@link RequisitoDTO} - EL requisito que se desea
-     * guardar.
+     * @param requisito
      * @return JSON {@link RequisitoDTO} -El requisito guardado con el atributo
      * id autogenerado.
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
-     * Cuando se presenta un Error de lógica (puede ser nombre repetido o algo
-     * mas especifico).
      */
     @POST
-    public RequisitosDTO createRequisito(RequisitosDTO requisito) throws BusinessLogicException {
+    public RequisitosDTO createRequisito(RequisitosDTO requisito) throws BusinessLogicException     
+    {
         LOGGER.log(Level.INFO, "RequisitoResource createRequisito: input: {0}", requisito);
-        RequisitosDTO nuevoRequisitoDTO = new RequisitosDTO(requisitoLogic.createRequisito(requisito.toEntity()));
+        RequisitosDTO nuevoRequisitoDTO = new RequisitosDTO(fl.createRequisito(requisito.toEntity()));
         LOGGER.log(Level.INFO, "RequisitoResource createRequncional: output: {0}", nuevoRequisitoDTO);
         return nuevoRequisitoDTO;
     }
 
     /**
-     * Busca el requisito con el id asociado recibido en la URL y lo devuelve.
-     *
-     * @param requisitoId Identificador del requisito que se esta buscando. Este
-     * debe ser una cadena de dígitos.
-     * @return JSON {@link RequisitoDetailDTO} - requisito
+     * Busca el requisito  con el id asociado recibido en la URL y lo devuelve.
+     * @param requisitoId Identificador del requisito  que se esta buscando. Este debe
+     * ser una cadena de dígitos.
+     * @return JSON {@link RequisitoDetailDTO} - requisito 
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando no se encuentra el requisito.
+     * Error de lógica que se genera cuando no se encuentra la iteracion.
      */
     @GET
     @Path("{requisitoId: \\d+}")
-    public RequisitosDetailDTO getRequisito(@PathParam("requisitoId") Long requisitoId) {
+    public RequisitosDetailDTO getRequisito(@PathParam("requisitoId") Long requisitoId) 
+    {
         LOGGER.log(Level.INFO, "RequisitoResource getRequisito: input: {0}", requisitoId);
-        RequisitosEntity entity = requisitoLogic.getRequisito(requisitoId);
+        RequisitosEntity entity = fl.getRequisito(requisitoId);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /requisitos/" + requisitoId + " no existe", 404);
+            throw new WebApplicationException("El recurso /Requisito/" + requisitoId + " no existe", 404);
         }
         RequisitosDetailDTO dto = new RequisitosDetailDTO(entity);
         LOGGER.log(Level.INFO, "RequisitoResource getRequisito: output: {0}", dto);
         return dto;
     }
-
     /**
      * Busca y devuelve todos los requisitos es que existen en la aplicacion.
      *
-     * @return JSONArray {@link  RequisitoDTO} - Las iteraciones encontrados en
-     * la aplicación. Si no hay ninguna retorna una lista vacía.
+     * @return JSONArray {@link  RequisitoDTO} - Las iteraciones encontrados en la
+     * aplicación. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<RequisitosDetailDTO> getRequisitos() {
-        LOGGER.info("RequisitoResource getRequisitos: input: void");
-        List<RequisitosDetailDTO> listaRequisitos = listEntity2DetailDTO(requisitoLogic.getRequisitos());
-        LOGGER.log(Level.INFO, "RequisitoResource getReqRequisitoes: output: {0}", listaRequisitos);
-        return listaRequisitos;
+    public List<RequisitosDetailDTO> getRequisito() 
+    {
+        LOGGER.info("RequisitoResource getRequisitosRequisitoes: input: void");
+        List<RequisitosDetailDTO> listaIteraciones = listEntity2DetailDTO(fl.getRequisitos());
+        LOGGER.log(Level.INFO, "RequisitoResource getReqRequisitoes: output: {0}", listaIteraciones);
+        return listaIteraciones;
     }
 
     /**
-     * Actualiza el requisito con el id recibido en la URL con la información
-     * que se recibe en el cuerpo de la petición.
+     * Actualiza el requisito  con el id recibido en la URL con la información que se
+     * recibe en el cuerpo de la petición.
      *
-     * @param requisitoId Identificador del requisito que se desea actualizar.
-     * Este debe ser una cadena de dígitos.
-     * @param {@link RequisitoDetailDTO} La requisitoRequisito que se desea
-     * guardar.
+     * @param requisitoId Identificador del requisito que se desea actualizar. Este debe
+     * ser una cadena de dígitos.
+     * @param  {@link RequisitoDetailDTO} La requisitoRequisito que se desea guardar.
      * @return JSON {@link RequisitoDetailDTO} - el requisitoRequisito guardado.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando no se encuentra el requisito a
+     * Error de lógica que se genera cuando no se encuentra el requisito  a
      * actualizar.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
-     * Error de lógica que se genera cuando no se puede actualizar el requisito
-     * .
+     * Error de lógica que se genera cuando no se puede actualizar el requisito .
      */
     @PUT
     @Path("{requisitoId: \\d+}")
-    public RequisitosDetailDTO updateRequisito(@PathParam("requisitoId") Long requisitoId, RequisitosDetailDTO r) throws BusinessLogicException {
+    public RequisitosDetailDTO updateRequisito(@PathParam("requisitoId") Long requisitoId, RequisitosDetailDTO r) throws BusinessLogicException 
+    {
         r.setId(requisitoId);
-        if (requisitoLogic.getRequisito(requisitoId) == null) {
+        if (fl.getRequisito(requisitoId) == null) {
             throw new WebApplicationException("El recurso //" + requisitoId + " no existe.", 404);
         }
-        return new RequisitosDetailDTO(requisitoLogic.updateRequisito(r.toEntity()));
+       return  new RequisitosDetailDTO(fl.updateRequisito(r.toEntity()));
+        
+       
     }
-
-    /**
-     * Borra el requisito con el id asociado recibido en la URL.
-     *
+  /**
+     * Borra el requisitoRequisito con el id asociado recibido en la URL.
      * @param requisitoId
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
-     * - si se imcumple alguna norma de la logica
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando no se encuentra el requisito a
-     * eliminar.
+     * Error de lógica que se genera cuando no se encuentra el requisito a eliminar.
      */
     @DELETE
     @Path("{requisitoId: \\d+}")
-    public void deleteRequisito(@PathParam("requisitoId") Long requisitoId) throws BusinessLogicException {
+    public void deleteRequisito(@PathParam("requisitoId") Long requisitoId) throws BusinessLogicException 
+    {
         LOGGER.log(Level.INFO, "RequisitoesResource deleteRequisito: input: {0}", requisitoId);
-        RequisitosEntity entity = requisitoLogic.getRequisito(requisitoId);
-        if (entity == null) {
-            throw new WebApplicationException("El recurso /requisitos/" + requisitoId + " no existe.", 404);
+        RequisitosEntity entity = fl.getRequisito(requisitoId);
+        if (entity == null) 
+        {
+            throw new WebApplicationException("El recurso //" + requisitoId + "no esta.", 404);
         }
-        if (entity.getRequisitosFuncionalesCaso() != null) {
-            requisitosCasoDeUsoLogic.removeCasoDeUso(requisitoId);
-        }
-        requisitoLogic.deleteRequisito(requisitoId);
+      
+        fl.deleteRequisito(requisitoId);
         LOGGER.info("RequisitoResource deleteRequisito output: void");
-    }
-
-    /**
+    }    
+     /**
      * Convierte una lista de entidades a DetailDTO.
      *
      * Este método convierte una lista de objetos RequisitoEntity a una lista de
      * objetos RequisitoDetailDTO (json)
-     *
-     * @param entityList corresponde a la lista de requisitos es de tipo Entity
-     * que vamos a convertir a DetDTO.
+     * @param entityList corresponde a la lista de requisitos es de tipo Entity que
+     * vamos a convertir a DetDTO.
      * @return la lista de requisitos Requisitoes en forma DetailDTO (json)
      */
     private List<RequisitosDetailDTO> listEntity2DetailDTO(List<RequisitosEntity> entityList) {

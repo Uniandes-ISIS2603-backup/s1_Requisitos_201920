@@ -83,7 +83,11 @@ public class RequisitoLogic
      */
     private void verificacionBasica(RequisitosEntity requisito) throws BusinessLogicException
     {
-      if(rp.findByName(requisito.getNombre())!=null)
+        if(requisito.getId()==null)
+      {
+         throw new BusinessLogicException("Falta el id del requisito.");      
+      }
+      else if(rp.findByName(requisito.getNombre())!=null)
       {
          throw new BusinessLogicException("Ya existe un requisito con ese nombre.");      
       }

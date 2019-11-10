@@ -49,36 +49,13 @@ public class ProyectoDTO implements Serializable{
     
     }
     
-    /**
-     * Constructor entidad a DTO
-     * @param proy entidad a convertir
-     */
     public ProyectoDTO(ProyectoEntity proy){
         if(proy!=null){
             this.nombre = proy.getNombre();
             this.fechaFinal = proy.getFechaFinal();
             this.fechaInicial = proy.getFechaInicial();
-            this.equipo = proy.getEquipo();
             this.id = proy.getId();
         }
-    }
-    
-    /**
-     * Constructor DTO a entidad
-     * @return entidad a partir del DTO
-     */
-    public ProyectoEntity toEntity() {
-        ProyectoEntity proyectoEntity = new ProyectoEntity();
-        proyectoEntity.setNombre(this.nombre);
-        proyectoEntity.setFechaFinal(this.fechaFinal);
-        proyectoEntity.setFechaInicial(this.fechaInicial);
-        proyectoEntity.setId(this.id);
-        return proyectoEntity;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
     
     /**
@@ -135,6 +112,20 @@ public class ProyectoDTO implements Serializable{
      */
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public ProyectoEntity toEntity() {
+        ProyectoEntity proyectoEntity = new ProyectoEntity();
+        proyectoEntity.setNombre(this.nombre);
+        proyectoEntity.setFechaFinal(this.fechaFinal);
+        proyectoEntity.setFechaInicial(this.fechaInicial);
+        proyectoEntity.setId(this.id);
+        return proyectoEntity;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 
     /**
