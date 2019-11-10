@@ -47,7 +47,7 @@ import org.junit.runner.RunWith;
 public class DesarrolladorIT 
 {
 
-    private static final String COLLECTION = "DesarrolladorTest.postman_collection";
+    private static final String COLLECTION = "DesarrolladorResourceTest.postman_collection";
 
     @Deployment(testable = true)
     public static WebArchive createDeployment() {

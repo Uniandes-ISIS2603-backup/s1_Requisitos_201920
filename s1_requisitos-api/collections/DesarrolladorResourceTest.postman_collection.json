@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "79eddf98-ca0f-40a4-8be2-b76e3d519919",
+		"name": "DesarrolladorResourceTest",
+		"description": "Pruebas del recurso Desarrollador de todos los metodos PUT,POST,GET y DEL siguiendo leyes logicas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getDesarrolladores",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "880e20d0-252a-4131-a4c6-f8fbc1fa2cff",
+						"exec": [
+							"tests[\"no genera error en el get\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Devuelve solo un desarrollador creado en el archivo sql del back de la aplicacion.\nEl codigo esperado es 200 ya que no debe encontrar ningun error\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Desarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a711beef-cce1-4ec9-9c56-d00453bbe9bb",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_c\", data.id)",
+							"tests[\"no genera error en el get\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010247041,\n\t\"id\":1\n\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Crea un desarrollador con nombre,id y cedula disntintas al creado por el SQL. Guarda su ID en una variable.\nRetorna el desarrollador creado y el codigo 200 ya que no debe ocurrir ningun problema al ejecutar la acciòn\n"
+			},
+			"response": []
+		},
+		{
+			"name": "getDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97787a6b-7bea-4859-808c-66c6284c8af3",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				},
+				"description": "Obtiene todos los desarrolladores creados es decir el que se creo en el SQL y el creado en el metodo anterior.\nDevuelve el codigo 200\n"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0260b0e-5936-4125-ad98-593421347c8e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_c}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_c}}"
+					]
+				},
+				"description": "El codigo guardado en el metodo crear desarrollador se pasa por parametro y este recurso es eliminado. Devuelve el codigo 404 al no encontrar el recurso eliminado\n"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "296ea860-421a-4963-acf6-8fc257269c7d",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_c2\", data.id)",
+							"tests[\"No genera error\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010247041,\n\t\"id\":1\n\n}\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Crea un desarrollador con el cual se van a probar distintas pruebas logicas en los tests a continuacion.\nDevuelve codigo 200\n"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearDesarrolladorCedulaIncorrecta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "296ea860-421a-4963-acf6-8fc257269c7d",
+						"exec": [
+							"tests[\"No genera error\"] = responseCode.code ===412"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":10102,\n\t\"id\":1\n\n}\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Intenta crear un desarrollador con una cedula con muy poca cantidad de digitos. Devuelve 412 ya que no se cumple la precondicion de una cedula mayor a 6 digitos\n"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearDesarrolladorNombreRepetido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "296ea860-421a-4963-acf6-8fc257269c7d",
+						"exec": [
+							"tests[\"Genera error,NOMBRE REPETIDO\"] = responseCode.code ==412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm1@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010248041,\n\t\"id\":2\n\n}\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Intenta crear un desarrollador con un nombre ya existente. Devuelve 412 al no cumplir la condicion\n"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearDesarrolladorCedulaRepetido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "296ea860-421a-4963-acf6-8fc257269c7d",
+						"exec": [
+							"tests[\"Genera error\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010247041,\n\t\"id\":1\n\n}\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Intenta crear un desarrollador con una cedula repetida. Devuelve 412 ya que no se cumple la precondicion y puede generar redundancia en la aplicacion\n"
+			},
+			"response": []
+		},
+		{
+			"name": "getDesarrolladorIDNulo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "880e20d0-252a-4131-a4c6-f8fbc1fa2cff",
+						"exec": [
+							"tests[\"Genera error, no encuentra recurso\"] = responseCode.code ===404;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/-1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"-1"
+					]
+				},
+				"description": "Busca un desarrollador con un ID no existente al no encontrarlo devuelve el codigo 404\n"
+			},
+			"response": []
+		},
+		{
+			"name": "CrearDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "296ea860-421a-4963-acf6-8fc257269c7d",
+						"exec": [
+							"tests[\"No genera error\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":18,\n\t\"tipo\":\"Comun\",\n\t\"cedula\":1010248041,\n\t\"id\":1\n\n}\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Se crea un desarrollador con el cual se van a probar distinas reglas logicas a continuacion en los siguientes test. Devuelve 200"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6a9f79c-425f-4176-816e-8ba08cfd0308",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"tests[\"no genera error en el update\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"cedula\":1010247041,\n\t\"tipo\":\"Responsable\",\n\t\"id\":1\n\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "Cambia el correo de un desarrollador. Como parametro le entra el ID del segundo metodo anterior crear desarrollador. Devuelve 200\n"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDesarrolladorCedulaIncorrecta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6a9f79c-425f-4176-816e-8ba08cfd0308",
+						"exec": [
+							"",
+							"tests[\"genera error en el update\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":10102,\n\t\"id\":1\n\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "Intenta cambiar la cedula a un desarrollador ya existente a una con menos de 6 digitos.Como no cumple la precondicion arroja el codigo 412\n"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDesarrolladorCedulaRepetida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6a9f79c-425f-4176-816e-8ba08cfd0308",
+						"exec": [
+							"",
+							"tests[\"genera error en el update\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010248041,\n\t\"id\":1\n\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "Intenta cambiar la cedula de un usuario ya existente pero la cedula ya esta registrada en el sistema.Al no cumplir la condicion se retorna un 412\n"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDesarrolladorNombreRepetido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6a9f79c-425f-4176-816e-8ba08cfd0308",
+						"exec": [
+							"",
+							"tests[\"genera error en el update\"] = responseCode.code ===412;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010247041,\n\t\"id\":1\n\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "Intenta cambiar el nombre de un usuario ya existente pero el nombre ya esta registrado en el sistema.Al no cumplir la condicion se retorna un 412\n"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "273bca20-7aaa-4e5e-86bf-20df5fd97dfd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "1a7de9de-dfbd-4322-b359-1b606d1fc29c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

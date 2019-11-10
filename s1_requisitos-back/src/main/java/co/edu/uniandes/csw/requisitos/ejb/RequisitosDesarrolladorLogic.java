@@ -5,11 +5,14 @@
  */
 package co.edu.uniandes.csw.requisitos.ejb;
 
+import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity.TipoDesarrollador;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import co.edu.uniandes.csw.requisitos.persistence.RequisitoPersistence;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -29,7 +32,8 @@ public class RequisitosDesarrolladorLogic {
 
     @Inject
     private DesarrolladorPersistence desarrolladorPersistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
-
+    
+    
     /**
      * Agregar un desarrollador a un requisito
      *
@@ -43,10 +47,14 @@ public class RequisitosDesarrolladorLogic {
         RequisitosEntity requisitosEntity = requisitoPersistence.find(requisitoId);
         requisitosEntity.setAutor(desarrolladorEntity.getNombre());
         requisitosEntity.setDesarrollador(desarrolladorEntity);
+        List<RequisitosEntity> listaFun=desarrolladorEntity.getRequisitos();
+        listaFun.add(requisitosEntity);
+        desarrolladorEntity.setRequisitos(listaFun);
         requisitoPersistence.update(requisitosEntity);
+       desarrolladorPersistence.update(desarrolladorEntity);
        return desarrolladorPersistence.find(desarrolladorId);
     }
-
+  
     /**
      *
      * Obtener un requisito por medio de su id y el de su desarrollador.
@@ -94,6 +102,7 @@ public class RequisitosDesarrolladorLogic {
         desarrolladorEntity.getRequisitos().remove(requisitoEntity);
        
     }
+    
 }
  
 

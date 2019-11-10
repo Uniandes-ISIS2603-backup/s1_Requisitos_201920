@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import co.edu.uniandes.csw.requisitos.persistence.ModificacionesPersistence;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -42,12 +43,16 @@ public class ModificacionesDesarrolladorLogic {
         DesarrolladorEntity desarrolladorEntity = desarrolladorPersistence.find(desarrolladorId);
         ModificacionesEntity modificacionEntity = modificacionPersistence.find(modificacionId);
         modificacionEntity.setDesarrolladorModificaciones(desarrolladorEntity);
+        List<ModificacionesEntity> listaFun=desarrolladorEntity.getModificaciones();
+        listaFun.add(modificacionEntity);
+        desarrolladorEntity.setModificaciones(listaFun);
         LOGGER.log(Level.INFO, "Termina proceso de asociar el autor con id = {0} al premio con id = " + modificacionId, desarrolladorId);
         modificacionPersistence.update(modificacionEntity);
+        desarrolladorPersistence.update(desarrolladorEntity);
         return desarrolladorPersistence.find(desarrolladorId);
 
     }
-
+ 
     /**
      *
      * Obtener una modificacion por medio de su id y el de su desarrollador.

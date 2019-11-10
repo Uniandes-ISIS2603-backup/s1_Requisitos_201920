@@ -39,6 +39,10 @@ public class DesarrolladorLogic
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }
+       else if(Integer.toString(desarrollador.getCedula()).length()<7)
+        {
+         throw new BusinessLogicException("Cedula incorrecta.");      
+      } 
       else if(dp.find(desarrollador.getId())!=null)
       {
          throw new BusinessLogicException("Ya existe un desarrollador con ese id.");      
@@ -81,15 +85,31 @@ public class DesarrolladorLogic
      * @return desarrollador con los cambios actualizados en la base de datos.
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
+    
     public DesarrolladorEntity  updateDesarrollador(DesarrolladorEntity  desarrollador) throws BusinessLogicException 
     {
+     String str="@"   ;
        if(desarrollador.getTipo()==null)
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }
+        else if(Integer.toString(desarrollador.getCedula()).length()<7)
+        {
+         throw new BusinessLogicException("Cedula incorrecta.");      
+      } 
+         else if(dp.findByName(desarrollador.getNombre())!=null && dp.findByName(desarrollador.getNombre()).getId()!=desarrollador.getId())
+      {
+         throw new BusinessLogicException("Ya existe un desarrollador con ese nombre.");      
+      }
+      else if(dp.findByCedula(desarrollador.getCedula())!=null && dp.findByCedula(desarrollador.getCedula()).getId() != desarrollador.getId() )
+      {
+         throw new BusinessLogicException("Ya existe un desarrollador con esa cedula.");      
+      }
+       
         return dp.update(desarrollador);
       
     }  
+  
      /**
      * Borra un desarrollador.
      * @param desarrolladorId: id del requisito a borrar

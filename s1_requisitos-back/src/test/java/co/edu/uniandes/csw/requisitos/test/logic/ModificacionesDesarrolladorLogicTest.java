@@ -124,6 +124,7 @@ public class ModificacionesDesarrolladorLogicTest {
         Assert.assertNotNull(response);
         Assert.assertEquals(entity.getId(), response.getId());
     }
+   
 
     /**
      * Prueba para consultar un desarrollador.
