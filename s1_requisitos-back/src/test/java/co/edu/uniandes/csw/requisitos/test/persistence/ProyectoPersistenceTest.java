@@ -117,7 +117,7 @@ public class ProyectoPersistenceTest {
         ProyectoEntity entity = em.find(ProyectoEntity.class, proyecto.getId());
         Assert.assertEquals(proyecto.getNombre(), entity.getNombre());
         Assert.assertEquals(proyecto.getFechaInicial(), entity.getFechaInicial());
-        Assert.assertEquals(proyecto.getFechaFinal(), entity.getFechaFinal());
+        Assert.assertEquals(proyecto.getEquipo(), entity.getEquipo());
         
     }
     

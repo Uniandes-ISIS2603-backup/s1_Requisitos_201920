@@ -32,6 +32,7 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
      private EquipoDesarrolloEntity equipo;
     
     
+     
     @Temporal(TemporalType.DATE)
     /**
      * FechaInicial del proyecto
@@ -45,6 +46,7 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date fechaFinal;
 
+    
     /**
      * @return the nombre
      */
