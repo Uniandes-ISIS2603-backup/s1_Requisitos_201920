@@ -44,12 +44,28 @@ import java.util.List;
  *          "comentariosAdicionales":"Hola",
  *          "tipo":"FUNCIONAL",
  *          "casoDeUso":
- *          {
- *              "documentacion": "doc",
- *                "id": "1010",
- *               "pruebas": false,
- *              "servicios": "FuncionalPrueba"
- *           },
+ *           *   {
+ *                   "autor": "Carlos Barragan",
+ *                    "comentariosAdicionales": "Hola",
+ *                    "descripcion": "Intento1",
+ *                    "estabilidad": true,
+ *                    "fuente": "Empresa X",
+ *                     "id": 1,
+ *                     "importancia": 10,
+ *                     "nombre": "ImplementarIntento1",
+ *                     "requisitosFuncionalesCaso": {
+ *                     "id": 1,
+ *                   "caminosAlternos": [],
+ *                  "caminosExcepcion": [],
+ *                  "entidades": [],
+ *                  "funcionales": [],
+ *                  "modificaciones": [],
+ *                  "posCondiciones": [],
+ *                  "preCondiciones": [],
+ *                  "servicios": []
+ *              },
+ *               "tipo": "SEGURIDAD"
+ *              },
  *           "modificaciones":[
  *              {
  *                "id": 2,

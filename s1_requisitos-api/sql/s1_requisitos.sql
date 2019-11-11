@@ -3,7 +3,8 @@ delete from CasoDeUsoEntity;
 delete from ModificacionesEntity;
 delete from PersonaEntity;
 delete from RequisitosEntity;
-delete from Desarrolladorentity
+delete from DesarrolladorEntity;
+delete from app.RequisitosEntity;
 
 
 insert into CasoDeUsoEntity (id,documentacion,pruebas,servicios) values (44,'pruebaJava', 0, 'servicio de prueba');

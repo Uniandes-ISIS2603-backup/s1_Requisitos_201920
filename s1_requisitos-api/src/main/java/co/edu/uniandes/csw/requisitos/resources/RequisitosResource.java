@@ -74,7 +74,7 @@ public class RequisitosResource {
     public RequisitosDTO createRequisito(RequisitosDTO requisito) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "RequisitoResource createRequisito: input: {0}", requisito);
         RequisitosDTO nuevoRequisitoDTO = new RequisitosDTO(requisitoLogic.createRequisito(requisito.toEntity()));
-        LOGGER.log(Level.INFO, "RequisitoResource createRequncional: output: {0}", nuevoRequisitoDTO);
+        LOGGER.log(Level.INFO, "RequisitoResource createRequisito: output: {0}", nuevoRequisitoDTO);
         return nuevoRequisitoDTO;
     }
 
@@ -107,10 +107,10 @@ public class RequisitosResource {
      * la aplicación. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<RequisitosDetailDTO> getRequisitos() {
+    public List<RequisitosDetailDTO> getRequisito() {
         LOGGER.info("RequisitoResource getRequisitos: input: void");
         List<RequisitosDetailDTO> listaRequisitos = listEntity2DetailDTO(requisitoLogic.getRequisitos());
-        LOGGER.log(Level.INFO, "RequisitoResource getReqRequisitoes: output: {0}", listaRequisitos);
+        LOGGER.log(Level.INFO, "RequisitoResource getRequisito: output: {0}", listaRequisitos);
         return listaRequisitos;
     }
 
@@ -120,6 +120,7 @@ public class RequisitosResource {
      *
      * @param requisitoId Identificador del requisito que se desea actualizar.
      * Este debe ser una cadena de dígitos.
+     * @param r
      * @param {@link RequisitoDetailDTO} La requisitoRequisito que se desea
      * guardar.
      * @return JSON {@link RequisitoDetailDTO} - el requisitoRequisito guardado.
@@ -134,8 +135,10 @@ public class RequisitosResource {
     @Path("{requisitoId: \\d+}")
     public RequisitosDetailDTO updateRequisito(@PathParam("requisitoId") Long requisitoId, RequisitosDetailDTO r) throws BusinessLogicException {
         r.setId(requisitoId);
-        if (requisitoLogic.getRequisito(requisitoId) == null) {
-            throw new WebApplicationException("El recurso //" + requisitoId + " no existe.", 404);
+        System.out.println("AAA::"+requisitoLogic.getRequisito(requisitoId));
+        if (requisitoLogic.getRequisito(requisitoId) == null) 
+        {
+            throw new WebApplicationException("El recurso /requisito/" + requisitoId + " no existe.", 404);
         }
         return new RequisitosDetailDTO(requisitoLogic.updateRequisito(r.toEntity()));
     }

@@ -1,0 +1,913 @@
+{
+	"info": {
+		"_postman_id": "557f50a5-c03c-44c1-8627-c33ca2d4b612",
+		"name": "RequisitoResourceTest",
+		"description": "Test de servicios rest para la clase de requisito.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear un caso de uso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45fd31e3-b546-40d9-9bd5-496ccf21f18b",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_c\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"nombre\": \"Crear equipo\",\r\n        \"servicios\": [\r\n            \"Eliminar\",\r\n            \"CrearCaso\"\r\n        ],\r\n        \"documentacion\": \"Intento1\",\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "Crea un caso de uso\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Desarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a711beef-cce1-4ec9-9c56-d00453bbe9bb",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_d\", data.id)",
+							"tests[\"no genera error en el get\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Nicolas Tobo\",\n\t\"correo\": \"nicotobo@gmail.com\",\n\t\"edad\":19,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010001050\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Crea un desarrollador con nombre,id y cedula disntintas al creado por el SQL. Guarda su ID en una variable.\nRetorna el desarrollador creado y el codigo 200 ya que no debe ocurrir ningun problema al ejecutar la acciòn\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un requisito",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3501cfde-1121-44a3-9c26-1453f5ac3b5f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16b9a96e-8e08-4cfe-9def-28f1fd626645",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_r\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fuente\":\"Empresa X\",\n    \"autor\":\"Carlos Barragan\",\n    \"descripcion\":\"Intento1\",\n    \"importancia\":10,\n    \"estabilidad\":true,\n    \"nombre\":\"ImplementarIntento1\",\n    \"comentariosAdicionales\":\"Hola\",\n    \"tipo\":\"SEGURIDAD\",\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\n    \"cedula\": 1010001050,\n    \"correo\": \"nicotobo@gmail.com\",\n    \"nombre\": \"Nicolas Tobo\",\n    \"tipo\": \"Responsable\"\n     }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Crea un requisito."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un requisito con el mismo nombre que otro ya existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a914033b-d3df-4d36-831f-eeac8de8117a",
+						"exec": [
+							"tests[\"No crea dos desarrolladores con el mismo nombre\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Ya existe un requisito con ese nombre.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fuente\":\"Empresa X\",\n    \"autor\":\"Carlos Barragan\",\n    \"descripcion\":\"Intento1\",\n    \"importancia\":10,\n    \"estabilidad\":true,\n    \"nombre\":\"ImplementarIntento1\",\n    \"comentariosAdicionales\":\"Hola\",\n    \"tipo\":\"SEGURIDAD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos"
+					]
+				},
+				"description": "Crea un requisito con un nombre que ya tiene otro requisito, al validar debe retornar un responseCode 412 de precondicion fallida"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un requisito con el nombre nulo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a914033b-d3df-4d36-831f-eeac8de8117a",
+						"exec": [
+							"tests[\"No crea dos desarrolladores con el mismo nombre\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Falta nombre del requisito.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fuente\":\"Empresa X\",\n    \"autor\":\"Carlos Barragan\",\n    \"descripcion\":\"Intento1\",\n    \"importancia\":10,\n    \"estabilidad\":true,\n    \"comentariosAdicionales\":\"Hola\",\n    \"tipo\":\"SEGURIDAD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos"
+					]
+				},
+				"description": "Crea un requisito con un nombre nulo, al validar debe retornar un responseCode 412 de precondicion fallida"
+			},
+			"response": []
+		},
+		{
+			"name": "Dar un requisito no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "89785944-ae78-4441-940a-88d18d2738b1",
+						"exec": [
+							"tests[\"No se deberia obtener un autor con un id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /requisitos/0 no existe\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"0"
+					]
+				},
+				"description": "Busca un requisito que no existe dentro de la base de datos, al realizar esto deberia retonar el responseCode 404 (no encontrado)"
+			},
+			"response": []
+		},
+		{
+			"name": "Dar un requisito por un id dado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b693e307-2723-44ab-8f3b-365f3bf189c3",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r}}"
+					]
+				},
+				"description": "Retorna un requisto por el id dado, el responseCode es 200 y deberia retornar el json del requisito"
+			},
+			"response": []
+		},
+		{
+			"name": "Dar todos los requisitos ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9189bf9b-1af1-4161-a749-56cd20ab4d68",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get All\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos"
+					]
+				},
+				"description": "Retorna todos los requisitos de la aplicacion en un arreglo json, su responseCode deberia ser 200;\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46e40eba-fc76-4127-aaf9-e5a2bffc51b0",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Put\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fuente\":\"Empresa Y\",\n    \"autor\":\"Luisa Torres\",\n    \"descripcion\":\"IntentoMod1\",\n    \"importancia\":14,\n    \"estabilidad\":false,\n    \"nombre\":\"ImplementarIntentoModificado1\",\n    \"comentariosAdicionales\":\"Hi\",\n    \"tipo\":\"PLATAFORMA\",\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\n    \"cedula\": 1010001050,\n    \"correo\": \"nicotobo@gmail.com\",\n    \"nombre\": \"Nicolas Tobo\",\n    \"tipo\": \"Responsable\"\n     }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r}}"
+					]
+				},
+				"description": "Actualiza un requisito con id conocido su responseCode deberia ser 200 (Ok).\n"
+			},
+			"response": []
+		},
+		{
+			"name": "createModificacion1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "053e2ef6-6632-4bda-aa7a-8613b9aca193",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_m1\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"descripcion\": \"mod1\",\n \"fechaModificacion\": \"2014-01-01T23:28:56.782Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						""
+					]
+				},
+				"description": "crea una modificacion"
+			},
+			"response": []
+		},
+		{
+			"name": "createModificacion2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "053e2ef6-6632-4bda-aa7a-8613b9aca193",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_m2\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"descripcion\": \"mod2\",\n\"fechaModificacion\": \"2014-01-01T23:28:56.782Z\"\n\t\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						""
+					]
+				},
+				"description": "crea una modificacion"
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar modificaciones de un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "56c53376-1d81-4b81-93f1-b77134069045",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Put\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fuente\":\"Empresa Y\",\r\n    \"autor\":\"Luisa Torres\",\r\n    \"descripcion\":\"IntentoMod1\",\r\n    \"importancia\":14,\r\n    \"estabilidad\":false,\r\n    \"nombre\":\"ImplementarIntentoModificado1\",\r\n    \"comentariosAdicionales\":\"Hi\",\r\n    \"tipo\":\"PLATAFORMA\",\r\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\r\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\r\n    \"cedula\": 1010001050,\r\n    \"correo\": \"nicotobo@gmail.com\",\r\n    \"nombre\": \"Nicolas Tobo\",\r\n    \"tipo\": \"Responsable\"},\r\n    \"modificaciones\": [\r\n    \t{\"id\": {{new_id_m1}} },\r\n    \t{\"id\": {{new_id_m2}} }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un requisito no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cacef570-d01d-4331-a983-317d9790c437",
+						"exec": [
+							"tests[\"No se deberia actualizar un autor con id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /requisito/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n          \"fuente\":\"Empresa Y\",\r\n    \"autor\":\"Luisa Torres\",\r\n    \"descripcion\":\"IntentoMod1\",\r\n    \"importancia\":14,\r\n    \"estabilidad\":false,\r\n    \"nombre\":\"ImplementarIntentoModificado1\",\r\n    \"comentariosAdicionales\":\"Hi\",\r\n    \"tipo\":\"PLATAFORMA\",\r\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\r\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\r\n    \"cedula\": 1010001050,\r\n    \"correo\": \"nicotobo@gmail.com\",\r\n    \"nombre\": \"Nicolas Tobo\",\r\n    \"tipo\": \"Responsable\"},\r\n    \"modificaciones\": [\r\n    \t{\"id\": {{new_id_m1}} },\r\n    \t{\"id\": {{new_id_m2}} }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteModificacion1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d6f4987-883c-402e-983a-229ba9908f3e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/{{new_id_m1}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						"{{new_id_m1}}"
+					]
+				},
+				"description": "borra la modificacion creada previamente"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteModificacion2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d6f4987-883c-402e-983a-229ba9908f3e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/{{new_id_m2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						"{{new_id_m2}}"
+					]
+				},
+				"description": "borra la modificacion creada previamente"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un requisito que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09b6a1b9-513b-424b-8d5e-9bef918ab623",
+						"exec": [
+							"tests[\"No se deberia borrar un desarrollador con un id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /requisitos/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"0"
+					]
+				},
+				"description": "Intenta borrar un requisto que no existe, debe retornar un responseCode 404 "
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc155871-34d0-48e9-a6ca-cc04fa4f2632",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r}}"
+					]
+				},
+				"description": "Elimina un requisito, debe retornar un response code 204 donde se indica que se elimino correctamente\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0260b0e-5936-4125-ad98-593421347c8e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_d}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_d}}"
+					]
+				},
+				"description": "El codigo guardado en el metodo crear desarrollador se pasa por parametro y este recurso es eliminado. Devuelve el codigo 404 al no encontrar el recurso eliminado\n"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCasoDeUso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d289fa53-9d97-4e66-8b62-d6e3eecbb36e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c}}"
+					]
+				},
+				"description": "borra un caso de uso de la base de datos"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2d3dd24e-0023-4c8f-adb0-46f25aeb7945",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5fd0584e-309c-460e-99c2-42fa216fb340",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

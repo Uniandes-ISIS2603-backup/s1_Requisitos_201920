@@ -34,6 +34,10 @@ public class RequisitoLogic
    */
   public RequisitosEntity createRequisito(RequisitosEntity requisito) throws BusinessLogicException
   {
+      if(rp.findByName(requisito.getNombre())!=null)
+      {
+         throw new BusinessLogicException("Ya existe un requisito con ese nombre.");      
+      }
       verificacionBasica(requisito);
       verificacionTipoRequisito(requisito);
       return rp.create(requisito);
@@ -82,12 +86,8 @@ public class RequisitoLogic
      * Verifica varias condiciones basicas de un requisito
      */
     private void verificacionBasica(RequisitosEntity requisito) throws BusinessLogicException
-    {
-      if(rp.findByName(requisito.getNombre())!=null)
-      {
-         throw new BusinessLogicException("Ya existe un requisito con ese nombre.");      
-      }
-      else if(requisito.getNombre()==null||requisito.getNombre().equals(""))
+    {  
+      if(requisito.getNombre()==null||requisito.getNombre().equals(""))
       {
          throw new BusinessLogicException("Falta nombre del requisito.");      
       }
