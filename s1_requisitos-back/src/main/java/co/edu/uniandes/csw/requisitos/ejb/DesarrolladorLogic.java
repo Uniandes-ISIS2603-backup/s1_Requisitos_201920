@@ -80,7 +80,7 @@ public class DesarrolladorLogic
     
     public DesarrolladorEntity  updateDesarrollador(DesarrolladorEntity  desarrollador) throws BusinessLogicException 
     {
-     String str="@"   ;
+   
        if(desarrollador.getTipo()==null)
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      

@@ -87,17 +87,13 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
         return tipo;
     }
     public String getTipoString(){
-    if (null==tipo)
-    {
-        return "Comun";
-    }
-    else switch (tipo) {
+  switch (tipo) {
             case REPRESENTANTEDELCLIENTE:
                 return "RepresentanteDelCliente";
             case RESPONSABLE:
                 return "Responsable";
             default:
-                return "Comun";
+                return "Comun.";
         }
     }
             
@@ -119,6 +115,8 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
                 break; 
             case "Comun":
                 this.tipo = TipoDesarrollador.COMUN;
+                break;
+            default:
                 break;
           
         }
