@@ -61,7 +61,7 @@ public class RequisitosDesarrolladorResource {
         if (desarrolladorLogic.getDesarrollador(desarrolladorId) == null) {
             throw new WebApplicationException("El recurso /desarrollador/" + desarrolladorId + " no existe.", 404);
         }
-        DesarrolladorDTO authorDTO = new DesarrolladorDTO(requisitosDesarrolladorLogic.addAuthor(desarrolladorId, requisitosId));
+        DesarrolladorDTO authorDTO = new DesarrolladorDTO(requisitosDesarrolladorLogic.addAuthor( requisitosId,desarrolladorId));
         LOGGER.log(Level.INFO, "RequisitosDesarrolladorResource addAuthor: output: {0}", authorDTO);
         return authorDTO;
     }
@@ -69,18 +69,18 @@ public class RequisitosDesarrolladorResource {
     /**
      * Busca el desarrollador dentro de el requisito con id asociado.
      *
-     * @param requisitoId Identificador de el requisito que se esta buscando. Este
+     * @param requisitosId Identificador de el requisito que se esta buscando. Este
      * debe ser una cadena de dígitos.
      * @return JSON {@link DesarrolladorDetailDTO} - El autor buscado
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando el premio no tiene autor.
      */
     @GET
-    public DesarrolladorDetailDTO getAuthor(@PathParam("requisitoId") Long requisitoId){
-        LOGGER.log(Level.INFO, "RequisitosDesarrolladorResource getAuthor: input: {0}", requisitoId);
-        DesarrolladorEntity authorEntity = requisitosDesarrolladorLogic.getDesarrollador(requisitoId);
+    public DesarrolladorDetailDTO getAuthor(@PathParam("requisitosId") Long requisitosId){
+        LOGGER.log(Level.INFO, "RequisitosDesarrolladorResource getAuthor: input: {0}", requisitosId);
+        DesarrolladorEntity authorEntity = requisitosDesarrolladorLogic.getDesarrollador(requisitosId);
         if (authorEntity == null) {
-            throw new WebApplicationException("El recurso /requisitos/" + requisitoId + "/desarrollador no existe.", 404);
+            throw new WebApplicationException("El recurso /requisitos/" + requisitosId + "/desarrollador no existe.", 404);
         }
         DesarrolladorDetailDTO authorDetailDTO = new DesarrolladorDetailDTO(authorEntity);
         LOGGER.log(Level.INFO, "RequisitosDesarrolladorResource getAuthor: output: {0}", authorDetailDTO);
@@ -113,13 +113,13 @@ public class RequisitosDesarrolladorResource {
     /**
      * Elimina la conexión entre el desarrollador y el requisito recibido en la URL.
      *
-     * @param requisitoId El ID del premio al cual se le va a desasociar el autor
+     * @param requisitosId El ID del premio al cual se le va a desasociar el autor
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @DELETE
-    public void removeAuthor(@PathParam("requisitoId") Long requisitoId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "RequisitosDesarrolladorResource removeAuthor: input: {0}", requisitoId);
-        requisitosDesarrolladorLogic.removeDesarrollador(requisitoId);
+    public void removeAuthor(@PathParam("requisitosId") Long requisitosId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "RequisitosDesarrolladorResource removeAuthor: input: {0}", requisitosId);
+        requisitosDesarrolladorLogic.removeDesarrollador(requisitosId);
         LOGGER.info("RequisitosDesarrolladorResource removeAuthor: output: void");
     }
 }
