@@ -1,0 +1,707 @@
+{
+	"info": {
+		"_postman_id": "d0ea5e2d-ab83-4504-8b96-377a0d4ba475",
+		"name": "RequisitosCasoDeUsoTests",
+		"description": "Collection que va  a probar las relaciones entre requisitos y caso de usos\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear un caso de uso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45fd31e3-b546-40d9-9bd5-496ccf21f18b",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_c1\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"nombre\": \"Caso1\",\r\n        \"servicios\": [\r\n            \"Eliminar\",\r\n            \"CrearCaso\"\r\n        ],\r\n        \"documentacion\": \"Intento1\",\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola1\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola1\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola1\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba1\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "**Release: Paso-5**\n\nCrea un nuevo casoDeUso. El Id es inicializado por la BD y se debe ver en la respuesta. \n\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\n\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un caso de uso 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45fd31e3-b546-40d9-9bd5-496ccf21f18b",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_c2\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"nombre\": \"Caso2\",\r\n        \"servicios\": [\r\n            \"Eliminar\",\r\n            \"CrearCaso\"\r\n        ],\r\n        \"documentacion\": \"Intento2\",\r\n        \"pruebas\": true,\r\n        \"entidades\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"preCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"posCondiciones\": [\r\n            \"hola\",\r\n            \"hola2\"\r\n        ],\r\n        \"caminosAlternos\": [\r\n            \"prueba\",\r\n            \"prueba2\"\r\n        ],\r\n        \"caminosExcepcion\": [\r\n            \"hallo\",\r\n            \"wie geht's\"\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos"
+					]
+				},
+				"description": "**Release: Paso-5**\n\nCrea un nuevo casoDeUso. El Id es inicializado por la BD y se debe ver en la respuesta. \n\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\n\n**Código http esperado: 200**\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un requisito",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3501cfde-1121-44a3-9c26-1453f5ac3b5f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16b9a96e-8e08-4cfe-9def-28f1fd626645",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_r1\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fuente\":\"Empresa X\",\n    \"autor\":\"Carlos Barragan\",\n    \"descripcion\":\"Intento1\",\n    \"importancia\":10,\n    \"estabilidad\":true,\n    \"nombre\":\"ImplementarIntento1\",\n    \"comentariosAdicionales\":\"Hola\",\n    \"tipo\":\"SEGURIDAD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo requisito. El Id es inicializado por la BD y se debe ver en la respuesta. \r\n\r\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un requisito 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3501cfde-1121-44a3-9c26-1453f5ac3b5f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16b9a96e-8e08-4cfe-9def-28f1fd626645",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_r2\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fuente\":\"Empresa Z\",\n    \"autor\":\"Luis Zapata\",\n    \"descripcion\":\"Intento2\",\n    \"importancia\":20,\n    \"estabilidad\":false,\n    \"nombre\":\"ImplementarIntento2\",\n    \"comentariosAdicionales\":\"Adios\",\n    \"tipo\":\"ESCALABILIDAD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo requisito. El Id es inicializado por la BD y se debe ver en la respuesta. \r\n\r\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar un CasoDeUso a un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ab47056-a5be-4aab-900f-d599e8344fc9",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r1}}/casodeuso/{{new_id_c1}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r1}}",
+						"casodeuso",
+						"{{new_id_c1}}"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nAsocia un requisito a un casoDeUso en la aplicación. \r\n\r\nSe envía el Id del casoDeUso y el del requisito a asociar en la URL de la petición.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar un casoDeUso que no existe a un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd685e11-33db-4118-be98-28f9dacd0dc7",
+						"exec": [
+							"tests[\"No se puede asociar el author ya que este no existe.\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /casodeuso/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r1}}/casodeuso/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r1}}",
+						"casodeuso",
+						"0"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nAsocia un casoDeUso que no existe a un requisito en la aplicación. \r\n\r\nSe envía el Id del casoDeUso y el del requisito a asociar en la URL de la petición.\r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /casodeuso/0 no existe.\".\r\n\r\n**Código http esperado: 404**"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener el casoDeUso de un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e5d490f-c9a8-4f77-9ff8-cd2807cf9b20",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"no genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r1}}/casodeuso",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r1}}",
+						"casodeuso"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nConsulta un casoDeUso de un requisito en la aplicación. \r\nLa petición no tiene cuerpo.\r\n\r\nSe envía el Id del casoDeUso y del requisito a consultar en la URL de la petición.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener el casoDeUso que no existe de un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3297c68a-6c35-4e0f-96bb-711c10512c2c",
+						"exec": [
+							"tests[\"No se puede obtener el author ya que este no existe.\"] = responseCode.code === 404;",
+							"let id = pm.variables.get(\"new_id_r2\");",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /requisitos/\"+id+\"/casodeuso no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r2}}/casodeuso",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r2}}",
+						"casodeuso"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nConsulta un casoDeUso que no existe de un requisito en la aplicación.  \r\n\r\nPara la prueba se verifica que se genera el error.\r\n\r\n**Código http esperado: 404**"
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar un casoDeUso a un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b595cd14-771c-4768-9c3e-b1faacdf23ce",
+						"exec": [
+							"tests[\"no genera error en el Put\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r1}}/casodeuso/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r1}}",
+						"casodeuso",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nActualiza el casoDeUso de un requisito existente. Se envían los Ids de las entidades asociar en la URL de la petición.\r\n\r\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar un casoDeUso que no existe a un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "826eb21c-0515-42ac-95a6-9367c2a4182f",
+						"exec": [
+							"tests[\"No se puede reemplazar el author al prize ya que el nuevo no existe.\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /casodeuso/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r1}}/casodeuso/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r1}}",
+						"casodeuso",
+						"0"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nAsocia un CasoDeUso que no existe a un requisito en la aplicación. \r\n\r\nSe envían los Ids a asociar en la URL de la petición.\r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /casodeuso/0 no existe.\".\r\n\r\n**Código http esperado: 404**"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrarle el casoDeUso a un requisito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08d9072a-55bf-4641-bbdb-52b352762f65",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r1}}/casodeuso",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r1}}",
+						"casodeuso"
+					]
+				},
+				"description": "**Release: Paso-5**\n\nBorra la asociación entre un requisito y un casoDeUso. Se envían los ids del autor y del premio creados anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un requisito 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc155871-34d0-48e9-a6ca-cc04fa4f2632",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r1}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r1}}"
+					]
+				},
+				"description": "\n**Release: Paso-5**\n\nBorra un requisito. Se envía el id del requisito creado anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un requisito 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc155871-34d0-48e9-a6ca-cc04fa4f2632",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos/{{new_id_r2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos",
+						"{{new_id_r2}}"
+					]
+				},
+				"description": "\n**Release: Paso-5**\n\nBorra un requisito. Se envía el id del requisito creado anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCasoDeUso 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d289fa53-9d97-4e66-8b62-d6e3eecbb36e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c1}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c1}}"
+					]
+				},
+				"description": "\n**Release: Paso-5**\n\nBorra un CasoDeUso. Se envía el id del CasoDeUso creado anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCasoDeUso 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d289fa53-9d97-4e66-8b62-d6e3eecbb36e",
+						"exec": [
+							"tests[\"no genera error en el Delete\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_c2}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"casos",
+						"{{new_id_c2}}"
+					]
+				},
+				"description": "\n**Release: Paso-5**\n\nBorra un CasoDeUso. Se envía el id del CasoDeUso creado anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
