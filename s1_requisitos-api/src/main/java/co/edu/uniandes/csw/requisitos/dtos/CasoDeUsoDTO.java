@@ -12,11 +12,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
- * CasoDeUsoDTO Objeto de transferencia de datos de CasoDeUso. Los DTO contienen las
- * representaciones de los JSON que se transfieren entre el cliente y el
+ * CasoDeUsoDTO Objeto de transferencia de datos de CasoDeUso. Los DTO contienen
+ * las representaciones de los JSON que se transfieren entre el cliente y el
  * servidor.
  *
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
@@ -39,12 +38,14 @@ import java.util.List;
  *   }
  *
  * </pre>
+ *
  * @author Maria Alejandra Escalante
  */
 public class CasoDeUsoDTO implements Serializable {
+
     /*
     se crean las variables del tipo caso de uso
-    */
+     */
     private Long id;
     private String nombre;
     private List<String> servicios = new ArrayList<>();
@@ -57,51 +58,44 @@ public class CasoDeUsoDTO implements Serializable {
     private List<String> entidades = new ArrayList<>();
 
     //variable encargada de almacenar los caminos de excepcion involucradas en el caso
-
     private List<String> caminosExcepcion = new ArrayList<>();
 
     //variable encargada de almacenar las postcondiciones involucradas en el caso
-
     private List<String> posCondiciones = new ArrayList<>();
 
     //variable encargada de almacenar las pre condicionesinvolucradas en el caso
-
     private List<String> preCondiciones = new ArrayList<>();
 
     //variable encargada de almacenar los caminos alternos involucradas en el caso
-
     private List<String> caminosAlternos = new ArrayList<>();
 
-    
     private DesarrolladorEntity representanteDelCliente;
     private DesarrolladorEntity responsable;
 
-    
-    public CasoDeUsoDTO (){
-        
+    public CasoDeUsoDTO() {
+
     }
-    
-    public CasoDeUsoDTO(CasoDeUsoEntity caso){
-        if (caso!=null){
-        this.id=caso.getId();
-        this.nombre=caso.getNombre();
-        this.pruebas=caso.getPruebas();
-        this.documentacion=caso.getDocumentacion();
-        this.servicios=caso.getServicios();
-        this.caminosAlternos=caso.getCaminosAlternos();
-        this.caminosExcepcion=caso.getCaminosExcepcion();
-        this.entidades=caso.getEntidades();
-        this.posCondiciones=caso.getPosCondiciones();
-        this.preCondiciones=caso.getPreCondiciones();
-        this.representanteDelCliente=caso.getRepresentanteDelCliente();
-        this.responsable=caso.getResponsable();
-        
+
+    public CasoDeUsoDTO(CasoDeUsoEntity caso) {
+        if (caso != null) {
+            this.id = caso.getId();
+            this.nombre = caso.getNombre();
+            this.pruebas = caso.getPruebas();
+            this.documentacion = caso.getDocumentacion();
+            this.servicios = caso.getServicios();
+            this.caminosAlternos = caso.getCaminosAlternos();
+            this.caminosExcepcion = caso.getCaminosExcepcion();
+            this.entidades = caso.getEntidades();
+            this.posCondiciones = caso.getPosCondiciones();
+            this.preCondiciones = caso.getPreCondiciones();
+            this.representanteDelCliente = caso.getRepresentanteDelCliente();
+            this.responsable = caso.getResponsable();
+
+        }
     }
-    }
-    
-    
-    public CasoDeUsoEntity toEntity(){
-        CasoDeUsoEntity entidad= new CasoDeUsoEntity();
+
+    public CasoDeUsoEntity toEntity() {
+        CasoDeUsoEntity entidad = new CasoDeUsoEntity();
         entidad.setId(this.getId());
         entidad.setPruebas(this.getPruebas());
         entidad.setDocumentacion(this.getDocumentacion());
@@ -284,7 +278,5 @@ public class CasoDeUsoDTO implements Serializable {
     public void setResponsable(DesarrolladorEntity responsable) {
         this.responsable = responsable;
     }
-    
-    
-    
+
 }
