@@ -1,6 +1,7 @@
 
 delete from RequisitosEntity;
 
+
 insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilidad, comentariosAdicionales, tipo, nombre) values ('Mueller, Okuneva and Murphy', 'Frederick Abramov', 'Black-cheeked waxbill', 1, 0, 'Suspendisse potenti. In eleifend quam a odio.', 2, 'Multi-channelled radical toolset');
 insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilidad, comentariosAdicionales, tipo, nombre) values ('Hessel, Dooley and Schuppe', 'Rosetta Raubenheim', 'Glider, sugar', 2, 1, 'Curabitur in libero ut massa volutpat convallis.', 2, 'Managed encompassing task-force');
 insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilidad, comentariosAdicionales, tipo, nombre) values ('Rowe and Sons', 'Weylin Haysom', 'Macaw, green-winged', 3, 0, 'Praesent id massa id nisl venenatis lacinia.', 3, 'Versatile bifurcated framework');
