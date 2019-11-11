@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "97876d89-ac41-4bb2-9fd5-53c603f6dfb4",
+		"name": "DesarrolladorEquipoDesarrollo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crearDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "520d8207-8bae-498b-b233-d4214585e4e5",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_desarrollador\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gatos.com\",\r\n    \"tipo\":\"Responsable\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "Crea un desarrollador"
+			},
+			"response": []
+		},
+		{
+			"name": "crearEquipo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "15de4f98-cbb0-4df5-88dd-d8a91c5c4c5b",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_idEquipoDesarrollo\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"equipoDesarrollo\": \"{{$randomInt}}Nombre{{$randomInt}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo"
+					]
+				},
+				"description": "Crea el equipo de desarrollo"
+			},
+			"response": []
+		},
+		{
+			"name": "crearRelacionDesarrolladorEquipoDesarrollo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "abd5702a-bb22-41dc-8381-987177c045b7",
+						"exec": [
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_desarrollador}}/equipo/{{new_idEquipoDesarrollo}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_desarrollador}}",
+						"equipo",
+						"{{new_idEquipoDesarrollo}}"
+					]
+				},
+				"description": "Crea la relación entre ambos objetos"
+			},
+			"response": []
+		},
+		{
+			"name": "getEquipo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_desarrollador}}/equipo",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_desarrollador}}",
+						"equipo"
+					]
+				},
+				"description": "Retorna el equipo"
+			},
+			"response": []
+		},
+		{
+			"name": "crearEquipoNuevo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "953147af-ad32-4702-8613-9878ddd0fe3c",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_idEquipoDesarrollo\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"equipoDesarrollo\": \"NuevoT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo"
+					]
+				},
+				"description": "Crea nuevo equipo"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarEquipo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_desarrollador}}/equipo/{{new_idEquipoDesarrollo}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador",
+						"{{new_id_desarrollador}}",
+						"equipo",
+						"{{new_idEquipoDesarrollo}}"
+					]
+				},
+				"description": "Actualiza el equipo"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

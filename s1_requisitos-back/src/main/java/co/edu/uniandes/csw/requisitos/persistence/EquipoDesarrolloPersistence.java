@@ -65,10 +65,9 @@ public class EquipoDesarrolloPersistence {
       * @param id del equipo a eliminar
       * @return 
       */
-     public EquipoDesarrolloEntity delete(Long id){
+     public void delete(Long id){
          EquipoDesarrolloEntity eq = em.find(EquipoDesarrolloEntity.class, id);
          em.remove(eq);
-         return eq;
      }
      
        
@@ -83,7 +82,7 @@ public class EquipoDesarrolloPersistence {
         List<EquipoDesarrolloEntity> lista=findAll();
         for (EquipoDesarrolloEntity requisito : lista) 
         {
-            if(requisito.getEquipoDesarrollo().equals(name))
+            if(requisito!=null && requisito.getEquipoDesarrollo()!=null &&requisito.getEquipoDesarrollo().equals(name))
                 buscado=requisito;
         }
         return buscado;

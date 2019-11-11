@@ -24,13 +24,9 @@ public class EquipoDesarrolloLogic {
     private EquipoDesarrolloPersistence persistence;
     
     public EquipoDesarrolloEntity createEquipoDesarrollo(EquipoDesarrolloEntity equipo) throws BusinessLogicException{
-        if(equipo.getId()==null){
-            throw new BusinessLogicException("El equipo de desarrollo no existe");
-        }else if(persistence.find(equipo.getId())!=null)
-        {
-            throw new BusinessLogicException("Ya existe un equipo con ese id");
-        }
-        else if(persistence.findByEquipoDesarrollo(equipo.getEquipoDesarrollo())!=null)
+
+      
+        if(persistence.findByEquipoDesarrollo(equipo.getEquipoDesarrollo())!=null)
         {
             throw new BusinessLogicException("Ya existe un equipo con ese nombre");
         }
@@ -76,6 +72,16 @@ public class EquipoDesarrolloLogic {
         if(equipo.getId()==null){
             throw new BusinessLogicException("El equipo de desarrollo no existe");
         }
+        if(equipo.getEquipoDesarrollo()==null || equipo.getEquipoDesarrollo().equals(""))
+        {
+            throw new BusinessLogicException("El equipo de desarrollo debe tener nombre");
+
+        }
+        if(persistence.findByEquipoDesarrollo(equipo.getEquipoDesarrollo())!=null)
+        {
+            throw new BusinessLogicException("Ya existe un equipo con ese nombre");
+
+        }
         return  persistence.update(equipo);
     }
     
@@ -84,7 +90,7 @@ public class EquipoDesarrolloLogic {
      * @param id del equipo a borrar
      * @return equipo de desarrollo borrado
      */
-    public EquipoDesarrolloEntity deleteEquipo(Long id){
-        return persistence.delete(id);
+    public void deleteEquipo(Long id){
+         persistence.delete(id);
     }
 }
