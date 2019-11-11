@@ -39,11 +39,7 @@ public class DesarrolladorLogic
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }
-      else if(dp.find(desarrollador.getId())!=null)
-      {
-         throw new BusinessLogicException("Ya existe un desarrollador con ese id.");      
-      }
-      else if(dp.findByName(desarrollador.getNombre())!=null)
+     else if(dp.findByName(desarrollador.getNombre())!=null)
       {
          throw new BusinessLogicException("Ya existe un desarrollador con ese nombre.");      
       }

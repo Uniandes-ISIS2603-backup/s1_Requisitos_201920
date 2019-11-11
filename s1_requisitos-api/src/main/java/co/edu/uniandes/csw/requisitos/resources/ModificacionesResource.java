@@ -153,6 +153,21 @@ public class ModificacionesResource {
         }
         return ModificacionesCasoDeUsoResource.class;
     }
+    /**
+     * @param modificacionesId El ID de la  con respecto a la cual se accede al
+     * servicio.
+     * @return El servicio de desarrollador para esta modificacion en paricular.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra la modificacion.
+     */
+    @Path("{modificacionesId: \\d+}/desarrollador")
+    public Class<ModificacionesDesarrolladorResource> getModificacionesDesarrolladorResource(@PathParam("modificacionesId") Long modificacionesId) {
+    
+        if (logica.getModificacion(modificacionesId)== null) {
+            throw new WebApplicationException("El recurso /modificaciones/" + modificacionesId + " no existe.", 404);
+        }
+        return ModificacionesDesarrolladorResource.class;
+    }
   
 }
     
