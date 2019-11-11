@@ -192,7 +192,7 @@ public class RequisitosResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que s genera cuando no se el premio.
      */
-    @Path("{requisitosId: \\d+}/")
+    @Path("{requisitosId: \\d+}/desarrolladorb")
     public Class<RequisitosDesarrolladorResource> getRequisitosDesarrolladoroResource(@PathParam("requisitosId") Long requisitosId) {
     
         if (requisitoLogic.getRequisito(requisitosId)== null) {

@@ -61,7 +61,7 @@ public class ModificacionesDesarrolladorResource {
         if (desarrolladorLogic.getDesarrollador(desarrolladorId) == null) {
             throw new WebApplicationException("El recurso /desarrollador/" + desarrolladorId + " no existe.", 404);
         }
-        DesarrolladorDTO authorDTO = new DesarrolladorDTO(modificacionesDesarrolladorLogic.addAuthor(desarrolladorId, modificacionesId));
+        DesarrolladorDTO authorDTO = new DesarrolladorDTO(modificacionesDesarrolladorLogic.addAuthor( modificacionesId,desarrolladorId));
         LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource addAuthor: output: {0}", authorDTO);
         return authorDTO;
     }
@@ -69,18 +69,18 @@ public class ModificacionesDesarrolladorResource {
     /**
      * Busca el desarrollador dentro de la modificacion con id asociado.
      *
-     * @param modificacionId Identificador de la modificacion que se esta buscando. Este
+     * @param modificacionesId Identificador de la modificacion que se esta buscando. Este
      * debe ser una cadena de dígitos.
      * @return JSON {@link DesarrolladorDetailDTO} - El autor buscado
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando el premio no tiene autor.
      */
     @GET
-    public DesarrolladorDetailDTO getAuthor(@PathParam("modificacionId") Long modificacionId){
-        LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource getAuthor: input: {0}", modificacionId);
-        DesarrolladorEntity authorEntity = modificacionesDesarrolladorLogic.getDesarrollador(modificacionId);
+    public DesarrolladorDetailDTO getAuthor(@PathParam("modificacionesId") Long modificacionesId){
+        LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource getAuthor: input: {0}", modificacionesId);
+        DesarrolladorEntity authorEntity = modificacionesDesarrolladorLogic.getDesarrollador(modificacionesId);
         if (authorEntity == null) {
-            throw new WebApplicationException("El recurso /modificaciones/" + modificacionId + "/desarrollador no existe.", 404);
+            throw new WebApplicationException("El recurso /modificaciones/" + modificacionesId + "/desarrollador no existe.", 404);
         }
         DesarrolladorDetailDTO authorDetailDTO = new DesarrolladorDetailDTO(authorEntity);
         LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource getAuthor: output: {0}", authorDetailDTO);
@@ -90,7 +90,7 @@ public class ModificacionesDesarrolladorResource {
     /**
      * Remplaza la instancia de desarrollador asociada a una instancia de requisito
      *
-     * @param modificacionId Identificador de la modificacion que se esta actualizando. Este
+     * @param modificacionesId Identificador de la modificacion que se esta actualizando. Este
      * debe ser una cadena de dígitos.
      * @param desarrolladorId Identificador de el desarrollador que se esta remplazando. Este
      * debe ser una cadena de dígitos.
@@ -100,12 +100,12 @@ public class ModificacionesDesarrolladorResource {
      */
     @PUT
     @Path("{desarrolladorId: \\d+}")
-    public DesarrolladorDetailDTO replaceAuthor(@PathParam("modificacionId") Long modificacionId, @PathParam("desarrolladorId") Long desarrolladorId) {
-        LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource replaceAuthor: input: modificacionId: {0} , desarrolladorId: {1}", new Object[]{modificacionId, desarrolladorId});
+    public DesarrolladorDetailDTO replaceAuthor(@PathParam("modificacionesId") Long modificacionesId, @PathParam("desarrolladorId") Long desarrolladorId) {
+        LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource replaceAuthor: input: modificacionesId: {0} , desarrolladorId: {1}", new Object[]{modificacionesId, desarrolladorId});
         if (desarrolladorLogic.getDesarrollador(desarrolladorId) == null) {
             throw new WebApplicationException("El recurso /desarrollador/" + desarrolladorId + " no existe.", 404);
         }
-        DesarrolladorDetailDTO authorDetailDTO = new DesarrolladorDetailDTO(modificacionesDesarrolladorLogic.replaceAuthor(modificacionId, desarrolladorId));
+        DesarrolladorDetailDTO authorDetailDTO = new DesarrolladorDetailDTO(modificacionesDesarrolladorLogic.replaceAuthor(modificacionesId, desarrolladorId));
         LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource replaceAuthor: output: {0}", authorDetailDTO);
         return authorDetailDTO;
     }
@@ -113,13 +113,13 @@ public class ModificacionesDesarrolladorResource {
     /**
      * Elimina la conexión entre el desarrollador y la modificacion recibido en la URL.
      *
-     * @param modificacionId El ID del premio al cual se le va a desasociar el autor
+     * @param modificacionesId El ID del premio al cual se le va a desasociar el autor
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @DELETE
-    public void removeAuthor(@PathParam("modificacionId") Long modificacionId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource removeAuthor: input: {0}", modificacionId);
-        modificacionesDesarrolladorLogic.removeDesarrollador(modificacionId);
+    public void removeAuthor(@PathParam("modificacionesId") Long modificacionesId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource removeAuthor: input: {0}", modificacionesId);
+        modificacionesDesarrolladorLogic.removeDesarrollador(modificacionesId);
         LOGGER.info("ModificacionesDesarrolladorResource removeAuthor: output: void");
     }
 }
