@@ -37,7 +37,8 @@ public class DesarrolladorEquipoDesarrolloLogic {
         EquipoDesarrolloEntity equipoDesarrolloEntity = equipoDesarrolloPersistence.find(equipoId);
         DesarrolladorEntity desarrolladorEntity = desarrolladorPersistence.find(desarrolladorId);
         desarrolladorEntity.setEquipoDesarrollo(equipoDesarrolloEntity);
-        return equipoDesarrolloPersistence.find(equipoId); 
+        desarrolladorPersistence.update(desarrolladorEntity);
+        return equipoDesarrolloEntity; 
     }
     
      /**

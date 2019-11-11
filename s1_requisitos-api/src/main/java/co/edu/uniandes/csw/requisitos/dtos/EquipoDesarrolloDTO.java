@@ -73,7 +73,7 @@ public class EquipoDesarrolloDTO implements Serializable{
     
     public EquipoDesarrolloEntity toEntity(){
         EquipoDesarrolloEntity equipoEntity= new EquipoDesarrolloEntity();
-        equipoEntity.setId(this.id);
+        equipoEntity.setId(this.getId());
         equipoEntity.setEquipoDesarrollo(this.equipoDesarrollo);
         return equipoEntity;
     }

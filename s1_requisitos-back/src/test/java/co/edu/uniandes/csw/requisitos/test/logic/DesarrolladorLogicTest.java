@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.requisitos.test.logic;
 
 import co.edu.uniandes.csw.requisitos.ejb.DesarrolladorLogic;
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import java.util.ArrayList;

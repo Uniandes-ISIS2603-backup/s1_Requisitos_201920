@@ -58,9 +58,10 @@ public class EquipoDesarrolloResource {
     @POST
     public EquipoDesarrolloDTO createEquipo( EquipoDesarrolloDTO equipo) throws BusinessLogicException {
         LOGGER.info("EquipoDesarrolloResource createEquipoDesarrollo: input:" +equipo.toString());
-       EquipoDesarrolloDTO nuevoEquipoDTO = new EquipoDesarrolloDTO(proyLogic.createEquipoDesarrollo(equipo.toEntity()));
+        EquipoDesarrolloEntity equipoEntity = equipo.toEntity();
         LOGGER.info("EquipoDesarrolloResource createEquipoDesarrollo: output:" +equipo.toString());
-        return nuevoEquipoDTO;
+        equipoEntity = proyLogic.createEquipoDesarrollo(equipoEntity);
+        return new EquipoDesarrolloDTO(equipoEntity);
     }
     
     /**
@@ -113,11 +114,11 @@ public class EquipoDesarrolloResource {
      */
     @PUT
     @Path("{equipoId: \\d+}")
-    public EquipoDesarrolloDTO updateEquipo(@PathParam("equipoId") Long equipoDesarrolloId, EquipoDesarrolloDTO equipo)throws BusinessLogicException{
-        LOGGER.log(Level.INFO, "EquipoDesarrolloResource updateEquipo: input: id: {0} , caso: {1}", new Object[]{equipoDesarrolloId, equipo});
-        equipo.setId(equipoDesarrolloId);
-        if (proyLogic.getEquipo(equipoDesarrolloId)==null){
-            throw new WebApplicationException("El recurso /equipoDesarrollo/" + equipoDesarrolloId + " no existe.", 404);
+    public EquipoDesarrolloDTO updateEquipo(@PathParam("equipoId") Long equipoId, EquipoDesarrolloDTO equipo)throws BusinessLogicException{
+        LOGGER.log(Level.INFO, "EquipoDesarrolloResource updateEquipo: input: id: {0} , caso: {1}", new Object[]{equipoId, equipo});
+        equipo.setId(equipoId);
+        if (proyLogic.getEquipo(equipoId)==null){
+            throw new WebApplicationException("El recurso /equipoDesarrollo/" + equipoId + " no existe.", 404);
         }
         EquipoDesarrolloDTO nuevo= new EquipoDesarrolloDTO(proyLogic.updateEquipo(equipo.toEntity()));
         LOGGER.log(Level.INFO, "EquipoDesarrolloResource updateEquipo: output:{0}", nuevo);
@@ -133,7 +134,7 @@ public class EquipoDesarrolloResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra el desarrollador.
      */
-    @Path("{equipoId: \\d+}")
+    @Path("{equipoId:\\d+}")
     @DELETE
     public void deleteEquipo(@PathParam ("equipoId") Long equipoId) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "EquipoDesarrolloResource deleteEquipo: input: {0}", equipoId);

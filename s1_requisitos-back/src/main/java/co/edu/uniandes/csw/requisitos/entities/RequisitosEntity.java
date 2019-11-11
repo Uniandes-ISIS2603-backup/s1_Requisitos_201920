@@ -184,7 +184,23 @@ public class RequisitosEntity extends BaseEntity implements Serializable {
     public void setTipo(TipoRequisito tipo) {
         this.tipo = tipo;
     }
-    
+    /**
+     * Define el tipo del requisito por medio de un string
+     * @param tipo
+     */
+    public void setTipoString(String tipo) 
+    {
+       if(tipo.equalsIgnoreCase("FUNCIONAL"))
+          this.tipo = TipoRequisito.FUNCIONAL; 
+       else if(tipo.equalsIgnoreCase("SEGURIDAD"))
+          this.tipo=TipoRequisito.SEGURIDAD;
+       else if(tipo.equalsIgnoreCase("PLATAFORMA"))
+          this.tipo=TipoRequisito.PLATAFORMA;
+       else if(tipo.equalsIgnoreCase("ESCALABILIDAD"))
+          this.tipo=TipoRequisito.ESCALABILIDAD;
+       else if(tipo.equalsIgnoreCase("DESEMPENO"))
+          this.tipo=TipoRequisito.DESEMPENO;   
+    }
     /**
      * Retorna la fuente
      *

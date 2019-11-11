@@ -52,6 +52,7 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
                 desarrolladorEntity.getModificaciones().forEach((lis) -> {
                     modificaciones.add(new ModificacionesDTO(lis));
                 });
+              
             }
             if (desarrolladorEntity.getRequisitos() != null) {
                 requisitos = new ArrayList<>();

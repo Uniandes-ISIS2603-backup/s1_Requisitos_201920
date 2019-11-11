@@ -62,7 +62,7 @@ public class DesarrolladorResource
      * Error de lógica que se genera cuando no existe el tipo del desarrollador.
      */
     @POST
-    public DesarrolladorDTO createDesarrollador(DesarrolladorDTO desarrollador) throws BusinessLogicException, Exception     
+    public DesarrolladorDTO createDesarrollador(DesarrolladorDTO desarrollador) throws BusinessLogicException  
     {
         LOGGER.log(Level.INFO, "DesarrolladorResource createDesarrollador: input: {0}", desarrollador);
         DesarrolladorDTO nuevoDesarrolladorDTO = new DesarrolladorDTO(dl.createDesarrollador(desarrollador.toEntity()));
@@ -80,7 +80,7 @@ public class DesarrolladorResource
      * aplicación. Si no hay ninguno retorna una lista vacía.
      */
     @GET
-    public List<DesarrolladorDetailDTO> getDesarrolladores() throws Exception 
+    public List<DesarrolladorDetailDTO> getDesarrolladores() 
     {
         LOGGER.info("Desarrollador getDesarrollador: input: void");
         List<DesarrolladorDetailDTO> listaDesarrollador = listEntity2DetailDTO(dl.getDesarrolladores());
@@ -98,7 +98,7 @@ public class DesarrolladorResource
      */
     @GET
     @Path("{desarrolladorId: \\d+}")
-    public DesarrolladorDetailDTO getDesarrollador(@PathParam("desarrolladorId") Long desarrolladorId) throws Exception 
+    public DesarrolladorDetailDTO getDesarrollador(@PathParam("desarrolladorId") Long desarrolladorId) 
     {
         LOGGER.log(Level.INFO, "DesarrolladorResource getDesarrollador: input: {0}", desarrolladorId);
         DesarrolladorEntity desarrolladorEntity = dl.getDesarrollador(desarrolladorId);
@@ -126,7 +126,7 @@ public class DesarrolladorResource
      */
     @PUT
     @Path("{desarrolladorId: \\d+}")
-    public DesarrolladorDetailDTO updateDesarrollador(@PathParam("desarrolladorId") Long desarrolladorId, DesarrolladorDetailDTO desarrollador) throws BusinessLogicException, Exception {
+    public DesarrolladorDetailDTO updateDesarrollador(@PathParam("desarrolladorId") Long desarrolladorId, DesarrolladorDetailDTO desarrollador) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "DesarrolladorResource updateDesarrollador: input: id: {0} , book: {1}", new Object[]{desarrolladorId, desarrollador});
         desarrollador.setId(desarrolladorId);
         if (dl.getDesarrollador(desarrolladorId) == null) {
@@ -167,7 +167,7 @@ public class DesarrolladorResource
      * vamos a convertir a DetailDTO.
      * @return la lista de Desarrollador en forma DetailDTO (json)
      */
-    private List<DesarrolladorDetailDTO> listEntity2DetailDTO(List<DesarrolladorEntity> entityList) throws Exception 
+    private List<DesarrolladorDetailDTO> listEntity2DetailDTO(List<DesarrolladorEntity> entityList) 
     {
         List<DesarrolladorDetailDTO> list = new ArrayList<>();
         for (DesarrolladorEntity entity : entityList) 
@@ -195,7 +195,7 @@ public class DesarrolladorResource
     public Class<DesarrolladorEquipoDesarrolloResource> getDesarrolladorEquipoDesarrolloResource(@PathParam("desarrolladorId") Long desarrolladorId) {
     
         if (dl.getDesarrollador(desarrolladorId) == null) {
-            throw new WebApplicationException("El recurso /desarrollador/" + desarrolladorId + " no existe.", 404);
+            throw new WebApplicationException(PATH1 + desarrolladorId + PATH2, 404);
         }
         return DesarrolladorEquipoDesarrolloResource.class;
     }

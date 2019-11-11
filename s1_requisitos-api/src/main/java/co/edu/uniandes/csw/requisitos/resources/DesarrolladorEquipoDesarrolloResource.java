@@ -11,8 +11,6 @@ import co.edu.uniandes.csw.requisitos.ejb.DesarrolladorEquipoDesarrolloLogic;
 import co.edu.uniandes.csw.requisitos.ejb.EquipoDesarrolloLogic;
 import co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -53,7 +51,7 @@ public class DesarrolladorEquipoDesarrolloResource {
      */
     @POST
     @Path("{equipoDesarrollosId: \\d+}")
-    public EquipoDesarrolloDTO addEquipoDesarrollo(@PathParam("desarrolladorsId") Long desarrolladorsId, @PathParam("equipoDesarrollosId") Long equipoDesarrollosId) {
+    public EquipoDesarrolloDTO addEquipoDesarrollo(@PathParam("desarrolladorId") Long desarrolladorsId, @PathParam("equipoDesarrollosId") Long equipoDesarrollosId) {
         if (equipoDesarrolloLogic.getEquipo(equipoDesarrollosId) == null) {
             throw new WebApplicationException("El recurso /equipoDesarrollos/" + equipoDesarrollosId + " no existe.", 404);
         }
@@ -71,7 +69,7 @@ public class DesarrolladorEquipoDesarrolloResource {
      * Error de lógica que se genera cuando el premio no tiene autor.
      */
     @GET
-    public EquipoDesarrolloDetailDTO getEquipoDesarrollo(@PathParam("desarrolladorsId") Long desarrolladorsId) {
+    public EquipoDesarrolloDetailDTO getEquipoDesarrollo(@PathParam("desarrolladorId") Long desarrolladorsId) {
         EquipoDesarrolloEntity equipoDesarrolloEntity = desarrolladorEquipoDesarrolloLogic.getEquipoDesarrollo(desarrolladorsId);
         if (equipoDesarrolloEntity == null) {
             throw new WebApplicationException("El recurso /desarrolladors/" + desarrolladorsId + "/equipoDesarrollo no existe.", 404);
@@ -92,12 +90,12 @@ public class DesarrolladorEquipoDesarrolloResource {
      * Error de lógica que se genera cuando no se encuentra el autor.
      */
     @PUT
-    @Path("{equipoDesarrollosId: \\d+}")
-    public EquipoDesarrolloDetailDTO replaceEquipoDesarrollo(@PathParam("desarrolladorsId") Long desarrolladorsId, @PathParam("equipoDesarrollosId") Long equipoDesarrollosId) {
+    @Path("{equipoDesarrolloId: \\d+}")
+    public EquipoDesarrolloDetailDTO replaceEquipoDesarrollo(@PathParam("desarrolladorId") Long desarrolladorId, @PathParam("equipoDesarrolloId") Long equipoDesarrollosId) {
         if (equipoDesarrolloLogic.getEquipo(equipoDesarrollosId) == null) {
             throw new WebApplicationException("El recurso /equipoDesarrollos/" + equipoDesarrollosId + " no existe.", 404);
         }
-        EquipoDesarrolloDetailDTO equipoDesarrolloDetailDTO = new EquipoDesarrolloDetailDTO(desarrolladorEquipoDesarrolloLogic.replaceEquipoDesarrollo(desarrolladorsId, equipoDesarrollosId));
+        EquipoDesarrolloDetailDTO equipoDesarrolloDetailDTO = new EquipoDesarrolloDetailDTO(desarrolladorEquipoDesarrolloLogic.replaceEquipoDesarrollo(desarrolladorId, equipoDesarrollosId));
         return equipoDesarrolloDetailDTO;
     }
 
@@ -109,7 +107,7 @@ public class DesarrolladorEquipoDesarrolloResource {
      * Error de lógica que se genera cuando el premio no tiene autor.
      */
     @DELETE
-    public void removeEquipoDesarrollo(@PathParam("desarrolladorsId") Long desarrolladorsId) throws BusinessLogicException {
+    public void removeEquipoDesarrollo(@PathParam("desarrolladorId") Long desarrolladorsId) throws BusinessLogicException {
         desarrolladorEquipoDesarrolloLogic.removeEquipoDesarrollo(desarrolladorsId);
     }
 }

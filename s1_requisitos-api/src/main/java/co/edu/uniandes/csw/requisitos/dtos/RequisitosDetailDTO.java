@@ -11,6 +11,77 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase que extiende de {@link RequisitoDTO} para manejar las relaciones entre los
+ * RequisitoDTO y  modificacionesDTO.
+ *
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *       "id": number,
+ *       "fuente":String,
+ *        "autor":String,
+ *        "descripcion":String,
+ *       "importancia":number,
+ *       "estabilidad":boolean,
+ *       "nombre":String,
+ *       "comentariosAdicionales":String,
+ *        "tipo":String,
+ *        "casoDeUso":{@link CasoDeUsoDTO},
+ *        "modificaciones":[{@link  ModificacionesDTO}]
+ *  }
+ * </pre> Por ejemplo un requisito se representa asi:<br>
+ *
+ *  *<pre>
+ *
+ *   {
+ *          "id": 13,
+ *           "fuente":"Empresa X",
+ *           "autor":"Carlos Barragan",
+ *          "descripcion":"Intento1",
+ *           "importancia":10,
+ *           "estabilidad":true,
+ *           "nombre":"ImplementarIntento1",
+ *          "comentariosAdicionales":"Hola",
+ *          "tipo":"FUNCIONAL",
+ *          "casoDeUso":
+ *           *   {
+ *                   "autor": "Carlos Barragan",
+ *                    "comentariosAdicionales": "Hola",
+ *                    "descripcion": "Intento1",
+ *                    "estabilidad": true,
+ *                    "fuente": "Empresa X",
+ *                     "id": 1,
+ *                     "importancia": 10,
+ *                     "nombre": "ImplementarIntento1",
+ *                     "requisitosFuncionalesCaso": {
+ *                     "id": 1,
+ *                   "caminosAlternos": [],
+ *                  "caminosExcepcion": [],
+ *                  "entidades": [],
+ *                  "funcionales": [],
+ *                  "modificaciones": [],
+ *                  "posCondiciones": [],
+ *                  "preCondiciones": [],
+ *                  "servicios": []
+ *              },
+ *               "tipo": "SEGURIDAD"
+ *              },
+ *           "modificaciones":[
+ *              {
+ *                "id": 2,
+ *                "descripcion": "se cambio el nombre del usuario",
+ *                "fechaModificacion ": "2014-01-01T23:28:56.782Z"
+ *              },
+ *              {
+ *                "id": 3,
+ *                "descripcion": "se cambio el nombre del usuario",
+ *                "fechaModificacion ": "2014-01-01T23:28:56.782Z"
+ *             }
+ *            ]
+ *      }
+ *
+ * </pre>
+ *
  * @author Nicolás Tobo
  */
 public class RequisitosDetailDTO extends RequisitosDTO 
@@ -82,18 +153,5 @@ public class RequisitosDetailDTO extends RequisitosDTO
      */
     public void setModificaciones(List<ModificacionesDTO> modificaciones) {
         this.modificaciones = modificaciones;
-    }
-    
-    /**
-     * Define las modificaciones de un requisito a partir de una lista de modificacionesEntity
-     * @param modificacionesEnt
-     */
-    public void setModificacionesEntity(List<ModificacionesEntity> modificacionesEnt) 
-    {
-        modificaciones = new ArrayList<>();
-        for (ModificacionesEntity entityMod :modificacionesEnt) 
-        {
-            modificaciones.add(new ModificacionesDTO(entityMod));
-        }
     }
 }

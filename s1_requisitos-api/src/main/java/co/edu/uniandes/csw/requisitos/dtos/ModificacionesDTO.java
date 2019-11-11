@@ -28,7 +28,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *      "id": number,
  *      "descripcion": string,
  *      "fechaModificacion ": Date
- *     
  *   }
  * </pre> Por ejemplo una  Modificacion se representa asi:<br>
  *
@@ -180,7 +179,4 @@ public class ModificacionesDTO implements Serializable {
     public void setModificacionesRequisito(RequisitosEntity modificacionesRequisito) {
         this.modificacionesRequisito = modificacionesRequisito;
     }
-
-    
-
 }

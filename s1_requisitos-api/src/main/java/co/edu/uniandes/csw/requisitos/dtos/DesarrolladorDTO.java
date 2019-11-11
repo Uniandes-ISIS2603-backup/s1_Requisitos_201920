@@ -84,12 +84,13 @@ public class DesarrolladorDTO implements Serializable
      */
     public DesarrolladorDTO (DesarrolladorEntity entidad) 
     {
-        if (entidad!=null){
-         this.setNombre(entidad.getNombre());
-         this.setId(entidad.getId());
-         this.setCorreo(entidad.getCorreo());
-         this.setCedula(entidad.getCedula());  
-         this.setTipo(entidad.getTipoString());
+        if (entidad!=null)
+        {
+         this.nombre=entidad.getNombre();
+         this.id=entidad.getId();
+         this.correo=entidad.getCorreo();
+         this.cedula=entidad.getCedula();  
+         this.tipo=entidad.getTipoString();
         }
     }
     
@@ -100,11 +101,11 @@ public class DesarrolladorDTO implements Serializable
     public DesarrolladorEntity toEntity() 
     {
          DesarrolladorEntity entidad=new DesarrolladorEntity();
-         entidad.setNombre(this.getNombre());
-         entidad.setId(this.getId());
-         entidad.setCorreo(this.getCorreo());
-         entidad.setCedula(this.getCedula());
-         entidad.setTipoString(this.getTipo());
+         entidad.setNombre(this.nombre);
+         entidad.setId(this.id);
+         entidad.setCorreo(this.correo);
+         entidad.setCedula(this.cedula);
+         entidad.setTipoString(this.tipo);
        
          return entidad;
    }
