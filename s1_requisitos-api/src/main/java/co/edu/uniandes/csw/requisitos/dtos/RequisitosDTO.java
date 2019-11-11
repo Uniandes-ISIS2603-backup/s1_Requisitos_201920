@@ -9,10 +9,51 @@ import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity.TipoRequisito;
 import java.io.Serializable;
 
-/**
- *
+/** 
+ * RequisitoDTO Objeto de transferencia de datos de Requisito. Los DTO contienen 
+ * las representaciones de los JSON que se transfieren entre el cliente y el 
+ * servidor. 
+ * 
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br> 
+ * <pre> 
+ *   { 
+ *       "id": number, 
+ *       "fuente":String, 
+ *        "autor":String, 
+ *        "descripcion":String, 
+ *       "importancia":number, 
+ *       "estabilidad":boolean, 
+ *       "nombre":String, 
+ *       "comentariosAdicionales":String, 
+ *        "tipo":String, 
+ *        "casoDeUso":{@link CasoDeUsoDTO} 
+ *  } 
+ * </pre> Por ejemplo un requisito se representa asi:<br> 
+ * <pre> 
+ * 
+ *   { 
+ *          "id": 13, 
+ *           "fuente":"Empresa X", 
+ *           "autor":"Carlos Barragan", 
+ *          "descripcion":"Intento1", 
+ *           "importancia":10, 
+ *           "estabilidad":true, 
+ *           "nombre":"ImplementarIntento1", 
+ *          "comentariosAdicionales":"Hola", 
+ *          "tipo":"FUNCIONAL", 
+ *          "casoDeUso": 
+ *          { 
+ *              "documentacion": "doc", 
+ *                "id": "1010", 
+ *               "pruebas": false, 
+ *              "servicios": "FuncionalPrueba" 
+ *           } 
+ *      } 
+ * 
+ * </pre> 
+ * 
  * @author Nicolás Tobo 
- */
+ */ 
 public class RequisitosDTO implements Serializable 
 {
    /**
