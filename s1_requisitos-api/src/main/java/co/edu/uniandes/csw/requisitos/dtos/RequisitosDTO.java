@@ -9,6 +9,8 @@ import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity.TipoRequisito;
 import java.io.Serializable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 /**
  * RequisitoDTO Objeto de transferencia de datos de Requisito. Los DTO contienen
@@ -96,6 +98,7 @@ public class RequisitosDTO implements Serializable {
     /**
      * tipo Del requisito
      */
+    @Enumerated(EnumType.ORDINAL)
     private TipoRequisito tipo;
     /**
      * Caso de uso del requisito
