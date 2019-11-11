@@ -160,7 +160,7 @@ public class ModificacionesResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra la modificacion.
      */
-    @Path("{modificacionesId: \\d+}/desarrollador")
+    @Path("{modificacionesId: \\d+}/desarrolladord")
     public Class<ModificacionesDesarrolladorResource> getModificacionesDesarrolladorResource(@PathParam("modificacionesId") Long modificacionesId) {
     
         if (logica.getModificacion(modificacionesId)== null) {
