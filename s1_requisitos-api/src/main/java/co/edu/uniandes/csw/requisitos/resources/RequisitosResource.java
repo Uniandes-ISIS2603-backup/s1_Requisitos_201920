@@ -186,19 +186,35 @@ public class RequisitosResource {
         return list;
     }
     /**
-     * @param requisitosId El ID de la  con respecto a la cual se accede al
+     * @param requisitosId El ID de la editorial con respecto a la cual se accede al
      * servicio.
-     * @return El servicio de desarrollador para este requisito en paricular.
+     * @return El servicio de autor para este premio en paricular.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando no se encuentra el requisito.
+     * Error de lógica que s genera cuando no se el premio.
      */
-    @Path("{requisitosId: \\d+}/desarrollador")
-    public Class<RequisitosDesarrolladorResource> getRequisitosDesarrolladorResource(@PathParam("requisitosId") Long requisitosId) {
+    @Path("{requisitosId: \\d+}/desarrolladorb")
+    public Class<RequisitosDesarrolladorResource> getRequisitosDesarrolladoroResource(@PathParam("requisitosId") Long requisitosId) {
     
         if (requisitoLogic.getRequisito(requisitosId)== null) {
             throw new WebApplicationException("El recurso /requisito/" + requisitosId + " no existe.", 404);
         }
         return RequisitosDesarrolladorResource.class;
+    }
+     /**
+     * @param requisitosId El ID de la  con respecto a la cual se accede al
+     * servicio.
+     * @return El servicio de casoDeUso para este requisito en paricular.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el requisito.
+     */
+    @Path("{requisitosId: \\d+}/casodeuso")
+    public Class<RequisitosCasoDeUsoResource> getRequisitosCasoDeUsoResource(@PathParam("requisitosId") Long requisitosId) {
+    
+        if (requisitoLogic.getRequisito(requisitosId)== null) {
+            throw new WebApplicationException("El recurso /requisito/" + requisitosId + " no existe.", 404);
+        }
+ 
+        return RequisitosCasoDeUsoResource.class;
     }
     
 }

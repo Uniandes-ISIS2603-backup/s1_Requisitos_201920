@@ -49,26 +49,26 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
 
             if (desarrolladorEntity.getModificaciones() != null) {
                 modificaciones = new ArrayList<>();
-                desarrolladorEntity.getModificaciones().forEach((lis) -> {
+                desarrolladorEntity.getModificaciones().forEach(lis -> {
                     modificaciones.add(new ModificacionesDTO(lis));
                 });
               
             }
             if (desarrolladorEntity.getRequisitos() != null) {
                 requisitos = new ArrayList<>();
-                desarrolladorEntity.getRequisitos().forEach((lis) -> {
+                desarrolladorEntity.getRequisitos().forEach(lis -> {
                     requisitos.add(new RequisitosDTO(lis));
                 });
             }
              if (desarrolladorEntity.getCasosDeUsoRepresentante() != null) {
                 casosDeUsoRepresentante = new ArrayList<>();
-                desarrolladorEntity.getCasosDeUsoRepresentante().forEach((lis) -> {
+                desarrolladorEntity.getCasosDeUsoRepresentante().forEach(lis -> {
                     casosDeUsoRepresentante.add(new CasoDeUsoDTO(lis));
                 });
             }
               if (desarrolladorEntity.getCasosDeUsoResponsable() != null) {
                 casosDeUsoResponsable = new ArrayList<>();
-                desarrolladorEntity.getCasosDeUsoResponsable().forEach((lis) -> {
+                desarrolladorEntity.getCasosDeUsoResponsable().forEach(lis -> {
                     casosDeUsoResponsable.add(new CasoDeUsoDTO(lis));
                 });
             }
@@ -88,7 +88,7 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
            DesarrolladorEntity desarrolladorEntity = super.toEntity();
         if (modificaciones!=null){
             List <ModificacionesEntity> modificacionesEntity= new ArrayList<>();
-            modificaciones.forEach((dto) -> {
+            modificaciones.forEach(dto -> {
                 modificacionesEntity.add(dto.toEntity());
                });
             desarrolladorEntity.setModificaciones(modificacionesEntity);
@@ -96,21 +96,21 @@ public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializ
      
         if (requisitos != null) {
             List<RequisitosEntity> reqsEntity = new ArrayList<>();
-            requisitos.forEach((dtoReq) -> {
+            requisitos.forEach(dtoReq -> {
                 reqsEntity.add(dtoReq.toEntity());
                });
             desarrolladorEntity.setRequisitos(reqsEntity);
         }
            if (casosDeUsoRepresentante != null) {
             List<CasoDeUsoEntity> casoDeUsoEntity = new ArrayList<>();
-            casosDeUsoRepresentante.forEach((dtoCasoDeUso) -> {
+            casosDeUsoRepresentante.forEach(dtoCasoDeUso -> {
                 casoDeUsoEntity.add(dtoCasoDeUso.toEntity());
                });
             desarrolladorEntity.setCasosDeUsoRepresentante(casoDeUsoEntity);
         }
                 if (casosDeUsoResponsable != null) {
             List<CasoDeUsoEntity> casoDeUsoEntity = new ArrayList<>();
-            casosDeUsoResponsable.forEach((dtoCasoDeUso) -> {
+            casosDeUsoResponsable.forEach(dtoCasoDeUso -> {
                 casoDeUsoEntity.add(dtoCasoDeUso.toEntity());
                });
             desarrolladorEntity.setCasosDeUsoResponsable(casoDeUsoEntity);

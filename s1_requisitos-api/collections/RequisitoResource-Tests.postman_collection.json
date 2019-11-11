@@ -55,12 +55,12 @@
 						"casos"
 					]
 				},
-				"description": "Crea un caso de uso\n"
+				"description": "**Release: Paso-5**\n\nCrea un nuevo casoDeUso. El Id es inicializado por la BD y se debe ver en la respuesta. \n\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\n\n**Código http esperado: 200**\n"
 			},
 			"response": []
 		},
 		{
-			"name": "Crear un Desarrollador",
+			"name": "Crear un desarrollador",
 			"event": [
 				{
 					"listen": "test",
@@ -107,7 +107,7 @@
 						"desarrollador"
 					]
 				},
-				"description": "Crea un desarrollador con nombre,id y cedula disntintas al creado por el SQL. Guarda su ID en una variable.\nRetorna el desarrollador creado y el codigo 200 ya que no debe ocurrir ningun problema al ejecutar la acciòn\n"
+				"description": "**Release: Paso-5**\n\nCrea un nuevo desarrollador. El Id es inicializado por la BD y se debe ver en la respuesta. \n\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\n\n**Código http esperado: 200**"
 			},
 			"response": []
 		},
@@ -177,7 +177,77 @@
 						}
 					]
 				},
-				"description": "Crea un requisito."
+				"description": "**Release: Paso-5**\n\nCrea un nuevo requisito. El Id es inicializado por la BD y se debe ver en la respuesta. \n\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\n\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un requisito 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3501cfde-1121-44a3-9c26-1453f5ac3b5f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16b9a96e-8e08-4cfe-9def-28f1fd626645",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_r\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fuente\":\"Empresa Z\",\n    \"autor\":\"Luis Zapata\",\n    \"descripcion\":\"Intento2\",\n    \"importancia\":20,\n    \"estabilidad\":false,\n    \"nombre\":\"ImplementarIntento2\",\n    \"comentariosAdicionales\":\"Adios\",\n    \"tipo\":\"ESCALABILIDAD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "**Release: Paso-5**\n\nCrea un nuevo requisito. El Id es inicializado por la BD y se debe ver en la respuesta. \n\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\n\n**Código http esperado: 200**"
 			},
 			"response": []
 		},
@@ -228,7 +298,7 @@
 						"requisitos"
 					]
 				},
-				"description": "Crea un requisito con un nombre que ya tiene otro requisito, al validar debe retornar un responseCode 412 de precondicion fallida"
+				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo requisito pero con un nombre que ya existe. Verifica que se genera el error y el mensaje \"Ya existe un requisito con ese nombre.\".\r\n\r\n**Código HTTP esperado: 412 Precondition failed\".**"
 			},
 			"response": []
 		},
@@ -279,7 +349,7 @@
 						"requisitos"
 					]
 				},
-				"description": "Crea un requisito con un nombre nulo, al validar debe retornar un responseCode 412 de precondicion fallida"
+				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo requisito pero con un nombre que ya existe. Verifica que se genera el error y el mensaje \"Falta nombre del requisito.\".\r\n\r\n**Código HTTP esperado: 412 Precondition failed\".**"
 			},
 			"response": []
 		},
@@ -315,7 +385,7 @@
 						"0"
 					]
 				},
-				"description": "Busca un requisito que no existe dentro de la base de datos, al realizar esto deberia retonar el responseCode 404 (no encontrado)"
+				"description": "**Release: Paso-5**\r\n\r\nConsulta un requisito que no existe en la aplicación.  \r\n\r\nPara la prueba se verifica que se genera el error.\r\n\r\n**Código http esperado: 404**"
 			},
 			"response": []
 		},
@@ -352,7 +422,7 @@
 						"{{new_id_r}}"
 					]
 				},
-				"description": "Retorna un requisto por el id dado, el responseCode es 200 y deberia retornar el json del requisito"
+				"description": "**Release: Paso-5**\r\n\r\nConsulta un requisito de la aplicación.  \r\nLa petición no tiene cuerpo.\r\nSe envía el id del requisito deseado por la URL de la petición.\r\n\r\n**Código http esperado: 200**"
 			},
 			"response": []
 		},
@@ -387,7 +457,7 @@
 						"requisitos"
 					]
 				},
-				"description": "Retorna todos los requisitos de la aplicacion en un arreglo json, su responseCode deberia ser 200;\n"
+				"description": "**Release: Paso-5**\r\n\r\nConsulta todos los requisitos de la aplicación. \r\nLa petición no tiene cuerpo.\r\n\r\nPara la prueba, se verifica que el conjunto de requisitos en la respuesta tenga mas de uno.\r\n\r\n**Código http esperado: 200**"
 			},
 			"response": []
 		},
@@ -440,7 +510,7 @@
 						"{{new_id_r}}"
 					]
 				},
-				"description": "Actualiza un requisito con id conocido su responseCode deberia ser 200 (Ok).\n"
+				"description": "**Release: Paso-5**\r\n\r\nActualiza un premio existente. \r\nse envía el Id en la URL de la petición.\r\n\r\n**Código http esperado: 200**"
 			},
 			"response": []
 		},
@@ -493,7 +563,7 @@
 						""
 					]
 				},
-				"description": "crea una modificacion"
+				"description": "**Release: Paso-5**\n\nCrea una nueva modificiacion. El Id es inicializado por la BD y se debe ver en la respuesta. \n\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\n\n**Código http esperado: 200**"
 			},
 			"response": []
 		},
@@ -546,7 +616,7 @@
 						""
 					]
 				},
-				"description": "crea una modificacion"
+				"description": "**Release: Paso-5**\n\nCrea una nueva modificiacion. El Id es inicializado por la BD y se debe ver en la respuesta. \n\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\n\n**Código http esperado: 200**"
 			},
 			"response": []
 		},
@@ -598,7 +668,8 @@
 						"requisitos",
 						"{{new_id_r}}"
 					]
-				}
+				},
+				"description": "**Release: Paso-5**\r\nActualiza un requisito y le asigna sus moficaciones. \r\n\r\nPara la prueba se verifica que no se genere el error.\r\n\r\n**Código HTTP esperado: 200**"
 			},
 			"response": []
 		},
@@ -649,7 +720,8 @@
 						"requisitos",
 						"0"
 					]
-				}
+				},
+				"description": "**Release: Paso-5**\r\nActualiza un requisito que no existe. \r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /requisitos/0 no existe.\".\r\n\r\n**Código HTTP esperado: 404**"
 			},
 			"response": []
 		},
@@ -684,7 +756,7 @@
 						"{{new_id_m1}}"
 					]
 				},
-				"description": "borra la modificacion creada previamente"
+				"description": "**Release: Paso-5**\n\nBorra un modificacion. Se envía el id del modificacion creado anteriormente.\n\n**Código HTTP esperado: 204**"
 			},
 			"response": []
 		},
@@ -755,7 +827,7 @@
 						"0"
 					]
 				},
-				"description": "Intenta borrar un requisto que no existe, debe retornar un responseCode 404 "
+				"description": "**Release: Paso-5**\r\n\r\nBorra un requisitos que no existe en la aplicación.  \r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /requisitos/0 no existe.\".\r\n\r\n**Código http esperado: 404**"
 			},
 			"response": []
 		},
@@ -790,7 +862,7 @@
 						"{{new_id_r}}"
 					]
 				},
-				"description": "Elimina un requisito, debe retornar un response code 204 donde se indica que se elimino correctamente\n\n"
+				"description": "**Release: Paso-5**\n\nBorra un requisito. Se envía el id del requisito creado anteriormente.\n\n**Código HTTP esperado: 204**\n\n"
 			},
 			"response": []
 		},
@@ -831,7 +903,7 @@
 						"{{new_id_d}}"
 					]
 				},
-				"description": "El codigo guardado en el metodo crear desarrollador se pasa por parametro y este recurso es eliminado. Devuelve el codigo 404 al no encontrar el recurso eliminado\n"
+				"description": "**Release: Paso-5**\n\nBorra un desarrollador. Se envía el id del desarrollador creado anteriormente.\n\n**Código HTTP esperado: 204**\n"
 			},
 			"response": []
 		},
@@ -882,7 +954,7 @@
 						"{{new_id_c}}"
 					]
 				},
-				"description": "borra un caso de uso de la base de datos"
+				"description": "**Release: Paso-5**\n\nBorra un casoDeUso. Se envía el id del casoDeUso creado anteriormente.\n\n**Código HTTP esperado: 204**"
 			},
 			"response": []
 		}

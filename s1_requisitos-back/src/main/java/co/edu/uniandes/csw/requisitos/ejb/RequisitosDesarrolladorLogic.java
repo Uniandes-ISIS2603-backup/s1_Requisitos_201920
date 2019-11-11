@@ -5,9 +5,8 @@
  */
 package co.edu.uniandes.csw.requisitos.ejb;
 
-import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
+
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
-import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity.TipoDesarrollador;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
@@ -41,10 +40,10 @@ public class RequisitosDesarrolladorLogic {
      * @param desarrolladorId El id del desarrollador al cual se le va a guardar el premio.
      * @return El requisito que fue agregado al desarrollador.
      */
-    public DesarrolladorEntity addAuthor(Long requisitoId, Long desarrolladorId) {
+    public DesarrolladorEntity addAuthor(Long requisitosId, Long desarrolladorId) {
        
         DesarrolladorEntity desarrolladorEntity = desarrolladorPersistence.find(desarrolladorId);
-        RequisitosEntity requisitosEntity = requisitoPersistence.find(requisitoId);
+        RequisitosEntity requisitosEntity = requisitoPersistence.find(requisitosId);
         requisitosEntity.setAutor(desarrolladorEntity.getNombre());
         requisitosEntity.setDesarrollador(desarrolladorEntity);
         List<RequisitosEntity> listaFun=desarrolladorEntity.getRequisitos();
@@ -59,27 +58,27 @@ public class RequisitosDesarrolladorLogic {
      *
      * Obtener un requisito por medio de su id y el de su desarrollador.
      *
-     * @param requisitoId id del requisito a ser buscado.
+     * @param requisitosId id del requisito a ser buscado.
      * @return el desarrollador solicitada por medio de su id.
      */
-    public DesarrolladorEntity getDesarrollador(Long requisitoId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar el desarrollador del requisito con id = {0}", requisitoId);
-        DesarrolladorEntity authorEntity = requisitoPersistence.find(requisitoId).getDesarrollador();
-        LOGGER.log(Level.INFO, "Termina proceso de consultar el desarrollador del requisito con id = {0}", requisitoId);
+    public DesarrolladorEntity getDesarrollador(Long requisitosId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar el desarrollador del requisito con id = {0}", requisitosId);
+        DesarrolladorEntity authorEntity = requisitoPersistence.find(requisitosId).getDesarrollador();
+        LOGGER.log(Level.INFO, "Termina proceso de consultar el desarrollador del requisito con id = {0}", requisitosId);
        return authorEntity;
     }
 
     /**
      * Remplazar desarrollador de un requisito
      *
-     * @param requisitoId el id del requisito que se quiere actualizar.
+     * @param requisitosId el id del requisito que se quiere actualizar.
      * @param desarrolladorId El id del nuevo desarrollador asociado al premio.
      * @return el nuevo desarrollador asociado.
      */
-    public DesarrolladorEntity replaceAuthor(Long requisitoId, Long desarrolladorId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el autor del premio premio con id = {0}", requisitoId);
+    public DesarrolladorEntity replaceAuthor(Long requisitosId, Long desarrolladorId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el autor del premio premio con id = {0}", requisitosId);
         DesarrolladorEntity autorEntity = desarrolladorPersistence.find(desarrolladorId);
-        RequisitosEntity requisitoEntity = requisitoPersistence.find(requisitoId);
+        RequisitosEntity requisitoEntity = requisitoPersistence.find(requisitosId);
         requisitoEntity.setDesarrollador(autorEntity);
         requisitoPersistence.update(requisitoEntity);
        return desarrolladorPersistence.find(desarrolladorId);
