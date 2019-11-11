@@ -44,7 +44,7 @@ public class ModificacionesResource {
      * Crea una modificacion con la informacion que se recibe en el cuerpo de
      * la petición y se regresa un objeto identico con un id auto-generado por
      * la base de datos.
-     * @param modificacionDTO
+     * @param mod
      * @return JSON {@link EditorialDTO} - La requisito guardado con el atributo
      * id autogenerado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
@@ -92,7 +92,7 @@ public class ModificacionesResource {
     actualiza la modificacion DTO
     */
     @PUT
-    @Path("{casosId: \\d+}")
+    @Path("{modificacionesId: \\d+}")
     public ModificacionesDTO updateModificaciones(@PathParam("modificacionesId") Long modId, ModificacionesDTO mod)throws BusinessLogicException{
         LOGGER.log(Level.INFO, "ModificacioensResource updateModificaciones: input: id: {0} , caso: {1}", new Object[]{modId, mod});
         mod.setId(modId);
@@ -160,7 +160,7 @@ public class ModificacionesResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra la modificacion.
      */
-    @Path("{modificacionesId: \\d+}/desarrolladord")
+    @Path("{modificacionesId: \\d+}/desarrolladorb")
     public Class<ModificacionesDesarrolladorResource> getModificacionesDesarrolladorResource(@PathParam("modificacionesId") Long modificacionesId) {
     
         if (logica.getModificacion(modificacionesId)== null) {

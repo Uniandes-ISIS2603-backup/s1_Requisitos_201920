@@ -26,7 +26,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Clase que implementa el recurso "requisito/{id}/desarrollador".
+ * Clase que implementa el recurso "modificaciones/{id}/desarrollador".
  * @author Nicole Bahamon Martìnez
  */
 @Consumes(MediaType.APPLICATION_JSON)
@@ -43,16 +43,16 @@ public class ModificacionesDesarrolladorResource {
     private DesarrolladorLogic desarrolladorLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     /**
-     * Guarda un desarrollador dentro de una modificaciòn con la informacion que recibe el la
+     * Guarda un desarrollador dentro de una modificacion con la informacion que recibe el la
      * URL.
      *
      * @param modificacionesId Identificador de la modificacion que se esta actualizando. Este
      * debe ser una cadena de dígitos.
      * @param desarrolladorId Identificador del desarrollador que se desea guardar. Este debe
      * ser una cadena de dígitos.
-     * @return JSON {@link DesarrolladorDTO} - El desarrollador guardado en el premio.
+     * @return JSON {@link DesarrolladorDTO} - El desarrollador guardado en la modificacion.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando no se encuentra el autor.
+     * Error de lógica que se genera cuando no se encuentra el desarrollador.
      */
     @POST
     @Path("{desarrolladorId: \\d+}")
@@ -71,9 +71,9 @@ public class ModificacionesDesarrolladorResource {
      *
      * @param modificacionesId Identificador de la modificacion que se esta buscando. Este
      * debe ser una cadena de dígitos.
-     * @return JSON {@link DesarrolladorDetailDTO} - El autor buscado
+     * @return JSON {@link DesarrolladorDetailDTO} - El desarrollador buscado
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando el premio no tiene autor.
+     * Error de lógica que se genera cuando la modificaciòn no tiene dessarrollador.
      */
     @GET
     public DesarrolladorDetailDTO getAuthor(@PathParam("modificacionesId") Long modificacionesId){
@@ -88,15 +88,15 @@ public class ModificacionesDesarrolladorResource {
     }
 
     /**
-     * Remplaza la instancia de desarrollador asociada a una instancia de requisito
+     * Remplaza la instancia de desarrollador asociada a una instancia de modificacion
      *
      * @param modificacionesId Identificador de la modificacion que se esta actualizando. Este
      * debe ser una cadena de dígitos.
      * @param desarrolladorId Identificador de el desarrollador que se esta remplazando. Este
      * debe ser una cadena de dígitos.
-     * @return JSON {@link AuthorDetailDTO} - El autor actualizado
+     * @return JSON {@link AuthorDetailDTO} - El desarrollador actualizado
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando no se encuentra el autor.
+     * Error de lógica que se genera cuando no se encuentra el desarrollador.
      */
     @PUT
     @Path("{desarrolladorId: \\d+}")
@@ -113,13 +113,13 @@ public class ModificacionesDesarrolladorResource {
     /**
      * Elimina la conexión entre el desarrollador y la modificacion recibido en la URL.
      *
-     * @param modificacionesId El ID del premio al cual se le va a desasociar el autor
+     * @param modificacionesId El ID de la modificaciòn a la cual se le va a desasociar el desarrollador
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @DELETE
     public void removeAuthor(@PathParam("modificacionesId") Long modificacionesId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "ModificacionesDesarrolladorResource removeAuthor: input: {0}", modificacionesId);
-        modificacionesDesarrolladorLogic.removeDesarrollador(modificacionesId);
+      modificacionesDesarrolladorLogic.removeDesarrollador(modificacionesId);
         LOGGER.info("ModificacionesDesarrolladorResource removeAuthor: output: void");
     }
 }
