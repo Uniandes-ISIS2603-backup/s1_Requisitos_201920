@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 delete from servicios;
 delete from caminosalternos;
 delete from caminosExcepcion;
@@ -8,31 +8,31 @@ delete from entidades;
 delete from CasoDeUsoEntity ;
 
 
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (1, 'Cornelius', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (2, 'Howey', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (3, 'Daisie', 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (4, 'Weston', 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (5, 'Rodrick', 'In congue. Etiam justo. Etiam pretium iaculis justo.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (6, 'Almire', 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (7, 'Genevieve', 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (8, 'Noell', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (9, 'Ernie', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (10, 'Jacquette', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (11, 'Abbie', 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (12, 'Christi', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (13, 'Miguela', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (14, 'Ethan', 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (15, 'Reinwald', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (16, 'Armin', 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (17, 'Rogers', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (18, 'Benjamin', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (19, 'Clemente', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 0);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (20, 'Ameline', 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (21, 'Lina', 'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (22, 'Roxi', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (23, 'Mose', 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (24, 'Arabele', 'In congue. Etiam justo. Etiam pretium iaculis justo.', 1);
-insert into casodeusoentity (id, nombre, documentacion, pruebas) values (25, 'Ad', 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (500,'Cornelius', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (501, 'Howey', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (502, 'Daisie', 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (503, 'Weston', 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (504, 'Rodrick', 'In congue. Etiam justo. Etiam pretium iaculis justo.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (505, 'Almire', 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (506, 'Genevieve', 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (507, 'Noell', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (508, 'Ernie', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (509, 'Jacquette', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (510, 'Abbie', 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (511, 'Christi', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (512, 'Miguela', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (513, 'Ethan', 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (514, 'Reinwald', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (515, 'Armin', 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (516, 'Rogers', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (517, 'Benjamin', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (518, 'Clemente', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 0);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (519, 'Ameline', 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (520, 'Lina', 'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (521, 'Roxi', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (522, 'Mose', 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (523, 'Arabele', 'In congue. Etiam justo. Etiam pretium iaculis justo.', 1);
+insert into casodeusoentity (id, nombre, documentacion, pruebas) values (524, 'Ad', 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', 0);
 
 
 insert into servicios (servicios) values ('Ara chloroptera');
@@ -190,7 +190,7 @@ insert into precondiciones (precondiciones) values ('Lac La Biche');
 insert into precondiciones (precondiciones) values ('Fukumitsu');
 insert into precondiciones (precondiciones) values ('Vinha');
 insert into precondiciones (precondiciones) values ('Fengshuling');
-=======
+
 
 delete from RequisitosEntity;
 
@@ -220,4 +220,4 @@ insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilid
 insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilidad, comentariosAdicionales, tipo, nombre) values ('Runolfsdottir Group', 'Austin Ruller', 'Sungazer, yellow-brown', 23, 1, 'Integer ac leo. Pellentesque ultrices mattis odio.', 4, 'Optional high-level alliance');
 insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilidad, comentariosAdicionales, tipo, nombre) values ('Trantow, Ratke and Luettgen', 'Jillayne Duding', 'Goose, snow', 24, 1, 'Nullam varius.', 4, 'Managed real-time methodology');
 insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilidad, comentariosAdicionales, tipo, nombre) values ('Bashirian and Sons', 'Murry McQuarrie', 'Mynah, common', 25, 1, 'Donec posuere metus vitae ipsum. Aliquam non mauris.', 3, 'Organic maximized toolset');
->>>>>>> bb97661b2b33a7ffa83d9ad0c2d421a3a5680b63
+
