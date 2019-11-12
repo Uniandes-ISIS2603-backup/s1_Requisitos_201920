@@ -305,6 +305,84 @@
 				"description": "Crea el equipo desarrollo"
 			},
 			"response": []
+		},
+		{
+			"name": "editar equipo",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"equipoDesarrollo\": \"{{$randomInt}}NN{{$randomInt}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/{{new_idEquipoDesarrollo}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						"{{new_idEquipoDesarrollo}}"
+					]
+				},
+				"description": "se cambia el equipo"
+			},
+			"response": []
+		},
+		{
+			"name": "editar equipo nombre invalido",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"equipoDesarrollo\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo/{{new_idEquipoDesarrollo}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"equipoDesarrollo",
+						"{{new_idEquipoDesarrollo}}"
+					]
+				},
+				"description": "se cambia el equipo"
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
