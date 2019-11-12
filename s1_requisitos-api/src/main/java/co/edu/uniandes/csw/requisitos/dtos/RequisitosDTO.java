@@ -9,6 +9,8 @@ import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity.TipoRequisito;
 import java.io.Serializable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 /**
  * RequisitoDTO Objeto de transferencia de datos de Requisito. Los DTO contienen
@@ -96,6 +98,7 @@ public class RequisitosDTO implements Serializable {
     /**
      * tipo Del requisito
      */
+    @Enumerated(EnumType.ORDINAL)
     private TipoRequisito tipo;
     /**
      * Caso de uso del requisito
@@ -326,26 +329,6 @@ public class RequisitosDTO implements Serializable {
     public void setTipo(TipoRequisito tipo) {
         this.tipo = tipo;
     }
-
-    /**
-     * Define el tipo del requisito por medio de un string
-     *
-     * @param tipo
-     */
-    public void setTipoString(String tipo) {
-        if (tipo.equalsIgnoreCase("FUNCIONAL")) {
-            this.tipo = TipoRequisito.FUNCIONAL;
-        } else if (tipo.equalsIgnoreCase("SEGURIDAD")) {
-            this.tipo = TipoRequisito.SEGURIDAD;
-        } else if (tipo.equalsIgnoreCase("PLATAFORMA")) {
-            this.tipo = TipoRequisito.PLATAFORMA;
-        } else if (tipo.equalsIgnoreCase("ESCALABILIDAD")) {
-            this.tipo = TipoRequisito.ESCALABILIDAD;
-        } else if (tipo.equalsIgnoreCase("DESEMPENO")) {
-            this.tipo = TipoRequisito.DESEMPENO;
-        }
-    }
-
     /**
      * Retorna el caso de uso del requisito
      *

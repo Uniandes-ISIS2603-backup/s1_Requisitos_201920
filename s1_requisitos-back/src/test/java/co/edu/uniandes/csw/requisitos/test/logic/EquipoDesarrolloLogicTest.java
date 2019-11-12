@@ -127,5 +127,49 @@ public class EquipoDesarrolloLogicTest {
         Assert.assertEquals(nuevaEnt.getId(),entidad.getId()); 
     }
     
+      /**
+     * Prueba para consultar la lista de desarrolladores.
+     */
+    @Test
+    public void getEquiposDesarrolloTest() {
+        List<EquipoDesarrolloEntity> lista = equipoLogic.getEquipos();
+        Assert.assertEquals(list.size(), lista.size());
+        for (EquipoDesarrolloEntity entidad : lista) {
+            boolean encontrado = false;
+            for (EquipoDesarrolloEntity entGuardada : list) 
+            {
+                if (entidad.getId().equals(entGuardada.getId())) {
+                    encontrado = true;
+                }
+            }
+            Assert.assertTrue(encontrado);
+        }
+    }
+    
+     /**
+     * Prueba para actualizar un desarrollador con un tipo nulo.
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateEquipoDesarrolloConEquipoDesarrolloNuloNullTest() throws BusinessLogicException 
+    {
+        EquipoDesarrolloEntity entidad = list.get(0);
+        EquipoDesarrolloEntity  pojoEntity = factory.manufacturePojo(EquipoDesarrolloEntity.class);
+        pojoEntity.setEquipoDesarrollo(null);
+        pojoEntity.setId(entidad.getId());
+        equipoLogic.updateEquipo(pojoEntity);
+    }
+     /**
+     * Prueba para eliminar un desarrollador.
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
+     */
+    @Test
+    public void deleteRequisitoTest() throws BusinessLogicException 
+    {
+        EquipoDesarrolloEntity entity = list.get(0);
+        equipoLogic.deleteEquipo(entity.getId());
+        EquipoDesarrolloEntity deleted = em.find(EquipoDesarrolloEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
     
 }

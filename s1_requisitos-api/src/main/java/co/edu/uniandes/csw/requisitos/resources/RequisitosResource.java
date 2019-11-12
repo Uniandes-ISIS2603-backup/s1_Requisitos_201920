@@ -134,8 +134,7 @@ public class RequisitosResource {
     @PUT
     @Path("{requisitoId: \\d+}")
     public RequisitosDetailDTO updateRequisito(@PathParam("requisitoId") Long requisitoId, RequisitosDetailDTO r) throws BusinessLogicException {
-        r.setId(requisitoId);
-        System.out.println("AAA::"+requisitoLogic.getRequisito(requisitoId));
+         r.setId(requisitoId);
         if (requisitoLogic.getRequisito(requisitoId) == null) 
         {
             throw new WebApplicationException("El recurso /requisito/" + requisitoId + " no existe.", 404);

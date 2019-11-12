@@ -22,13 +22,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * ModificacionesDesarrolladorTest.
+ *ModificacionesDesarrolladorTest.
  * @author Nicole Bahamon Martinez
  */
 
 @RunWith(Arquillian.class)
-public class RequisitosDesarrolladorIT {
-      private static final String COLLECTION = "modificacionesDesarrolladorTest.postman_collection";
+public class ModificacionesDesarrolladorIT {
+      private static final String COLLECTION = "RequisitosDesarrolladorTest.postman_collection";
 
     @Deployment(testable = true)
     public static WebArchive createDeployment() {

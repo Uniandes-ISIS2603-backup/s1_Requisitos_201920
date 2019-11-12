@@ -158,6 +158,8 @@ public class EquipoDesarrolloPersistenceTest {
         EquipoDesarrolloEntity nuevaEnt = factory.manufacturePojo(EquipoDesarrolloEntity.class);
 
         nuevaEnt.setId(entidad.getId());
+        nuevaEnt.setIntegrantes(entidad.getIntegrantes());
+        nuevaEnt.setProyectos(entidad.getProyectos());
 
         edp.update(nuevaEnt);
 

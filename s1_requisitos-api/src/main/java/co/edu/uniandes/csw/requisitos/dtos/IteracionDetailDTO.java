@@ -14,6 +14,7 @@ import co.edu.uniandes.csw.requisitos.entities.IteracionEntity;
 public class IteracionDetailDTO extends IteracionDTO {
     public IteracionDetailDTO ()
     {
+        super();
         
     }
     public IteracionDetailDTO(IteracionEntity entidad)
@@ -22,6 +23,8 @@ public class IteracionDetailDTO extends IteracionDTO {
     }
     
     public IteracionEntity toEntity(){
-        return new IteracionEntity();
+      
+        IteracionEntity iteracionEntity = super.toEntity();
+        return iteracionEntity;
     }
 }

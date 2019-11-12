@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.requisitos.ejb;
 
+
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
+import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import co.edu.uniandes.csw.requisitos.persistence.ModificacionesPersistence;
@@ -30,58 +32,56 @@ public class ModificacionesDesarrolladorLogic {
 
     @Inject
     private DesarrolladorPersistence desarrolladorPersistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
-
+    
+    
     /**
-     * Agregar un desarrollador a una modificacion
+     * Agregar un desarrollador a un requisito
      *
      * @param modificacionesId El id modificacion a guardar
      * @param desarrolladorId El id del desarrollador al cual se le va a guardar la modificacion.
-     * @return El requisito que fue agregado al desarrollador.
+     * @return La modificacion que fue agregado al desarrollador.
      */
     public DesarrolladorEntity addAuthor(Long modificacionesId, Long desarrolladorId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar el desarrollador con id = {0} a la modificacion con id = " + modificacionesId, desarrolladorId);
+       
         DesarrolladorEntity desarrolladorEntity = desarrolladorPersistence.find(desarrolladorId);
         ModificacionesEntity modificacionEntity = modificacionPersistence.find(modificacionesId);
-        modificacionEntity.setDesarrolladorModificaciones(desarrolladorEntity);
+       modificacionEntity.setDesarrolladorModificaciones(desarrolladorEntity);
         List<ModificacionesEntity> listaFun=desarrolladorEntity.getModificaciones();
         listaFun.add(modificacionEntity);
         desarrolladorEntity.setModificaciones(listaFun);
-        LOGGER.log(Level.INFO, "Termina proceso de asociar el autor con id = {0} al premio con id = " + modificacionesId, desarrolladorId);
         modificacionPersistence.update(modificacionEntity);
-        desarrolladorPersistence.update(desarrolladorEntity);
-        return desarrolladorPersistence.find(desarrolladorId);
-
+       desarrolladorPersistence.update(desarrolladorEntity);
+       return desarrolladorPersistence.find(desarrolladorId);
     }
- 
+  
     /**
      *
      * Obtener una modificacion por medio de su id y el de su desarrollador.
      *
-     * @param modificacionesId id de la modificacion a ser buscada.
+     * @param modificacionesId id de la modificacion a ser buscado.
      * @return el desarrollador solicitada por medio de su id.
      */
     public DesarrolladorEntity getDesarrollador(Long modificacionesId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el desarrollador del requisito con id = {0}", modificacionesId);
-        DesarrolladorEntity authorEntity = modificacionPersistence.find(modificacionesId).getDesarrolladorModificaciones();
+        DesarrolladorEntity authorEntity =modificacionPersistence.find(modificacionesId).getDesarrolladorModificaciones();
         LOGGER.log(Level.INFO, "Termina proceso de consultar el desarrollador del requisito con id = {0}", modificacionesId);
-        return authorEntity;
+       return authorEntity;
     }
 
     /**
      * Remplazar desarrollador de una modificacion
      *
      * @param modificacionesId el id de la modificacion que se quiere actualizar.
-     * @param desarrolladorId El id del nuevo desarrollador asociado a la modificacion.
+     * @param desarrolladorId El id del nuevo desarrollador asociado al premio.
      * @return el nuevo desarrollador asociado.
      */
     public DesarrolladorEntity replaceAuthor(Long modificacionesId, Long desarrolladorId) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el desarrollador de la modificacion con id = {0}", modificacionesId);
         DesarrolladorEntity autorEntity = desarrolladorPersistence.find(desarrolladorId);
         ModificacionesEntity modificacionEntity = modificacionPersistence.find(modificacionesId);
-        modificacionEntity.setDesarrolladorModificaciones(autorEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de asociar el desarrollador con id = {0} la modificaciòn con id = " + modificacionesId, desarrolladorId);
+       modificacionEntity.setDesarrolladorModificaciones(autorEntity);
         modificacionPersistence.update(modificacionEntity);
-        return desarrolladorPersistence.find(desarrolladorId);
+       return desarrolladorPersistence.find(desarrolladorId);
     }
 
     /**
@@ -92,15 +92,16 @@ public class ModificacionesDesarrolladorLogic {
      */
     public void removeDesarrollador(Long modificacionesId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el desarrollador de la modificacion con id = {0}", modificacionesId);
-        ModificacionesEntity modificacionEntity = modificacionPersistence.find(modificacionesId);
+       ModificacionesEntity modificacionEntity = modificacionPersistence.find(modificacionesId);
         if (modificacionEntity.getDesarrolladorModificaciones() == null) {
-            throw new BusinessLogicException("El requisito no tiene desarrollador");
+            throw new BusinessLogicException("La modificacion no tiene desarrollador");
         }
         DesarrolladorEntity desarrolladorEntity = desarrolladorPersistence.find(modificacionEntity.getDesarrolladorModificaciones().getId());
         modificacionEntity.setDesarrolladorModificaciones(null);
         desarrolladorEntity.getModificaciones().remove(modificacionEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar el desarrollador con id = {0} de la modificacion con id = " + modificacionesId, desarrolladorEntity.getId());
+       
     }
+    
 }
  
 

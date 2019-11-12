@@ -191,7 +191,7 @@ public class DesarrolladorResource
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que s genera cuando no se el premio.
      */
-    @Path("{desarrolladorId: \\d+}/desarrolladorb")
+    @Path("{desarrolladorId: \\d+}/equipo")
     public Class<DesarrolladorEquipoDesarrolloResource> getDesarrolladorEquipoDesarrolloResource(@PathParam("desarrolladorId") Long desarrolladorId) {
     
         if (dl.getDesarrollador(desarrolladorId) == null) {
