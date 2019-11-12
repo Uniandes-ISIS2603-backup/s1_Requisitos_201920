@@ -15,6 +15,7 @@ import javax.persistence.TypedQuery;
 /**
  *
  * @author Juan Martinez
+ * rehecho por juan rubio
  */
 @Stateless
 public class EquipoDesarrolloPersistence {
@@ -82,7 +83,7 @@ public class EquipoDesarrolloPersistence {
         List<EquipoDesarrolloEntity> lista=findAll();
         for (EquipoDesarrolloEntity requisito : lista) 
         {
-            if(requisito!=null && requisito.getEquipoDesarrollo()!=null &&requisito.getEquipoDesarrollo().equals(name))
+            if(requisito.getEquipoDesarrollo()!=null &&requisito.getEquipoDesarrollo().equals(name))
                 buscado=requisito;
         }
         return buscado;
