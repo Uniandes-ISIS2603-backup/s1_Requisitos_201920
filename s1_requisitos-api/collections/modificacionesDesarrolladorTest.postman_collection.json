@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "ca217ed8-6475-4c3e-a9ff-edae35b3dad9",
+		"name": "modificacionesDesarrolladorTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crearDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61aa1dfe-fe2d-4239-af1f-66e25ab10126",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_desarrollador\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"Responsable\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"desarrollador"
+					]
+				},
+				"description": "crea un responsable para el caso de uso"
+			},
+			"response": []
+		},
+		{
+			"name": "crearModificacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8bda90b5-26e2-43c2-a7ec-aac4a827bd51",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_modificacion\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fechaModificacion\":\"2014-01-01T23:28:56.782Z\",\n\t\"descripcion\":\"bliblobla\"\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearRelacionModificacionDesarrollador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a43ac8f3-6955-4aef-9388-1a28174d809f",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_desarrollador\", data.id)",
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/{{new_id_modificacion}}/desarrolladorb/{{new_id_desarrollador}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						"{{new_id_modificacion}}",
+						"desarrolladorb",
+						"{{new_id_desarrollador}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteModificacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0b9f674a-46d5-45b1-a4e2-9343abeb6f3a",
+						"exec": [
+							"tests[\"no genera error en el post\"] = responseCode.code ===204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/modificaciones/{{new_id_modificacion}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"modificaciones",
+						"{{new_id_modificacion}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
