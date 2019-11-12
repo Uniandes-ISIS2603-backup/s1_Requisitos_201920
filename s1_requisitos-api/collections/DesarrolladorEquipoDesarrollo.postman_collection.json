@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a0e940fa-b415-45e4-b902-35e524a396cf",
+		"_postman_id": "97876d89-ac41-4bb2-9fd5-53c603f6dfb4",
 		"name": "DesarrolladorEquipoDesarrollo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -201,7 +201,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"equipoDesarrollo\": \"NuevoT\"\n}",
+					"raw": "{\n\t\"equipoDesarrollo\": \"{{$randomInt}}NuevoT{{$randomInt}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
