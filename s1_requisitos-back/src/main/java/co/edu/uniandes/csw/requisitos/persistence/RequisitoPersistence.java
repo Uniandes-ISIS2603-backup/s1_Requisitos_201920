@@ -50,13 +50,13 @@ public class RequisitoPersistence {
      * @param Author 
      * @return null si no lo encuentra, de lo contrario el elemento
      */
-    public RequisitosEntity findByAuthor(String Author)
+    public RequisitosEntity findByAuthor(String author)
     {
         RequisitosEntity buscado=null;
         List<RequisitosEntity> lista=findAll();
         for (RequisitosEntity requisito : lista) 
         {
-            if(requisito.getAutor().equals(Author))
+            if(requisito.getAutor().equals(author))
                 buscado=requisito;
         }
         return buscado;
@@ -66,13 +66,13 @@ public class RequisitoPersistence {
      * @param Name
      * @return null si no lo encuentra, de lo contrario el elemento
      */
-    public RequisitosEntity findByName(String Name)
+    public RequisitosEntity findByName(String name)
     {
         RequisitosEntity buscado=null;
         List<RequisitosEntity> lista=findAll();
         for (RequisitosEntity requisito : lista) 
         {
-            if(requisito.getNombre().equals(Name))
+            if(requisito.getNombre().equals(name))
                 buscado=requisito;
         }
         return buscado;

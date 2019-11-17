@@ -36,8 +36,8 @@ public class IteracionPersistence {
      * @param IteracionId
      * @return  null si no lo encuentra, de lo contrario el elemento
      */
-    public IteracionEntity find(Long IteracionId) {
-        return em.find(IteracionEntity.class, IteracionId);
+    public IteracionEntity find(Long iteracionId) {
+        return em.find(IteracionEntity.class, iteracionId);
     }
     /**
      * Retorna una lista con todos los elementos

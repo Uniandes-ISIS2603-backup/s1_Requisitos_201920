@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.requisitos.dtos;
 
-import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity.TipoRequisito;
 import java.io.Serializable;

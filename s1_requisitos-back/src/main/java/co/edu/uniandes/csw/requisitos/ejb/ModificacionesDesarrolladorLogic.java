@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.requisitos.ejb;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
 import co.edu.uniandes.csw.requisitos.entities.ModificacionesEntity;
-import co.edu.uniandes.csw.requisitos.entities.RequisitosEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import co.edu.uniandes.csw.requisitos.persistence.ModificacionesPersistence;
