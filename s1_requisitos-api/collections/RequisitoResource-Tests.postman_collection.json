@@ -354,6 +354,57 @@
 			"response": []
 		},
 		{
+			"name": "Crear un requisito nulo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a914033b-d3df-4d36-831f-eeac8de8117a",
+						"exec": [
+							"tests[\"No crea dos desarrolladores con el mismo nombre\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Falta nombre del requisito.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/requisitos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s1_requisitos-api",
+						"api",
+						"requisitos"
+					]
+				},
+				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo requisito pero sin ninguna informacion. Verifica que se genera el error y el mensaje \"Falta nombre del requisito.\".\r\n\r\n**Código HTTP esperado: 412 Precondition failed\".**"
+			},
+			"response": []
+		},
+		{
 			"name": "Dar un requisito no existente",
 			"event": [
 				{
@@ -435,7 +486,8 @@
 						"id": "9189bf9b-1af1-4161-a749-56cd20ab4d68",
 						"exec": [
 							"var data= JSON.parse(responseBody);",
-							"tests[\"No genera error en el Get All\"] = responseCode.code === 200;"
+							"tests[\"No genera error en el Get All\"] = responseCode.code === 200;",
+							"tests[\"prize count\"] = data.length >= 1;"
 						],
 						"type": "text/javascript"
 					}
