@@ -40,6 +40,14 @@ import javax.ws.rs.WebApplicationException;
 public class RequisitosResource {
 
     private static final Logger LOGGER = Logger.getLogger(RequisitosResource.class.getName());
+    //Ruta 1
+    private static final String RUTA1 = "El recurso /requisitos/";
+    //Ruta 2
+    private static final String RUTA2="El recurso /requisito/";
+    //No existe 1
+    private static final String NOEXISTE1=" no existe";
+    //No existe 2
+    private static final String NOEXISTE2=" no existe.";
     /**
      * Atributo logica requisito, se inyecta la dependencia
      */
@@ -93,7 +101,7 @@ public class RequisitosResource {
         LOGGER.log(Level.INFO, "RequisitoResource getRequisito: input: {0}", requisitoId);
         RequisitosEntity entity = requisitoLogic.getRequisito(requisitoId);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /requisitos/" + requisitoId + " no existe", 404);
+            throw new WebApplicationException(RUTA1 + requisitoId + NOEXISTE1, 404);
         }
         RequisitosDetailDTO dto = new RequisitosDetailDTO(entity);
         LOGGER.log(Level.INFO, "RequisitoResource getRequisito: output: {0}", dto);
@@ -137,7 +145,7 @@ public class RequisitosResource {
          r.setId(requisitoId);
         if (requisitoLogic.getRequisito(requisitoId) == null) 
         {
-            throw new WebApplicationException("El recurso /requisito/" + requisitoId + " no existe.", 404);
+            throw new WebApplicationException(RUTA2 + requisitoId + NOEXISTE2, 404);
         }
         return new RequisitosDetailDTO(requisitoLogic.updateRequisito(r.toEntity()));
     }
@@ -158,7 +166,7 @@ public class RequisitosResource {
         LOGGER.log(Level.INFO, "RequisitoesResource deleteRequisito: input: {0}", requisitoId);
         RequisitosEntity entity = requisitoLogic.getRequisito(requisitoId);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /requisitos/" + requisitoId + " no existe.", 404);
+            throw new WebApplicationException(RUTA1 + requisitoId + NOEXISTE2, 404);
         }
         if (entity.getRequisitosFuncionalesCaso() != null) {
             requisitosCasoDeUsoLogic.removeCasoDeUso(requisitoId);
@@ -195,7 +203,7 @@ public class RequisitosResource {
     public Class<RequisitosDesarrolladorResource> getRequisitosDesarrolladoroResource(@PathParam("requisitosId") Long requisitosId) {
     
         if (requisitoLogic.getRequisito(requisitosId)== null) {
-            throw new WebApplicationException("El recurso /requisito/" + requisitosId + " no existe.", 404);
+            throw new WebApplicationException(RUTA2 + requisitosId + NOEXISTE2, 404);
         }
         return RequisitosDesarrolladorResource.class;
     }
@@ -210,7 +218,7 @@ public class RequisitosResource {
     public Class<RequisitosCasoDeUsoResource> getRequisitosCasoDeUsoResource(@PathParam("requisitosId") Long requisitosId) {
     
         if (requisitoLogic.getRequisito(requisitosId)== null) {
-            throw new WebApplicationException("El recurso /requisito/" + requisitosId + " no existe.", 404);
+            throw new WebApplicationException(RUTA2 + requisitosId + NOEXISTE2, 404);
         }
  
         return RequisitosCasoDeUsoResource.class;

@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.requisitos.ejb;
 
 import co.edu.uniandes.csw.requisitos.entities.EquipoDesarrolloEntity;
 import co.edu.uniandes.csw.requisitos.entities.ProyectoEntity;
-import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.EquipoDesarrolloPersistence;
 import co.edu.uniandes.csw.requisitos.persistence.ProyectoPersistence;
 import java.util.logging.Level;
@@ -36,12 +35,12 @@ public class ProyectoEquipoDesarrolloLogic {
      * @return El requisito que fue agregado al desarrollador.
      */
     public EquipoDesarrolloEntity addEquipoDesarollador(Long proyectoId, Long equipoId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar el desarrollador con id = {0} a la modificacion con id = " + proyectoId, equipoId);
+        LOGGER.log(Level.INFO,  String.format("Inicia proceso de asociar el desarrollador con id = %d a la modificacion con id = %d", proyectoId, equipoId));
         EquipoDesarrolloEntity desarrolladorEntity = desarrolloPersistence.find(equipoId);
         ProyectoEntity proyectoEntity = proyectoPersistence.find(proyectoId);
         proyectoEntity.setEquipo(desarrolladorEntity);
         proyectoPersistence.update(proyectoEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de asociar el autor con id = {0} al premio con id = " + proyectoId, equipoId);
+        LOGGER.log(Level.INFO, String.format("Termina proceso de asociar el autor con id = %d al premio con id = %d" ,proyectoId, equipoId));
         return desarrolladorEntity;
     }
 
@@ -67,10 +66,10 @@ public class ProyectoEquipoDesarrolloLogic {
      * @return el nuevo desarrollador asociado.
      */
    
-     public EquipoDesarrolloEntity cambiarDesarrollador(Long proyectoId, Long CasoId) {
+     public EquipoDesarrolloEntity cambiarDesarrollador(Long proyectoId, Long casoId) {
         ProyectoEntity proyectoEntity= proyectoPersistence.find(proyectoId);
         
-        EquipoDesarrolloEntity equipoEntity= desarrolloPersistence.find(CasoId);
+        EquipoDesarrolloEntity equipoEntity= desarrolloPersistence.find(casoId);
         proyectoEntity.setEquipo(equipoEntity);
         proyectoPersistence.update(proyectoEntity);
         

@@ -37,7 +37,10 @@ import javax.ws.rs.WebApplicationException;
 public class ModificacionesResource {
     
         private static final Logger LOGGER = Logger.getLogger(ModificacionesResource.class.getName());
-        
+        //String ruta
+         private static final String RUTA ="El recurso /modificaciones/";
+        //String no existe
+        private static final String NOEXISTE=" no existe.";
         @Inject
         private ModificacionesLogic logica;
         /**
@@ -80,7 +83,7 @@ public class ModificacionesResource {
         LOGGER.log(Level.INFO, "ModificacionesResource getModificacion: input:{0}", id);
         ModificacionesEntity a= logica.getModificacion(id);
         if (a==null){
-            throw new WebApplicationException("El recurso /modificaciones/" + id + " no existe.", 404);
+            throw new WebApplicationException(RUTA + id + NOEXISTE, 404);
         }
         ModificacionesDTO dto= new ModificacionesDTO(a);
         LOGGER.log(Level.INFO, "ModificacionesResource getModificacion: output:{0}", dto);
@@ -149,7 +152,7 @@ public class ModificacionesResource {
     public Class<ModificacionesCasoDeUsoResource> getModificacionesCasoDeUsoResource(@PathParam("modificacionesId") Long modificacionesId) {
     
         if (logica.getModificacion(modificacionesId) == null) {
-            throw new WebApplicationException("El recurso /modificaciones/" + modificacionesId + " no existe.", 404);
+            throw new WebApplicationException(RUTA + modificacionesId + NOEXISTE, 404);
         }
         return ModificacionesCasoDeUsoResource.class;
     }
@@ -164,7 +167,7 @@ public class ModificacionesResource {
     public Class<ModificacionesDesarrolladorResource> getModificacionesDesarrolladorResource(@PathParam("modificacionesId") Long modificacionesId) {
     
         if (logica.getModificacion(modificacionesId)== null) {
-            throw new WebApplicationException("El recurso /modificaciones/" + modificacionesId + " no existe.", 404);
+            throw new WebApplicationException(RUTA + modificacionesId + NOEXISTE, 404);
         }
         return ModificacionesDesarrolladorResource.class;
     }

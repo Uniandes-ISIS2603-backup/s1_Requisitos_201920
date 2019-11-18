@@ -32,6 +32,11 @@ import javax.ws.rs.core.MediaType;
 public class CasoDeUsoDesarrolladorResource {
     
      private static final Logger LOGGER = Logger.getLogger(CasoDeUsoDesarrolladorResource.class.getName());
+     
+     //String ruta
+     private static final String RUTA ="El recurso /desarrollador/";
+     //String no existe
+     private static final String NOEXISTE=" no existe.";
     @Inject
     private CasoDeUsoDesarrolladorLogic cdLogic; //variable para la ligoca
     
@@ -59,7 +64,7 @@ public class CasoDeUsoDesarrolladorResource {
        if (tipo==1){
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addResponsable: input: casoID: {0} , desId: {1}", new Object[]{casosId, desId});
         if (desLogic.getDesarrollador(desId) == null) {
-            throw new WebApplicationException("El recurso /desarrollador/" + desId + " no existe.", 404);
+            throw new WebApplicationException(RUTA + desId + NOEXISTE, 404);
         }
          desDTO = new DesarrolladorDTO(cdLogic.addResponsable(desId, casosId));
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addResponsable: output: {0}", desDTO);
@@ -70,7 +75,7 @@ public class CasoDeUsoDesarrolladorResource {
         if (tipo==2){
              LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addRepresentante: input: casoID: {0} , desId: {1}", new Object[]{casosId, desId});
         if (desLogic.getDesarrollador(desId) == null) {
-            throw new WebApplicationException("El recurso /desarrollador/" + desId + " no existe.", 404);
+            throw new WebApplicationException(RUTA + desId + NOEXISTE, 404);
         }
         desDTO = new DesarrolladorDTO(cdLogic.addRepresentante(desId, casosId));
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addRepresentante: output: {0}", desDTO);
@@ -134,7 +139,7 @@ public class CasoDeUsoDesarrolladorResource {
         if (tipo==1){
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource replaceDesarrollador: input: casosId: {0} , desd: {1}", new Object[]{casosId, desId});
         if (desLogic.getDesarrollador(desId) == null) {
-            throw new WebApplicationException("El recurso /desarrollador/" + desId + " no existe.", 404);
+            throw new WebApplicationException(RUTA + desId + NOEXISTE, 404);
         }
          desDTO = new DesarrolladorDTO(cdLogic.cambiarResponsable(desId, casosId));
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource replaceDesarrollador: output: {0}", desDTO);
@@ -142,7 +147,7 @@ public class CasoDeUsoDesarrolladorResource {
         if (tipo==2){
             LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource replaceDesarrollador: input: casosId: {0} , desd: {1}", new Object[]{casosId, desId});
         if (desLogic.getDesarrollador(desId) == null) {
-            throw new WebApplicationException("El recurso /desarrollador/" + desId + " no existe.", 404);
+            throw new WebApplicationException(RUTA + desId + NOEXISTE, 404);
         }
          desDTO = new DesarrolladorDTO(cdLogic.cambiarRepresentante(desId, casosId));
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource replaceDesarrollador: output: {0}", desDTO);
