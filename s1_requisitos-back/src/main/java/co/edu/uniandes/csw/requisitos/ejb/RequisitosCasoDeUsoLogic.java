@@ -37,7 +37,7 @@ public class RequisitosCasoDeUsoLogic
      * @return El requisito con el caso de uso adicionado
      */
     public CasoDeUsoEntity addCasoDeUso(Long requisitoId, Long casoDeUsoId) {
-        LOGGER.log(Level.INFO,String.format("Inicia proceso de asociar el requisito con id = %d al casoDeUso con id = %d " ,requisitoId,casoDeUsoId));
+        LOGGER.log(Level.INFO,"Inicia proceso de asociar el requisito con id ={0} al casoDeUso con id = {} ",new Object[]{requisitoId,casoDeUsoId});
         //Encuentra las dos entidades
         RequisitosEntity requisitoEntity = requisitoPersistence.find(requisitoId);
         CasoDeUsoEntity casoEntity = casoDeUsoPersistence.find(casoDeUsoId);
@@ -50,7 +50,7 @@ public class RequisitosCasoDeUsoLogic
         //Actualiza las dos entidades en la base de datos
         casoDeUsoPersistence.update(casoEntity);
         requisitoPersistence.update(requisitoEntity);
-        LOGGER.log(Level.INFO, String.format("Termina proceso de asociar el requisito id = %d al casoDeUso con id = %d" ,requisitoId,casoDeUsoId));
+        LOGGER.log(Level.INFO,"Termina proceso de asociar el requisito id ={0} al casoDeUso con id = {1}",new Object[]{requisitoId,casoDeUsoId});
         return casoDeUsoPersistence.find(casoDeUsoId);
     }
     
@@ -89,7 +89,7 @@ public class RequisitosCasoDeUsoLogic
         //Actualiza dentro de la base de datos las entidades
         requisitoPersistence.update(requisitoEntity);
         casoDeUsoPersistence.update(casoEntity);
-        LOGGER.log(Level.INFO,String.format("Termina proceso de borrar el caso de uso con id = %d del requisito con id = %d " ,casoEntity.getId(), requisitoEntity.getId()));
+        LOGGER.log(Level.INFO,"Termina proceso de borrar el caso de uso con id = {0} del requisito con id = {1} ",new Object[]{casoEntity.getId(), requisitoEntity.getId()});
     }
     
     /**
@@ -120,7 +120,7 @@ public class RequisitosCasoDeUsoLogic
         casoDeUsoPersistence.update(casoEntityNuevo);
         requisitoPersistence.update(requisitoEntity);
        
-        LOGGER.log(Level.INFO,String.format("Termina proceso de asociar el caso de uso con id = %d al requisito con id =%d",casoDeUsoId,requisitoId));
+        LOGGER.log(Level.INFO,"Termina proceso de asociar el caso de uso con id = {0} al requisito con id ={1}",new Object[]{casoDeUsoId,requisitoId});
         return casoDeUsoPersistence.find(casoDeUsoId);
     }
     

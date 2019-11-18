@@ -36,7 +36,7 @@ public class ModificacionesRequisitoLogic {
      * @return El requisito con el caso de uso adicionado
      */
     public RequisitosEntity addRequisito(Long modId, Long reqId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar el requisito con id = {0} al casoDeUso con id = " + reqId, modId);
+        LOGGER.log(Level.INFO, String.format("Inicia proceso de asociar el requisito con id = %d al casoDeUso con id = %d" , reqId, modId));
         //Encuentra las dos entidades
         ModificacionesEntity modEntity = modPersistence.find(modId);
         RequisitosEntity reqEntity = requisitoPersistence.find(reqId);
@@ -49,7 +49,7 @@ public class ModificacionesRequisitoLogic {
         //Actualiza las dos entidades en la base de datos
         requisitoPersistence.update(reqEntity);
         modPersistence.update(modEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de asociar el requisito id = {0} al casoDeUso con id = " + reqId, modId);
+        LOGGER.log(Level.INFO,String.format("Termina proceso de asociar el requisito id = %d al casoDeUso con id = %d", reqId, modId));
         return requisitoPersistence.find(reqId);
     }
     
@@ -60,9 +60,9 @@ public class ModificacionesRequisitoLogic {
      */
     public RequisitosEntity getRequisito(Long modId) 
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar el requisito de la modificacion con id = " +modId , modId);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar el requisito de la modificacion con id = {0}" , modId);
         RequisitosEntity req = modPersistence.find(modId).getModificacionesRequisito();
-        LOGGER.log(Level.INFO, "Termina proceso de consultar el requisito de la modificacion con id = " +modId , modId);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar el requisito de la modificacion con id = {0}", modId);
         return req;
     }
     
