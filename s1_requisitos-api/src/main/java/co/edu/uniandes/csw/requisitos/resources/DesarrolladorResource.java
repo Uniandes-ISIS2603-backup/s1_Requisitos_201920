@@ -35,12 +35,10 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class DesarrolladorResource 
-{
-    
-    
+{  
    private static final Logger LOGGER = Logger.getLogger(DesarrolladorResource.class.getName());   
    private static final String PATH1 = "El recurso /desarrollador/";
-      private static final String PATH2 = "no existe";
+   private static final String PATH2 = "no existe";
   
     /**
       * Atributo logica
@@ -169,11 +167,13 @@ public class DesarrolladorResource
      */
     private List<DesarrolladorDetailDTO> listEntity2DetailDTO(List<DesarrolladorEntity> entityList) 
     {
+        LOGGER.info("ListDetail convirtiendo::");
         List<DesarrolladorDetailDTO> list = new ArrayList<>();
         for (DesarrolladorEntity entity : entityList) 
         {
             list.add(new DesarrolladorDetailDTO(entity));
         }
+        LOGGER.info("ListDetail Saliendo::");
         return list;
     }
    

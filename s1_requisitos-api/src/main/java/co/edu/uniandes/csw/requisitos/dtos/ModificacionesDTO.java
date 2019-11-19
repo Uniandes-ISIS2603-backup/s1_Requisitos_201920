@@ -55,7 +55,7 @@ public class ModificacionesDTO implements Serializable {
     private String descripcion;
 
     //relacion con la entidad persona
-
+    
     private DesarrolladorEntity desarrolladorModificaciones;
    
     //relacion con casos de uso

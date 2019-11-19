@@ -37,7 +37,7 @@ public class RequisitosCasoDeUsoLogic
      * @return El requisito con el caso de uso adicionado
      */
     public CasoDeUsoEntity addCasoDeUso(Long requisitoId, Long casoDeUsoId) {
-        LOGGER.log(Level.INFO,"Inicia proceso de asociar el requisito con id ={0} al casoDeUso con id = {} ",new Object[]{requisitoId,casoDeUsoId});
+        LOGGER.log(Level.INFO,"Inicia proceso de asociar el requisito con id ={0} al casoDeUso con id = {1} ",new Object[]{requisitoId,casoDeUsoId});
         //Encuentra las dos entidades
         RequisitosEntity requisitoEntity = requisitoPersistence.find(requisitoId);
         CasoDeUsoEntity casoEntity = casoDeUsoPersistence.find(casoDeUsoId);
@@ -64,9 +64,9 @@ public class RequisitosCasoDeUsoLogic
     public CasoDeUsoEntity getCasoDeUso(Long requisitoId) 
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el casoDeUso del requisito con id = {0}", requisitoId);
-        CasoDeUsoEntity CasoEntity = requisitoPersistence.find(requisitoId).getRequisitosFuncionalesCaso();
+        CasoDeUsoEntity casoEntity = requisitoPersistence.find(requisitoId).getRequisitosFuncionalesCaso();
         LOGGER.log(Level.INFO, "Termina proceso de consultar el casoDeUso del requisito con id = {0}", requisitoId);
-        return CasoEntity;
+        return casoEntity;
     }
     
     /**

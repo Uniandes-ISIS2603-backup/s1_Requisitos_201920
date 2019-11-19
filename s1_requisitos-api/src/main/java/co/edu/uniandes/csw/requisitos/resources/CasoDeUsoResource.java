@@ -128,10 +128,12 @@ public class CasoDeUsoResource {
     metodo que convierte una lista de entidades a una lista de DetailDTO
      */
     private List<CasoDeUsoDetailDTO> listEntity2DetailDTO(List<CasoDeUsoEntity> entityList) {
+        LOGGER.info("CasoDeUsoResource listEntity2DetailDTO: input");
         List<CasoDeUsoDetailDTO> list = new ArrayList<>();
         for (CasoDeUsoEntity entity : entityList) {
             list.add(new CasoDeUsoDetailDTO(entity));
         }
+        LOGGER.info("CasoDeUsoResource listEntity2DetailDTO: output");
         return list;
     }
     

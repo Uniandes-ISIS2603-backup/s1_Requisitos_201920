@@ -126,11 +126,14 @@ public class ModificacionesResource {
     }
                 
                 
-    private List<ModificacionesDTO> listEntity2DTO(List<ModificacionesEntity> entityList) {
+    private List<ModificacionesDTO> listEntity2DTO(List<ModificacionesEntity> entityList) 
+    {
+        LOGGER.info("ModificacionesResource listEntity2DTO: input: void");
         List<ModificacionesDTO> list = new ArrayList<>();
         for (ModificacionesEntity entity : entityList) {
             list.add(new ModificacionesDTO(entity));
         }
+        LOGGER.info("ModificacionesResource listEntity2DTO: output: void");
         return list;
     }
     
