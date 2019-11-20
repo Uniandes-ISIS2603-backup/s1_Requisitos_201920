@@ -22,9 +22,9 @@ public class IteracionDetailDTO extends IteracionDTO {
         super(entidad);
     }
     
+    @Override
     public IteracionEntity toEntity(){
-      
-        IteracionEntity iteracionEntity = super.toEntity();
-        return iteracionEntity;
+       
+        return  super.toEntity();
     }
 }

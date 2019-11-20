@@ -49,8 +49,8 @@ public class DesarrolladorEquipoDesarrolloLogic {
      * @return el autor solicitada por medio de su id.
      */
     public EquipoDesarrolloEntity getEquipoDesarrollo(Long desarrolladorsId) {
-        EquipoDesarrolloEntity equipoDesarrolloEntity = desarrolladorPersistence.find(desarrolladorsId).getEquipoDesarrollo();
-        return equipoDesarrolloEntity;
+        return desarrolladorPersistence.find(desarrolladorsId).getEquipoDesarrollo();
+
     }
 
     /**
