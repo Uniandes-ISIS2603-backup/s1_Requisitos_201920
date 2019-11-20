@@ -169,21 +169,100 @@ public class RequisitosDTO implements Serializable {
     }
 
     /**
-     * Retorna la fuente del requisito
-     *
-     * @return fuente del requisito
-     */
-    public String getFuente() {
-        return fuente;
-    }
-
-    /**
      * Define la fuente del requisito
      *
      * @param fuente
      */
     public void setFuente(String fuente) {
         this.fuente = fuente;
+    }
+    
+    /**
+     * Define el autor del requisito
+     *
+     * @param autor
+     */
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }    
+    
+    /**
+     *
+     * Define la descripcion del requisito
+     *
+     * @param descripcion
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    } 
+    
+    /**
+     * Define la importancia del requisito
+     *
+     * @param importancia
+     */
+    public void setImportancia(Integer importancia) {
+        this.importancia = importancia;
+    }
+
+    /**
+     * Define la estabilidad del requisito
+     *
+     * @param estabilidad
+     */
+    public void setEstabilidad(Boolean estabilidad) {
+        this.estabilidad = estabilidad;
+    }    
+
+    /**
+     * Define los comentarios adicionales de un requisito
+     *
+     * @param comentariosAdicionales
+     */
+    public void setComentariosAdicionales(String comentariosAdicionales) {
+        this.comentariosAdicionales = comentariosAdicionales;
+    }
+
+    /**
+     * Define el nombre del requisito
+     *
+     * @param nombre
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }   
+
+    /**
+     * Define el tipo del requisito
+     */
+    public void setTipo(TipoRequisito tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * Define el desarrollador
+     * @param desarrollador 
+     */
+    public void setDesarrollador(DesarrolladorDTO desarrollador) {
+        this.desarrollador = desarrollador;
+    }    
+    
+    /**
+     * Define el id de un requisito
+     *
+     * @param id
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }    
+    
+    /**
+     * Retorna la fuente del requisito
+     *
+     * @return fuente del requisito
+     */
+    public String getFuente() {
+        return fuente;
     }
 
     /**
@@ -196,15 +275,6 @@ public class RequisitosDTO implements Serializable {
     }
 
     /**
-     * Define el autor del requisito
-     *
-     * @param autor
-     */
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    /**
      * Retorna la descripcion del requisito
      *
      * @return descripcion del requisito
@@ -213,15 +283,6 @@ public class RequisitosDTO implements Serializable {
         return descripcion;
     }
 
-    /**
-     *
-     * Define la descripcion del requisito
-     *
-     * @param descripcion
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     /**
      * Retorna la importancia del requisito
@@ -230,15 +291,6 @@ public class RequisitosDTO implements Serializable {
      */
     public Integer getImportancia() {
         return importancia;
-    }
-
-    /**
-     * Define la importancia del requisito
-     *
-     * @param importancia
-     */
-    public void setImportancia(Integer importancia) {
-        this.importancia = importancia;
     }
 
     /**
@@ -251,30 +303,12 @@ public class RequisitosDTO implements Serializable {
     }
 
     /**
-     * Define la estabilidad del requisito
-     *
-     * @param estabilidad
-     */
-    public void setEstabilidad(Boolean estabilidad) {
-        this.estabilidad = estabilidad;
-    }
-
-    /**
      * Retorna los comentarios adicionales que tenga un requisito
      *
      * @return comentarios adicionales
      */
     public String getComentariosAdicionales() {
         return comentariosAdicionales;
-    }
-
-    /**
-     * Define los comentarios adicionales de un requisito
-     *
-     * @param comentariosAdicionales
-     */
-    public void setComentariosAdicionales(String comentariosAdicionales) {
-        this.comentariosAdicionales = comentariosAdicionales;
     }
 
     /**
@@ -287,15 +321,6 @@ public class RequisitosDTO implements Serializable {
     }
 
     /**
-     * Define el id de un requisito
-     *
-     * @param id
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * Retorna el nombre del requisito
      *
      * @return nombre
@@ -304,14 +329,6 @@ public class RequisitosDTO implements Serializable {
         return nombre;
     }
 
-    /**
-     * Define el nombre del requisito
-     *
-     * @param nombre
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     /**
      * Retorna el tipo del requisito
@@ -322,12 +339,6 @@ public class RequisitosDTO implements Serializable {
         return tipo;
     }
 
-    /**
-     * Define el tipo del requisito
-     */
-    public void setTipo(TipoRequisito tipo) {
-        this.tipo = tipo;
-    }
     /**
      * Retorna el caso de uso del requisito
      *
@@ -351,12 +362,5 @@ public class RequisitosDTO implements Serializable {
      */
     public DesarrolladorDTO getDesarrollador() {
         return desarrollador;
-    }
-    /**
-     * Define el desarrollador
-     * @param desarrollador 
-     */
-    public void setDesarrollador(DesarrolladorDTO desarrollador) {
-        this.desarrollador = desarrollador;
     }
 }

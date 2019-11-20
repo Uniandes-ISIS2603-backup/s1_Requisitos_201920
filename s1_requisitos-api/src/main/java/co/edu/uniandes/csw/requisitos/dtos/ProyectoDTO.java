@@ -57,19 +57,47 @@ public class ProyectoDTO implements Serializable{
             this.id = proy.getId();
         }
     }
-    
-    /**
-     * @return the nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
 
     /**
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    /**
+     * @param fechaInicial the fechaInicial to set
+     */
+    public void setFechaInicial(Date fechaInicial) {
+        this.fechaInicial = fechaInicial;
+    }
+    
+    /**
+     * @param fechaFinal the fechaFinal to set
+     */
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+    
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }   
+
+    /**
+     * @param equipo the equipo to set
+     */
+    public void setEquipo(EquipoDesarrolloEntity equipo) {
+        this.equipo = equipo;
+    }    
+    
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
     }
 
     /**
@@ -80,24 +108,10 @@ public class ProyectoDTO implements Serializable{
     }
 
     /**
-     * @param fechaInicial the fechaInicial to set
-     */
-    public void setFechaInicial(Date fechaInicial) {
-        this.fechaInicial = fechaInicial;
-    }
-
-    /**
      * @return the fechaFinal
      */
     public Date getFechaFinal() {
         return fechaFinal;
-    }
-
-    /**
-     * @param fechaFinal the fechaFinal to set
-     */
-    public void setFechaFinal(Date fechaFinal) {
-        this.fechaFinal = fechaFinal;
     }
     
     /**
@@ -105,13 +119,6 @@ public class ProyectoDTO implements Serializable{
      */
     public Long getId() {
         return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
     
     public ProyectoEntity toEntity() {
@@ -133,17 +140,5 @@ public class ProyectoDTO implements Serializable{
      */
     public EquipoDesarrolloEntity getEquipo() {
         return equipo;
-    }
-
-    /**
-     * @param equipo the equipo to set
-     */
-    public void setEquipo(EquipoDesarrolloEntity equipo) {
-        this.equipo = equipo;
-    }
-
-    
-    
-    
-    
+    } 
 }

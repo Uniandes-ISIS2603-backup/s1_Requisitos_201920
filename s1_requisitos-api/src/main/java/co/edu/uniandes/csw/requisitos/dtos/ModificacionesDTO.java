@@ -97,17 +97,51 @@ public class ModificacionesDTO implements Serializable {
     }
 
     /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
      * @param id the id to set
      */
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    /**
+     * @param fechaModificacion the fechaModificacion to set
+     */
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+    
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }  
+    
+    /**
+     * @param desarrolladorModificaciones the desarrolladorModificaciones to set
+     */
+    public void setDesarrolladorModificaciones(DesarrolladorEntity desarrolladorModificaciones) {
+        this.desarrolladorModificaciones = desarrolladorModificaciones;
+    }
+    /**
+     * @param casoModificaciones the casoModificaciones to set
+     */
+    public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
+        this.casoModificaciones = casoModificaciones;
+    }
+    
+    /**
+     * @param modificacionesRequisito the modificacionesRequisito to set
+     */
+    public void setModificacionesRequisito(RequisitosEntity modificacionesRequisito) {
+        this.modificacionesRequisito = modificacionesRequisito;
+    }    
+    
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
     }
 
     /**
@@ -118,24 +152,10 @@ public class ModificacionesDTO implements Serializable {
     }
 
     /**
-     * @param fechaModificacion the fechaModificacion to set
-     */
-    public void setFechaModificacion(Date fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
-    }
-
-    /**
      * @return the descripcion
      */
     public String getDescripcion() {
         return descripcion;
-    }
-
-    /**
-     * @param descripcion the descripcion to set
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     /**
@@ -146,24 +166,10 @@ public class ModificacionesDTO implements Serializable {
     }
 
     /**
-     * @param desarrolladorModificaciones the desarrolladorModificaciones to set
-     */
-    public void setDesarrolladorModificaciones(DesarrolladorEntity desarrolladorModificaciones) {
-        this.desarrolladorModificaciones = desarrolladorModificaciones;
-    }
-
-    /**
      * @return the casoModificaciones
      */
     public CasoDeUsoEntity getCasoModificaciones() {
         return casoModificaciones;
-    }
-
-    /**
-     * @param casoModificaciones the casoModificaciones to set
-     */
-    public void setCasoModificaciones(CasoDeUsoEntity casoModificaciones) {
-        this.casoModificaciones = casoModificaciones;
     }
 
     /**
@@ -173,10 +179,4 @@ public class ModificacionesDTO implements Serializable {
         return modificacionesRequisito;
     }
 
-    /**
-     * @param modificacionesRequisito the modificacionesRequisito to set
-     */
-    public void setModificacionesRequisito(RequisitosEntity modificacionesRequisito) {
-        this.modificacionesRequisito = modificacionesRequisito;
-    }
 }
