@@ -6,25 +6,29 @@
 package co.edu.uniandes.csw.requisitos.tests.postman;
 
 import co.edu.uniandes.csw.postman.tests.PostmanTestBuilder;
-import co.edu.uniandes.csw.requisitos.dtos.DesarrolladorDTO;
+import co.edu.uniandes.csw.requisitos.dtos.EquipoDesarrolloDTO;
 import co.edu.uniandes.csw.requisitos.mappers.BusinessLogicExceptionMapper;
 import co.edu.uniandes.csw.requisitos.resources.RestConfig;
 import java.io.File;
 import java.io.IOException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  *
  * @author jf.rubio
  */
+@RunWith(Arquillian.class)
 public class DesarrolladorEquipoDesarrolloIT {
-      private static final String COLLECTION = "DesarrolladorEquipoDesarrolloTest.postman_collection";
+    
+     private static final String COLLECTION = "DesarrolladorEquipoDesarrolloTest.postman_collection";
 
     @Deployment(testable = true)
     public static WebArchive createDeployment() {
@@ -35,7 +39,7 @@ public class DesarrolladorEquipoDesarrolloIT {
                         .withTransitivity().asFile())
                 // Se agregan los compilados de los paquetes de servicios
                 .addPackage(RestConfig.class.getPackage()) //No importa cual recurso usar, lo importante es agregar el paquet
-                .addPackage(DesarrolladorDTO.class.getPackage()) //No importa cual dto usar, lo importante es agregar el paquete.
+                .addPackage(EquipoDesarrolloDTO.class.getPackage()) //No importa cual dto usar, lo importante es agregar el paquete.
                 .addPackage(BusinessLogicExceptionMapper.class.getPackage())
                 // El archivo que contiene la configuracion a la base de datos.
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")

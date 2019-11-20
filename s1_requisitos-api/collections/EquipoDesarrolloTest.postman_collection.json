@@ -262,7 +262,7 @@
 					"script": {
 						"id": "cd497241-321c-4bc8-88e6-b98ea64b3dbe",
 						"exec": [
-							"postman.setGlobalVariable(\"new_idEquipoDesarrollo\",data.id);",
+							"postman.setGlobalVariable(\"new_idEquipoDesarrollo2\",data.id);",
 							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
 							"console.log(data.id);"
 						],
