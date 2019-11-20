@@ -24,19 +24,47 @@ public class IteracionDTO implements Serializable {
     private Date fechaFin;
     //identificador de la iteracion
     private Long id;
-
-    /**
-     * @return the nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
+    
     /**
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    /**
+     * @param fechaInicio the fechaInicio to set
+     */
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    } 
+    
+    /**
+     * @param fechaFin the fechaFin to set
+     */
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+    
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }    
+    
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
     }
 
     /**
@@ -46,25 +74,12 @@ public class IteracionDTO implements Serializable {
         return descripcion;
     }
 
-    /**
-     * @param descripcion the descripcion to set
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     /**
      * @return the fechaInicio
      */
     public Date getFechaInicio() {
         return fechaInicio;
-    }
-
-    /**
-     * @param fechaInicio the fechaInicio to set
-     */
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
     }
 
     /**
@@ -75,25 +90,12 @@ public class IteracionDTO implements Serializable {
     }
 
     /**
-     * @param fechaFin the fechaFin to set
-     */
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
-    /**
      * @return the id
      */
     public Long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
     public IteracionEntity toEntity()
     { IteracionEntity entidad = new IteracionEntity();
       entidad.setDescripcion(descripcion);

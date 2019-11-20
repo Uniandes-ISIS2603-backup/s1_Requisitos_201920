@@ -48,8 +48,8 @@ public class ModificacionesCasoDeUsoLogic {
      * @return el casoDeUso solicitada por medio de su id.
      */
     public CasoDeUsoEntity getCasoDeUso(Long modificacionessId) {
-        CasoDeUsoEntity casoDeUsoEntity = modificacionesPersistence.find(modificacionessId).getCasoModificaciones();
-        return casoDeUsoEntity;
+        return modificacionesPersistence.find(modificacionessId).getCasoModificaciones();
+
     }
 
     /**
@@ -61,6 +61,7 @@ public class ModificacionesCasoDeUsoLogic {
      */
     public CasoDeUsoEntity replaceCasoDeUso(Long modificacionessId, Long casoDeUsosId) {
         CasoDeUsoEntity casoDeUsoEntity = casoDeUsoPersistence.find(casoDeUsosId);
+        
         ModificacionesEntity modificacionesEntity = modificacionesPersistence.find(modificacionessId);
         modificacionesEntity.setCasoModificaciones(casoDeUsoEntity);
         return casoDeUsoPersistence.find(casoDeUsosId);

@@ -28,6 +28,19 @@ public class EquipoDesarrolloDTO implements Serializable{
      * equipo de desarrollo
      */
     private String equipoDesarrollo;
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    /**
+     * @param equipoDesarrollo the equipoDesarrollo to set
+     */
+    public void setEquipoDesarrollo(String equipoDesarrollo) {
+        this.equipoDesarrollo = equipoDesarrollo;
+    }
     
     /**
      * @return the id
@@ -37,24 +50,10 @@ public class EquipoDesarrolloDTO implements Serializable{
     }
 
     /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-      /**
      * @return the equipoDesarrollo
      */
     public String getEquipoDesarrollo() {
         return equipoDesarrollo;
-    }
-
-    /**
-     * @param equipoDesarrollo the equipoDesarrollo to set
-     */
-    public void setEquipoDesarrollo(String equipoDesarrollo) {
-        this.equipoDesarrollo = equipoDesarrollo;
     }
     
     /**

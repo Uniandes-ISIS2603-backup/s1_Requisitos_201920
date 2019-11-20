@@ -29,15 +29,13 @@ public class CasoDeUsoDesarrolladorLogic {
     private DesarrolladorPersistence desPersistence;
     
     
-    public DesarrolladorEntity addRepresentante(Long representanteId, Long CasoId)throws BusinessLogicException{
+    public DesarrolladorEntity addRepresentante(Long representanteId, Long casoId)throws BusinessLogicException{
         
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
-        System.out.println("aca2"+desEntity.getTipoString());
-         System.out.println("aca2"+desEntity.getId());
         if (!desEntity.getTipoString().equals("RepresentanteDelCliente")){
             throw new BusinessLogicException("la persona debe ser de  tipo respresantante");
         }
-        CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
+        CasoDeUsoEntity casoEntity= casoPersistence.find(casoId);
         casoEntity.setRepresentanteDelCliente(desEntity);
         casoPersistence.update(casoEntity);
      
@@ -46,19 +44,18 @@ public class CasoDeUsoDesarrolladorLogic {
     
     
     public DesarrolladorEntity getRepresentante(Long casoId){
-        DesarrolladorEntity desEntity= casoPersistence.find(casoId).getRepresentanteDelCliente();
         
-        return desEntity;
+        return  casoPersistence.find(casoId).getRepresentanteDelCliente();
     }
     
     
-    public DesarrolladorEntity cambiarRepresentante(Long representanteId, Long CasoId)throws BusinessLogicException{
+    public DesarrolladorEntity cambiarRepresentante(Long representanteId, Long casoId)throws BusinessLogicException{
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
         
         if (!desEntity.getTipoString().equals("RepresentanteDelCliente")){
             throw new BusinessLogicException("la persona debe ser de tipo representante");
         }
-        CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
+        CasoDeUsoEntity casoEntity= casoPersistence.find(casoId);
         casoEntity.setRepresentanteDelCliente(desEntity);
         casoPersistence.update(casoEntity);
         return desEntity;
@@ -67,14 +64,13 @@ public class CasoDeUsoDesarrolladorLogic {
     
     
     
-     public DesarrolladorEntity addResponsable(Long representanteId, Long CasoId)throws BusinessLogicException{
+     public DesarrolladorEntity addResponsable(Long representanteId, Long casoId)throws BusinessLogicException{
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
-        System.out.println(desEntity.getTipoString());
         if (!desEntity.getTipoString().equals("Responsable")){
             throw new BusinessLogicException("la persona debe ser de tipo responsable");
         }
          LOGGER.log(Level.INFO, "fuck this shit");
-        CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
+        CasoDeUsoEntity casoEntity= casoPersistence.find(casoId);
         casoEntity.setResponsable(desEntity);
         casoPersistence.update(casoEntity);
         return desEntity;
@@ -82,18 +78,18 @@ public class CasoDeUsoDesarrolladorLogic {
     
     
     public DesarrolladorEntity getResponsable(Long casoId){
-        DesarrolladorEntity desEntity= casoPersistence.find(casoId).getResponsable();
         
-        return desEntity;
+        return casoPersistence.find(casoId).getResponsable();
+
     }
     
     
-    public DesarrolladorEntity cambiarResponsable(Long representanteId, Long CasoId) throws BusinessLogicException{
+    public DesarrolladorEntity cambiarResponsable(Long representanteId, Long casoId) throws BusinessLogicException{
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
         if (!desEntity.getTipoString().equals("Responsable")){
             throw new BusinessLogicException("la persona debe ser de tipo responsable");
         }
-        CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
+        CasoDeUsoEntity casoEntity= casoPersistence.find(casoId);
         casoEntity.setResponsable(desEntity);
         casoPersistence.update(casoEntity);
         

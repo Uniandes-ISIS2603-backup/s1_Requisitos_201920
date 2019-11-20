@@ -118,6 +118,83 @@ public class CasoDeUsoDTO implements Serializable {
         return id;
     }
 
+      /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+    
+     /**
+     * @return the servicios
+     */
+    public List<String> getServicios() {
+        return servicios;
+    }
+    
+    /**
+     * @return the documentacion
+     */
+    public String getDocumentacion() {
+        return documentacion;
+    }
+    
+    /**
+     * @return the entidades
+     */
+    public List<String> getEntidades() {
+        return entidades;
+    }
+    
+     /**
+     * @return the posCondiciones
+     */
+    public List<String> getPosCondiciones() {
+        return posCondiciones;
+    }
+    
+    /**
+     * @return the representanteDelCliente
+     */
+    public DesarrolladorEntity getRepresentanteDelCliente() {
+        return representanteDelCliente;
+    }
+
+    /**
+     * @return the pruebas
+     */
+    public Boolean getPruebas() {
+        return pruebas;
+    }
+    
+    /**
+     * @return the caminosAlternos
+     */
+    public List<String> getCaminosAlternos() {
+        return caminosAlternos;
+    }
+    
+     /**
+     * @return the caminosExcepcion
+     */
+    public List<String> getCaminosExcepcion() {
+        return caminosExcepcion;
+    }
+    
+    /**
+     * @return the responsable
+     */
+    public DesarrolladorEntity getResponsable() {
+        return responsable;
+    }
+    
+    /**
+     * @return the preCondiciones
+     */
+    public List<String> getPreCondiciones() {
+        return preCondiciones;
+    }
+    
     /**
      * @param id the id to set
      */
@@ -125,25 +202,12 @@ public class CasoDeUsoDTO implements Serializable {
         this.id = id;
     }
 
-    /**
-     * @return the nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
 
     /**
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    /**
-     * @return the servicios
-     */
-    public List<String> getServicios() {
-        return servicios;
     }
 
     /**
@@ -154,25 +218,12 @@ public class CasoDeUsoDTO implements Serializable {
     }
 
     /**
-     * @return the documentacion
-     */
-    public String getDocumentacion() {
-        return documentacion;
-    }
-
-    /**
      * @param documentacion the documentacion to set
      */
     public void setDocumentacion(String documentacion) {
         this.documentacion = documentacion;
     }
 
-    /**
-     * @return the pruebas
-     */
-    public Boolean getPruebas() {
-        return pruebas;
-    }
 
     /**
      * @param pruebas the pruebas to set
@@ -181,12 +232,6 @@ public class CasoDeUsoDTO implements Serializable {
         this.pruebas = pruebas;
     }
 
-    /**
-     * @return the entidades
-     */
-    public List<String> getEntidades() {
-        return entidades;
-    }
 
     /**
      * @param entidades the entidades to set
@@ -196,25 +241,13 @@ public class CasoDeUsoDTO implements Serializable {
     }
 
     /**
-     * @return the caminosExcepcion
-     */
-    public List<String> getCaminosExcepcion() {
-        return caminosExcepcion;
-    }
-
-    /**
      * @param caminosExcepcion the caminosExcepcion to set
      */
     public void setCaminosExcepcion(List<String> caminosExcepcion) {
         this.caminosExcepcion = caminosExcepcion;
     }
 
-    /**
-     * @return the posCondiciones
-     */
-    public List<String> getPosCondiciones() {
-        return posCondiciones;
-    }
+ 
 
     /**
      * @param posCondiciones the posCondiciones to set
@@ -223,12 +256,7 @@ public class CasoDeUsoDTO implements Serializable {
         this.posCondiciones = posCondiciones;
     }
 
-    /**
-     * @return the preCondiciones
-     */
-    public List<String> getPreCondiciones() {
-        return preCondiciones;
-    }
+
 
     /**
      * @param preCondiciones the preCondiciones to set
@@ -237,12 +265,6 @@ public class CasoDeUsoDTO implements Serializable {
         this.preCondiciones = preCondiciones;
     }
 
-    /**
-     * @return the caminosAlternos
-     */
-    public List<String> getCaminosAlternos() {
-        return caminosAlternos;
-    }
 
     /**
      * @param caminosAlternos the caminosAlternos to set
@@ -252,24 +274,10 @@ public class CasoDeUsoDTO implements Serializable {
     }
 
     /**
-     * @return the representanteDelCliente
-     */
-    public DesarrolladorEntity getRepresentanteDelCliente() {
-        return representanteDelCliente;
-    }
-
-    /**
      * @param representanteDelCliente the representanteDelCliente to set
      */
     public void setRepresentanteDelCliente(DesarrolladorEntity representanteDelCliente) {
         this.representanteDelCliente = representanteDelCliente;
-    }
-
-    /**
-     * @return the responsable
-     */
-    public DesarrolladorEntity getResponsable() {
-        return responsable;
     }
 
     /**
