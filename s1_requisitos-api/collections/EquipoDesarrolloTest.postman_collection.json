@@ -59,57 +59,6 @@
 			"response": []
 		},
 		{
-			"name": "crearEquipoIgualNombre",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "d32b463c-816e-4ce2-b421-e359797d1778",
-						"exec": [
-							"tests[\"genera error correctamente en el Post\"] = responseCode.code === 412;",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"equipoDesarrollo\": \"{{new_nombre}}\"\n\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/equipoDesarrollo",
-					"protocol": "http",
-					"host": [
-						"{{ip}}"
-					],
-					"port": "{{puerto}}",
-					"path": [
-						"s1_requisitos-api",
-						"api",
-						"equipoDesarrollo"
-					]
-				},
-				"description": "Crea un equipo con el mismo nombre"
-			},
-			"response": []
-		},
-		{
 			"name": "getEquipoDesarrollo",
 			"event": [
 				{
