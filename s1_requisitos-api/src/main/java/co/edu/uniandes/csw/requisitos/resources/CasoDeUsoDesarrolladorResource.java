@@ -135,6 +135,7 @@ public class CasoDeUsoDesarrolladorResource {
     @PUT
     @Path("{desId: \\d+}/{tipo:\\d+}")
     public DesarrolladorDTO replaceAuthor(@PathParam("casosId") Long casosId, @PathParam("desId") Long desId, @PathParam ("tipo") int tipo) throws BusinessLogicException {
+    
         DesarrolladorDTO desDTO= new DesarrolladorDTO();
         if (tipo==1){
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource replaceDesarrollador: input: casosId: {0} , desd: {1}", new Object[]{casosId, desId});
