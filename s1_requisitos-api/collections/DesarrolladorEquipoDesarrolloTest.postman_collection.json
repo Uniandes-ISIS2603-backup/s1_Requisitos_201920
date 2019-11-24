@@ -34,7 +34,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"Responsable\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"raw": "{\n\t\"nombre\": \"Testuser{{$randomInt}}\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":{{$randomInt}}\n\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"

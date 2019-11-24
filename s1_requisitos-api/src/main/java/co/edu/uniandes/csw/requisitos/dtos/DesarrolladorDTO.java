@@ -110,6 +110,48 @@ public class DesarrolladorDTO implements Serializable
          return entidad;
    }
 
+    
+    /**
+     * @param id the Id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    /**
+     * @param correo the correo to set
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
+    /**
+     * @param edad the edad to set
+     */
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+      /**
+     * @param cedula the cedula to set
+     */
+    public void setCedula(Integer cedula) {
+        this.cedula = cedula;
+    }
+    
     /**
      * @return the Id
      */
@@ -117,12 +159,6 @@ public class DesarrolladorDTO implements Serializable
         return id;
     }
 
-    /**
-     * @param id the Id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     /**
      * @return the tipo
@@ -131,12 +167,6 @@ public class DesarrolladorDTO implements Serializable
         return tipo;
     }
 
-    /**
-     * @param tipo the tipo to set
-     */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
     /**
      * @return the nombre
@@ -145,12 +175,6 @@ public class DesarrolladorDTO implements Serializable
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     /**
      * @return the correo
@@ -159,12 +183,6 @@ public class DesarrolladorDTO implements Serializable
         return correo;
     }
 
-    /**
-     * @param correo the correo to set
-     */
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
 
     /**
      * @return the edad
@@ -174,25 +192,10 @@ public class DesarrolladorDTO implements Serializable
     }
 
     /**
-     * @param edad the edad to set
-     */
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
-
-    /**
      * @return the cedula
      */
     public Integer getCedula() {
         return cedula;
     }
-
-    /**
-     * @param cedula the cedula to set
-     */
-    public void setCedula(Integer cedula) {
-        this.cedula = cedula;
-    }
-
    
 }

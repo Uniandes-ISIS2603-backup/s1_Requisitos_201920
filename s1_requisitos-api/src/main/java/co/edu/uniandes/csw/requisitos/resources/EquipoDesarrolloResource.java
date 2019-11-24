@@ -102,7 +102,7 @@ public class EquipoDesarrolloResource {
      * Actualiza  con la información que se recibe en el cuerpo de la petición,
      * el desarrollador con el id recibido en la URL.
      *
-     * @param equipoDesarrolloId Identificador del desarrollador que se desea actualizar. Este debe
+     * @param equipoId Identificador del desarrollador que se desea actualizar. Este debe
      * ser una cadena de dígitos.
      * @param equipo {@link desarrolladorDTO} El desarrollador que se desea guardar.
      * @return JSON {@link desarrolladorDetailDTO} - el desarrollador guardada.
@@ -113,14 +113,14 @@ public class EquipoDesarrolloResource {
      * Error de lógica que se genera cuando no se puede actualizar rl desarrollador.
      */
     @PUT
-    @Path("{equipoId: \\d+}")
-    public EquipoDesarrolloDTO updateEquipo(@PathParam("equipoId") Long equipoId, EquipoDesarrolloDTO equipo)throws BusinessLogicException{
+    @Path("{equipoId:\\d+}")
+    public EquipoDesarrolloDetailDTO updateEquipo(@PathParam("equipoId") Long equipoId, EquipoDesarrolloDTO equipo)throws BusinessLogicException{
         LOGGER.log(Level.INFO, "EquipoDesarrolloResource updateEquipo: input: id: {0} , caso: {1}", new Object[]{equipoId, equipo});
         equipo.setId(equipoId);
         if (proyLogic.getEquipo(equipoId)==null){
             throw new WebApplicationException("El recurso /equipoDesarrollo/" + equipoId + " no existe.", 404);
         }
-        EquipoDesarrolloDTO nuevo= new EquipoDesarrolloDTO(proyLogic.updateEquipo(equipo.toEntity()));
+        EquipoDesarrolloDetailDTO nuevo= new EquipoDesarrolloDetailDTO(proyLogic.updateEquipo(equipo.toEntity()));
         LOGGER.log(Level.INFO, "EquipoDesarrolloResource updateEquipo: output:{0}", nuevo);
         return nuevo;
         
