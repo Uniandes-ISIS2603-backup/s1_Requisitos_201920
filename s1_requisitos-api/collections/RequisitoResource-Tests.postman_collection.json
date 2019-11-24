@@ -87,7 +87,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Nicolas Tobo\",\n\t\"correo\": \"nicotobo@gmail.com\",\n\t\"edad\":19,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010001050\n}\n",
+					"raw": "{\n\t\"nombre\": \"Nicolas Tobo\",\n\t\"correo\": \"nicotobo@gmail.com\",\n\t\"edad\":19,\n\t\"tipo\":\"RESPONSABLE\",\n\t\"cedula\":1010001050\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -150,7 +150,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"fuente\":\"Empresa X\",\n    \"autor\":\"Carlos Barragan\",\n    \"descripcion\":\"Intento1\",\n    \"importancia\":10,\n    \"estabilidad\":true,\n    \"nombre\":\"ImplementarIntento1\",\n    \"comentariosAdicionales\":\"Hola\",\n    \"tipo\":\"SEGURIDAD\",\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\n    \"cedula\": 1010001050,\n    \"correo\": \"nicotobo@gmail.com\",\n    \"nombre\": \"Nicolas Tobo\",\n    \"tipo\": \"Responsable\"\n     }\n}",
+					"raw": "{\n    \"fuente\":\"Empresa X\",\n    \"autor\":\"Carlos Barragan\",\n    \"descripcion\":\"Intento1\",\n    \"importancia\":10,\n    \"estabilidad\":true,\n    \"nombre\":\"ImplementarIntento1\",\n    \"comentariosAdicionales\":\"Hola\",\n    \"tipo\":\"SEGURIDAD\",\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\n    \"cedula\": 1010001050,\n    \"correo\": \"nicotobo@gmail.com\",\n    \"nombre\": \"Nicolas Tobo\",\n    \"tipo\": \"RESPONSABLE\"\n     }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -541,7 +541,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"fuente\":\"Empresa Y\",\n    \"autor\":\"Luisa Torres\",\n    \"descripcion\":\"IntentoMod1\",\n    \"importancia\":14,\n    \"estabilidad\":false,\n    \"nombre\":\"ImplementarIntentoModificado1\",\n    \"comentariosAdicionales\":\"Hi\",\n    \"tipo\":\"PLATAFORMA\",\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\n    \"cedula\": 1010001050,\n    \"correo\": \"nicotobo@gmail.com\",\n    \"nombre\": \"Nicolas Tobo\",\n    \"tipo\": \"Responsable\"\n     }\n}",
+					"raw": "{\n    \"fuente\":\"Empresa Y\",\n    \"autor\":\"Luisa Torres\",\n    \"descripcion\":\"IntentoMod1\",\n    \"importancia\":14,\n    \"estabilidad\":false,\n    \"nombre\":\"ImplementarIntentoModificado1\",\n    \"comentariosAdicionales\":\"Hi\",\n    \"tipo\":\"PLATAFORMA\",\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\n    \"cedula\": 1010001050,\n    \"correo\": \"nicotobo@gmail.com\",\n    \"nombre\": \"Nicolas Tobo\",\n    \"tipo\": \"RESPONSABLE\"\n     }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -700,7 +700,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fuente\":\"Empresa Y\",\r\n    \"autor\":\"Luisa Torres\",\r\n    \"descripcion\":\"IntentoMod1\",\r\n    \"importancia\":14,\r\n    \"estabilidad\":false,\r\n    \"nombre\":\"ImplementarIntentoModificado1\",\r\n    \"comentariosAdicionales\":\"Hi\",\r\n    \"tipo\":\"PLATAFORMA\",\r\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\r\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\r\n    \"cedula\": 1010001050,\r\n    \"correo\": \"nicotobo@gmail.com\",\r\n    \"nombre\": \"Nicolas Tobo\",\r\n    \"tipo\": \"Responsable\"},\r\n    \"modificaciones\": [\r\n    \t{\"id\": {{new_id_m1}} },\r\n    \t{\"id\": {{new_id_m2}} }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"fuente\":\"Empresa Y\",\r\n    \"autor\":\"Luisa Torres\",\r\n    \"descripcion\":\"IntentoMod1\",\r\n    \"importancia\":14,\r\n    \"estabilidad\":false,\r\n    \"nombre\":\"ImplementarIntentoModificado1\",\r\n    \"comentariosAdicionales\":\"Hi\",\r\n    \"tipo\":\"PLATAFORMA\",\r\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\r\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\r\n    \"cedula\": 1010001050,\r\n    \"correo\": \"nicotobo@gmail.com\",\r\n    \"nombre\": \"Nicolas Tobo\",\r\n    \"tipo\": \"RESPONSABLE\"},\r\n    \"modificaciones\": [\r\n    \t{\"id\": {{new_id_m1}} },\r\n    \t{\"id\": {{new_id_m2}} }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -752,7 +752,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n          \"fuente\":\"Empresa Y\",\r\n    \"autor\":\"Luisa Torres\",\r\n    \"descripcion\":\"IntentoMod1\",\r\n    \"importancia\":14,\r\n    \"estabilidad\":false,\r\n    \"nombre\":\"ImplementarIntentoModificado1\",\r\n    \"comentariosAdicionales\":\"Hi\",\r\n    \"tipo\":\"PLATAFORMA\",\r\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\r\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\r\n    \"cedula\": 1010001050,\r\n    \"correo\": \"nicotobo@gmail.com\",\r\n    \"nombre\": \"Nicolas Tobo\",\r\n    \"tipo\": \"Responsable\"},\r\n    \"modificaciones\": [\r\n    \t{\"id\": {{new_id_m1}} },\r\n    \t{\"id\": {{new_id_m2}} }\r\n    ]\r\n}",
+					"raw": "{\r\n          \"fuente\":\"Empresa Y\",\r\n    \"autor\":\"Luisa Torres\",\r\n    \"descripcion\":\"IntentoMod1\",\r\n    \"importancia\":14,\r\n    \"estabilidad\":false,\r\n    \"nombre\":\"ImplementarIntentoModificado1\",\r\n    \"comentariosAdicionales\":\"Hi\",\r\n    \"tipo\":\"PLATAFORMA\",\r\n    \"requisitosFuncionalesCaso\":{\"id\": {{new_id_c}} },\r\n    \"desarrollador\":{\"id\": {{new_id_d}} ,\r\n    \"cedula\": 1010001050,\r\n    \"correo\": \"nicotobo@gmail.com\",\r\n    \"nombre\": \"Nicolas Tobo\",\r\n    \"tipo\": \"RESPONSABLE\"},\r\n    \"modificaciones\": [\r\n    \t{\"id\": {{new_id_m1}} },\r\n    \t{\"id\": {{new_id_m2}} }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

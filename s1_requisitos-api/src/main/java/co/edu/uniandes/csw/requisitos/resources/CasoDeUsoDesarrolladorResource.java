@@ -69,9 +69,7 @@ public class CasoDeUsoDesarrolladorResource {
          desDTO = new DesarrolladorDTO(cdLogic.addResponsable(desId, casosId));
         LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addResponsable: output: {0}", desDTO);
        }
-        
-        
-   
+       
         if (tipo==2){
              LOGGER.log(Level.INFO, "CasoDeUsoDesarrolladorResource addRepresentante: input: casoID: {0} , desId: {1}", new Object[]{casosId, desId});
         if (desLogic.getDesarrollador(desId) == null) {

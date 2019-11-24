@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -43,6 +45,7 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     /**
      * String que representa el tipo del desarrollador
      */
+    @Enumerated(EnumType.ORDINAL)
     private TipoDesarrollador tipo;
     private String nombre;
     private String correo;
@@ -86,44 +89,12 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     public TipoDesarrollador getTipo() {
         return tipo;
     }
-    public String getTipoString(){
-  switch (tipo) {
-            case REPRESENTANTEDELCLIENTE:
-                return "RepresentanteDelCliente";
-            case RESPONSABLE:
-                return "Responsable";
-            default:
-                return "Comun.";
-        }
-    }
-            
-
     /**
      * @param tipo the tipo to set
      */
     public void setTipo(TipoDesarrollador tipo) {
         this.tipo = tipo;
     }
-
-    public void setTipoString(String tipo) {
-        switch (tipo) {
-            case "RepresentanteDelCliente":
-                this.tipo = TipoDesarrollador.REPRESENTANTEDELCLIENTE;
-                break;
-            case "Responsable":
-                this.tipo = TipoDesarrollador.RESPONSABLE;
-                break; 
-            case "Comun":
-                this.tipo = TipoDesarrollador.COMUN;
-                break;
-            default:
-                break;
-          
-        }
-
-    }
-
-
     /**
      * @return the requisitos
      */

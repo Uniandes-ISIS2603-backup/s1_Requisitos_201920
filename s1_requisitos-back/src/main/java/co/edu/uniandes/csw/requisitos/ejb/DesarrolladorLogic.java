@@ -35,7 +35,7 @@ public class DesarrolladorLogic
    */
   public DesarrolladorEntity createDesarrollador(DesarrolladorEntity desarrollador) throws BusinessLogicException
   {
-       if(desarrollador.getTipo()==null)
+      if(desarrollador.getTipo()==null)
       {
          throw new BusinessLogicException("Falta tipo del desarrollador.");      
       }

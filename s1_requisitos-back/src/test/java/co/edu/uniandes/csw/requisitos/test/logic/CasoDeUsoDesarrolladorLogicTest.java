@@ -101,10 +101,10 @@ public class CasoDeUsoDesarrolladorLogicTest {
              
             DesarrolladorEntity entidad = factory.manufacturePojo(DesarrolladorEntity.class);
             if (i==0 || i==2){
-              entidad.setTipoString("RepresentanteDelCliente");
+              entidad.setTipo(DesarrolladorEntity.TipoDesarrollador.REPRESENTANTEDELCLIENTE);
             }
             if (i==1 || i==3){
-                entidad.setTipoString("Responsable");
+                entidad.setTipo(DesarrolladorEntity.TipoDesarrollador.RESPONSABLE);
             }
             em.persist(entidad);
             data.add(entidad);
@@ -132,7 +132,7 @@ public class CasoDeUsoDesarrolladorLogicTest {
         DesarrolladorEntity entity = data.get(0);
 
         System.out.println("aca"+entity.getId());
-        System.out.println("aca"+entity.getTipoString());
+        System.out.println("aca"+entity.getTipo());
         CasoDeUsoEntity casoEntity = casoData.get(0);
         DesarrolladorEntity response = logica.addRepresentante(entity.getId(), casoEntity.getId());
 
@@ -148,7 +148,6 @@ public class CasoDeUsoDesarrolladorLogicTest {
     @Test
     public void addResponsableTest() throws BusinessLogicException, Exception {
         DesarrolladorEntity entity = data.get(1);
-        entity.setTipoString("Responsable");
         CasoDeUsoEntity casoEntity = casoData.get(0);
         DesarrolladorEntity response = logica.addResponsable(entity.getId(), casoEntity.getId());
 
@@ -222,7 +221,6 @@ public class CasoDeUsoDesarrolladorLogicTest {
     @Test(expected = BusinessLogicException.class)
     public void replaceresponsableTestConTipoEquivocado() throws BusinessLogicException, Exception {
         DesarrolladorEntity entity = data.get(0);
-        entity.setTipoString("RepresentanteDelCliente");
         logica.cambiarResponsable( entity.getId(), casoData.get(1).getId());
         entity = logica.getResponsable(casoData.get(1).getId());
         Assert.assertTrue(entity.getCasosDeUsoResponsable().contains(casoData.get(1)));

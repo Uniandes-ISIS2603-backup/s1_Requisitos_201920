@@ -41,7 +41,7 @@ public class CasoDeUsoDesarrolladorLogic {
         //Encuentra al desarrollador
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
         //Verifica el tipo de persona
-        if (!desEntity.getTipoString().equals("RepresentanteDelCliente")){
+        if (!desEntity.getTipo().equals(DesarrolladorEntity.TipoDesarrollador.REPRESENTANTEDELCLIENTE)){
             throw new BusinessLogicException("la persona debe ser de  tipo respresantante");
         }
         //Encuentra el caso de uso 
@@ -85,7 +85,7 @@ public class CasoDeUsoDesarrolladorLogic {
         CasoDeUsoEntity casoEntity=casoPersistence.find(CasoId);
         DesarrolladorEntity desEntityViejo=casoEntity.getRepresentanteDelCliente();
         //Verifica la logica de la relacion 
-        if (!desEntityNuevo.getTipoString().equals("RepresentanteDelCliente")){
+        if (!desEntityNuevo.getTipo().equals(DesarrolladorEntity.TipoDesarrollador.REPRESENTANTEDELCLIENTE)){
             throw new BusinessLogicException("la persona debe ser de tipo representante");
         }
         //actualiza la entidad de casoDeUso
@@ -119,7 +119,7 @@ public class CasoDeUsoDesarrolladorLogic {
         //Encuentra al desarrollador
         DesarrolladorEntity desEntity= desPersistence.find(responsableId);
         //Verifica el tipo de persona
-        if (!desEntity.getTipoString().equals("Responsable")){
+        if (!desEntity.getTipo().equals(DesarrolladorEntity.TipoDesarrollador.RESPONSABLE)){
             throw new BusinessLogicException("la persona debe ser de  tipo responsable");
         }
         //Encuentra el caso de uso 
@@ -162,7 +162,7 @@ public class CasoDeUsoDesarrolladorLogic {
         CasoDeUsoEntity casoEntity=casoPersistence.find(CasoId);
         DesarrolladorEntity desEntityViejo=casoEntity.getResponsable();
         //Verifica la logica de la relacion 
-        if (!desEntityNuevo.getTipoString().equals("Responsable")){
+        if (!desEntityNuevo.getTipo().equals(DesarrolladorEntity.TipoDesarrollador.RESPONSABLE)){
             throw new BusinessLogicException("la persona debe ser de tipo responsable");
         }
         //actualiza la entidad de casoDeUso

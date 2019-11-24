@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "79eddf98-ca0f-40a4-8be2-b76e3d519919",
+		"_postman_id": "d1ce0c6b-70c7-4256-baee-81a251dcbe2a",
 		"name": "DesarrolladorResourceTest",
 		"description": "Pruebas del recurso Desarrollador de todos los metodos PUT,POST,GET y DEL siguiendo leyes logicas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -74,7 +74,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Testuser{{$randomInt}}\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":{{$randomInt}}\n\n}\n",
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"RESPONSABLE\",\n\t\"cedula\":1010247041,\n\t\"id\":1,\n\t\"modificaciones\":[\n\t\t{\n            \"descripcion\": \"aqui describo la modificacion\",\n              \"fechaModificacion\": \"2014-01-01T23:28:56.782Z\"\n         },\n          {\n              \"descripcion\": \"aqui describo la modificacion\",\n               \"fechaModificacion\": \"2014-01-01T23:28:56.782Z\"\n          }\n\t\t]\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -122,7 +122,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
+					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador?=",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -195,8 +195,6 @@
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"new_id_c2\", data.id)",
-							"postman.setGlobalVariable(\"nombre_repetido\", data.nombre)",
-							"postman.setGlobalVariable(\"cedula_repetido\", data.cedula)",
 							"tests[\"No genera error\"] = responseCode.code ===200;"
 						],
 						"type": "text/javascript"
@@ -214,55 +212,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Testuser{{$randomInt}}\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":{{$randomInt}}\n\n}\n"
-				},
-				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
-					"protocol": "http",
-					"host": [
-						"{{ip}}"
-					],
-					"port": "{{puerto}}",
-					"path": [
-						"s1_requisitos-api",
-						"api",
-						"desarrollador"
-					]
-				},
-				"description": "Crea un desarrollador con el cual se van a probar distintas pruebas logicas en los tests a continuacion.\nDevuelve codigo 200\n"
-			},
-			"response": []
-		},
-		{
-			"name": "CrearDesarrollador",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "296ea860-421a-4963-acf6-8fc257269c7d",
-						"exec": [
-							"var data = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"new_id_c2\", data.id)",
-							"postman.setGlobalVariable(\"nombre_repetido\", data.nombre)",
-							"postman.setGlobalVariable(\"cedula_repetido\", data.cedula)",
-							"tests[\"No genera error\"] = responseCode.code ===200;"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010247041\n\n}\n"
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"RESPONSABLE\",\n\t\"cedula\":1010247041,\n\t\"id\":1\n\n}\n"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
@@ -306,7 +256,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm1@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010248041\n\n\n}\n"
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm1@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"RESPONSABLE\",\n\t\"cedula\":1010248041,\n\t\"id\":2,\n\t\"modificaciones\":\n\t{\n      \"descripcion\": \"aqui describo la modificacion\",\n     \"fechaModificacion\": \"2014-01-01T23:28:56.782Z\"\n    }\n\n}\n"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
@@ -350,7 +300,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010247041\n}\n"
+					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"RESPONSABLE\",\n\t\"cedula\":1010247041,\n\t\"id\":1\n\n}\n"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
@@ -435,7 +385,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":18,\n\t\"tipo\":\"Comun\",\n\t\"cedula\":1010248041\n}\n"
+					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":18,\n\t\"tipo\":\"COMUN\",\n\t\"cedula\":1010248041,\n\t\"id\":1\n\n}\n"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador",
@@ -480,7 +430,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"cedula\":1010247041,\n\t\"tipo\":\"Responsable\",\n\t\"id\":1\n\n}"
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"cedula\":1010247041,\n\t\"tipo\":\"RESPONSABLE\",\n\t\"id\":1\n\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_c2}}",
@@ -526,7 +476,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010248041,\n\t\"id\":1\n\n}"
+					"raw": "{\n\t\"nombre\": \"Nicole\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"RESPONSABLE\",\n\t\"cedula\":1010248041,\n\t\"id\":1\n\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_c2}}",
@@ -572,7 +522,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":1010247041,\n\t\"id\":1\n\n}"
+					"raw": "{\n\t\"nombre\": \"Sofia\",\n\t\"correo\": \"nbm3@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"RESPONSABLE\",\n\t\"cedula\":1010247041,\n\t\"id\":1\n\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/desarrollador/{{new_id_c2}}",

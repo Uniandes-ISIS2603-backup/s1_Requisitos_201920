@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fc736050-813a-49a0-a492-2311a3663b6d",
+		"_postman_id": "60eb64d3-2334-4f72-8b7f-c5e5388032b6",
 		"name": "CasoDeUsoDesarrolladorTest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -85,7 +85,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"Responsable\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"RESPONSABLE\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -137,7 +137,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"nombre\":\"Testuser{{$randomInt}}\",\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"RepresentanteDelCliente\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"raw": "{\r\n\"nombre\":\"Testuser{{$randomInt}}\",\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"REPRESENTANTEDELCLIENTE\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -339,7 +339,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"Responsable\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"RESPONSABLE\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -391,7 +391,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"nombre\":\"Testuser{{$randomInt}}\",\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"RepresentanteDelCliente\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"raw": "{\r\n\"nombre\":\"Testuser{{$randomInt}}\",\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"REPRESENTANTEDELCLIENTE\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -432,6 +432,10 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/casos/{{new_id_relacion}}/desarrolladorc/{{new_id_representante}}/2",
 					"protocol": "http",

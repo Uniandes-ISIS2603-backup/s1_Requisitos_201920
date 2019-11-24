@@ -1,8 +1,7 @@
 {
 	"info": {
-		"_postman_id": "deedf54e-b4e7-45de-931e-4b8e979230ae",
-		"name": "DesarrolladorEquipoDesarrolloTest",
-		"description": "Test de relación",
+		"_postman_id": "6cae38b4-a18e-4616-bf2b-19dc76847561",
+		"name": "DesarrolladorEquipoDesarrollo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -12,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "85806de4-bf0b-4c43-9503-c041d4bd5958",
+						"id": "520d8207-8bae-498b-b233-d4214585e4e5",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"new_id_desarrollador\", data.id)",
@@ -34,7 +33,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Testuser{{$randomInt}}\",\n\t\"correo\": \"nbm@gmail.com\",\n\t\"edad\":20,\n\t\"tipo\":\"Responsable\",\n\t\"cedula\":{{$randomInt}}\n\n}\n",
+					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gatos.com\",\r\n    \"tipo\":\"RESPONSABLE\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,11 +63,10 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e2dbd56b-149c-4bc9-b8b4-a1d9791ac31c",
+						"id": "15de4f98-cbb0-4df5-88dd-d8a91c5c4c5b",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"new_idEquipoDesarrollo\",data.id);",
-							"postman.setGlobalVariable(\"new_nombre\", data.equipoDesarrollo);",
 							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
 							"console.log(data.id);"
 						],
@@ -88,7 +86,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"equipoDesarrollo\": \"{{$randomInt}}NN{{$randomInt}}\"\n}",
+					"raw": "{\n\t\"equipoDesarrollo\": \"{{$randomInt}}Nombre{{$randomInt}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -108,19 +106,20 @@
 						"equipoDesarrollo"
 					]
 				},
-				"description": "Crea un equipo de desarrollo"
+				"description": "Crea el equipo de desarrollo"
 			},
 			"response": []
 		},
 		{
-			"name": "crearRelacion",
+			"name": "crearRelacionDesarrolladorEquipoDesarrollo",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "a879139c-4676-4b0d-8c9c-24b07866530d",
+						"id": "abd5702a-bb22-41dc-8381-987177c045b7",
 						"exec": [
-							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -145,7 +144,7 @@
 						"{{new_idEquipoDesarrollo}}"
 					]
 				},
-				"description": "Crea la relación entre el desarrollador y el equipo"
+				"description": "Crea la relación entre ambos objetos"
 			},
 			"response": []
 		},
@@ -155,9 +154,9 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e43976c9-1131-4145-ae97-5e339d630692",
+						"id": "573b7144-e73a-4ae0-86d4-0ec13d244643",
 						"exec": [
-							"tests[\"no genera error en el get\"] = responseCode.code ===200;"
+							"tests[\"no genera error en el post\"] = responseCode.code ===200;"
 						],
 						"type": "text/javascript"
 					}
@@ -186,16 +185,15 @@
 			"response": []
 		},
 		{
-			"name": "CrearNuevoEquipo",
+			"name": "crearEquipoNuevo",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "60200120-cff9-4afe-9188-f448ae6d0e57",
+						"id": "953147af-ad32-4702-8613-9878ddd0fe3c",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"new_idEquipoDesarrollo\",data.id);",
-							"postman.setGlobalVariable(\"new_nombre\", data.equipoDesarrollo);",
 							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
 							"console.log(data.id);"
 						],
@@ -215,7 +213,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"equipoDesarrollo\": \"{{$randomInt}}NuevoT{{$randomInt}}\"\n}",
+					"raw": "{\n\t\"equipoDesarrollo\": \"NuevoT\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -235,7 +233,7 @@
 						"equipoDesarrollo"
 					]
 				},
-				"description": "Crea otro equipo"
+				"description": "Crea nuevo equipo"
 			},
 			"response": []
 		},
@@ -245,9 +243,9 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "cc1dda7c-6bdc-4969-958a-35fc7cfe61d2",
+						"id": "7d7be634-51b4-4bee-a814-35e36fa79f2d",
 						"exec": [
-							"tests[\"no genera error en el get\"] = responseCode.code ===200;"
+							"tests[\"no genera error en el update\"] = responseCode.code ===200;"
 						],
 						"type": "text/javascript"
 					}

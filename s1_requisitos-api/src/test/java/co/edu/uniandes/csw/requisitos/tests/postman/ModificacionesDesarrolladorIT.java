@@ -27,7 +27,8 @@ import org.junit.runner.RunWith;
  */
 
 @RunWith(Arquillian.class)
-public class ModificacionesDesarrolladorIT {
+public class ModificacionesDesarrolladorIT 
+{
       private static final String COLLECTION = "RequisitosDesarrolladorTest.postman_collection";
 
     @Deployment(testable = true)

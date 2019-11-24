@@ -6,7 +6,10 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity.TipoDesarrollador;
 import java.io.Serializable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 
 /**
@@ -60,14 +63,13 @@ import java.io.Serializable;
  * @author Nicolas Tobo
  */
 public class DesarrolladorDTO implements Serializable
-{
-    
-   
+{  
      /**
      * String que representa el tipo del desarrollador
      */
-   private Long id;
-    private String tipo;
+    private Long id;
+    @Enumerated(EnumType.ORDINAL)
+    private TipoDesarrollador tipo;
     private String nombre;
     private String correo;
     private Integer edad;
@@ -90,7 +92,8 @@ public class DesarrolladorDTO implements Serializable
          this.id=entidad.getId();
          this.correo=entidad.getCorreo();
          this.cedula=entidad.getCedula();  
-         this.tipo=entidad.getTipoString();
+         this.tipo=entidad.getTipo();
+         this.edad=entidad.getEdad();
         }
     }
     
@@ -104,8 +107,9 @@ public class DesarrolladorDTO implements Serializable
          entidad.setNombre(this.nombre);
          entidad.setId(this.id);
          entidad.setCorreo(this.correo);
-         entidad.setCedula(this.cedula);
-         entidad.setTipoString(this.tipo);
+         entidad.setCedula(this.cedula);  
+         entidad.setTipo(this.tipo);
+         entidad.setEdad(this.edad);
        
          return entidad;
    }
@@ -121,7 +125,7 @@ public class DesarrolladorDTO implements Serializable
     /**
      * @param tipo the tipo to set
      */
-    public void setTipo(String tipo) {
+    public void setTipo(TipoDesarrollador tipo) {
         this.tipo = tipo;
     }
     
@@ -159,11 +163,10 @@ public class DesarrolladorDTO implements Serializable
         return id;
     }
 
-
     /**
      * @return the tipo
      */
-    public String getTipo() {
+    public TipoDesarrollador getTipo() {
         return tipo;
     }
 

@@ -69,8 +69,8 @@ public class CasoDeUsoDTO implements Serializable {
     //variable encargada de almacenar los caminos alternos involucradas en el caso
     private List<String> caminosAlternos = new ArrayList<>();
 
-    private DesarrolladorEntity representanteDelCliente;
-    private DesarrolladorEntity responsable;
+    private DesarrolladorDTO representanteDelCliente;
+    private DesarrolladorDTO responsable;
 
     public CasoDeUsoDTO() {
 
@@ -88,26 +88,37 @@ public class CasoDeUsoDTO implements Serializable {
             this.entidades = caso.getEntidades();
             this.posCondiciones = caso.getPosCondiciones();
             this.preCondiciones = caso.getPreCondiciones();
-            this.representanteDelCliente = caso.getRepresentanteDelCliente();
-            this.responsable = caso.getResponsable();
-
+            if (caso.getRepresentanteDelCliente() != null) {
+                this.representanteDelCliente = new DesarrolladorDTO(caso.getRepresentanteDelCliente());
+            } else {
+                this.representanteDelCliente = null;
+            }
+            if (caso.getResponsable() != null) {
+                this.responsable = new DesarrolladorDTO(caso.getResponsable());
+            } else {
+                this.responsable = null;
+            }
         }
     }
 
     public CasoDeUsoEntity toEntity() {
         CasoDeUsoEntity entidad = new CasoDeUsoEntity();
-        entidad.setId(this.getId());
-        entidad.setPruebas(this.getPruebas());
-        entidad.setDocumentacion(this.getDocumentacion());
-        entidad.setServicios(this.getServicios());
-        entidad.setCaminosAlternos(this.getCaminosAlternos());
-        entidad.setCaminosExcepcion(this.getCaminosExcepcion());
-        entidad.setEntidades(this.getEntidades());
-        entidad.setPosCondiciones(this.getPosCondiciones());
-        entidad.setPreCondiciones(this.getPreCondiciones());
-        entidad.setRepresentanteDelCliente(this.getRepresentanteDelCliente());
-        entidad.setResponsable(this.getResponsable());
-        entidad.setNombre(this.getNombre());
+        entidad.setId(this.id);
+        entidad.setPruebas(this.pruebas);
+        entidad.setDocumentacion(this.documentacion);
+        entidad.setServicios(this.servicios);
+        entidad.setCaminosAlternos(this.caminosAlternos);
+        entidad.setCaminosExcepcion(this.caminosExcepcion);
+        entidad.setEntidades(this.entidades);
+        entidad.setPosCondiciones(this.posCondiciones);
+        entidad.setPreCondiciones(this.preCondiciones);
+        if (this.representanteDelCliente != null) {
+            entidad.setRepresentanteDelCliente(this.representanteDelCliente.toEntity());
+        }
+        if (this.responsable != null) {
+            entidad.setResponsable(this.responsable.toEntity());
+        }
+        entidad.setNombre(this.nombre);
         return entidad;
     }
 
@@ -118,45 +129,45 @@ public class CasoDeUsoDTO implements Serializable {
         return id;
     }
 
-      /**
+    /**
      * @return the nombre
      */
     public String getNombre() {
         return nombre;
     }
-    
-     /**
+
+    /**
      * @return the servicios
      */
     public List<String> getServicios() {
         return servicios;
     }
-    
+
     /**
      * @return the documentacion
      */
     public String getDocumentacion() {
         return documentacion;
     }
-    
+
     /**
      * @return the entidades
      */
     public List<String> getEntidades() {
         return entidades;
     }
-    
-     /**
+
+    /**
      * @return the posCondiciones
      */
     public List<String> getPosCondiciones() {
         return posCondiciones;
     }
-    
+
     /**
      * @return the representanteDelCliente
      */
-    public DesarrolladorEntity getRepresentanteDelCliente() {
+    public DesarrolladorDTO getRepresentanteDelCliente() {
         return representanteDelCliente;
     }
 
@@ -166,42 +177,41 @@ public class CasoDeUsoDTO implements Serializable {
     public Boolean getPruebas() {
         return pruebas;
     }
-    
+
     /**
      * @return the caminosAlternos
      */
     public List<String> getCaminosAlternos() {
         return caminosAlternos;
     }
-    
-     /**
+
+    /**
      * @return the caminosExcepcion
      */
     public List<String> getCaminosExcepcion() {
         return caminosExcepcion;
     }
-    
+
     /**
      * @return the responsable
      */
-    public DesarrolladorEntity getResponsable() {
+    public DesarrolladorDTO getResponsable() {
         return responsable;
     }
-    
+
     /**
      * @return the preCondiciones
      */
     public List<String> getPreCondiciones() {
         return preCondiciones;
     }
-    
+
     /**
      * @param id the id to set
      */
     public void setId(Long id) {
         this.id = id;
     }
-
 
     /**
      * @param nombre the nombre to set
@@ -224,14 +234,12 @@ public class CasoDeUsoDTO implements Serializable {
         this.documentacion = documentacion;
     }
 
-
     /**
      * @param pruebas the pruebas to set
      */
     public void setPruebas(Boolean pruebas) {
         this.pruebas = pruebas;
     }
-
 
     /**
      * @param entidades the entidades to set
@@ -247,8 +255,6 @@ public class CasoDeUsoDTO implements Serializable {
         this.caminosExcepcion = caminosExcepcion;
     }
 
- 
-
     /**
      * @param posCondiciones the posCondiciones to set
      */
@@ -256,15 +262,12 @@ public class CasoDeUsoDTO implements Serializable {
         this.posCondiciones = posCondiciones;
     }
 
-
-
     /**
      * @param preCondiciones the preCondiciones to set
      */
     public void setPreCondiciones(List<String> preCondiciones) {
         this.preCondiciones = preCondiciones;
     }
-
 
     /**
      * @param caminosAlternos the caminosAlternos to set
@@ -276,14 +279,14 @@ public class CasoDeUsoDTO implements Serializable {
     /**
      * @param representanteDelCliente the representanteDelCliente to set
      */
-    public void setRepresentanteDelCliente(DesarrolladorEntity representanteDelCliente) {
+    public void setRepresentanteDelCliente(DesarrolladorDTO representanteDelCliente) {
         this.representanteDelCliente = representanteDelCliente;
     }
 
     /**
      * @param responsable the responsable to set
      */
-    public void setResponsable(DesarrolladorEntity responsable) {
+    public void setResponsable(DesarrolladorDTO responsable) {
         this.responsable = responsable;
     }
 

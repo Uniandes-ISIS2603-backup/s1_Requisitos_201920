@@ -19,13 +19,13 @@ import java.util.List;
  */
 public class DesarrolladorDetailDTO extends DesarrolladorDTO implements Serializable
 {
-           /**
+     /**
      * Lista de ModificacionesDTO que puede tener el requisito
      */
     private List<RequisitosDTO> requisitos;
-     private List<CasoDeUsoDTO> casosDeUsoRepresentante;
-      private List<CasoDeUsoDTO> casosDeUsoResponsable;
-       private List<ModificacionesDTO> modificaciones;
+    private List<CasoDeUsoDTO> casosDeUsoRepresentante;
+    private List<CasoDeUsoDTO> casosDeUsoResponsable;
+    private List<ModificacionesDTO> modificaciones;
     
      /**
      * Constructor del detailDto por defecto

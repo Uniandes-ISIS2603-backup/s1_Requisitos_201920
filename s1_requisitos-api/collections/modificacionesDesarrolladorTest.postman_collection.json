@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ca217ed8-6475-4c3e-a9ff-edae35b3dad9",
+		"_postman_id": "44271ba2-18bf-44a2-8b0d-52757b24568a",
 		"name": "modificacionesDesarrolladorTest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -33,7 +33,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"Responsable\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
+					"raw": "{\r\n\t\"nombre\":\"Testuser{{$randomInt}}\" ,\r\n    \"correo\":\"n@gato.com\",\r\n    \"tipo\":\"RESPONSABLE\",\r\n    \"edad\":20,\r\n    \"cedula\": {{$randomInt}},\r\n    \"id\": 100\r\n}\r\n   ",
 					"options": {
 						"raw": {
 							"language": "json"

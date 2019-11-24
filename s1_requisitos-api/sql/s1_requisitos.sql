@@ -1,4 +1,4 @@
-
+delete from RequisitosEntity;
 delete from servicios;
 delete from caminosalternos;
 delete from caminosExcepcion;
@@ -7,7 +7,7 @@ delete from precondiciones;
 delete from entidades;
 delete from CasoDeUsoEntity ;
 delete from desarrolladorEntity;
-
+delete from equipoDesarrolloEntity;
 
 insert into casodeusoentity (id, nombre, documentacion, pruebas) values (500,'Cornelius', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 0);
 insert into casodeusoentity (id, nombre, documentacion, pruebas) values (501, 'Howey', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 0);
