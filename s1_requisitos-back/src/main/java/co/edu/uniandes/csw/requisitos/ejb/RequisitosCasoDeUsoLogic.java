@@ -56,7 +56,7 @@ public class RequisitosCasoDeUsoLogic
     
     /**
      *
-     * Obtener un requisito por medio de su id y el de su casoDeUso.
+     * Obtener el caso de uso de un requisito.
      *
      * @param requisitoId id del requisito a ser buscado.
      * @return el CasoDeUso solicitada por medio de su id.
@@ -94,7 +94,7 @@ public class RequisitosCasoDeUsoLogic
     
     /**
      * Reemplazar caso de uso de un requisito
-     *
+     * @pre Se asume que existen los dos Casos de uso y que se va a sustituir uno con otro
      * @param requisitoId el id del requisito que se quiere actualizar.
      * @param casoDeUsoId El id del nuevo caso de uso asociado al requisito.
      * @return el nuevo caso de uso asociado.

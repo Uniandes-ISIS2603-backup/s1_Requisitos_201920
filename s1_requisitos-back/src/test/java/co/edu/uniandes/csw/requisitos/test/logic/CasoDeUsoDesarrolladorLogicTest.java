@@ -97,15 +97,6 @@ public class CasoDeUsoDesarrolladorLogicTest {
      * pruebas.
      */
     private void insertData() {
-        for (int i = 0; i < 3; i++) {
-
-            CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);
-           
-            em.persist(caso);
-            casoData.add(caso);
-            System.out.println(casoData.size());
-        }
-    
         for (int i = 0; i < 4; i++) {
              
             DesarrolladorEntity entidad = factory.manufacturePojo(DesarrolladorEntity.class);
@@ -117,7 +108,16 @@ public class CasoDeUsoDesarrolladorLogicTest {
             }
             em.persist(entidad);
             data.add(entidad);
-            System.out.println(data.size());
+        }
+        for (int i = 0; i < 3; i++) 
+        {
+            CasoDeUsoEntity caso = factory.manufacturePojo(CasoDeUsoEntity.class);  
+            if(i==0)
+                caso.setRepresentanteDelCliente(data.get(0));
+            else if(i==1)
+                caso.setResponsable(data.get(1));
+            em.persist(caso);
+            casoData.add(caso);
         }
     }
 
@@ -190,27 +190,27 @@ public class CasoDeUsoDesarrolladorLogicTest {
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @Test
-    public void replaceresponsableTest() throws BusinessLogicException, Exception {
+    public void replaceresponsableTest() throws BusinessLogicException, Exception 
+    {
         DesarrolladorEntity entity = data.get(3);
-        
         logica.cambiarResponsable(entity.getId(), casoData.get(1).getId());
         entity = logica.getResponsable(casoData.get(1).getId());
         Assert.assertTrue(entity.getCasosDeUsoResponsable().contains(casoData.get(1)));
     }
 
     /**
-     * Prueba para remplazar las instancias de Casos de uso asociadas a una
+     * Prueba para reemplazar las instancias de Casos de uso asociadas a una
      * instancia de Desarrollador responsable
      *
      * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @Test
-    public void replaceRepresentanteTest() throws BusinessLogicException, Exception {
+    public void replaceRepresentanteTest() throws BusinessLogicException, Exception 
+    {
         DesarrolladorEntity entity = data.get(2);
- 
-        logica.cambiarRepresentante( entity.getId(), casoData.get(1).getId());
-        entity = logica.getRepresentante(casoData.get(1).getId());
-        Assert.assertTrue(entity.getCasosDeUsoRepresentante().contains(casoData.get(1)));
+        logica.cambiarRepresentante( entity.getId(), casoData.get(0).getId());
+        entity = logica.getRepresentante(casoData.get(0).getId());
+        Assert.assertTrue(entity.getCasosDeUsoRepresentante().contains(casoData.get(0)));
     }
 
     /**

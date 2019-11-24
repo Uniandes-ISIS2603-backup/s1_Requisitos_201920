@@ -6,6 +6,7 @@ delete from poscondiciones;
 delete from precondiciones;
 delete from entidades;
 delete from CasoDeUsoEntity ;
+delete from desarrolladorEntity;
 
 
 insert into casodeusoentity (id, nombre, documentacion, pruebas) values (500,'Cornelius', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 0);

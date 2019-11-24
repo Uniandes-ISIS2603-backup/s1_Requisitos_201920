@@ -235,5 +235,5 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     public void setCedula(Integer cedula) {
         this.cedula = cedula;
     }
-
+    
 }
