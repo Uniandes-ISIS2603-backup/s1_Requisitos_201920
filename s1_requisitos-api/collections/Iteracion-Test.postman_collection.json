@@ -34,7 +34,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "  {\r\n  \t\"descripcion\": \"strinrwerg\",\r\n    \"fechaFin\": \"2000-08-20T00:00:00Z[UTC]\",\r\n    \"fechaInicio\": \"2000-08-20T00:00:00Z[UTC]\",\r\n    \"nombre\": \"popopqweu\"\r\n  }"
+					"raw": "  {\r\n  \t\"descripcion\": \"strinrwerg\",\r\n  \t\"fechaInicio\": \"2001-08-20T00:00:00Z\",\r\n    \"fechaFin\": \"2004-08-20T00:00:00Z\",\r\n    \"nombre\": \"popopqweu\"\r\n  }"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/iteracion",
@@ -80,7 +80,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "  {\n  \t\"descripcion\": \"Cierres de ciclo 2 correspondiente al grupo 1\",\n    \"fechaFin\": \"2009-08-20T00:00:00Z[UTC]\",\n    \"fechaInicio\": \"2010-08-20T00:00:00Z[UTC]\",\n    \"nombre\": \"cierre\"\n  }"
+					"raw": "  {\n  \t\"descripcion\": \"Cierres de ciclo 2 correspondiente al grupo 1\",\n    \"fechaFin\": \"2019-08-20T00:00:00Z\",\n    \"fechaInicio\": \"2010-08-20T00:00:00Z\",\n    \"nombre\": \"cierre\"\n  }"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s1_requisitos-api/api/iteracion",
