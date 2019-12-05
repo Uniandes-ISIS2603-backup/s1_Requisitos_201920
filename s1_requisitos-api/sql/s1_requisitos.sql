@@ -8,6 +8,7 @@ delete from entidades;
 delete from CasoDeUsoEntity ;
 delete from desarrolladorEntity;
 delete from equipoDesarrolloEntity;
+delete from modificacionesEntity;
 delete from ProyectoEntity;
 
 insert into DESARROLLADORENTITY (id, cedula, correo, edad, nombre, tipo) values (801, 2075, 'sdosedale0@ovh.net', 193, 'Shela', 0);
