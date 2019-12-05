@@ -28,8 +28,9 @@ public class CasoDeUsoLogic {
     *@param CasoDeUsoEntity a ser creado
     *@return CasoDeUsoEntity creado
      */
-    public CasoDeUsoEntity crearCasoDeUso(CasoDeUsoEntity caso) throws BusinessLogicException {
-        if (caso.getNombre()==null){
+    public void validar(CasoDeUsoEntity caso)  throws BusinessLogicException
+    {
+          if (caso.getNombre()==null){
             throw new BusinessLogicException("el  nombre no debe ser nulo");
         }
         if (caso.getPruebas() == null) {
@@ -59,6 +60,9 @@ public class CasoDeUsoLogic {
             
         }
         
+    }
+    public CasoDeUsoEntity crearCasoDeUso(CasoDeUsoEntity caso) throws BusinessLogicException {
+        validar(caso);
         caso = persistence.create(caso);
         return caso;
     }
@@ -88,36 +92,7 @@ public class CasoDeUsoLogic {
     *@return caso de uso modificado cumpliendo con las reglas de negocio
      */
     public CasoDeUsoEntity updateCasoDeUso(CasoDeUsoEntity caso) throws BusinessLogicException {
-        if (caso.getNombre()==null){
-            throw new BusinessLogicException("el  nombre no debe ser nulo");
-        }
-        if (caso.getPruebas() == null) {
-            throw new BusinessLogicException("Las pruebas no deben ser nulas");
-
-        }
-        if (caso.getDocumentacion() == null) {
-            throw new BusinessLogicException("la Documentacion no debe ser nula");
-        }
-        if (caso.getServicios() == null) {
-            throw new BusinessLogicException("los Servicios no deben ser nulos");
-        }
-        if (caso.getServicios().isEmpty()){
-            throw new BusinessLogicException("debe haber por lo menos un servicio");
-            
-        }
-         if (caso.getEntidades().isEmpty()){
-            throw new BusinessLogicException("debe haber por lo menos una entidad");
-            
-        }
-         if (caso.getPreCondiciones().isEmpty()){
-            throw new BusinessLogicException("debe haber por lo menos una precondicion");
-            
-        }
-         if (caso.getPosCondiciones().isEmpty()){
-            throw new BusinessLogicException("debe haber por lo menos una posCondicion");
-            
-        }
-         
+       validar(caso);
         return persistence.update(caso);
     }
 

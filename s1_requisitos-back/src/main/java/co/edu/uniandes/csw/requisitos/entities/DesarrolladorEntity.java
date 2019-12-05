@@ -14,6 +14,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -23,20 +24,6 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class DesarrolladorEntity extends BaseEntity implements Serializable {
-
-    /**
-     * @return the equipoDesarrollo
-     */
-    public EquipoDesarrolloEntity getEquipoDesarrollo() {
-        return equipoDesarrollo;
-    }
-
-    /**
-     * @param equipoDesarrollo the equipoDesarrollo to set
-     */
-    public void setEquipoDesarrollo(EquipoDesarrolloEntity equipoDesarrollo) {
-        this.equipoDesarrollo = equipoDesarrollo;
-    }
 
     public enum TipoDesarrollador {
         REPRESENTANTEDELCLIENTE, RESPONSABLE, COMUN
@@ -206,5 +193,18 @@ public class DesarrolladorEntity extends BaseEntity implements Serializable {
     public void setCedula(Integer cedula) {
         this.cedula = cedula;
     }
-    
+     /**
+     * @return the equipoDesarrollo
+     */
+    public EquipoDesarrolloEntity getEquipoDesarrollo() {
+        return equipoDesarrollo;
+    }
+
+    /**
+     * @param equipoDesarrollo the equipoDesarrollo to set
+     */
+    public void setEquipoDesarrollo(EquipoDesarrolloEntity equipoDesarrollo) {
+        this.equipoDesarrollo = equipoDesarrollo;
+    }
+
 }
