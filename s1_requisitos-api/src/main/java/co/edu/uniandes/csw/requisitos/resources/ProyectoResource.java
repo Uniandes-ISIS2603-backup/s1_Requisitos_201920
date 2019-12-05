@@ -48,9 +48,8 @@ public class ProyectoResource {
         
         ProyectoEntity nuevoProyectoEntity = proyLogic.createProyecto(proyectoEntity);
         
-        ProyectoDTO nuevoProyectoDTO = new ProyectoDTO(nuevoProyectoEntity);
+        return new ProyectoDTO(nuevoProyectoEntity);
         
-        return nuevoProyectoDTO;
     }
     /*
      retorna una lista de modificaciones como ModificacionesDTO
