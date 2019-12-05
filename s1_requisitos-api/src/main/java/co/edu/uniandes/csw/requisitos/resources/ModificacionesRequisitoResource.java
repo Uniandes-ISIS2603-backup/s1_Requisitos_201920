@@ -68,7 +68,6 @@ public class ModificacionesRequisitoResource {
         if (reqEntity == null) {
             throw new WebApplicationException("El recurso /modificacions/" + modificacionsId + "/requisito no existe.", 404);
         }
-        RequisitosDetailDTO reqDetailDTO;
         return new RequisitosDetailDTO(reqEntity);
     
     }

@@ -62,9 +62,8 @@ public class ModificacionesRequisitoLogic {
     public RequisitosEntity getRequisito(Long modId) 
     {
        
-        RequisitosEntity req = modPersistence.find(modId).getModificacionesRequisito();
+       return modPersistence.find(modId).getModificacionesRequisito();
        
-        return req;
     }
     
     /**
