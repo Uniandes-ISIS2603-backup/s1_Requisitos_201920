@@ -257,3 +257,14 @@ insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (3, 'Jo
 insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (4, 'Span', '10/30/2019', '8/16/2020');
 insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (5, 'Tresom', '10/3/2019', '4/16/2020');
 insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (6, 'Tin', '6/21/2019', '1/28/2020');
+
+insert into equipodesarrolloentity (id, equipodesarrollo) values (500, 'Comuna 13');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (501 'Los Jaguares');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (502, 'Arepa con huevo');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (503, 'RuPauls');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (504, 'El equipo');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (505, 'Ganadores');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (506, 'Delfines');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (507, 'Jirafas');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (508, 'Mejores que Jirafas');
+insert into equipodesarrolloentity (id, equipodesarrollo) values (509, 'Favela');
