@@ -172,4 +172,20 @@ public class EquipoDesarrolloLogicTest {
         Assert.assertNull(deleted);
     }
     
+     @Test(expected = BusinessLogicException.class)
+    public void updateEquipoIdNull() throws BusinessLogicException 
+    { EquipoDesarrolloEntity entity = new EquipoDesarrolloEntity();
+    entity.setEquipoDesarrollo("jojojo");
+        equipoLogic.updateEquipo(entity);
+    }
+     @Test
+     public void getEquipoByEquipoDesarrollo() throws BusinessLogicException 
+     {
+                 EquipoDesarrolloEntity nuevaEnt = list.get(0);
+        EquipoDesarrolloEntity entidad = equipoLogic.getEquipo(nuevaEnt.getId());
+       EquipoDesarrolloEntity equ = equipoLogic.getEquipoByEquipoDesarrollo(entidad.getEquipoDesarrollo());
+         Assert.assertEquals(entidad.getEquipoDesarrollo(), equ.getEquipoDesarrollo());
+     }
+    
+    
 }
