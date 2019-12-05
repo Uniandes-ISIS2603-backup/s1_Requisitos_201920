@@ -9,8 +9,10 @@ import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
@@ -27,6 +29,9 @@ public class IteracionEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaFin;
+     @PodamExclude
+     @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
+     private ProyectoEntity iteracionProyecto;
 
     /**
      * @return the nombre
@@ -82,6 +87,20 @@ public class IteracionEntity extends BaseEntity implements Serializable {
      */
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    /**
+     * @return the iteracionProyecto
+     */
+    public ProyectoEntity getIteracionProyecto() {
+        return iteracionProyecto;
+    }
+
+    /**
+     * @param iteracionProyecto the iteracionProyecto to set
+     */
+    public void setIteracionProyecto(ProyectoEntity iteracionProyecto) {
+        this.iteracionProyecto = iteracionProyecto;
     }
     
 }

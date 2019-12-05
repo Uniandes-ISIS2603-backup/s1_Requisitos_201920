@@ -7,9 +7,13 @@ package co.edu.uniandes.csw.requisitos.entities;
 
 import co.edu.uniandes.csw.requisitos.podam.DateStrategy;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -31,6 +35,13 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
      @ManyToOne
      private EquipoDesarrolloEntity equipo;
     
+     @PodamExclude
+     @OneToMany(
+    mappedBy = "iteracionProyecto",
+            cascade = CascadeType.ALL
+     )
+       private List<IteracionEntity> iteraciones = new ArrayList<>();
+     
     
      
     @Temporal(TemporalType.DATE)
@@ -101,6 +112,20 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
      */
     public void setEquipo(EquipoDesarrolloEntity equipo) {
         this.equipo = equipo;
+    }
+
+    /**
+     * @return the iteraciones
+     */
+    public List<IteracionEntity> getIteraciones() {
+        return iteraciones;
+    }
+
+    /**
+     * @param iteraciones the iteraciones to set
+     */
+    public void setIteraciones(List<IteracionEntity> iteraciones) {
+        this.iteraciones = iteraciones;
     }
     
     
