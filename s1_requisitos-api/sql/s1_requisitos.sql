@@ -8,6 +8,7 @@ delete from entidades;
 delete from CasoDeUsoEntity ;
 delete from desarrolladorEntity;
 delete from equipoDesarrolloEntity;
+delete from ProyectoEntity;
 
 insert into DESARROLLADORENTITY (id, cedula, correo, edad, nombre, tipo) values (801, 2075, 'sdosedale0@ovh.net', 193, 'Shela', 0);
 insert into DESARROLLADORENTITY (id, cedula, correo, edad, nombre, tipo) values (802, 2718, 'amatzeitis1@japanpost.jp', 134, 'Aksel', 0);
@@ -250,3 +251,9 @@ insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilid
 insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilidad, comentariosAdicionales, tipo, nombre) values ('Trantow, Ratke and Luettgen', 'Jillayne Duding', 'Goose, snow', 24, 1, 'Nullam varius.', 4, 'Managed real-time methodology');
 insert into RequisitosEntity (fuente, autor, descripcion, importancia, estabilidad, comentariosAdicionales, tipo, nombre) values ('Bashirian and Sons', 'Murry McQuarrie', 'Mynah, common', 25, 1, 'Donec posuere metus vitae ipsum. Aliquam non mauris.', 3, 'Organic maximized toolset');
 
+insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (1, 'Aerified', '7/22/2019', '9/22/2020');
+insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (2, 'Prodder', '9/3/2019', '1/8/2020');
+insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (3, 'Job', '4/4/2019', '6/11/2020');
+insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (4, 'Span', '10/30/2019', '8/16/2020');
+insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (5, 'Tresom', '10/3/2019', '4/16/2020');
+insert into ProyectoEntity (id, nombre, fechainicial, fechafinal) values (6, 'Tin', '6/21/2019', '1/28/2020');
