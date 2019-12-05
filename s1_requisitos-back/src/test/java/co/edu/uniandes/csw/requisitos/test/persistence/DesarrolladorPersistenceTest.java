@@ -190,6 +190,8 @@ public class DesarrolladorPersistenceTest {
         Assert.assertNotNull(nuevaEnt);
         Assert.assertEquals(entidad.getNombre(),nuevaEnt.getNombre());
         Assert.assertEquals(entidad.getTipo(),nuevaEnt.getTipo());
+         Assert.assertEquals(entidad.getCedula(),nuevaEnt.getCedula());
+          Assert.assertEquals(entidad.getCorreo(),nuevaEnt.getCorreo());
     }
     
      @Test

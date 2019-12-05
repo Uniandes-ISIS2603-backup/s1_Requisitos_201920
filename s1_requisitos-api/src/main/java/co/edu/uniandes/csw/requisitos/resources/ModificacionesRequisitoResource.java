@@ -49,8 +49,7 @@ public class ModificacionesRequisitoResource {
         if (requisitoLogic.getRequisito(requisitosId) == null) {
             throw new WebApplicationException("El recurso /requisitos/" + requisitosId + " no existe.", 404);
         }
-        RequisitosDTO requisitoDTO = new RequisitosDTO(modificacionesRequisitoLogic.addRequisito(requisitosId, modificacionsId));
-        return requisitoDTO;
+        return new RequisitosDTO(modificacionesRequisitoLogic.addRequisito(requisitosId, modificacionsId));
     }
 
     /**
