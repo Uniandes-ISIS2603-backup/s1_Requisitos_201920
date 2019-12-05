@@ -64,10 +64,11 @@ public class ModificacionesCasoDeUsoLogic {
         
         ModificacionesEntity modificacionesEntity = modificacionesPersistence.find(modificacionessId);
         modificacionesEntity.setCasoModificaciones(casoDeUsoEntity);
+        modificacionesPersistence.update(modificacionesEntity);
         return casoDeUsoPersistence.find(casoDeUsosId);
+        
     }
-
-    /**
+   /**
      * Borrar el casoDeUso de una modificacion
      *
      * @param modificacionessId El premio que se desea borrar del casoDeUso.

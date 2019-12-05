@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.requisitos.dtos;
 
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
-import co.edu.uniandes.csw.requisitos.entities.DesarrolladorEntity;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;

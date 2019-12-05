@@ -35,12 +35,12 @@ public class ProyectoEquipoDesarrolloLogic {
      * @return El requisito que fue agregado al desarrollador.
      */
     public EquipoDesarrolloEntity addEquipoDesarollador(Long proyectoId, Long equipoId) {
-        LOGGER.log(Level.INFO,  String.format("Inicia proceso de asociar el desarrollador con id = %d a la modificacion con id = %d", proyectoId, equipoId));
+        
         EquipoDesarrolloEntity desarrolladorEntity = desarrolloPersistence.find(equipoId);
         ProyectoEntity proyectoEntity = proyectoPersistence.find(proyectoId);
         proyectoEntity.setEquipo(desarrolladorEntity);
         proyectoPersistence.update(proyectoEntity);
-        LOGGER.log(Level.INFO, String.format("Termina proceso de asociar el autor con id = %d al premio con id = %d" ,proyectoId, equipoId));
+        
         return desarrolladorEntity;
     }
 

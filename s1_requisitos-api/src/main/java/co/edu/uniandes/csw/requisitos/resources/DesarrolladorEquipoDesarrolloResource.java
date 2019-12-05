@@ -55,8 +55,8 @@ public class DesarrolladorEquipoDesarrolloResource {
         if (equipoDesarrolloLogic.getEquipo(equipoDesarrollosId) == null) {
             throw new WebApplicationException("El recurso /equipoDesarrollos/" + equipoDesarrollosId + " no existe.", 404);
         }
-        EquipoDesarrolloDTO equipoDesarrolloDTO = new EquipoDesarrolloDTO(desarrolladorEquipoDesarrolloLogic.addEquipoDesarrollo(equipoDesarrollosId, desarrolladorsId));
-        return equipoDesarrolloDTO;
+       return new EquipoDesarrolloDTO(desarrolladorEquipoDesarrolloLogic.addEquipoDesarrollo(equipoDesarrollosId, desarrolladorsId));
+       
     }
 
     /**
@@ -74,14 +74,14 @@ public class DesarrolladorEquipoDesarrolloResource {
         if (equipoDesarrolloEntity == null) {
             throw new WebApplicationException("El recurso /desarrolladors/" + desarrolladorsId + "/equipoDesarrollo no existe.", 404);
         }
-        EquipoDesarrolloDetailDTO equipoDesarrolloDetailDTO = new EquipoDesarrolloDetailDTO(equipoDesarrolloEntity);
-        return equipoDesarrolloDetailDTO;
+       return new EquipoDesarrolloDetailDTO(equipoDesarrolloEntity);
+       
     }
 
     /**
      * Remplaza la instancia de EquipoDesarrollo asociada a una instancia de Desarrollador
      *
-     * @param desarrolladorsId Identificador de el premio que se esta actualizando. Este
+     * @param desarrolladorId Identificador de el premio que se esta actualizando. Este
      * debe ser una cadena de dígitos.
      * @param equipoDesarrollosId Identificador de el equipoDesarrollo que se esta remplazando. Este
      * debe ser una cadena de dígitos.
@@ -95,16 +95,15 @@ public class DesarrolladorEquipoDesarrolloResource {
         if (equipoDesarrolloLogic.getEquipo(equipoDesarrollosId) == null) {
             throw new WebApplicationException("El recurso /equipoDesarrollos/" + equipoDesarrollosId + " no existe.", 404);
         }
-        EquipoDesarrolloDetailDTO equipoDesarrolloDetailDTO = new EquipoDesarrolloDetailDTO(desarrolladorEquipoDesarrolloLogic.replaceEquipoDesarrollo(desarrolladorId, equipoDesarrollosId));
-        return equipoDesarrolloDetailDTO;
+        return new EquipoDesarrolloDetailDTO(desarrolladorEquipoDesarrolloLogic.replaceEquipoDesarrollo(desarrolladorId, equipoDesarrollosId));
+        
     }
 
     /**
      * Elimina la conexión entre el autor y el premio recibido en la URL.
      *
      * @param desarrolladorsId El ID del premio al cual se le va a desasociar el autor
-     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
-     * Error de lógica que se genera cuando el premio no tiene autor.
+     * @throws co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException
      */
     @DELETE
     public void removeEquipoDesarrollo(@PathParam("desarrolladorId") Long desarrolladorsId) throws BusinessLogicException {

@@ -36,7 +36,7 @@ public class RequisitosDesarrolladorLogic {
     /**
      * Agregar un desarrollador a un requisito
      *
-     * @param requisitoId El id requisito a guardar
+     * @param requisitosId El id requisito a guardar
      * @param desarrolladorId El id del desarrollador al cual se le va a guardar el premio.
      * @return El requisito que fue agregado al desarrollador.
      */

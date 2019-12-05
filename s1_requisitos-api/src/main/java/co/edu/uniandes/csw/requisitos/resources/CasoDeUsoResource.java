@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.requisitos.resources;
 
 import co.edu.uniandes.csw.requisitos.dtos.CasoDeUsoDTO;
 import co.edu.uniandes.csw.requisitos.dtos.CasoDeUsoDetailDTO;
-import co.edu.uniandes.csw.requisitos.dtos.DesarrolladorDTO;
 import co.edu.uniandes.csw.requisitos.ejb.CasoDeUsoLogic;
 import co.edu.uniandes.csw.requisitos.entities.CasoDeUsoEntity;
 import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;

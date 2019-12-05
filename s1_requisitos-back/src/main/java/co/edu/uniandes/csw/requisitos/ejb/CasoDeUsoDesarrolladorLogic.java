@@ -11,8 +11,7 @@ import co.edu.uniandes.csw.requisitos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.requisitos.persistence.CasoDeUsoPersistence;
 import co.edu.uniandes.csw.requisitos.persistence.DesarrolladorPersistence;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -25,18 +24,18 @@ public class CasoDeUsoDesarrolladorLogic {
     @Inject
     private CasoDeUsoPersistence casoPersistence;
     
-    private static final Logger LOGGER = Logger.getLogger(CasoDeUsoDesarrolladorLogic.class.getName());
+    
     @Inject
     private DesarrolladorPersistence desPersistence;
     
     /**
      * Añade un representante de cliente al caso de uso 
      * @param representanteId
-     * @param CasoId
+     * @param casoId
      * @return Caso de uso
      * @throws BusinessLogicException 
      */
-    public DesarrolladorEntity addRepresentante(Long representanteId, Long CasoId)throws BusinessLogicException
+    public DesarrolladorEntity addRepresentante(Long representanteId, Long casoId)throws BusinessLogicException
     {
         //Encuentra al desarrollador
         DesarrolladorEntity desEntity= desPersistence.find(representanteId);
@@ -45,7 +44,7 @@ public class CasoDeUsoDesarrolladorLogic {
             throw new BusinessLogicException("la persona debe ser de  tipo respresantante");
         }
         //Encuentra el caso de uso 
-        CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
+        CasoDeUsoEntity casoEntity= casoPersistence.find(casoId);
         //Añade al caso de uso el representante.
         casoEntity.setRepresentanteDelCliente(desEntity);
         //Añade al representante el caso de uso
@@ -66,23 +65,23 @@ public class CasoDeUsoDesarrolladorLogic {
      */
     public DesarrolladorEntity getRepresentante(Long casoId)
     {
-        DesarrolladorEntity desEntity= casoPersistence.find(casoId).getRepresentanteDelCliente();     
-        return desEntity;
+        return casoPersistence.find(casoId).getRepresentanteDelCliente();     
+        
     }
     
     /**
      * Cambia el representante de un caso de uso
      * @pre Se asume que existen los dos representantes y que se va a sustituir uno con otro
      * @param representanteId
-     * @param CasoId
+     * @param casoId
      * @return
      * @throws BusinessLogicException 
      */
-    public DesarrolladorEntity cambiarRepresentante(Long representanteId, Long CasoId)throws BusinessLogicException
+    public DesarrolladorEntity cambiarRepresentante(Long representanteId, Long casoId)throws BusinessLogicException
     {
         //Encuentra las 3 entidades
         DesarrolladorEntity desEntityNuevo= desPersistence.find(representanteId);
-        CasoDeUsoEntity casoEntity=casoPersistence.find(CasoId);
+        CasoDeUsoEntity casoEntity=casoPersistence.find(casoId);
         DesarrolladorEntity desEntityViejo=casoEntity.getRepresentanteDelCliente();
         //Verifica la logica de la relacion 
         if (!desEntityNuevo.getTipo().equals(DesarrolladorEntity.TipoDesarrollador.REPRESENTANTEDELCLIENTE)){
@@ -110,11 +109,11 @@ public class CasoDeUsoDesarrolladorLogic {
     /**
      * Añade un responsable a el caso de uso
      * @param responsableId
-     * @param CasoId
+     * @param casoId
      * @return
      * @throws BusinessLogicException 
      */
-     public DesarrolladorEntity addResponsable(Long responsableId, Long CasoId)throws BusinessLogicException
+     public DesarrolladorEntity addResponsable(Long responsableId, Long casoId)throws BusinessLogicException
      {
         //Encuentra al desarrollador
         DesarrolladorEntity desEntity= desPersistence.find(responsableId);
@@ -123,7 +122,7 @@ public class CasoDeUsoDesarrolladorLogic {
             throw new BusinessLogicException("la persona debe ser de  tipo responsable");
         }
         //Encuentra el caso de uso 
-        CasoDeUsoEntity casoEntity= casoPersistence.find(CasoId);
+        CasoDeUsoEntity casoEntity= casoPersistence.find(casoId);
         //Añade al caso de uso el responsable.
         casoEntity.setResponsable(desEntity);
         //Añade al responsable el caso de uso
@@ -143,23 +142,23 @@ public class CasoDeUsoDesarrolladorLogic {
      */
     public DesarrolladorEntity getResponsable(Long casoId){
         
-        DesarrolladorEntity desEntity= casoPersistence.find(casoId).getResponsable();
-        return desEntity;
+        return casoPersistence.find(casoId).getResponsable();
+    
     }
     
     /**
      * Cambia el responsable de un caso de uso 
      * @pre Se asume que existen los dos responsables y que se va a sustituir uno con otro
      * @param responsableId
-     * @param CasoId
+     * @param casoId
      * @return
      * @throws BusinessLogicException 
      */
-    public DesarrolladorEntity cambiarResponsable(Long responsableId, Long CasoId) throws BusinessLogicException
+    public DesarrolladorEntity cambiarResponsable(Long responsableId, Long casoId) throws BusinessLogicException
     {
         //Encuentra las 3 entidades
         DesarrolladorEntity desEntityNuevo= desPersistence.find(responsableId);
-        CasoDeUsoEntity casoEntity=casoPersistence.find(CasoId);
+        CasoDeUsoEntity casoEntity=casoPersistence.find(casoId);
         DesarrolladorEntity desEntityViejo=casoEntity.getResponsable();
         //Verifica la logica de la relacion 
         if (!desEntityNuevo.getTipo().equals(DesarrolladorEntity.TipoDesarrollador.RESPONSABLE)){

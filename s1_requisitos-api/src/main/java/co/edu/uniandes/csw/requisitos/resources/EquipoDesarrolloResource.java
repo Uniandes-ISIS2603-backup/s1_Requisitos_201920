@@ -57,9 +57,9 @@ public class EquipoDesarrolloResource {
      */
     @POST
     public EquipoDesarrolloDTO createEquipo( EquipoDesarrolloDTO equipo) throws BusinessLogicException {
-        LOGGER.info("EquipoDesarrolloResource createEquipoDesarrollo: input:" +equipo.toString());
+       
         EquipoDesarrolloEntity equipoEntity = equipo.toEntity();
-        LOGGER.info("EquipoDesarrolloResource createEquipoDesarrollo: output:" +equipo.toString());
+       
         equipoEntity = proyLogic.createEquipoDesarrollo(equipoEntity);
         return new EquipoDesarrolloDTO(equipoEntity);
     }

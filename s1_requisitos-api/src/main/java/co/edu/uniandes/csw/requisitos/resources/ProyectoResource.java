@@ -18,7 +18,6 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -44,13 +43,13 @@ public class ProyectoResource {
     
     @POST
     public ProyectoDTO createProyecto(ProyectoDTO proy) throws BusinessLogicException {
-        LOGGER.info("ProyectoResource createProyecto: input:" +proy.toString());
+       
         ProyectoEntity proyectoEntity = proy.toEntity();
         
         ProyectoEntity nuevoProyectoEntity = proyLogic.createProyecto(proyectoEntity);
         
         ProyectoDTO nuevoProyectoDTO = new ProyectoDTO(nuevoProyectoEntity);
-        LOGGER.info("ProyectoResource createProyecto: output:" +nuevoProyectoEntity.toString());
+        
         return nuevoProyectoDTO;
     }
     /*

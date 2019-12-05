@@ -69,8 +69,8 @@ public class ModificacionesRequisitoResource {
             throw new WebApplicationException("El recurso /modificacions/" + modificacionsId + "/requisito no existe.", 404);
         }
         RequisitosDetailDTO reqDetailDTO;
-        reqDetailDTO = new RequisitosDetailDTO(reqEntity);
-        return reqDetailDTO;
+        return new RequisitosDetailDTO(reqEntity);
+    
     }
 
     /**
@@ -90,8 +90,8 @@ public class ModificacionesRequisitoResource {
         if (requisitoLogic.getRequisito(requisitosId) == null) {
             throw new WebApplicationException("El recurso /requisitos/" + requisitosId + " no existe.", 404);
         }
-        RequisitosDetailDTO reqDetailDTO = new RequisitosDetailDTO(modificacionesRequisitoLogic.replaceRequisito(modificacionsId, requisitosId));
-        return reqDetailDTO;
+        return new RequisitosDetailDTO(modificacionesRequisitoLogic.replaceRequisito(modificacionsId, requisitosId));
+       
     }
 
     /**
