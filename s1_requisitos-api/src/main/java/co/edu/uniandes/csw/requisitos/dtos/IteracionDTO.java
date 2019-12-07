@@ -24,7 +24,41 @@ public class IteracionDTO implements Serializable {
     private Date fechaFin;
     //identificador de la iteracion
     private Long id;
+    //Proyecto de desarrollo que esta asociado a la iteracion
+    private ProyectoDTO iteracionProyecto;
     
+     public IteracionDTO(){
+        
+    }
+      public IteracionDTO(IteracionEntity pIteracionEntity)
+    {   if(pIteracionEntity != null){
+        this.setDescripcion(pIteracionEntity.getDescripcion());
+        this.setFechaFin(pIteracionEntity.getFechaFin());
+        this.setFechaInicio(pIteracionEntity.getFechaInicio());
+        this.setId(pIteracionEntity.getId());
+        this.setNombre(pIteracionEntity.getNombre());
+        if(pIteracionEntity.getIteracionProyecto() != null)
+        {
+            this.iteracionProyecto = new ProyectoDTO(pIteracionEntity.getIteracionProyecto());
+        }
+        else{
+            this.iteracionProyecto= null;
+        }
+    }
+    }
+      
+       public IteracionEntity toEntity()
+    { IteracionEntity entidad = new IteracionEntity();
+      entidad.setDescripcion(descripcion);
+      entidad.setId(id);
+      entidad.setFechaInicio(fechaInicio);
+      entidad.setFechaFin(fechaFin);
+      entidad.setNombre(nombre);
+      if (iteracionProyecto != null)
+      entidad.setIteracionProyecto(iteracionProyecto.toEntity());
+      return entidad;     
+    }
+   
     /**
      * @param nombre the nombre to set
      */
@@ -95,25 +129,21 @@ public class IteracionDTO implements Serializable {
     public Long getId() {
         return id;
     }
+    /**
+     * @return the iteracionProyecto
+     */
+    public ProyectoDTO getIteracionProyecto() {
+        return iteracionProyecto;
+    }
 
-    public IteracionEntity toEntity()
-    { IteracionEntity entidad = new IteracionEntity();
-      entidad.setDescripcion(descripcion);
-      entidad.setId(id);
-      entidad.setFechaInicio(fechaInicio);
-      entidad.setFechaFin(fechaFin);
-      entidad.setNombre(nombre);
-      return entidad;     
+    /**
+     * @param iteracionProyecto the iteracionProyecto to set
+     */
+    public void setIteracionProyecto(ProyectoDTO pIteracionProyecto) {
+        this.iteracionProyecto = pIteracionProyecto;
     }
-    public IteracionDTO(IteracionEntity pIteracionEntity)
-    {
-        this.setDescripcion(pIteracionEntity.getDescripcion());
-        this.setFechaFin(pIteracionEntity.getFechaFin());
-        this.setFechaInicio(pIteracionEntity.getFechaInicio());
-        this.setId(pIteracionEntity.getId());
-        this.setNombre(pIteracionEntity.getNombre());
-    }
-    public IteracionDTO(){
-        
-    }
+    
+   
+   
+
 }

@@ -186,6 +186,6 @@ public class EquipoDesarrolloLogicTest {
        EquipoDesarrolloEntity equ = equipoLogic.getEquipoByEquipoDesarrollo(entidad.getEquipoDesarrollo());
          Assert.assertEquals(entidad.getEquipoDesarrollo(), equ.getEquipoDesarrollo());
      }
-    
-    
+     
+      
 }

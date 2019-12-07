@@ -34,7 +34,6 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
      @PodamExclude
      @ManyToOne
      private EquipoDesarrolloEntity equipo;
-    
      @PodamExclude
      @OneToMany(
     mappedBy = "iteracionProyecto",
@@ -44,17 +43,19 @@ public class ProyectoEntity extends BaseEntity implements Serializable{
      
     
      
-    @Temporal(TemporalType.DATE)
+   
     /**
      * FechaInicial del proyecto
      */
+    @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaInicial;
     
     /**
      * FechaFinal del proyecto
      */
-    @Temporal(TemporalType.DATE)
+   @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fechaFinal;
 
     

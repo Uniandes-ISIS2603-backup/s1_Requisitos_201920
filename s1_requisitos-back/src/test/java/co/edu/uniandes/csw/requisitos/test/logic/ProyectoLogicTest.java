@@ -125,5 +125,13 @@ public class ProyectoLogicTest {
         nuevaEntidad.setFechaFinal(nuevaEntidad.getFechaInicial());
         ProyectoEntity result = proyectoLogic.createProyecto(nuevaEntidad);
     }
+    @Test
+    public void getIteracionTest() {
+        ProyectoEntity nuevaEnt = list.get(0);
+        ProyectoEntity entidad = proyectoLogic.getProyecto(nuevaEnt.getId());
+        Assert.assertNotNull(entidad);
+        Assert.assertEquals(nuevaEnt.getId(),entidad.getId());
+        Assert.assertEquals(nuevaEnt.getFechaInicial(),entidad.getFechaInicial());
+    }
     
 }
