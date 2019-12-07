@@ -24,16 +24,15 @@ public class ProyectoDetailDTO extends ProyectoDTO {
     }
       public ProyectoDetailDTO(ProyectoEntity proyecto) {
         super(proyecto);
-        if (proyecto != null) {
 
-            if (proyecto.getIteraciones() != null) {
+            if (proyecto != null && proyecto.getIteraciones() != null) {
                 iteraciones = new ArrayList<>();
                 for (IteracionEntity lis : proyecto.getIteraciones()) {
                     iteraciones.add(new IteracionDTO(lis));
                 }
             }
         
-    }
+    
     
 }
        @Override

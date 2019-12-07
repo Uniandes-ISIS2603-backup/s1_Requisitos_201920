@@ -54,8 +54,8 @@ public class IteracionDTO implements Serializable {
       entidad.setFechaInicio(fechaInicio);
       entidad.setFechaFin(fechaFin);
       entidad.setNombre(nombre);
-      if (iteracionProyecto != null)
-      entidad.setIteracionProyecto(iteracionProyecto.toEntity());
+      if (iteracionProyecto != null){
+      entidad.setIteracionProyecto(iteracionProyecto.toEntity());}
       return entidad;     
     }
    
